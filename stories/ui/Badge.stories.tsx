@@ -1,0 +1,22 @@
+import type { Meta, StoryObj } from "@storybook/react"
+import { Badge } from "../../components/ui/badge"
+
+const meta: Meta<typeof Badge> = {
+  title: "UI/Badge",
+  component: Badge,
+  parameters: { layout: "centered" },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "accent", "outline", "muted"],
+    },
+  },
+}
+export default meta
+
+type Story = StoryObj<typeof Badge>
+
+export const Default: Story = { args: { children: "Figma", variant: "default" } }
+export const Accent: Story = { args: { children: "UX Research", variant: "accent" } }
+export const Outline: Story = { args: { children: "Product Thinking", variant: "outline" } }
+export const Muted: Story = { args: { children: "Rascunho", variant: "muted" } }

@@ -1,39 +1,36 @@
-# Workshop-IA — Isadora
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Projeto construído no Workshop de IA com Claude Code.
+## Getting Started
 
-## Ferramentas Conectadas
+First, run the development server:
 
-| Ferramenta | Status | Como está conectada |
-|------------|--------|---------------------|
-| GitHub | ✅ Conectado | Repositório `cheuicheisadora/Workshop-IA` |
-| Vercel | ✅ Conectado | Via MCP — deploy direto pelo Claude Code |
-| Google (Gmail + Calendar) | ✅ Conectado | Via MCP |
-| Neon (banco de dados) | ⏳ Pendente | Adicionar `DATABASE_URL` no `.env.local` |
-| Google Cloud Console | ⏳ Pendente | Adicionar credenciais OAuth no `.env.local` |
-| Resend (email) | ⏳ Pendente | Adicionar `RESEND_API_KEY` no `.env.local` |
-| Stripe (pagamentos) | ⏳ Pendente | Adicionar chaves Stripe no `.env.local` |
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Configuração Inicial
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-1. Copie o arquivo de variáveis de ambiente:
-   ```bash
-   cp .env.example .env.local
-   ```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-2. Preencha as variáveis no `.env.local` com suas chaves de API
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-3. Instale as dependências (quando o projeto for criado):
-   ```bash
-   npm install
-   ```
+## Learn More
 
-4. Rode localmente:
-   ```bash
-   npm run dev
-   ```
+To learn more about Next.js, take a look at the following resources:
 
-## Como fazer deploy
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Com o Vercel conectado via MCP, basta pedir ao Claude Code:
-> "Faça o deploy do projeto na Vercel"
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
