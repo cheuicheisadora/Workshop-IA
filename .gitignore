@@ -1,0 +1,14 @@
+# Variaveis de ambiente (NUNCA commitar!)
+.env
+.env.local
+.env.production
+
+# Node
+node_modules/
+.next/
+dist/
+build/
+
+# Sistema
+.DS_Store
+Thumbs.db
