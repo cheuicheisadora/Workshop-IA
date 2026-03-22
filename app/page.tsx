@@ -33,7 +33,7 @@ const skills = [
 ]
 
 export default function HomePage() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
 
   return (
     <div className="flex min-h-screen flex-col">
