@@ -23,7 +23,7 @@ const formacao = [
   {
     id: "f1",
     namePt: "Bacharelado em Administração",
-    nameEn: "Bachelor's in business administration",
+    nameEn: "Bachelor's in Business Administration",
     institutionPt: "Universidade Federal do Rio Grande do Sul (UFRGS)",
     institutionEn: "Federal University of Rio Grande do Sul (UFRGS)",
     periodPt: "Out 2022 – Dez 2026",
@@ -32,8 +32,8 @@ const formacao = [
   },
   {
     id: "f2",
-    namePt: "Curso UX/UI design",
-    nameEn: "UX/UI design program",
+    namePt: "Curso UX/UI Design",
+    nameEn: "UX/UI Design Program",
     institutionPt: "EBAC",
     institutionEn: "EBAC",
     periodPt: "Jan 2025 – Mar 2026 · Concluído",
@@ -45,8 +45,8 @@ const formacao = [
 const certificates = [
   {
     id: 1,
-    namePt: "Aplicações práticas de acessibilidade no design",
-    nameEn: "Practical applications of accessibility in design",
+    namePt: "Aplicações Práticas de Acessibilidade no Design",
+    nameEn: "Practical Applications of Accessibility in Design",
     institution: "Tudo é acessibilidade",
     datePt: "Nov 2025",
     dateEn: "Nov 2025",
@@ -55,8 +55,8 @@ const certificates = [
   },
   {
     id: 2,
-    namePt: "Design eye opener",
-    nameEn: "Design eye opener",
+    namePt: "Design Eye Opener",
+    nameEn: "Design Eye Opener",
     institution: "SAP",
     datePt: "Mar 2025",
     dateEn: "Mar 2025",
@@ -65,7 +65,7 @@ const certificates = [
   },
   {
     id: 3,
-    namePt: "Figma aplicado",
+    namePt: "Figma Aplicado",
     nameEn: "Applied Figma",
     institution: "EBAC",
     datePt: "Mai 2025",
@@ -75,8 +75,8 @@ const certificates = [
   },
   {
     id: 4,
-    namePt: "Figma | Treinamento em Figma e design",
-    nameEn: "Figma | Training in Figma and design",
+    namePt: "Figma | Treinamento em Figma e Design",
+    nameEn: "Figma | Training in Figma and Design",
     institution: "Figma Descomplicado",
     datePt: "Out 2024",
     dateEn: "Oct 2024",
@@ -85,8 +85,8 @@ const certificates = [
   },
   {
     id: 5,
-    namePt: "From likes to leads: interact with customers online",
-    nameEn: "From likes to leads: interact with customers online",
+    namePt: "From Likes to Leads: Interact with Customers Online",
+    nameEn: "From Likes to Leads: Interact with Customers Online",
     institution: "Google",
     datePt: "Mai 2023",
     dateEn: "May 2023",
@@ -95,8 +95,8 @@ const certificates = [
   },
   {
     id: 6,
-    namePt: "Attract and engage customers with digital marketing",
-    nameEn: "Attract and engage customers with digital marketing",
+    namePt: "Attract and Engage Customers with Digital Marketing",
+    nameEn: "Attract and Engage Customers with Digital Marketing",
     institution: "Google",
     datePt: "Mai 2023",
     dateEn: "May 2023",
@@ -105,8 +105,8 @@ const certificates = [
   },
   {
     id: 7,
-    namePt: "Foundations of digital marketing and e-commerce",
-    nameEn: "Foundations of digital marketing and e-commerce",
+    namePt: "Foundations of Digital Marketing and E-Commerce",
+    nameEn: "Foundations of Digital Marketing and E-Commerce",
     institution: "Google",
     datePt: "Abr 2023",
     dateEn: "Apr 2023",
