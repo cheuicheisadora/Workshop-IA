@@ -19,6 +19,85 @@ const featureKeys: Array<{ titleKey: TranslationKey; descKey: TranslationKey }> 
   { titleKey: "feature_6_title", descKey: "feature_6_desc" },
 ]
 
+const certificates = [
+  {
+    id: 1,
+    namePt: "Aplicações práticas de acessibilidade no design",
+    nameEn: "Practical Applications of Accessibility in Design",
+    institution: "Tudo é acessibilidade",
+    datePt: "Nov 2025",
+    dateEn: "Nov 2025",
+    tags: ["Accessible Design"],
+    highlighted: false,
+  },
+  {
+    id: 2,
+    namePt: "Design Eye Opener",
+    nameEn: "Design Eye Opener",
+    institution: "SAP",
+    datePt: "Mar 2025",
+    dateEn: "Mar 2025",
+    tags: ["UX Design"],
+    highlighted: true,
+  },
+  {
+    id: 3,
+    namePt: "Figma Aplicado",
+    nameEn: "Applied Figma",
+    institution: "EBAC",
+    datePt: "Mai 2025",
+    dateEn: "May 2025",
+    tags: ["Figma", "UX Design", "Branding"],
+    highlighted: true,
+  },
+  {
+    id: 4,
+    namePt: "Figma | Training in Figma and Design",
+    nameEn: "Figma | Training in Figma and Design",
+    institution: "Figma Descomplicado",
+    datePt: "Out 2024",
+    dateEn: "Oct 2024",
+    tags: ["Design Gráfico"],
+    highlighted: false,
+  },
+  {
+    id: 5,
+    namePt: "From Likes to Leads: Interact with Customers Online",
+    nameEn: "From Likes to Leads: Interact with Customers Online",
+    institution: "Google",
+    datePt: "Mai 2023",
+    dateEn: "May 2023",
+    tags: ["Engajamento de Clientes"],
+    highlighted: true,
+  },
+  {
+    id: 6,
+    namePt: "Attract and Engage Customers with Digital Marketing",
+    nameEn: "Attract and Engage Customers with Digital Marketing",
+    institution: "Google",
+    datePt: "Mai 2023",
+    dateEn: "May 2023",
+    tags: ["Marketing Digital"],
+    highlighted: true,
+  },
+  {
+    id: 7,
+    namePt: "Foundations of Digital Marketing and E-commerce",
+    nameEn: "Foundations of Digital Marketing and E-commerce",
+    institution: "Google",
+    datePt: "Abr 2023",
+    dateEn: "Apr 2023",
+    tags: ["Marketing Digital", "E-commerce"],
+    highlighted: true,
+  },
+]
+
+const tagTranslations: Record<string, string> = {
+  "Design Gráfico": "Graphic Design",
+  "Engajamento de Clientes": "Customer Engagement",
+  "Marketing Digital": "Digital Marketing",
+}
+
 const skills = [
   "UX Research",
   "UI Design",
@@ -213,6 +292,69 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Formação e Certificados ───────────────────────────────── */}
+      <section id="certificados" className="py-20 px-6 bg-muted/30">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-12 text-center" data-animate>
+            <span className="section-accent-bar" />
+            <h2 className="font-bold text-foreground">{t("cert_heading")}</h2>
+          </div>
+
+          <ul className="cert-list">
+            {certificates.map((cert, i) => (
+              <li
+                key={cert.id}
+                className="cert-item"
+                data-animate
+                style={{ transitionDelay: `${i * 0.08}s` }}
+              >
+                {/* Icon */}
+                <div className="cert-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    width="18"
+                    height="18"
+                    aria-hidden
+                  >
+                    <circle cx="12" cy="8" r="6" />
+                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                  </svg>
+                </div>
+
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  <span className="cert-nome">
+                    {lang === "en" ? cert.nameEn : cert.namePt}
+                  </span>
+                  <div className="cert-meta">
+                    <span className={`cert-inst${cert.highlighted ? " destaque" : ""}`}>
+                      {cert.institution}
+                    </span>
+                    <span className="cert-sep">·</span>
+                    <span className="cert-data">
+                      {lang === "en" ? cert.dateEn : cert.datePt}
+                    </span>
+                  </div>
+                  <div className="cert-tags">
+                    {cert.tags.map((tag) => (
+                      <span key={tag} className="cert-tag">
+                        {lang === "en" ? (tagTranslations[tag] ?? tag) : tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

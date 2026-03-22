@@ -30,6 +30,8 @@ const translations = {
       " para construir e iterar interfaces diretamente em código. Inclusive, este portfólio foi feito inteiramente com essa abordagem, o que me aproxima do contexto técnico e me torna uma designer com visão mais completa do produto.",
     about_btn: "Vamos conversar",
     skills_heading: "Competências",
+    // Certificates
+    cert_heading: "Formação e Certificados",
     // How I work
     work_heading: "Como eu trabalho",
     work_subtitle: "Cada projeto nasce de uma pergunta real e termina com impacto mensurável.",
@@ -90,6 +92,8 @@ const translations = {
       " to build and iterate interfaces directly in code. This portfolio was made entirely with that approach, bringing me closer to the technical side of product work and making me a designer with a more complete view of the product.",
     about_btn: "Let's talk",
     skills_heading: "Skills",
+    // Certificates
+    cert_heading: "Education & Certificates",
     // How I work
     work_heading: "How I work",
     work_subtitle: "Every project starts with a real question and ends with measurable impact.",
