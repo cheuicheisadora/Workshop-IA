@@ -104,7 +104,7 @@ export default function HomePage() {
           />
 
           <p
-            className="hero-reveal mb-10 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            className="hero-reveal mb-10 text-base text-muted-foreground max-w-xl mx-auto leading-relaxed"
             style={{ animationDelay: "0.4s" }}
           >
             Foco em design centrado no usuário, criando soluções digitais que
