@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }))
+  return projects.filter((p) => !p.externalUrl).map((p) => ({ slug: p.slug }))
 }
 
 interface Props {

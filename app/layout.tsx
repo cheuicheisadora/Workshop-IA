@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import { CustomCursor } from "@/components/ui/custom-cursor"
+import { ScrollAnimateProvider } from "@/components/ui/scroll-animate"
 
 export const metadata: Metadata = {
   title: "Isadora Cheuiche · UX/UI Designer",
@@ -20,7 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <CustomCursor />
+        <ScrollAnimateProvider />
+        {children}
+      </body>
     </html>
   )
 }
