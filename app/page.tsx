@@ -141,7 +141,7 @@ export default function HomePage() {
   const { t, lang } = useLanguage()
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col pt-16">
       <Navbar />
 
       {/* ── Hero ──────────────────────────────────────────────────── */}

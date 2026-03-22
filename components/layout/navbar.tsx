@@ -55,20 +55,17 @@ export function Navbar() {
     }
   }
 
-  const headerStyle =
-    scrolled || menuOpen
-      ? {
-          background: "rgba(253, 252, 251, 0.95)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid var(--border)",
-          boxShadow: "0 1px 20px rgba(168,216,234,0.12)",
-        }
-      : { background: "transparent" }
+  const headerStyle = {
+    background: scrolled || menuOpen ? "rgba(253, 252, 251, 0.92)" : "rgba(253, 252, 251, 0.55)",
+    backdropFilter: "blur(16px)",
+    WebkitBackdropFilter: "blur(16px)",
+    borderBottom: "1px solid var(--border)",
+    boxShadow: scrolled ? "0 1px 20px rgba(168,216,234,0.12)" : "none",
+  }
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full transition-all duration-300" style={headerStyle}>
+      <header className="fixed top-0 z-50 w-full transition-all duration-300" style={headerStyle}>
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
           {/* Logo */}
           <Link
