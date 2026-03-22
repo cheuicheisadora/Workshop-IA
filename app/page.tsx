@@ -62,12 +62,12 @@ export default function HomePage() {
         {/* Animated mesh orbs */}
         <div
           aria-hidden
-          className="mesh-orb-1 pointer-events-none absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full opacity-25 blur-3xl"
+          className="mesh-orb-1 pointer-events-none absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full opacity-50 blur-3xl"
           style={{ background: "var(--primary)" }}
         />
         <div
           aria-hidden
-          className="mesh-orb-2 pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full opacity-20 blur-3xl"
+          className="mesh-orb-2 pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full opacity-45 blur-3xl"
           style={{ background: "var(--accent)" }}
         />
         <div
