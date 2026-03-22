@@ -89,7 +89,7 @@ export default function HomePage() {
           </span>
 
           <h1
-            className="hero-reveal mb-5 text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl"
+            className="hero-reveal mb-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl"
             style={{ animationDelay: "0.15s" }}
           >
             Sou uma UX/UI Designer que transforma problemas complexos em{" "}
