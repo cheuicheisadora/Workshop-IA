@@ -21,13 +21,13 @@ const translations = {
     // About
     about_heading: "Sobre mim",
     about_p1:
-      "Comecei no design através da formação em UX/UI pela EBAC e, desde então, venho construindo minha experiência com foco em produto digital e decisões orientadas por usuário. Hoje, atuo como estagiária de UX/UI na SAP, participando do desenvolvimento de soluções que exigem clareza, consistência e visão de escala.",
+      "Atuo como designer de UX/UI na SAP, onde trabalho no desenvolvimento de soluções digitais que exigem clareza, consistência e visão de escala. Minha formação pela EBAC estruturou um processo que levo para cada projeto: pesquisa com usuários, definição de problemas, prototipagem e entrega em Figma.",
     about_p2:
-      "Neste portfólio, apresento projetos como o Feed Me App e o redesign do app do Itaú, nos quais conduzi o processo de ponta a ponta, passando por pesquisa, definição de problemas, ideação e prototipação. São trabalhos que refletem minha forma de pensar: prática, estruturada e sempre conectada ao impacto real no usuário.",
+      "No Feed Me App e no redesign do app do Itaú, conduzi o processo inteiro, do discovery à prototipagem de alta fidelidade. São projetos que mostram como penso produto: de forma prática, estruturada e sempre conectada ao impacto real no usuário. Também tenho experiência em branding, o que fortaleceu minha leitura de narrativa e identidade visual.",
     about_p3_before:
-      "Além disso, já atuei com branding de eventos, o que fortaleceu minha sensibilidade para narrativa e identidade visual. Tenho domínio avançado de Figma e, recentemente, passei a explorar o desenvolvimento de interfaces com",
+      "Uso",
     about_p3_after:
-      ". Inclusive, este portfólio foi inteiramente criado por mim utilizando essa abordagem, aproximando ainda mais meu trabalho do contexto técnico e da implementação.",
+      " para construir e iterar interfaces diretamente em código. Inclusive, este portfólio foi feito inteiramente com essa abordagem, o que me aproxima do contexto técnico e me torna uma designer com visão mais completa do produto.",
     about_btn: "Vamos conversar",
     skills_heading: "Competências",
     // How I work
@@ -81,13 +81,13 @@ const translations = {
     // About
     about_heading: "About me",
     about_p1:
-      "I got into design through my UX/UI training at EBAC, and since then I've been building my experience with a focus on digital products and user-informed decisions. Today I work as a UX/UI intern at SAP, contributing to solutions that demand clarity, consistency, and a scalable vision.",
+      "I work as a UX/UI designer at SAP, contributing to digital products that demand clarity, consistency, and scalable vision. My training at EBAC shaped the process I bring to every project: user research, problem definition, prototyping, and Figma delivery.",
     about_p2:
-      "In this portfolio, I present projects like Feed Me App and the Itaú app redesign, both of which I led end to end, from research and problem definition through ideation and prototyping. These projects reflect the way I think: practical, structured, and always connected to real user impact.",
+      "In Feed Me App and the Itaú app redesign, I led the entire process from discovery to high-fidelity prototyping. These projects show how I think about product design: practical, structured, and always tied to real user impact. I also have experience in branding, which sharpened my sense of narrative and visual identity.",
     about_p3_before:
-      "I've also worked with event branding, which deepened my sensitivity to storytelling and visual identity. I have advanced Figma skills and recently started exploring interface development using",
+      "I use",
     about_p3_after:
-      ". This very portfolio was built entirely with that approach, bringing my work even closer to the technical and implementation side of product design.",
+      " to build and iterate interfaces directly in code. This portfolio was made entirely with that approach, bringing me closer to the technical side of product work and making me a designer with a more complete view of the product.",
     about_btn: "Let's talk",
     skills_heading: "Skills",
     // How I work
