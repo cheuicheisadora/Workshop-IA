@@ -151,13 +151,31 @@ export default function HomePage() {
           <div className="grid gap-16 lg:grid-cols-[1fr_300px] items-start">
             {/* Bio */}
             <div data-animate data-delay="1" className="space-y-6 text-base leading-[1.85] text-muted-foreground">
-              <p>{t("about_p1")}</p>
-              <p>{t("about_p2")}</p>
-              <p>
-                {t("about_p3_before")}{" "}
-                <strong className="font-semibold text-foreground">Claude Code</strong>
-                {t("about_p3_after")}
-              </p>
+              {lang === "pt" ? (
+                <>
+                  <p>
+                    Atuo como designer de <strong className="font-semibold text-foreground">UX/UI</strong> na <strong className="font-semibold text-foreground">SAP</strong>, onde trabalho no desenvolvimento de soluções digitais que exigem clareza, consistência e visão de escala. Minha formação pela <strong className="font-semibold text-foreground">EBAC</strong> estruturou um processo que levo para cada projeto: pesquisa com usuários, definição de problemas, prototipagem e entrega em <strong className="font-semibold text-foreground">Figma</strong>.
+                  </p>
+                  <p>
+                    No <strong className="font-semibold text-foreground">Feed Me App</strong> e no <strong className="font-semibold text-foreground">redesign do app do Itaú</strong>, conduzi o processo inteiro, do discovery à prototipagem de alta fidelidade. São projetos que mostram como penso produto: de forma prática, estruturada e sempre conectada ao impacto real no usuário. Também tenho experiência em <strong className="font-semibold text-foreground">branding</strong>, o que fortaleceu minha leitura de narrativa e identidade visual.
+                  </p>
+                  <p>
+                    Uso <strong className="font-semibold text-foreground">Claude Code</strong> para construir e iterar interfaces diretamente em código. Inclusive, este portfólio foi feito inteiramente com essa abordagem, o que me aproxima do contexto técnico e me torna uma designer com visão mais completa do produto.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    I work as a <strong className="font-semibold text-foreground">UX/UI designer</strong> at <strong className="font-semibold text-foreground">SAP</strong>, contributing to digital products that demand clarity, consistency, and scalable vision. My training at <strong className="font-semibold text-foreground">EBAC</strong> shaped the process I bring to every project: user research, problem definition, prototyping, and <strong className="font-semibold text-foreground">Figma</strong> delivery.
+                  </p>
+                  <p>
+                    In <strong className="font-semibold text-foreground">Feed Me App</strong> and the <strong className="font-semibold text-foreground">Itaú app redesign</strong>, I led the entire process from discovery to high-fidelity prototyping. These projects show how I think about product design: practical, structured, and always tied to real user impact. I also have experience in <strong className="font-semibold text-foreground">branding</strong>, which sharpened my sense of narrative and visual identity.
+                  </p>
+                  <p>
+                    I use <strong className="font-semibold text-foreground">Claude Code</strong> to build and iterate interfaces directly in code. This portfolio was made entirely with that approach, bringing me closer to the technical side of product work and making me a designer with a more complete view of the product.
+                  </p>
+                </>
+              )}
               <div className="pt-2">
                 <Button
                   asChild
