@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { ProjectCard } from "@/components/portfolio/project-card"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Layers, GitBranch, BarChart2, Users, Lightbulb, ChevronDown } from "lucide-react"
+import { ArrowRight, Layers, GitBranch, BarChart2, Users, Lightbulb, ChevronDown, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
 const features = [
@@ -59,7 +59,6 @@ export default function HomePage() {
 
       {/* ── Hero ──────────────────────────────────────────────────── */}
       <section className="relative flex flex-col items-center justify-center py-36 px-6 text-center overflow-hidden min-h-[90vh]">
-        {/* Animated mesh orbs */}
         <div
           aria-hidden
           className="mesh-orb-1 pointer-events-none absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full opacity-50 blur-3xl"
@@ -138,7 +137,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
           <ChevronDown className="h-5 w-5" style={{ color: "var(--primary)" }} />
         </div>
@@ -147,47 +145,39 @@ export default function HomePage() {
       {/* ── Sobre ─────────────────────────────────────────────────── */}
       <section id="sobre" className="py-32 px-6">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-14 text-center" data-animate>
+          <div className="mb-16 text-center" data-animate>
             <span className="section-accent-bar" />
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Sobre mim</h2>
+            <h2 className="text-4xl font-bold text-foreground sm:text-5xl tracking-tight">
+              Sobre mim
+            </h2>
           </div>
 
-          <div className="grid gap-16 lg:grid-cols-[1fr_340px] items-start">
-            {/* Bio text */}
-            <div data-animate data-delay="1" className="space-y-5 text-base leading-relaxed text-muted-foreground">
+          <div className="grid gap-16 lg:grid-cols-[1fr_300px] items-start">
+            {/* Bio */}
+            <div data-animate data-delay="1" className="space-y-6 text-base leading-[1.85] text-muted-foreground">
               <p>
-                Designer de produto com foco em UX/UI, criando interfaces digitais que equilibram
-                usabilidade, estética e resultado de negócio. Atuo desde a pesquisa com usuários
-                até a entrega de protótipos de alta fidelidade navegáveis — com processo claro e
-                decisões visuais intencionais em cada etapa.
+                Trabalho com design de produto desde minha formação em UX/UI na EBAC, onde
+                desenvolvi cases reais com processo completo: pesquisa com usuários, síntese de
+                dados, ideação, prototipagem e handoff. Fui do brief ao protótipo navegável em
+                projetos como o redesign do app do Itaú e o branding da Glaucia Beatriz Pâtisserie.
               </p>
               <p>
-                Tenho experiência em redesign de produtos digitais complexos, criação de identidades
-                visuais do zero e desenvolvimento de case studies completos — do brief ao handoff.
-                Trabalho com metodologias como Design Thinking e Double Diamond, combinando
-                pesquisa qualitativa, síntese de dados e testes de usabilidade para tomar decisões
-                embasadas, não por intuição.
+                Gosto de trabalhar em problemas onde negócio, tecnologia e usuário estão em tensão
+                porque é aí que o design importa de verdade. Tenho Figma em nível avançado,
+                incluindo componentes, auto layout, design tokens e sistemas de design. Também uso{" "}
+                <strong className="font-semibold text-foreground">Claude Code</strong> para
+                prototipar e construir interfaces diretamente em código, o que me aproxima dos
+                times de engenharia e torna minha visão de produto mais concreta e técnica.
               </p>
-              <p>
-                Domino Figma em nível avançado — componentes, auto layout, design tokens e
-                prototipagem interativa. Além disso, utilizo{" "}
-                <strong className="font-semibold" style={{ color: "var(--primary-deep)" }}>
-                  Claude Code
-                </strong>{" "}
-                para construir e iterar interfaces reais em código, o que me permite comunicar com
-                mais precisão com times de desenvolvimento e enxergar o produto de forma técnica
-                e sistêmica — uma vantagem concreta para quem trabalha na interseção entre design
-                e produto.
-              </p>
-
               <div className="pt-2">
-                <a
-                  href="mailto:cheuicheisadora@gmail.com"
-                  className="text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-75"
-                  style={{ color: "var(--primary-deep)" }}
+                <Button
+                  asChild
+                  size="sm"
+                  style={{ background: "var(--primary-deep)", color: "#fff" }}
+                  className="hover:opacity-90 transition-opacity"
                 >
-                  Vamos conversar? Me chama por aqui: cheuicheisadora@gmail.com
-                </a>
+                  <a href="mailto:cheuicheisadora@gmail.com">Vamos conversar</a>
+                </Button>
               </div>
             </div>
 
@@ -203,7 +193,7 @@ export default function HomePage() {
                 {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full px-3 py-1 text-sm font-medium transition-colors"
+                    className="rounded-full px-3 py-1.5 text-sm font-medium"
                     style={{
                       background: "var(--primary-glow)",
                       color: "var(--primary-deep)",
@@ -259,7 +249,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Projects ──────────────────────────────────────────────── */}
+      {/* ── Projects — Bento Grid ──────────────────────────────────── */}
       <section id="projetos" className="py-32 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center" data-animate>
@@ -270,17 +260,56 @@ export default function HomePage() {
             </p>
           </div>
 
-          {projects.length > 0 ? (
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {projects.map((project, i) => (
-                <div key={project.id} data-animate data-delay={String(i + 1)}>
-                  <ProjectCard project={project} />
+          {projects.length > 0 && (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {/* Card 1 — Featured (wide) */}
+              <div className="md:col-span-2" data-animate data-delay="1">
+                <ProjectCard project={projects[0]} />
+              </div>
+
+              {/* Card 2 — Side */}
+              <div data-animate data-delay="2">
+                <ProjectCard project={projects[1]} />
+              </div>
+
+              {/* Glass CTA block — col 1 */}
+              <div
+                data-animate
+                data-delay="3"
+                className="hidden md:flex flex-col justify-between rounded-xl p-6"
+                style={{
+                  background: "rgba(168, 216, 234, 0.08)",
+                  border: "1px solid rgba(168, 216, 234, 0.3)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                }}
+              >
+                <div>
+                  <p
+                    className="text-xs font-semibold uppercase tracking-widest mb-3"
+                    style={{ color: "var(--primary-deep)" }}
+                  >
+                    Behance
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Todos os projetos com processo completo documentado.
+                  </p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border bg-muted/30 py-20 text-center">
-              <p className="text-muted-foreground">Projetos em breve — fique ligado!</p>
+                <a
+                  href="https://www.behance.net/isadoracheuiche"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 flex items-center gap-1 text-sm font-semibold transition-opacity hover:opacity-70"
+                  style={{ color: "var(--primary-deep)" }}
+                >
+                  Ver perfil completo <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+
+              {/* Card 3 — spans 2 cols */}
+              <div className="md:col-span-2" data-animate data-delay="4">
+                <ProjectCard project={projects[2]} />
+              </div>
             </div>
           )}
         </div>
@@ -296,18 +325,8 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-2xl text-center" data-animate>
           <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Vamos conversar?</h2>
-          <p className="mb-3 text-foreground/80">
+          <p className="mb-8 text-foreground/80 max-w-lg mx-auto">
             Estou disponível para projetos freelance, oportunidades full-time e colaborações criativas.
-          </p>
-          <p className="mb-8 text-foreground/70 text-sm">
-            Me chama por aqui:{" "}
-            <a
-              href="mailto:cheuicheisadora@gmail.com"
-              className="font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
-              style={{ color: "var(--foreground)" }}
-            >
-              cheuicheisadora@gmail.com
-            </a>
           </p>
           <Button
             asChild
