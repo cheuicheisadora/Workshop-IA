@@ -19,6 +19,29 @@ const featureKeys: Array<{ titleKey: TranslationKey; descKey: TranslationKey }> 
   { titleKey: "feature_6_title", descKey: "feature_6_desc" },
 ]
 
+const formacao = [
+  {
+    id: "f1",
+    namePt: "Bacharelado em Administração",
+    nameEn: "Bachelor's in Business Administration",
+    institutionPt: "Universidade Federal do Rio Grande do Sul (UFRGS)",
+    institutionEn: "Federal University of Rio Grande do Sul (UFRGS)",
+    periodPt: "Out 2022 – Dez 2026",
+    periodEn: "Oct 2022 – Dec 2026",
+    tags: ["Marketing", "Gestão de Projetos"],
+  },
+  {
+    id: "f2",
+    namePt: "Curso UX/UI Design",
+    nameEn: "UX/UI Design Program",
+    institutionPt: "EBAC",
+    institutionEn: "EBAC",
+    periodPt: "Jan 2025 – Mar 2026",
+    periodEn: "Jan 2025 – Mar 2026",
+    tags: ["UX Design", "Pesquisa de Usuário", "UI Design", "Prototipagem"],
+  },
+]
+
 const certificates = [
   {
     id: 1,
@@ -96,6 +119,9 @@ const tagTranslations: Record<string, string> = {
   "Design Gráfico": "Graphic Design",
   "Engajamento de Clientes": "Customer Engagement",
   "Marketing Digital": "Digital Marketing",
+  "Gestão de Projetos": "Project Management",
+  "Pesquisa de Usuário": "User Research",
+  "Prototipagem": "Prototyping",
 }
 
 const skills = [
@@ -304,14 +330,68 @@ export default function HomePage() {
           </div>
 
           <ul className="cert-list">
+            {/* Formação Acadêmica */}
+            {formacao.map((item, i) => (
+              <li
+                key={item.id}
+                className="cert-item formacao"
+                data-animate
+                style={{ transitionDelay: `${i * 0.08}s` }}
+              >
+                <div className="cert-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    width="18"
+                    height="18"
+                    aria-hidden
+                  >
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="cert-nome">
+                    {lang === "en" ? item.nameEn : item.namePt}
+                  </span>
+                  <div className="cert-meta">
+                    <span className="cert-inst destaque">
+                      {lang === "en" ? item.institutionEn : item.institutionPt}
+                    </span>
+                    <span className="cert-sep">·</span>
+                    <span className="cert-data">
+                      {lang === "en" ? item.periodEn : item.periodPt}
+                    </span>
+                  </div>
+                  <div className="cert-tags">
+                    {item.tags.map((tag) => (
+                      <span key={tag} className="cert-tag">
+                        {lang === "en" ? (tagTranslations[tag] ?? tag) : tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+
+            {/* Separador */}
+            <li className="cert-separator" aria-hidden>
+              <span>{lang === "en" ? "Certificates" : "Certificados"}</span>
+            </li>
+
+            {/* Certificados */}
             {certificates.map((cert, i) => (
               <li
                 key={cert.id}
                 className="cert-item"
                 data-animate
-                style={{ transitionDelay: `${i * 0.08}s` }}
+                style={{ transitionDelay: `${(i + formacao.length) * 0.08}s` }}
               >
-                {/* Icon */}
                 <div className="cert-icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -329,8 +409,6 @@ export default function HomePage() {
                     <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
                   </svg>
                 </div>
-
-                {/* Info */}
                 <div className="flex-1 min-w-0">
                   <span className="cert-nome">
                     {lang === "en" ? cert.nameEn : cert.namePt}

@@ -286,6 +286,37 @@ h3 {
   color: var(--foreground);
 }
 
+.cert-item.formacao .cert-icon {
+  background: rgba(168, 216, 234, 0.25);
+}
+
+.cert-item.formacao .cert-nome {
+  font-size: 1rem;
+}
+
+/* ─── Cert separator ─────────────────────────────────────── */
+
+.cert-separator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3A9BBF;
+  opacity: 0.7;
+  border: none;
+}
+
+.cert-separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(168, 216, 234, 0.3);
+}
+
 /* ─── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .project-card-hover {
