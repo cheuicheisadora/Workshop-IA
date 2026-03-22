@@ -156,18 +156,24 @@ export default function HomePage() {
             {/* Bio */}
             <div data-animate data-delay="1" className="space-y-6 text-base leading-[1.85] text-muted-foreground">
               <p>
-                Trabalho com design de produto desde minha formação em UX/UI na EBAC, onde
-                desenvolvi cases reais com processo completo: pesquisa com usuários, síntese de
-                dados, ideação, prototipagem e handoff. Fui do brief ao protótipo navegável em
-                projetos como o redesign do app do Itaú e o branding da Glaucia Beatriz Pâtisserie.
+                Formada em UX/UI pela EBAC, atualmente atuo como estagiária de UX/UI na SAP,
+                trabalhando em soluções que exigem clareza, consistência e visão de escala. A
+                formação construiu a base; o mercado está refinando o processo.
               </p>
               <p>
-                Gosto de trabalhar em problemas onde negócio, tecnologia e usuário estão em tensão
-                porque é aí que o design importa de verdade. Tenho Figma em nível avançado,
-                incluindo componentes, auto layout, design tokens e sistemas de design. Também uso{" "}
+                No Feed Me App e no redesign do app do Itaú, conduzi cada etapa do projeto: mapeei
+                contextos, defini problemas com clareza, prototipei fluxos e testei com usuários
+                reais. São projetos que refletem como penso sobre design — de forma sistêmica, não
+                como telas isoladas. A experiência com branding de eventos também fortaleceu minha
+                sensibilidade para narrativa visual e consistência de identidade.
+              </p>
+              <p>
+                Tenho domínio avançado de Figma e uso{" "}
                 <strong className="font-semibold text-foreground">Claude Code</strong> para
-                prototipar e construir interfaces diretamente em código, o que me aproxima dos
-                times de engenharia e torna minha visão de produto mais concreta e técnica.
+                prototipar e construir interfaces diretamente em código. O portfólio que você está
+                vendo foi inteiramente criado por mim com essa abordagem — o que diz bastante sobre
+                como enxergo design: não como uma camada visual, mas como parte de um sistema que
+                precisa funcionar de verdade.
               </p>
               <div className="pt-2">
                 <Button

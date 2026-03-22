@@ -48,15 +48,13 @@ export function Navbar() {
           >
             Sobre
           </Link>
-          <Button asChild size="sm" variant="outline" style={{ borderColor: "var(--primary)" }}>
-            <a
-              href="mailto:cheuicheisadora@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contato
-            </a>
-          </Button>
+          <Link
+            href="/#contato"
+            className="inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-85"
+            style={{ background: "var(--primary-deep)" }}
+          >
+            Contato
+          </Link>
         </nav>
       </div>
     </header>
