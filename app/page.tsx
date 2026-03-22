@@ -36,8 +36,8 @@ const formacao = [
     nameEn: "UX/UI design program",
     institutionPt: "EBAC",
     institutionEn: "EBAC",
-    periodPt: "Jan 2025 – Mar 2026",
-    periodEn: "Jan 2025 – Mar 2026",
+    periodPt: "Jan 2025 – Mar 2026 · Concluído",
+    periodEn: "Jan 2025 – Mar 2026 · Completed",
     tags: ["UX Design", "Pesquisa de Usuário", "UI Design", "Prototipagem"],
   },
 ]
@@ -259,25 +259,25 @@ export default function HomePage() {
               {lang === "pt" ? (
                 <>
                   <p>
-                    Atuo como <strong className="font-semibold text-foreground">UX/UI Designer</strong> na <strong className="font-semibold text-foreground">SAP</strong>, criando soluções digitais com foco em clareza, consistência e escala. Minha formação em <strong className="font-semibold text-foreground">UX/UI</strong> pela <strong className="font-semibold text-foreground">EBAC</strong> estruturou um processo sólido que aplico em todos os projetos, desde <strong className="font-semibold text-foreground">pesquisa com usuários</strong> até prototipação e entrega.
+                    Atuo como <strong className="font-semibold text-foreground">UX/UI Designer na SAP</strong>, criando soluções digitais com foco em clareza, consistência e escala. Formada em UX/UI pela EBAC, aplico um processo estruturado desde a pesquisa até a entrega — sempre conectando decisões de design ao impacto real no produto.
                   </p>
                   <p>
-                    Tenho experiência prática conduzindo projetos de ponta a ponta, como o <strong className="font-semibold text-foreground">Feed Me App</strong> e o <strong className="font-semibold text-foreground">redesign do app do Itaú</strong>, sempre conectando decisões de design ao impacto real no usuário e nos objetivos de negócio. Também atuei com <strong className="font-semibold text-foreground">branding</strong> de eventos, o que fortaleceu minha visão sobre narrativa, <strong className="font-semibold text-foreground">identidade visual</strong> e experiência como um todo.
+                    Conduzi projetos de ponta a ponta como o Feed Me App e o redesign do app do Itaú, além de projetos de branding para eventos. Essa diversidade de contextos fortaleceu minha visão sobre como design, narrativa e experiência se integram.
                   </p>
                   <p>
-                    Hoje, amplio meu trabalho explorando <strong className="font-semibold text-foreground">IA</strong> no processo de design, utilizando <strong className="font-semibold text-foreground">Claude Code</strong> para construir e iterar interfaces diretamente em código. Este portfólio, inclusive, foi desenvolvido inteiramente por mim com essa abordagem. Isso me permite ir além do design visual e atuar com uma visão mais próxima da <strong className="font-semibold text-foreground">implementação</strong>, <strong className="font-semibold text-foreground">tecnologia</strong> e <strong className="font-semibold text-foreground">produto</strong>.
+                    Hoje, exploro IA como parte do meu processo — uso <strong className="font-semibold text-foreground">Claude Code</strong> para construir e iterar interfaces diretamente em código. Este portfólio foi desenvolvido inteiramente com essa abordagem, o que me posiciona na interseção entre design e tecnologia.
                   </p>
                 </>
               ) : (
                 <>
                   <p>
-                    I work as a <strong className="font-semibold text-foreground">UX/UI Designer</strong> at <strong className="font-semibold text-foreground">SAP</strong>, creating digital solutions focused on clarity, consistency, and scale. My <strong className="font-semibold text-foreground">UX/UI</strong> training at <strong className="font-semibold text-foreground">EBAC</strong> built a solid process I apply to every project, from <strong className="font-semibold text-foreground">user research</strong> through prototyping and delivery.
+                    I work as a <strong className="font-semibold text-foreground">UX/UI Designer at SAP</strong>, creating digital solutions focused on clarity, consistency, and scale. Trained in UX/UI at EBAC, I apply a structured process from research to delivery — always connecting design decisions to real product impact.
                   </p>
                   <p>
-                    I have hands-on experience leading end-to-end projects like <strong className="font-semibold text-foreground">Feed Me App</strong> and the <strong className="font-semibold text-foreground">Itaú app redesign</strong>, always connecting design decisions to real user impact and business goals. I also worked on event <strong className="font-semibold text-foreground">branding</strong>, which deepened my understanding of narrative, <strong className="font-semibold text-foreground">visual identity</strong>, and experience as a whole.
+                    I've led end-to-end projects like the Feed Me App and the Itaú app redesign, as well as event branding work. That range of contexts sharpened my understanding of how design, narrative, and experience fit together.
                   </p>
                   <p>
-                    Today, I expand my work by exploring <strong className="font-semibold text-foreground">AI</strong> in the design process, using <strong className="font-semibold text-foreground">Claude Code</strong> to build and iterate interfaces directly in code. This portfolio was built entirely by me using that approach. It lets me go beyond visual design and work with a perspective closer to <strong className="font-semibold text-foreground">implementation</strong>, <strong className="font-semibold text-foreground">technology</strong>, and <strong className="font-semibold text-foreground">product</strong>.
+                    Today, I bring AI into my workflow — using <strong className="font-semibold text-foreground">Claude Code</strong> to build and iterate interfaces directly in code. This portfolio was built entirely with that approach, placing me at the intersection of design and technology.
                   </p>
                 </>
               )}
