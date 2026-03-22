@@ -30,8 +30,8 @@ export function CustomCursor() {
     }
 
     const animateRing = () => {
-      ringX += (mouseX - ringX) * 0.12
-      ringY += (mouseY - ringY) * 0.12
+      ringX += (mouseX - ringX) * 0.22
+      ringY += (mouseY - ringY) * 0.22
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ringX - 20}px, ${ringY - 20}px)`
       }
