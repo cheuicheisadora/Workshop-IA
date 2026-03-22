@@ -530,8 +530,9 @@ export default function HomePage() {
           {/* CV Download */}
           <div className="cv-download" data-animate data-delay="4">
             <a
-              href="/Isadora_Cheuiche_UIUX_Designer_EN.pdf"
-              download
+              href="https://drive.google.com/uc?export=download&id=1pLxbygCumwjNoRTiRv8s-uahhyjSXz19"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-cv"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
