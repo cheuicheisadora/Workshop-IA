@@ -4,6 +4,61 @@ import { useEffect, useRef, useState } from "react"
 
 export type TextSegment = { text: string; bold?: boolean }
 
+/** Inline typing animation for a single line — no <p> wrapper. */
+export function TypingLine({ text, speed = 28 }: { text: string; speed?: number }) {
+  const [count, setCount] = useState(0)
+  const [active, setActive] = useState(false)
+  const [cursorVisible, setCursorVisible] = useState(true)
+  const ref = useRef<HTMLSpanElement>(null)
+
+  const done = count >= text.length
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setActive(true); obs.disconnect() } },
+      { threshold: 0.3 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!active || done) return
+    const id = setTimeout(() => setCount(c => Math.min(c + 1, text.length)), speed)
+    return () => clearTimeout(id)
+  }, [active, count, done, speed, text.length])
+
+  // fade cursor out after typing finishes
+  useEffect(() => {
+    if (!done) return
+    const id = setTimeout(() => setCursorVisible(false), 800)
+    return () => clearTimeout(id)
+  }, [done])
+
+  return (
+    <span ref={ref}>
+      {text.slice(0, count)}
+      <span
+        aria-hidden
+        style={{
+          display: "inline-block",
+          width: "1.5px",
+          height: "0.9em",
+          background: "var(--primary-deep)",
+          marginLeft: "2px",
+          verticalAlign: "text-bottom",
+          borderRadius: "1px",
+          opacity: cursorVisible ? 1 : 0,
+          transition: done ? "opacity 0.6s ease" : "none",
+          animation: !done ? "typing-blink 0.9s step-end infinite" : "none",
+        }}
+      />
+    </span>
+  )
+}
+
 interface TypingTextProps {
   paragraphs: TextSegment[][]
   speed?: number   // ms per tick

@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/footer"
 import { ProjectCard } from "@/components/portfolio/project-card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Search, Layers, BarChart2, GitBranch, Lightbulb, Code2, ChevronDown, ArrowUpRight, Sparkles } from "lucide-react"
-import { TypingText } from "@/components/ui/typing-text"
+import { TypingText, TypingLine } from "@/components/ui/typing-text"
 import Link from "next/link"
 import { useLanguage, TranslationKey } from "@/context/language"
 
@@ -265,15 +265,10 @@ export default function HomePage() {
                   <p>
                     Conduzi projetos de ponta a ponta como o Feed Me App e o redesign do app do Itaú, além de projetos de branding para eventos. Essa diversidade de contextos fortaleceu minha visão sobre como design, narrativa e experiência se integram.
                   </p>
-                  <TypingText
-                    speed={30}
-                    step={1}
-                    paragraphs={[[
-                      { text: "Hoje, exploro IA como parte do meu processo. Uso " },
-                      { text: "Claude Code", bold: true },
-                      { text: " para construir e iterar interfaces diretamente em código. Este portfólio foi desenvolvido inteiramente com essa abordagem, o que me posiciona na interseção entre design e tecnologia." },
-                    ]]}
-                  />
+                  <p>
+                    Hoje, exploro IA como parte do meu processo. Uso <strong className="font-semibold text-foreground">Claude Code</strong> para construir e iterar interfaces diretamente em código.{" "}
+                    <TypingLine text="Este portfólio foi desenvolvido inteiramente com essa abordagem, o que me posiciona na interseção entre design e tecnologia." />
+                  </p>
                 </>
               ) : (
                 <>
@@ -283,15 +278,10 @@ export default function HomePage() {
                   <p>
                     I&apos;ve led end-to-end projects like the Feed Me App and the Itaú app redesign, as well as event branding work. That range of contexts sharpened my understanding of how design, narrative, and experience fit together.
                   </p>
-                  <TypingText
-                    speed={30}
-                    step={1}
-                    paragraphs={[[
-                      { text: "Today, I bring AI into my workflow. I use " },
-                      { text: "Claude Code", bold: true },
-                      { text: " to build and iterate interfaces directly in code. This portfolio was built entirely with that approach, placing me at the intersection of design and technology." },
-                    ]]}
-                  />
+                  <p>
+                    Today, I bring AI into my workflow. I use <strong className="font-semibold text-foreground">Claude Code</strong> to build and iterate interfaces directly in code.{" "}
+                    <TypingLine text="This portfolio was built entirely with that approach, placing me at the intersection of design and technology." />
+                  </p>
                 </>
               )}
               <div className="pt-2">
