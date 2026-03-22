@@ -42,9 +42,9 @@ const translations = {
     feature_2_title: "UI Design de Alta Fidelidade",
     feature_2_desc:
       "Crio interfaces polidas e consistentes no Figma, com atenção à hierarquia visual, tipografia, espaçamento e sistemas de componentes.",
-    feature_3_title: "Visão de Produto",
+    feature_3_title: "IA Aplicada ao Design",
     feature_3_desc:
-      "Entendo o produto além da tela: jornada do usuário, fluxos de navegação, impacto no negócio e alinhamento com times de engenharia e produto.",
+      "Integro ferramentas de IA ao processo de design, da pesquisa à geração de interfaces, combinando visão estratégica de negócio com as possibilidades reais da tecnologia para entregar soluções mais rápidas e fundamentadas.",
     feature_4_title: "Design System & Componentes",
     feature_4_desc:
       "Trabalho com estruturas escaláveis no Figma usando auto layout, variantes, tokens e bibliotecas de componentes prontas para handoff.",
@@ -104,9 +104,9 @@ const translations = {
     feature_2_title: "High-Fidelity UI Design",
     feature_2_desc:
       "I create polished, consistent interfaces in Figma with close attention to visual hierarchy, typography, spacing, and component systems.",
-    feature_3_title: "Product Vision",
+    feature_3_title: "AI Applied to Design",
     feature_3_desc:
-      "I understand the product beyond the screen: user journeys, navigation flows, business impact, and alignment with engineering and product teams.",
+      "I integrate AI tools into the design process, from research to interface generation, combining strategic business vision with real technology possibilities to deliver faster and more grounded solutions.",
     feature_4_title: "Design System & Components",
     feature_4_desc:
       "I work with scalable structures in Figma using auto layout, variants, tokens, and component libraries ready for handoff.",

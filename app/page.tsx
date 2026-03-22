@@ -463,7 +463,25 @@ export default function HomePage() {
                       border: "1px solid var(--primary)",
                     }}
                   >
-                    <Icon className="h-5 w-5" style={{ color: "var(--primary-deep)" }} />
+                    {i === 2 ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-5 w-5"
+                        style={{ color: "var(--primary-deep)" }}
+                        aria-hidden
+                      >
+                        <path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 0 6h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1 0-6h1V6a4 4 0 0 1 4-4z" />
+                        <path d="M9 12h.01M12 9h.01M15 12h.01M12 15h.01" />
+                      </svg>
+                    ) : (
+                      <Icon className="h-5 w-5" style={{ color: "var(--primary-deep)" }} />
+                    )}
                   </div>
                   <h3 className="mb-2 font-semibold text-foreground">{t(feature.titleKey)}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
