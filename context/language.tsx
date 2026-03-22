@@ -36,22 +36,22 @@ const translations = {
     // Features
     feature_1_title: "UX Research & Estratégia",
     feature_1_desc:
-      "Conduz pesquisas com usuários, síntese de dados e definição de problemas para embasar decisões de produto com clareza e intenção.",
+      "Conduzo pesquisas com usuários, sintetizo dados e defino problemas para embasar decisões de produto com clareza e intenção.",
     feature_2_title: "UI Design de Alta Fidelidade",
     feature_2_desc:
-      "Cria interfaces polidas e consistentes no Figma, com atenção a hierarquia visual, tipografia, espaçamento e sistemas de componentes.",
+      "Crio interfaces polidas e consistentes no Figma, com atenção à hierarquia visual, tipografia, espaçamento e sistemas de componentes.",
     feature_3_title: "Visão de Produto",
     feature_3_desc:
-      "Entende o produto além da tela — jornada do usuário, fluxos de navegação, impacto no negócio e alinhamento com times de engenharia e produto.",
+      "Entendo o produto além da tela: jornada do usuário, fluxos de navegação, impacto no negócio e alinhamento com times de engenharia e produto.",
     feature_4_title: "Design System & Componentes",
     feature_4_desc:
-      "Trabalha com estruturas escaláveis no Figma: auto layout, variantes, tokens e bibliotecas de componentes prontas para handoff.",
+      "Trabalho com estruturas escaláveis no Figma usando auto layout, variantes, tokens e bibliotecas de componentes prontas para handoff.",
     feature_5_title: "Prototipagem & Validação",
     feature_5_desc:
-      "Entrega protótipos navegáveis de alta fidelidade e conduz testes de usabilidade para validar hipóteses antes do desenvolvimento.",
+      "Entrego protótipos navegáveis de alta fidelidade e conduzo testes de usabilidade para validar hipóteses antes do desenvolvimento.",
     feature_6_title: "Implementação com Claude Code",
     feature_6_desc:
-      "Protótipa e constrói interfaces diretamente em código usando Claude Code, garantindo visão técnica mais completa e colaboração mais eficiente com devs.",
+      "Prototipo e construo interfaces diretamente em código usando Claude Code, o que garante uma visão técnica mais completa e colaboração mais eficiente com devs.",
     // Projects
     projects_heading: "Projetos",
     projects_subtitle: "Cases reais com processo, desafios e resultados.",
@@ -96,22 +96,22 @@ const translations = {
     // Features
     feature_1_title: "UX Research & Strategy",
     feature_1_desc:
-      "Conducts user research, data synthesis, and problem definition to ground product decisions with clarity and intention.",
+      "I conduct user research, synthesize data, and define problems to ground product decisions with clarity and intention.",
     feature_2_title: "High-Fidelity UI Design",
     feature_2_desc:
-      "Creates polished, consistent interfaces in Figma with attention to visual hierarchy, typography, spacing, and component systems.",
+      "I create polished, consistent interfaces in Figma with close attention to visual hierarchy, typography, spacing, and component systems.",
     feature_3_title: "Product Vision",
     feature_3_desc:
-      "Understands the product beyond the screen — user journeys, navigation flows, business impact, and alignment with engineering and product teams.",
+      "I understand the product beyond the screen: user journeys, navigation flows, business impact, and alignment with engineering and product teams.",
     feature_4_title: "Design System & Components",
     feature_4_desc:
-      "Works with scalable structures in Figma: auto layout, variants, tokens, and component libraries ready for handoff.",
+      "I work with scalable structures in Figma using auto layout, variants, tokens, and component libraries ready for handoff.",
     feature_5_title: "Prototyping & Validation",
     feature_5_desc:
-      "Delivers high-fidelity navigable prototypes and conducts usability tests to validate hypotheses before development.",
+      "I deliver high-fidelity navigable prototypes and conduct usability tests to validate hypotheses before development.",
     feature_6_title: "Implementation with Claude Code",
     feature_6_desc:
-      "Prototypes and builds interfaces directly in code using Claude Code, enabling a more complete technical perspective and more efficient collaboration with devs.",
+      "I prototype and build interfaces directly in code using Claude Code, which gives me a more complete technical perspective and makes collaboration with devs more efficient.",
     // Projects
     projects_heading: "Projects",
     projects_subtitle: "Real cases with process, challenges, and outcomes.",
