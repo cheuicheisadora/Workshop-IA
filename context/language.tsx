@@ -83,11 +83,11 @@ const translations = {
     about_p1:
       "I got into design through my UX/UI training at EBAC, and since then I've been building my experience with a focus on digital products and user-informed decisions. Today I work as a UX/UI intern at SAP, contributing to solutions that demand clarity, consistency, and a scalable vision.",
     about_p2:
-      "In this portfolio, I present projects like Feed Me App and the Itaú app redesign — both of which I led end to end, from research and problem definition through ideation and prototyping. These projects reflect the way I think: practical, structured, and always connected to real user impact.",
+      "In this portfolio, I present projects like Feed Me App and the Itaú app redesign, both of which I led end to end, from research and problem definition through ideation and prototyping. These projects reflect the way I think: practical, structured, and always connected to real user impact.",
     about_p3_before:
       "I've also worked with event branding, which deepened my sensitivity to storytelling and visual identity. I have advanced Figma skills and recently started exploring interface development using",
     about_p3_after:
-      " — including this very portfolio, which I built entirely with that approach, bringing my work even closer to the technical and implementation side of product design.",
+      ". This very portfolio was built entirely with that approach, bringing my work even closer to the technical and implementation side of product design.",
     about_btn: "Let's talk",
     skills_heading: "Skills",
     // How I work

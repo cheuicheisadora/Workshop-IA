@@ -4,28 +4,18 @@ import { useLanguage } from "@/context/language"
 
 export function Footer() {
   const { lang } = useLanguage()
-  const tagline =
-    lang === "en"
-      ? "Made with intention, from brief to deployment."
-      : "Feito com intenção, do brief ao deploy."
   const contactLabel = lang === "en" ? "Let's talk" : "Vamos conversar"
 
   return (
     <footer
-      style={{ borderTop: "1px solid rgba(168,216,234,0.25)", paddingBlock: "60px 40px" }}
+      style={{ borderTop: "1px solid rgba(168,216,234,0.25)", paddingBlock: "48px 36px" }}
       className="bg-card"
     >
       <div className="mx-auto max-w-5xl px-6">
-        {/* Top row: tagline + social links */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-10">
-          <p
-            className="text-sm text-muted-foreground"
-            style={{ letterSpacing: "0.03em", fontStyle: "italic" }}
-          >
-            {tagline}
-          </p>
-          <div className="flex items-center gap-5">
-            {/* LinkedIn icon */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
+          {/* Social icons */}
+          <div className="flex items-center gap-6">
+            {/* LinkedIn — "in" paths only, no background rect */}
             <a
               href="https://www.linkedin.com/in/isadora-cheuiche"
               target="_blank"
@@ -37,7 +27,8 @@ export function Footer() {
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
               </svg>
             </a>
-            {/* Behance icon with official path */}
+
+            {/* Behance — Remix Icons ri-behance-fill path, viewBox 0 0 24 24 */}
             <a
               href="https://www.behance.net/isadoracheuiche"
               target="_blank"
@@ -45,29 +36,24 @@ export function Footer() {
               aria-label="Behance"
               className="text-muted-foreground hover:text-[var(--primary-deep)] transition-colors duration-200"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="20"
-                height="20"
-                aria-hidden
-              >
-                <path d="M7.803 5.731c.589 0 1.119.051 1.605.155.483.103.895.273 1.243.508.343.235.611.547.804.939.187.387.28.855.28 1.39 0 .596-.135 1.091-.4 1.484-.269.394-.657.722-1.17.984.705.201 1.243.566 1.604 1.09.365.522.547 1.155.547 1.9 0 .596-.114 1.111-.341 1.543-.229.435-.543.79-.939 1.063-.396.271-.853.47-1.374.596-.519.126-1.051.189-1.6.189H1V5.731h6.803zm-.351 4.972c.48 0 .878-.114 1.192-.344.315-.23.472-.604.472-1.12 0-.291-.051-.532-.155-.723-.103-.191-.242-.343-.419-.454-.175-.111-.379-.187-.607-.228-.231-.04-.474-.061-.733-.061H3.968v2.93h3.484zm.19 5.257c.271 0 .526-.026.765-.079.241-.054.455-.143.637-.269.184-.125.329-.295.439-.509.109-.215.164-.491.164-.828 0-.66-.186-1.133-.558-1.419-.37-.288-.866-.432-1.491-.432H3.968v3.536h3.674zm9.645-8.168c1.24 0 2.302.306 3.182.919.877.614 1.387 1.615 1.522 3.001H18.38c-.052-.607-.26-1.063-.619-1.365-.363-.302-.82-.454-1.369-.454-.388 0-.721.073-.998.217-.277.145-.503.332-.68.565-.176.233-.308.503-.396.809-.088.307-.131.622-.131.948h6.398c.023 1.438-.296 2.554-.951 3.349-.657.795-1.655 1.193-2.997 1.193-.823 0-1.546-.145-2.172-.436-.625-.29-1.145-.687-1.558-1.189-.415-.503-.724-1.083-.929-1.744-.203-.659-.306-1.363-.306-2.109 0-.741.112-1.441.338-2.101.224-.657.548-1.234.971-1.727.423-.493.939-.879 1.549-1.16.611-.279 1.301-.416 2.066-.416zm.177 1.74c-.488 0-.886.104-1.191.312-.305.208-.543.486-.714.836-.17.35-.267.73-.29 1.143h3.925c-.07-.709-.283-1.243-.637-1.604-.356-.36-.79-.54-1.093-.687zM14.703 5.73h5.134v1.256H14.703z" />
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden>
+                <path d="M7.443 5.35c.638 0 1.23.05 1.77.198.514.148.994.372 1.377.695.378.32.68.742.866 1.27.18.526.268 1.15.268 1.87 0 .79-.173 1.452-.513 1.998-.34.544-.874.993-1.606 1.352.98.287 1.71.782 2.187 1.486.478.704.716 1.56.716 2.57 0 .828-.157 1.543-.48 2.135-.317.596-.756 1.078-1.308 1.443-.555.365-1.196.628-1.92.793-.722.162-1.472.245-2.25.245H0V5.35h7.443zm-.49 5.738c.61 0 1.11-.152 1.5-.457.383-.305.577-.792.577-1.456 0-.338-.063-.617-.192-.838-.128-.22-.298-.397-.514-.527-.214-.128-.46-.218-.736-.272-.278-.05-.57-.076-.878-.076H2.8v3.626h4.153zm.24 6.002c.34 0 .657-.03.954-.098.298-.064.558-.173.782-.325.224-.15.405-.362.543-.637.138-.275.208-.627.208-1.055 0-.83-.228-1.42-.685-1.766-.456-.346-1.066-.52-1.83-.52H2.8v4.4h4.393zM21.245 17.37c-.667 1.47-2.02 2.13-3.694 2.13-2.42 0-4.308-1.607-4.308-4.34 0-2.65 1.754-4.427 4.262-4.427 2.587 0 4.167 1.852 4.167 4.69v.346H15.08c.073 1.128.837 1.914 2.105 1.914.963 0 1.538-.506 1.875-1.312h2.184zm-2.157-3.35c-.04-.953-.647-1.654-1.697-1.654-.99 0-1.71.74-1.84 1.654h3.537zM17.576 9h5.9v1.28h-5.9z" />
               </svg>
             </a>
-            {/* Email CTA — text only, email only in href */}
-            <a
-              href="mailto:cheuicheisadora@gmail.com"
-              className="text-sm font-semibold transition-colors duration-200 hover:opacity-75 flex items-center gap-1.5"
-              style={{ color: "var(--primary-deep)" }}
-            >
-              {contactLabel} →
-            </a>
           </div>
+
+          {/* Email CTA — text only, email only in href */}
+          <a
+            href="mailto:cheuicheisadora@gmail.com"
+            className="text-sm font-semibold transition-colors duration-200 hover:opacity-75 flex items-center gap-1.5"
+            style={{ color: "var(--primary-deep)" }}
+          >
+            {contactLabel} →
+          </a>
         </div>
-        {/* Bottom: copyright */}
-        <p className="text-xs text-muted-foreground" style={{ opacity: 0.6 }}>
+
+        {/* Copyright */}
+        <p className="text-xs text-muted-foreground" style={{ opacity: 0.55 }}>
           © {new Date().getFullYear()} Isadora Cheuiche · UX/UI Designer
         </p>
       </div>
