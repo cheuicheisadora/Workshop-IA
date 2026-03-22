@@ -34,20 +34,24 @@ const translations = {
     work_heading: "Como eu trabalho",
     work_subtitle: "Cada projeto nasce de uma pergunta real e termina com impacto mensurável.",
     // Features
-    feature_1_title: "Projetos com abordagem end-to-end",
+    feature_1_title: "UX Research & Estratégia",
     feature_1_desc:
-      "Do discovery à entrega: pesquisa, síntese, ideação, prototipagem e validação em cada projeto.",
-    feature_2_title: "Processo de Design estruturado",
+      "Conduz pesquisas com usuários, síntese de dados e definição de problemas para embasar decisões de produto com clareza e intenção.",
+    feature_2_title: "UI Design de Alta Fidelidade",
     feature_2_desc:
-      "Metodologia clara que une Design Thinking, UX Research e critérios de negócio em cada decisão.",
-    feature_3_title: "Foco em impacto e métricas",
+      "Cria interfaces polidas e consistentes no Figma, com atenção a hierarquia visual, tipografia, espaçamento e sistemas de componentes.",
+    feature_3_title: "Visão de Produto",
     feature_3_desc:
-      "Decisões de design guiadas por dados reais — conversão, retenção, satisfação e acessibilidade.",
-    feature_4_title: "Colaboração multidisciplinar",
+      "Entende o produto além da tela — jornada do usuário, fluxos de navegação, impacto no negócio e alinhamento com times de engenharia e produto.",
+    feature_4_title: "Design System & Componentes",
     feature_4_desc:
-      "Trabalho integrado com times de produto, engenharia e negócios para alinhar visão e execução.",
-    feature_5_title: "Pensamento estratégico + execução visual",
-    feature_5_desc: "Visão sistêmica do produto aliada à entrega de interfaces polidas e acessíveis.",
+      "Trabalha com estruturas escaláveis no Figma: auto layout, variantes, tokens e bibliotecas de componentes prontas para handoff.",
+    feature_5_title: "Prototipagem & Validação",
+    feature_5_desc:
+      "Entrega protótipos navegáveis de alta fidelidade e conduz testes de usabilidade para validar hipóteses antes do desenvolvimento.",
+    feature_6_title: "Implementação com Claude Code",
+    feature_6_desc:
+      "Protótipa e constrói interfaces diretamente em código usando Claude Code, garantindo visão técnica mais completa e colaboração mais eficiente com devs.",
     // Projects
     projects_heading: "Projetos",
     projects_subtitle: "Cases reais com processo, desafios e resultados.",
@@ -90,21 +94,24 @@ const translations = {
     work_heading: "How I work",
     work_subtitle: "Every project starts with a real question and ends with measurable impact.",
     // Features
-    feature_1_title: "End-to-end project approach",
+    feature_1_title: "UX Research & Strategy",
     feature_1_desc:
-      "From discovery to delivery: research, synthesis, ideation, prototyping, and validation in every project.",
-    feature_2_title: "Structured Design Process",
+      "Conducts user research, data synthesis, and problem definition to ground product decisions with clarity and intention.",
+    feature_2_title: "High-Fidelity UI Design",
     feature_2_desc:
-      "A clear methodology combining Design Thinking, UX Research, and business criteria in every decision.",
-    feature_3_title: "Focus on impact and metrics",
+      "Creates polished, consistent interfaces in Figma with attention to visual hierarchy, typography, spacing, and component systems.",
+    feature_3_title: "Product Vision",
     feature_3_desc:
-      "Design decisions guided by real data — conversion, retention, satisfaction, and accessibility.",
-    feature_4_title: "Multidisciplinary collaboration",
+      "Understands the product beyond the screen — user journeys, navigation flows, business impact, and alignment with engineering and product teams.",
+    feature_4_title: "Design System & Components",
     feature_4_desc:
-      "Integrated work with product, engineering, and business teams to align vision and execution.",
-    feature_5_title: "Strategic thinking + visual execution",
+      "Works with scalable structures in Figma: auto layout, variants, tokens, and component libraries ready for handoff.",
+    feature_5_title: "Prototyping & Validation",
     feature_5_desc:
-      "Systemic product vision combined with the delivery of polished, accessible interfaces.",
+      "Delivers high-fidelity navigable prototypes and conducts usability tests to validate hypotheses before development.",
+    feature_6_title: "Implementation with Claude Code",
+    feature_6_desc:
+      "Prototypes and builds interfaces directly in code using Claude Code, enabling a more complete technical perspective and more efficient collaboration with devs.",
     // Projects
     projects_heading: "Projects",
     projects_subtitle: "Real cases with process, challenges, and outcomes.",

@@ -5,17 +5,18 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { ProjectCard } from "@/components/portfolio/project-card"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Layers, GitBranch, BarChart2, Users, Lightbulb, ChevronDown, ArrowUpRight } from "lucide-react"
+import { ArrowRight, Search, Layers, BarChart2, GitBranch, Lightbulb, Code2, ChevronDown, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 import { useLanguage, TranslationKey } from "@/context/language"
 
-const featureIcons = [Layers, GitBranch, BarChart2, Users, Lightbulb]
+const featureIcons = [Search, Layers, BarChart2, GitBranch, Lightbulb, Code2]
 const featureKeys: Array<{ titleKey: TranslationKey; descKey: TranslationKey }> = [
   { titleKey: "feature_1_title", descKey: "feature_1_desc" },
   { titleKey: "feature_2_title", descKey: "feature_2_desc" },
   { titleKey: "feature_3_title", descKey: "feature_3_desc" },
   { titleKey: "feature_4_title", descKey: "feature_4_desc" },
   { titleKey: "feature_5_title", descKey: "feature_5_desc" },
+  { titleKey: "feature_6_title", descKey: "feature_6_desc" },
 ]
 
 const skills = [
@@ -191,7 +192,7 @@ export default function HomePage() {
               {t("work_subtitle")}
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
             {featureKeys.map((feature, i) => {
               const Icon = featureIcons[i]
               return (
@@ -199,7 +200,7 @@ export default function HomePage() {
                   key={feature.titleKey}
                   data-animate
                   data-delay={String(i + 1)}
-                  className="rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                  className="h-full rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
                 >
                   <div
                     className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg"
