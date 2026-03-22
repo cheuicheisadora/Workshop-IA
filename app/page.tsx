@@ -94,7 +94,7 @@ export default function HomePage() {
           >
             Sou uma UX/UI Designer que transforma problemas complexos em{" "}
             <span style={{ color: "var(--primary-deep)" }}>
-              experiências simples e intuitivas.
+              experiências simples e intuitivas
             </span>
           </h1>
 
@@ -109,7 +109,7 @@ export default function HomePage() {
           >
             Foco em design centrado no usuário, criando soluções digitais que
             equilibram necessidades do negócio e experiência real das pessoas.
-            Experiência em UX, UI e Product Thinking.
+            Experiência em UX, UI e Product Thinking
           </p>
 
           <div
