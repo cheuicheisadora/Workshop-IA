@@ -50,7 +50,7 @@ export function Navbar() {
           </Link>
           <Button asChild size="sm" variant="outline" style={{ borderColor: "var(--primary)" }}>
             <a
-              href="mailto:isadora@example.com"
+              href="mailto:cheuicheisadora@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
             >

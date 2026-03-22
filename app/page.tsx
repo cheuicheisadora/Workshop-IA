@@ -39,6 +39,19 @@ const features = [
   },
 ]
 
+const skills = [
+  "UX Research",
+  "UI Design",
+  "Branding",
+  "Figma",
+  "Prototipagem",
+  "Design System",
+  "Teste de Usabilidade",
+  "Claude Code",
+  "Case Study",
+  "UX Writing",
+]
+
 export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -86,7 +99,6 @@ export default function HomePage() {
             </span>
           </h1>
 
-          {/* Accent underline */}
           <div
             className="hero-reveal mx-auto mb-8 h-1 w-16 rounded-full"
             style={{ background: "var(--primary)", animationDelay: "0.3s" }}
@@ -120,9 +132,8 @@ export default function HomePage() {
               size="lg"
               variant="outline"
               style={{ borderColor: "var(--primary)" }}
-              className="hover:bg-[var(--primary-glow)] transition-colors"
             >
-              <a href="mailto:isadora@example.com">Entrar em contato</a>
+              <a href="#contato">Entrar em contato</a>
             </Button>
           </div>
         </div>
@@ -133,8 +144,83 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Features ──────────────────────────────────────────────── */}
-      <section id="sobre" className="bg-muted/40 py-32 px-6">
+      {/* ── Sobre ─────────────────────────────────────────────────── */}
+      <section id="sobre" className="py-32 px-6">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center" data-animate>
+            <span className="section-accent-bar" />
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Sobre mim</h2>
+          </div>
+
+          <div className="grid gap-16 lg:grid-cols-[1fr_340px] items-start">
+            {/* Bio text */}
+            <div data-animate data-delay="1" className="space-y-5 text-base leading-relaxed text-muted-foreground">
+              <p>
+                Designer de produto com foco em UX/UI, criando interfaces digitais que equilibram
+                usabilidade, estética e resultado de negócio. Atuo desde a pesquisa com usuários
+                até a entrega de protótipos de alta fidelidade navegáveis — com processo claro e
+                decisões visuais intencionais em cada etapa.
+              </p>
+              <p>
+                Tenho experiência em redesign de produtos digitais complexos, criação de identidades
+                visuais do zero e desenvolvimento de case studies completos — do brief ao handoff.
+                Trabalho com metodologias como Design Thinking e Double Diamond, combinando
+                pesquisa qualitativa, síntese de dados e testes de usabilidade para tomar decisões
+                embasadas, não por intuição.
+              </p>
+              <p>
+                Domino Figma em nível avançado — componentes, auto layout, design tokens e
+                prototipagem interativa. Além disso, utilizo{" "}
+                <strong className="font-semibold" style={{ color: "var(--primary-deep)" }}>
+                  Claude Code
+                </strong>{" "}
+                para construir e iterar interfaces reais em código, o que me permite comunicar com
+                mais precisão com times de desenvolvimento e enxergar o produto de forma técnica
+                e sistêmica — uma vantagem concreta para quem trabalha na interseção entre design
+                e produto.
+              </p>
+
+              <div className="pt-2">
+                <a
+                  href="mailto:cheuicheisadora@gmail.com"
+                  className="text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-75"
+                  style={{ color: "var(--primary-deep)" }}
+                >
+                  Vamos conversar? Me chama por aqui: cheuicheisadora@gmail.com
+                </a>
+              </div>
+            </div>
+
+            {/* Skills */}
+            <div data-animate data-delay="2">
+              <p
+                className="mb-4 text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "var(--primary-deep)" }}
+              >
+                Competências
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full px-3 py-1 text-sm font-medium transition-colors"
+                    style={{
+                      background: "var(--primary-glow)",
+                      color: "var(--primary-deep)",
+                      border: "1px solid var(--primary)",
+                    }}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Como eu trabalho ──────────────────────────────────────── */}
+      <section className="bg-muted/40 py-32 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center" data-animate>
             <span className="section-accent-bar" />
@@ -152,11 +238,13 @@ export default function HomePage() {
                   data-animate
                   data-delay={String(i + 1)}
                   className="rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
-                  style={{ ["--hover-shadow" as string]: "0 8px 30px var(--primary-glow)" }}
                 >
                   <div
                     className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg"
-                    style={{ background: "var(--primary-glow)", border: "1px solid var(--primary)" }}
+                    style={{
+                      background: "var(--primary-glow)",
+                      border: "1px solid var(--primary)",
+                    }}
                   >
                     <Icon className="h-5 w-5" style={{ color: "var(--primary-deep)" }} />
                   </div>
@@ -198,8 +286,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────────── */}
+      {/* ── CTA / Contato ─────────────────────────────────────────── */}
       <section
+        id="contato"
         className="py-32 px-6"
         style={{
           background: "linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 100%)",
@@ -207,15 +296,25 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-2xl text-center" data-animate>
           <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Vamos conversar?</h2>
-          <p className="mb-8 text-foreground/80">
+          <p className="mb-3 text-foreground/80">
             Estou disponível para projetos freelance, oportunidades full-time e colaborações criativas.
+          </p>
+          <p className="mb-8 text-foreground/70 text-sm">
+            Me chama por aqui:{" "}
+            <a
+              href="mailto:cheuicheisadora@gmail.com"
+              className="font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
+              style={{ color: "var(--foreground)" }}
+            >
+              cheuicheisadora@gmail.com
+            </a>
           </p>
           <Button
             asChild
             size="lg"
             className="bg-foreground text-background hover:bg-foreground/90 shadow-lg"
           >
-            <a href="mailto:isadora@example.com">Enviar mensagem</a>
+            <a href="mailto:cheuicheisadora@gmail.com">Enviar mensagem</a>
           </Button>
         </div>
       </section>
