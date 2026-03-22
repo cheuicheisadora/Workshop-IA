@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { ProjectCard } from "@/components/portfolio/project-card"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Search, Layers, BarChart2, GitBranch, Lightbulb, Code2, ChevronDown, ArrowUpRight } from "lucide-react"
+import { ArrowRight, Search, Layers, BarChart2, GitBranch, Lightbulb, Code2, ChevronDown, ArrowUpRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { useLanguage, TranslationKey } from "@/context/language"
 
@@ -349,21 +349,7 @@ export default function HomePage() {
                     }}
                   >
                     {i === 2 ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-5 w-5"
-                        style={{ color: "var(--primary-deep)" }}
-                        aria-hidden
-                      >
-                        <path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 0 6h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1 0-6h1V6a4 4 0 0 1 4-4z" />
-                        <path d="M9 12h.01M12 9h.01M15 12h.01M12 15h.01" />
-                      </svg>
+                      <Sparkles className="h-5 w-5" style={{ color: "var(--primary-deep)" }} />
                     ) : (
                       <Icon className="h-5 w-5" style={{ color: "var(--primary-deep)" }} />
                     )}
