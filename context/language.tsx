@@ -55,7 +55,7 @@ const translations = {
     // Projects
     projects_heading: "Projetos",
     projects_subtitle: "Cases reais com processo, desafios e resultados.",
-    behance_cta_text: "Todos os projetos com processo completo documentado.",
+    behance_cta_text: "Todos os projetos com processo completo documentado, do brief ao handoff.",
     behance_cta_link: "Ver perfil completo",
     card_view_behance: "Ver no Behance",
     card_view_project: "Ver Projeto",
@@ -115,7 +115,7 @@ const translations = {
     // Projects
     projects_heading: "Projects",
     projects_subtitle: "Real cases with process, challenges, and outcomes.",
-    behance_cta_text: "All projects with full process documentation.",
+    behance_cta_text: "All projects with full process documentation, from brief to handoff.",
     behance_cta_link: "View full profile",
     card_view_behance: "View on Behance",
     card_view_project: "View Project",

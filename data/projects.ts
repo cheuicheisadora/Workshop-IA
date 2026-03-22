@@ -33,9 +33,9 @@ export const projects: Project[] = [
     slug: "redesign-app-itau",
     title: "Redesign App Itaú",
     description:
-      "Redesign completo da experiência do aplicativo do Banco Itaú, com foco em usabilidade, hierarquia visual e fluidez na jornada do usuário.",
+      "Redesign da experiência do aplicativo do Banco Itaú, conduzido do discovery à entrega. O projeto envolveu pesquisa com usuários, mapeamento de jornada e prototipagem de alta fidelidade com foco em usabilidade e hierarquia visual.",
     description_en:
-      "Complete redesign of the Itaú Bank app experience, focused on usability, visual hierarchy, and fluidity throughout the user journey.",
+      "Redesign of the Itaú Bank app experience, led from discovery to delivery. The project involved user research, journey mapping, and high-fidelity prototyping with a focus on usability and visual hierarchy.",
     role: "UX/UI · Case Study · EBAC",
     role_en: "UX/UI · Case Study · EBAC",
     tools: ["Figma", "UX Research", "Prototipagem"],
@@ -54,9 +54,9 @@ export const projects: Project[] = [
     slug: "glaucia-beatriz-patisserie",
     title: "Glaucia Beatriz Pâtisserie",
     description:
-      "Criação de identidade visual completa para uma pâtisserie artesanal — do naming ao sistema de marca, com elegância e sofisticação.",
+      "Criação de identidade visual completa para uma pâtisserie artesanal. O projeto partiu do naming e conceito de marca até a entrega do sistema visual, com logotipo, paleta, tipografia e aplicações.",
     description_en:
-      "Complete visual identity for an artisan pâtisserie — from naming to full brand system, built with elegance and sophistication.",
+      "Complete visual identity for an artisan pâtisserie. The project went from naming and brand concept to the full visual system, including logo, color palette, typography, and applications.",
     role: "Branding · Identidade Visual · Logotipo",
     role_en: "Branding · Visual Identity · Logo Design",
     tools: ["Illustrator", "Figma", "Branding"],
@@ -75,9 +75,9 @@ export const projects: Project[] = [
     slug: "feed-me-app",
     title: "Feed Me App",
     description:
-      "Case study de um aplicativo mobile de alimentação saudável — desde a pesquisa com usuários até a entrega dos protótipos navegáveis.",
+      "Case study de um aplicativo mobile de alimentação saudável. O processo passou por pesquisa com usuários, síntese de insights, ideação e entrega de protótipos navegáveis de alta fidelidade.",
     description_en:
-      "Case study of a healthy eating mobile app — from user research all the way to the delivery of navigable prototypes.",
+      "Case study of a healthy eating mobile app. The process included user research, insight synthesis, ideation, and delivery of high-fidelity navigable prototypes.",
     role: "UI/UX · Mobile App · Case Study",
     role_en: "UI/UX · Mobile App · Case Study",
     tools: ["Figma", "Prototipagem", "FigJam"],

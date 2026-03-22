@@ -94,13 +94,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </Badge>
           ))}
         </div>
-        <h3
-          className="mb-1 text-lg font-semibold leading-snug transition-colors duration-300"
-          style={{ color: hovered ? accent : "var(--foreground)" }}
-        >
-          {project.title}
+        <h3 className="mb-2 text-lg font-semibold leading-snug">
+          <span
+            style={{
+              display: "inline",
+              color: hovered ? "var(--primary-deep)" : "var(--foreground)",
+              backgroundImage: "linear-gradient(#A8D8EA, #A8D8EA)",
+              backgroundSize: hovered ? "100% 1.5px" : "0% 1.5px",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "left bottom",
+              paddingBottom: "2px",
+              transition:
+                "color 0.25s ease, background-size 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            }}
+          >
+            {project.title}
+          </span>
         </h3>
-        <p className="text-sm text-muted-foreground line-clamp-2">{description}</p>
+        <p className="text-sm text-muted-foreground">{description}</p>
         <p className="mt-3 text-xs font-medium" style={{ color: accent }}>
           {role}
         </p>

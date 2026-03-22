@@ -268,7 +268,7 @@ export default function HomePage() {
           </div>
 
           {projects.length > 0 && (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 items-start">
               {/* Card 1 — Featured (wide) */}
               <div className="md:col-span-2" data-animate data-delay="1">
                 <ProjectCard project={projects[0]} />
