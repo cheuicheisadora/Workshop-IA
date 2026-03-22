@@ -156,24 +156,24 @@ export default function HomePage() {
             {/* Bio */}
             <div data-animate data-delay="1" className="space-y-6 text-base leading-[1.85] text-muted-foreground">
               <p>
-                Formada em UX/UI pela EBAC, atualmente atuo como estagiária de UX/UI na SAP,
-                trabalhando em soluções que exigem clareza, consistência e visão de escala. A
-                formação construiu a base; o mercado está refinando o processo.
+                Comecei no design através da formação em UX/UI pela EBAC e, desde então, venho
+                construindo minha experiência com foco em produto digital e decisões orientadas por
+                usuário. Hoje, atuo como estagiária de UX/UI na SAP, participando do desenvolvimento
+                de soluções que exigem clareza, consistência e visão de escala.
               </p>
               <p>
-                No Feed Me App e no redesign do app do Itaú, conduzi cada etapa do projeto: mapeei
-                contextos, defini problemas com clareza, prototipei fluxos e testei com usuários
-                reais. São projetos que refletem como penso sobre design: de forma sistêmica, não
-                como telas isoladas. A experiência com branding de eventos também fortaleceu minha
-                sensibilidade para narrativa visual e consistência de identidade.
+                Neste portfólio, apresento projetos como o Feed Me App e o redesign do app do Itaú,
+                nos quais conduzi o processo de ponta a ponta, passando por pesquisa, definição de
+                problemas, ideação e prototipação. São trabalhos que refletem minha forma de pensar:
+                prática, estruturada e sempre conectada ao impacto real no usuário.
               </p>
               <p>
-                Tenho domínio avançado de Figma e uso{" "}
-                <strong className="font-semibold text-foreground">Claude Code</strong> para
-                prototipar e construir interfaces diretamente em código. O portfólio que você está
-                vendo foi inteiramente criado por mim com essa abordagem, e isso diz bastante sobre
-                como enxergo design: não como uma camada visual, mas como parte de um sistema que
-                precisa funcionar de verdade.
+                Além disso, já atuei com branding de eventos, o que fortaleceu minha sensibilidade
+                para narrativa e identidade visual. Tenho domínio avançado de Figma e, recentemente,
+                passei a explorar o desenvolvimento de interfaces com{" "}
+                <strong className="font-semibold text-foreground">Claude Code</strong>. Inclusive,
+                este portfólio foi inteiramente criado por mim utilizando essa abordagem, aproximando
+                ainda mais meu trabalho do contexto técnico e da implementação.
               </p>
               <div className="pt-2">
                 <Button
