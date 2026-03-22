@@ -530,7 +530,7 @@ export default function HomePage() {
           {/* CV Download */}
           <div className="cv-download" data-animate data-delay="4">
             <a
-              href="https://drive.google.com/uc?export=download&id=1pLxbygCumwjNoRTiRv8s-uahhyjSXz19"
+              href="https://drive.google.com/uc?export=download&id=1t1Y6qfGDA3fF9WDCOLrszeJOfkQiiXPL"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cv"
