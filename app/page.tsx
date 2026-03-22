@@ -259,25 +259,25 @@ export default function HomePage() {
               {lang === "pt" ? (
                 <>
                   <p>
-                    Atuo como <strong className="font-semibold text-foreground">UX/UI Designer na SAP</strong>, criando soluções digitais com foco em clareza, consistência e escala. Formada em UX/UI pela EBAC, aplico um processo estruturado desde a pesquisa até a entrega — sempre conectando decisões de design ao impacto real no produto.
+                    Atuo como <strong className="font-semibold text-foreground">UX/UI Designer na SAP</strong>, criando soluções digitais com foco em clareza, consistência e escala. Formada em UX/UI pela EBAC, aplico um processo estruturado desde a pesquisa até a entrega, sempre conectando decisões de design ao impacto real no produto.
                   </p>
                   <p>
                     Conduzi projetos de ponta a ponta como o Feed Me App e o redesign do app do Itaú, além de projetos de branding para eventos. Essa diversidade de contextos fortaleceu minha visão sobre como design, narrativa e experiência se integram.
                   </p>
                   <p>
-                    Hoje, exploro IA como parte do meu processo — uso <strong className="font-semibold text-foreground">Claude Code</strong> para construir e iterar interfaces diretamente em código. Este portfólio foi desenvolvido inteiramente com essa abordagem, o que me posiciona na interseção entre design e tecnologia.
+                    Hoje, exploro IA como parte do meu processo. Uso <strong className="font-semibold text-foreground">Claude Code</strong> para construir e iterar interfaces diretamente em código. Este portfólio foi desenvolvido inteiramente com essa abordagem, o que me posiciona na interseção entre design e tecnologia.
                   </p>
                 </>
               ) : (
                 <>
                   <p>
-                    I work as a <strong className="font-semibold text-foreground">UX/UI Designer at SAP</strong>, creating digital solutions focused on clarity, consistency, and scale. Trained in UX/UI at EBAC, I apply a structured process from research to delivery — always connecting design decisions to real product impact.
+                    I work as a <strong className="font-semibold text-foreground">UX/UI Designer at SAP</strong>, creating digital solutions focused on clarity, consistency, and scale. Trained in UX/UI at EBAC, I apply a structured process from research to delivery, always connecting design decisions to real product impact.
                   </p>
                   <p>
                     I've led end-to-end projects like the Feed Me App and the Itaú app redesign, as well as event branding work. That range of contexts sharpened my understanding of how design, narrative, and experience fit together.
                   </p>
                   <p>
-                    Today, I bring AI into my workflow — using <strong className="font-semibold text-foreground">Claude Code</strong> to build and iterate interfaces directly in code. This portfolio was built entirely with that approach, placing me at the intersection of design and technology.
+                    Today, I bring AI into my workflow. I use <strong className="font-semibold text-foreground">Claude Code</strong> to build and iterate interfaces directly in code. This portfolio was built entirely with that approach, placing me at the intersection of design and technology.
                   </p>
                 </>
               )}
