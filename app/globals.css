@@ -391,4 +391,173 @@ h3 {
     background: transparent;
     border-color: rgba(168, 216, 234, 0.2);
   }
+
+  /* Timeline mobile */
+  .timeline { padding-left: 24px; }
+  .timeline-header { flex-direction: column; gap: 6px; }
+  .timeline-periodo { align-self: flex-start; }
+  .skills-block { grid-template-columns: 1fr; }
+  .idiomas { flex-direction: column; gap: 6px; }
+  .idioma-sep { display: none; }
+}
+
+/* ─── Experience Timeline ────────────────────────────────── */
+
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 0;
+  width: 1.5px;
+  background: linear-gradient(to bottom, #A8D8EA, rgba(168, 216, 234, 0.1));
+}
+
+.timeline-item {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #A8D8EA;
+  border: 2px solid var(--background);
+  box-shadow: 0 0 0 1.5px #A8D8EA;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.timeline-cargo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.timeline-empresa {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3A9BBF;
+  margin-bottom: 8px;
+}
+
+.timeline-periodo {
+  font-size: 0.8rem;
+  color: var(--foreground-muted);
+  white-space: nowrap;
+  padding: 2px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(168, 216, 234, 0.4);
+  background: rgba(168, 216, 234, 0.08);
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--foreground-muted);
+  max-width: 640px;
+}
+
+/* ─── Skills Block ───────────────────────────────────────── */
+
+.skills-block {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.skill-category {
+  padding: 20px 24px;
+  border: 1px solid rgba(168, 216, 234, 0.2);
+  border-radius: 12px;
+  background: rgba(168, 216, 234, 0.04);
+  transition: border-color 0.3s ease;
+}
+
+.skill-category:hover {
+  border-color: rgba(168, 216, 234, 0.5);
+}
+
+.skill-category-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3A9BBF;
+  margin-bottom: 10px;
+}
+
+.skill-list {
+  font-size: 0.875rem;
+  color: var(--foreground-muted);
+  line-height: 1.8;
+}
+
+/* ─── Languages ──────────────────────────────────────────── */
+
+.idiomas {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--foreground-muted);
+}
+
+.idioma-sep { opacity: 0.3; }
+
+/* ─── CV Download ────────────────────────────────────────── */
+
+.cv-download {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 99px;
+  border: 1.5px solid #A8D8EA;
+  color: #3A9BBF;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btn-cv:hover {
+  background: #A8D8EA;
+  color: #fff;
 }

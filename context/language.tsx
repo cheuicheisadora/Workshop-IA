@@ -8,6 +8,7 @@ const translations = {
   pt: {
     // Navbar
     nav_projects: "Projetos",
+    nav_experience: "Experiência",
     nav_about: "Sobre",
     nav_contact: "Contato",
     // Hero
@@ -61,6 +62,17 @@ const translations = {
     behance_cta_link: "Ver perfil completo",
     card_view_behance: "Ver no Behance",
     card_view_project: "Ver Projeto",
+    // Experience
+    exp_heading: "Experiência",
+    exp_subtitle: "Trajetória profissional completa",
+    exp_present: "Presente",
+    exp_cv_btn: "Baixar currículo completo",
+    exp_skill_uxui: "UX/UI Design",
+    exp_skill_ds: "Design System",
+    exp_skill_research: "Pesquisa & UX",
+    exp_skill_product: "Produto & Negócio",
+    exp_skill_tools: "Ferramentas",
+    exp_lang_native: "Nativo",
     // CTA
     cta_heading: "Vamos conversar?",
     cta_subtitle:
@@ -70,6 +82,7 @@ const translations = {
   en: {
     // Navbar
     nav_projects: "Projects",
+    nav_experience: "Experience",
     nav_about: "About",
     nav_contact: "Contact",
     // Hero
@@ -123,6 +136,17 @@ const translations = {
     behance_cta_link: "View full profile",
     card_view_behance: "View on Behance",
     card_view_project: "View Project",
+    // Experience
+    exp_heading: "Experience",
+    exp_subtitle: "Full professional background",
+    exp_present: "Present",
+    exp_cv_btn: "Download full resume",
+    exp_skill_uxui: "UX/UI Design",
+    exp_skill_ds: "Design System",
+    exp_skill_research: "Research & UX",
+    exp_skill_product: "Product & Business",
+    exp_skill_tools: "Tools",
+    exp_lang_native: "Native",
     // CTA
     cta_heading: "Let's talk?",
     cta_subtitle:

@@ -444,6 +444,119 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Experiência ────────────────────────────────────────────── */}
+      <section id="experiencia" className="py-20 px-6">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-12 text-center" data-animate>
+            <span className="section-accent-bar" />
+            <h2 className="font-bold text-foreground">{t("exp_heading")}</h2>
+            <p className="mt-3 text-muted-foreground">{t("exp_subtitle")}</p>
+          </div>
+
+          {/* Timeline */}
+          <div className="timeline" data-animate data-delay="1">
+            {/* SAP — UX Design Intern */}
+            <div className="timeline-item">
+              <div className="timeline-header">
+                <span className="timeline-cargo">UX Design Intern — Globalization Team</span>
+                <span className="timeline-periodo">Ago 2025 – {t("exp_present")}</span>
+              </div>
+              <p className="timeline-empresa">SAP</p>
+              <p className="timeline-desc">
+                Conduzi o ciclo completo de design em 3 produtos digitais globais: arquitetura da informação, wireframes, protótipos de alta fidelidade e handoff no Figma, reduzindo ciclos de revisão em 30%. Estruturei e mantive o design system do produto, organizando bibliotecas de componentes e padrões visuais que garantiram consistência em 100% das interfaces de 2 squads. Realizei análises heurísticas, testes de usabilidade e testes A/B, gerando melhorias que elevaram a satisfação dos usuários em 2 sprints consecutivos.
+              </p>
+            </div>
+
+            {/* SAP — Business AI Intern */}
+            <div className="timeline-item">
+              <div className="timeline-header">
+                <span className="timeline-cargo">Business AI Intern — Business AI Team</span>
+                <span className="timeline-periodo">Dez 2024 – Ago 2025</span>
+              </div>
+              <p className="timeline-empresa">SAP</p>
+              <p className="timeline-desc">
+                Traduzi requisitos de negócio em soluções de design para produtos com IA agente da SAP, conectando experiência do usuário a métricas estratégicas. Gerenciei o Torneo de Innovación 2025 de ponta a ponta, alinhando 5 stakeholders e entregando 100% dos marcos no prazo. Criei sistema completo de identidade visual com 20 componentes e assets, garantindo responsividade e consistência entre todos os canais do evento.
+              </p>
+            </div>
+
+            {/* SAP — Marketing & Events Intern */}
+            <div className="timeline-item">
+              <div className="timeline-header">
+                <span className="timeline-cargo">Marketing &amp; Events Intern — Labs Events Team</span>
+                <span className="timeline-periodo">Abr 2024 – Dez 2024</span>
+              </div>
+              <p className="timeline-empresa">SAP</p>
+              <p className="timeline-desc">
+                Otimizei a gestão de 10 projetos simultâneos em ambiente ágil com Kanban, reduzindo bloqueios de entrega em 25%. Produzi 30 assets visuais responsivos em Figma e Adobe Suite, colaborando com times de produto, tecnologia e marketing.
+              </p>
+            </div>
+
+            {/* Dell — Product Marketing Intern */}
+            <div className="timeline-item">
+              <div className="timeline-header">
+                <span className="timeline-cargo">Product Marketing Intern</span>
+                <span className="timeline-periodo">Jul 2023 – Mar 2024</span>
+              </div>
+              <p className="timeline-empresa">Dell</p>
+              <p className="timeline-desc">
+                Mapeei e melhorei fluxos operacionais no time de LATAM Field Marketing, reduzindo retrabalho manual em 20%. Criei peças e interfaces centradas no usuário para campanhas digitais, mantendo consistência visual e acessibilidade em 100% das entregas.
+              </p>
+            </div>
+          </div>
+
+          {/* Skills */}
+          <div className="skills-block" data-animate data-delay="2">
+            <div className="skill-category">
+              <p className="skill-category-title">{t("exp_skill_uxui")}</p>
+              <p className="skill-list">Figma · Prototipagem de Alta Fidelidade · Wireframes · Fluxos de Usuário · Arquitetura da Informação</p>
+            </div>
+            <div className="skill-category">
+              <p className="skill-category-title">{t("exp_skill_ds")}</p>
+              <p className="skill-list">Bibliotecas de Componentes · Padronização · Handoff para Desenvolvimento</p>
+            </div>
+            <div className="skill-category">
+              <p className="skill-category-title">{t("exp_skill_research")}</p>
+              <p className="skill-list">Testes de Usabilidade · Análise Heurística · Testes A/B · Acessibilidade · Mobile-First</p>
+            </div>
+            <div className="skill-category">
+              <p className="skill-category-title">{t("exp_skill_product")}</p>
+              <p className="skill-list">Colaboração com PMs · Decisões por Dados · Processos Ágeis · Gestão de Stakeholders</p>
+            </div>
+            <div className="skill-category">
+              <p className="skill-category-title">{t("exp_skill_tools")}</p>
+              <p className="skill-list">Adobe Illustrator · Adobe Photoshop · Canva · Fiori Design System · IA Aplicada ao Design · Claude Code</p>
+            </div>
+          </div>
+
+          {/* Languages */}
+          <div className="idiomas" data-animate data-delay="3">
+            <span className="idioma">🇧🇷 Português — {t("exp_lang_native")}</span>
+            <span className="idioma-sep">·</span>
+            <span className="idioma">🇺🇸 Inglês — C1</span>
+            <span className="idioma-sep">·</span>
+            <span className="idioma">🇪🇸 Espanhol — B2</span>
+          </div>
+
+          {/* CV Download */}
+          <div className="cv-download" data-animate data-delay="4">
+            <a
+              href="/Isadora_Cheuiche_UIUX_Designer_Pleno.pdf"
+              download
+              className="btn-cv"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                width="16" height="16" aria-hidden>
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              {t("exp_cv_btn")}
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── Formação e Certificados ───────────────────────────────── */}
       <section id="certificados" className="py-20 px-6 bg-muted/30">
         <div className="mx-auto max-w-5xl">

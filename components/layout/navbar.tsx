@@ -87,6 +87,14 @@ export function Navbar() {
               {t("nav_projects")}
             </a>
             <a
+              href="#experiencia"
+              onClick={(e) => handleAnchor("experiencia", e)}
+              className={`nav-link text-sm transition-colors duration-200${activeSection === "experiencia" ? " active" : ""}`}
+              style={activeSection === "experiencia" ? { color: "var(--primary-deep)" } : { color: "var(--foreground-muted)" }}
+            >
+              {t("nav_experience")}
+            </a>
+            <a
               href="#sobre"
               onClick={(e) => handleAnchor("sobre", e)}
               className={`nav-link text-sm transition-colors duration-200${activeSection === "sobre" ? " active" : ""}`}
@@ -182,6 +190,14 @@ export function Navbar() {
               style={{ borderColor: "var(--border)", minHeight: "44px" }}
             >
               {t("nav_projects")}
+            </a>
+            <a
+              href="#experiencia"
+              onClick={(e) => handleAnchor("experiencia", e)}
+              className="flex items-center text-2xl font-semibold text-foreground py-4 border-b"
+              style={{ borderColor: "var(--border)", minHeight: "44px" }}
+            >
+              {t("nav_experience")}
             </a>
             <a
               href="#sobre"
