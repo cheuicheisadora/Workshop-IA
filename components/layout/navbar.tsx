@@ -79,6 +79,14 @@ export function Navbar() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6">
             <a
+              href="#sobre"
+              onClick={(e) => handleAnchor("sobre", e)}
+              className={`nav-link text-sm transition-colors duration-200${activeSection === "sobre" ? " active" : ""}`}
+              style={activeSection === "sobre" ? { color: "var(--primary-deep)" } : { color: "var(--foreground-muted)" }}
+            >
+              {t("nav_about")}
+            </a>
+            <a
               href="#projetos"
               onClick={(e) => handleAnchor("projetos", e)}
               className={`nav-link text-sm transition-colors duration-200${activeSection === "projetos" ? " active" : ""}`}
@@ -93,14 +101,6 @@ export function Navbar() {
               style={activeSection === "experiencia" ? { color: "var(--primary-deep)" } : { color: "var(--foreground-muted)" }}
             >
               {t("nav_experience")}
-            </a>
-            <a
-              href="#sobre"
-              onClick={(e) => handleAnchor("sobre", e)}
-              className={`nav-link text-sm transition-colors duration-200${activeSection === "sobre" ? " active" : ""}`}
-              style={activeSection === "sobre" ? { color: "var(--primary-deep)" } : { color: "var(--foreground-muted)" }}
-            >
-              {t("nav_about")}
             </a>
 
             <div className="h-4 w-px" style={{ background: "var(--border)" }} aria-hidden />
@@ -184,6 +184,14 @@ export function Navbar() {
           {/* Nav links */}
           <nav className="flex flex-col gap-1">
             <a
+              href="#sobre"
+              onClick={(e) => handleAnchor("sobre", e)}
+              className="flex items-center text-2xl font-semibold text-foreground py-4 border-b"
+              style={{ borderColor: "var(--border)", minHeight: "44px" }}
+            >
+              {t("nav_about")}
+            </a>
+            <a
               href="#projetos"
               onClick={(e) => handleAnchor("projetos", e)}
               className="flex items-center text-2xl font-semibold text-foreground py-4 border-b"
@@ -198,14 +206,6 @@ export function Navbar() {
               style={{ borderColor: "var(--border)", minHeight: "44px" }}
             >
               {t("nav_experience")}
-            </a>
-            <a
-              href="#sobre"
-              onClick={(e) => handleAnchor("sobre", e)}
-              className="flex items-center text-2xl font-semibold text-foreground py-4 border-b"
-              style={{ borderColor: "var(--border)", minHeight: "44px" }}
-            >
-              {t("nav_about")}
             </a>
             <a
               href="#contato"
