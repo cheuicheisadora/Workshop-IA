@@ -21,13 +21,13 @@ const translations = {
     // About
     about_heading: "Sobre mim",
     about_p1:
-      "Atuo como designer de UX/UI na SAP, onde trabalho no desenvolvimento de soluções digitais que exigem clareza, consistência e visão de escala. Minha formação pela EBAC estruturou um processo que levo para cada projeto: pesquisa com usuários, definição de problemas, prototipagem e entrega em Figma.",
+      "Atuo como UX/UI Designer na SAP, criando soluções digitais com foco em clareza, consistência e escala. Minha formação em UX/UI pela EBAC estruturou um processo sólido que aplico em todos os projetos, desde pesquisa com usuários até prototipação e entrega.",
     about_p2:
-      "No Feed Me App e no redesign do app do Itaú, conduzi o processo inteiro, do discovery à prototipagem de alta fidelidade. São projetos que mostram como penso produto: de forma prática, estruturada e sempre conectada ao impacto real no usuário. Também tenho experiência em branding, o que fortaleceu minha leitura de narrativa e identidade visual.",
+      "Tenho experiência prática conduzindo projetos de ponta a ponta, como o Feed Me App e o redesign do app do Itaú, sempre conectando decisões de design ao impacto real no usuário e nos objetivos de negócio. Também atuei com branding de eventos, o que fortaleceu minha visão sobre narrativa, identidade visual e experiência como um todo.",
     about_p3_before:
-      "Uso",
+      "Hoje, amplio meu trabalho explorando IA no processo de design, utilizando",
     about_p3_after:
-      " para construir e iterar interfaces diretamente em código. Inclusive, este portfólio foi feito inteiramente com essa abordagem, o que me aproxima do contexto técnico e me torna uma designer com visão mais completa do produto.",
+      " para construir e iterar interfaces diretamente em código. Este portfólio, inclusive, foi desenvolvido inteiramente por mim com essa abordagem. Isso me permite ir além do design visual e atuar com uma visão mais próxima da implementação, tecnologia e produto.",
     about_btn: "Vamos conversar",
     skills_heading: "Competências",
     // Certificates
@@ -83,13 +83,13 @@ const translations = {
     // About
     about_heading: "About me",
     about_p1:
-      "I work as a UX/UI designer at SAP, contributing to digital products that demand clarity, consistency, and scalable vision. My training at EBAC shaped the process I bring to every project: user research, problem definition, prototyping, and Figma delivery.",
+      "I work as a UX/UI Designer at SAP, creating digital solutions focused on clarity, consistency, and scale. My UX/UI training at EBAC built a solid process I apply to every project, from user research through prototyping and delivery.",
     about_p2:
-      "In Feed Me App and the Itaú app redesign, I led the entire process from discovery to high-fidelity prototyping. These projects show how I think about product design: practical, structured, and always tied to real user impact. I also have experience in branding, which sharpened my sense of narrative and visual identity.",
+      "I have hands-on experience leading end-to-end projects like Feed Me App and the Itaú app redesign, always connecting design decisions to real user impact and business goals. I also worked on event branding, which deepened my understanding of narrative, visual identity, and experience as a whole.",
     about_p3_before:
-      "I use",
+      "Today, I expand my work by exploring AI in the design process, using",
     about_p3_after:
-      " to build and iterate interfaces directly in code. This portfolio was made entirely with that approach, bringing me closer to the technical side of product work and making me a designer with a more complete view of the product.",
+      " to build and iterate interfaces directly in code. This portfolio was built entirely by me using that approach. It lets me go beyond visual design and work with a perspective closer to implementation, technology, and product.",
     about_btn: "Let's talk",
     skills_heading: "Skills",
     // Certificates
