@@ -164,19 +164,21 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  lang: "pt",
+  lang: "en",
   setLang: () => {},
-  t: (key) => translations.pt[key],
+  t: (key) => translations.en[key],
 })
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("pt")
+  const [lang, setLangState] = useState<Lang>("en")
 
   useEffect(() => {
     const saved = localStorage.getItem("lang") as Lang | null
     if (saved === "pt" || saved === "en") {
       setLangState(saved)
       document.documentElement.lang = saved === "pt" ? "pt-BR" : "en"
+    } else {
+      document.documentElement.lang = "en"
     }
   }, [])
 

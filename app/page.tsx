@@ -130,9 +130,9 @@ const skills = [
   "UI Design",
   "Branding",
   "Figma",
-  "Prototipagem",
+  "Prototyping",
   "Design System",
-  "Teste de Usabilidade",
+  "Usability Testing",
   "Claude Code",
   "Case Study",
   "UX Writing",
@@ -449,11 +449,11 @@ export default function HomePage() {
             <div className="timeline-item">
               <div className="timeline-header">
                 <span className="timeline-cargo">UX Design Intern — Globalization Team</span>
-                <span className="timeline-periodo">Ago 2025 – {t("exp_present")}</span>
+                <span className="timeline-periodo">Aug 2025 – {t("exp_present")}</span>
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">
-                Conduzi o ciclo completo de design em 2 produtos digitais globais: arquitetura da informação, wireframes, protótipos de alta fidelidade e handoff no Figma, reduzindo ciclos de revisão em 30%. Estruturei e mantive o design system do produto, organizando bibliotecas de componentes e padrões visuais que garantiram consistência em 100% das interfaces de 2 squads. Realizei análises heurísticas, testes de usabilidade e testes A/B, gerando melhorias que elevaram a satisfação dos usuários em 2 sprints consecutivos.
+                Led the complete design cycle for 2 global digital products: information architecture, wireframes, high-fidelity prototypes, and Figma handoff, reducing review cycles by 30%. Structured and maintained the product design system, organizing component libraries and visual patterns that ensured 100% consistency across interfaces for 2 squads. Conducted heuristic analyses, usability tests, and A/B tests, generating improvements that increased user satisfaction over 2 consecutive sprints.
               </p>
             </div>
 
@@ -461,11 +461,11 @@ export default function HomePage() {
             <div className="timeline-item">
               <div className="timeline-header">
                 <span className="timeline-cargo">Business AI Intern — Business AI Team</span>
-                <span className="timeline-periodo">Dez 2024 – Ago 2025</span>
+                <span className="timeline-periodo">Dec 2024 – Aug 2025</span>
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">
-                Traduzi requisitos de negócio em soluções de design para produtos com IA agente da SAP, conectando experiência do usuário a métricas estratégicas. Gerenciei o Torneo de Innovación 2025 de ponta a ponta, alinhando 5 stakeholders e entregando 100% dos marcos no prazo. Criei sistema completo de identidade visual com 20 componentes e assets, garantindo responsividade e consistência entre todos os canais do evento.
+                Translated business requirements into design solutions for SAP&apos;s agentic AI products, connecting user experience to strategic metrics. Managed the Torneo de Innovación 2025 end-to-end, aligning 5 stakeholders and delivering 100% of milestones on time. Created a complete visual identity system with 20 components and assets, ensuring responsiveness and consistency across all event channels.
               </p>
             </div>
 
@@ -473,11 +473,11 @@ export default function HomePage() {
             <div className="timeline-item">
               <div className="timeline-header">
                 <span className="timeline-cargo">Marketing &amp; Events Intern — Labs Events Team</span>
-                <span className="timeline-periodo">Abr 2024 – Dez 2024</span>
+                <span className="timeline-periodo">Apr 2024 – Dec 2024</span>
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">
-                Otimizei a gestão de 10 projetos simultâneos em ambiente ágil com Kanban, reduzindo bloqueios de entrega em 25%. Produzi 30 assets visuais responsivos em Figma e Adobe Suite, colaborando com times de produto, tecnologia e marketing.
+                Optimized the management of 10 simultaneous projects in an agile Kanban environment, reducing delivery blockers by 25%. Produced 30 responsive visual assets in Figma and Adobe Suite, collaborating with product, technology, and marketing teams.
               </p>
             </div>
 
@@ -489,7 +489,7 @@ export default function HomePage() {
               </div>
               <p className="timeline-empresa">Dell</p>
               <p className="timeline-desc">
-                Mapeei e melhorei fluxos operacionais no time de LATAM Field Marketing, reduzindo retrabalho manual em 20%. Criei peças e interfaces centradas no usuário para campanhas digitais, mantendo consistência visual e acessibilidade em 100% das entregas.
+                Mapped and improved operational workflows on the LATAM Field Marketing team, reducing manual rework by 20%. Created user-centered pieces and interfaces for digital campaigns, maintaining visual consistency and accessibility across 100% of deliverables.
               </p>
             </div>
           </div>
@@ -498,39 +498,39 @@ export default function HomePage() {
           <div className="skills-block" data-animate data-delay="2">
             <div className="skill-category">
               <p className="skill-category-title">{t("exp_skill_uxui")}</p>
-              <p className="skill-list">Figma · Prototipagem de Alta Fidelidade · Wireframes · Fluxos de Usuário · Arquitetura da Informação</p>
+              <p className="skill-list">Figma · High-Fidelity Prototyping · Wireframes · User Flows · Information Architecture</p>
             </div>
             <div className="skill-category">
               <p className="skill-category-title">{t("exp_skill_ds")}</p>
-              <p className="skill-list">Bibliotecas de Componentes · Padronização · Handoff para Desenvolvimento</p>
+              <p className="skill-list">Component Libraries · Standardization · Development Handoff</p>
             </div>
             <div className="skill-category">
               <p className="skill-category-title">{t("exp_skill_research")}</p>
-              <p className="skill-list">Testes de Usabilidade · Análise Heurística · Testes A/B · Acessibilidade · Mobile-First</p>
+              <p className="skill-list">Usability Testing · Heuristic Analysis · A/B Testing · Accessibility · Mobile-First</p>
             </div>
             <div className="skill-category">
               <p className="skill-category-title">{t("exp_skill_product")}</p>
-              <p className="skill-list">Colaboração com PMs · Decisões por Dados · Processos Ágeis · Gestão de Stakeholders</p>
+              <p className="skill-list">PM Collaboration · Data-Driven Decisions · Agile Processes · Stakeholder Management</p>
             </div>
             <div className="skill-category">
               <p className="skill-category-title">{t("exp_skill_tools")}</p>
-              <p className="skill-list">Adobe Illustrator · Adobe Photoshop · Canva · Fiori Design System · IA Aplicada ao Design · Claude Code</p>
+              <p className="skill-list">Adobe Illustrator · Adobe Photoshop · Canva · Fiori Design System · AI Applied to Design · Claude Code</p>
             </div>
           </div>
 
           {/* Languages */}
           <div className="idiomas" data-animate data-delay="3">
-            <span className="idioma">🇧🇷 Português — {t("exp_lang_native")}</span>
+            <span className="idioma">🇧🇷 Portuguese — {t("exp_lang_native")}</span>
             <span className="idioma-sep">·</span>
-            <span className="idioma">🇺🇸 Inglês — C1</span>
+            <span className="idioma">🇺🇸 English — C1</span>
             <span className="idioma-sep">·</span>
-            <span className="idioma">🇪🇸 Espanhol — B2</span>
+            <span className="idioma">🇪🇸 Spanish — B2</span>
           </div>
 
           {/* CV Download */}
           <div className="cv-download" data-animate data-delay="4">
             <a
-              href="/Isadora_Cheuiche_UIUX_Designer_Pleno.pdf"
+              href="/Isadora_Cheuiche_UIUX_Designer_EN.pdf"
               download
               className="btn-cv"
             >

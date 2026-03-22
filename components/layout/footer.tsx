@@ -1,10 +1,7 @@
 "use client"
 
-import { useLanguage } from "@/context/language"
-
 export function Footer() {
-  const { lang } = useLanguage()
-  const contactLabel = lang === "en" ? "Let's talk" : "Vamos conversar"
+  const contactLabel = "Let's talk"
 
   return (
     <footer

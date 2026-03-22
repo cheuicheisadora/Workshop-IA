@@ -31,7 +31,7 @@ export default async function ProjectPage({ params }: Props) {
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
         <Button asChild variant="ghost" size="sm" className="mb-8 -ml-2">
           <Link href="/#projetos">
-            <ArrowLeft className="mr-1 h-4 w-4" /> Voltar aos projetos
+            <ArrowLeft className="mr-1 h-4 w-4" /> Back to projects
           </Link>
         </Button>
 
@@ -64,9 +64,9 @@ export default async function ProjectPage({ params }: Props) {
         {/* Overview cards */}
         <div className="mb-12 grid gap-6 sm:grid-cols-3">
           {[
-            { label: "Problema", content: project.problem },
-            { label: "Solução", content: project.solution },
-            { label: "Impacto", content: project.impact },
+            { label: "Problem", content: project.problem },
+            { label: "Solution", content: project.solution },
+            { label: "Impact", content: project.impact },
           ].map(({ label, content }) => (
             <div key={label} className="rounded-xl border border-border bg-card p-5">
               <p
@@ -82,7 +82,7 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* Description */}
         <section className="mb-12">
-          <h2 className="mb-4 text-xl font-semibold text-foreground">Sobre o projeto</h2>
+          <h2 className="mb-4 text-xl font-semibold text-foreground">About the project</h2>
           <p className="text-muted-foreground leading-relaxed">{project.description}</p>
         </section>
 
@@ -92,10 +92,10 @@ export default async function ProjectPage({ params }: Props) {
             <h2 className="text-2xl font-bold text-foreground">Case Study</h2>
 
             {[
-              { label: "Contexto", content: caseStudy.context },
-              { label: "Pesquisa", content: caseStudy.research },
+              { label: "Context", content: caseStudy.context },
+              { label: "Research", content: caseStudy.research },
               { label: "Insights", content: caseStudy.insights },
-              { label: "Resultados", content: caseStudy.results },
+              { label: "Results", content: caseStudy.results },
             ].map(({ label, content }) => (
               <div key={label}>
                 <h3 className="mb-2 font-semibold text-foreground">{label}</h3>
@@ -119,7 +119,7 @@ export default async function ProjectPage({ params }: Props) {
             {caseStudy.prototype && (
               <Button asChild>
                 <a href={caseStudy.prototype} target="_blank" rel="noopener noreferrer">
-                  Ver protótipo <ArrowLeft className="ml-1 h-4 w-4 rotate-180" />
+                  View prototype <ArrowLeft className="ml-1 h-4 w-4 rotate-180" />
                 </a>
               </Button>
             )}
