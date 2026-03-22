@@ -143,7 +143,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Sobre ─────────────────────────────────────────────────── */}
-      <section id="sobre" className="py-32 px-6">
+      <section id="sobre" className="py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mb-16 text-center" data-animate>
             <span className="section-accent-bar" />
@@ -216,7 +216,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Como eu trabalho ──────────────────────────────────────── */}
-      <section className="bg-muted/40 py-32 px-6">
+      <section className="bg-muted/40 py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center" data-animate>
             <span className="section-accent-bar" />
@@ -256,7 +256,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Projects — Bento Grid ──────────────────────────────────── */}
-      <section id="projetos" className="py-32 px-6">
+      <section id="projetos" className="py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center" data-animate>
             <span className="section-accent-bar" />
@@ -324,7 +324,7 @@ export default function HomePage() {
       {/* ── CTA / Contato ─────────────────────────────────────────── */}
       <section
         id="contato"
-        className="py-32 px-6"
+        className="py-20 px-6"
         style={{
           background: "linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 100%)",
         }}
