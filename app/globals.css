@@ -65,17 +65,31 @@
 }
 
 @layer base {
-  * {
+  *, *::before, *::after {
+    box-sizing: border-box;
     border-color: var(--border);
   }
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  p, h1, h2, h3, span {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
 
@@ -319,7 +333,57 @@ h3 {
 
 /* ─── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
+  /* Global section padding */
+  section {
+    padding-inline: 20px;
+  }
+
+  /* Touch targets */
+  nav a,
+  header a,
+  header button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Hero CTA buttons */
+  .hero-cta a,
+  .hero-cta button {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  /* Certificates */
+  .cert-item {
+    gap: 12px;
+    padding: 20px 0;
+  }
+
+  .cert-nome {
+    font-size: 0.9rem;
+  }
+
+  .cert-tags {
+    gap: 4px;
+  }
+
+  .cert-tag {
+    font-size: 0.7rem;
+  }
+
+  /* Project cards — disable hover transforms */
   .project-card-hover {
     transform: none !important;
+  }
+
+  /* Cert item hover — disable side shift */
+  .cert-item:hover {
+    padding-inline: 0;
+    margin-inline: 0;
+    border-radius: 0;
+    background: transparent;
+    border-color: rgba(168, 216, 234, 0.2);
   }
 }

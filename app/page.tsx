@@ -321,121 +321,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Formação e Certificados ───────────────────────────────── */}
-      <section id="certificados" className="py-20 px-6 bg-muted/30">
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-12 text-center" data-animate>
-            <span className="section-accent-bar" />
-            <h2 className="font-bold text-foreground">{t("cert_heading")}</h2>
-          </div>
-
-          <ul className="cert-list">
-            {/* Formação Acadêmica */}
-            {formacao.map((item, i) => (
-              <li
-                key={item.id}
-                className="cert-item formacao"
-                data-animate
-                style={{ transitionDelay: `${i * 0.08}s` }}
-              >
-                <div className="cert-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    width="18"
-                    height="18"
-                    aria-hidden
-                  >
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="cert-nome">
-                    {lang === "en" ? item.nameEn : item.namePt}
-                  </span>
-                  <div className="cert-meta">
-                    <span className="cert-inst destaque">
-                      {lang === "en" ? item.institutionEn : item.institutionPt}
-                    </span>
-                    <span className="cert-sep">·</span>
-                    <span className="cert-data">
-                      {lang === "en" ? item.periodEn : item.periodPt}
-                    </span>
-                  </div>
-                  <div className="cert-tags">
-                    {item.tags.map((tag) => (
-                      <span key={tag} className="cert-tag">
-                        {lang === "en" ? (tagTranslations[tag] ?? tag) : tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </li>
-            ))}
-
-            {/* Separador */}
-            <li className="cert-separator" aria-hidden>
-              <span>{lang === "en" ? "Certificates" : "Certificados"}</span>
-            </li>
-
-            {/* Certificados */}
-            {certificates.map((cert, i) => (
-              <li
-                key={cert.id}
-                className="cert-item"
-                data-animate
-                style={{ transitionDelay: `${(i + formacao.length) * 0.08}s` }}
-              >
-                <div className="cert-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    width="18"
-                    height="18"
-                    aria-hidden
-                  >
-                    <circle cx="12" cy="8" r="6" />
-                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="cert-nome">
-                    {lang === "en" ? cert.nameEn : cert.namePt}
-                  </span>
-                  <div className="cert-meta">
-                    <span className={`cert-inst${cert.highlighted ? " destaque" : ""}`}>
-                      {cert.institution}
-                    </span>
-                    <span className="cert-sep">·</span>
-                    <span className="cert-data">
-                      {lang === "en" ? cert.dateEn : cert.datePt}
-                    </span>
-                  </div>
-                  <div className="cert-tags">
-                    {cert.tags.map((tag) => (
-                      <span key={tag} className="cert-tag">
-                        {lang === "en" ? (tagTranslations[tag] ?? tag) : tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* ── Como eu trabalho ──────────────────────────────────────── */}
       <section className="bg-muted/40 py-20 px-6">
         <div className="mx-auto max-w-5xl">
@@ -557,6 +442,121 @@ export default function HomePage() {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ── Formação e Certificados ───────────────────────────────── */}
+      <section id="certificados" className="py-20 px-6 bg-muted/30">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-12 text-center" data-animate>
+            <span className="section-accent-bar" />
+            <h2 className="font-bold text-foreground">{t("cert_heading")}</h2>
+          </div>
+
+          <ul className="cert-list">
+            {/* Formação Acadêmica */}
+            {formacao.map((item, i) => (
+              <li
+                key={item.id}
+                className="cert-item formacao"
+                data-animate
+                style={{ transitionDelay: `${i * 0.08}s` }}
+              >
+                <div className="cert-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    width="18"
+                    height="18"
+                    aria-hidden
+                  >
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="cert-nome">
+                    {lang === "en" ? item.nameEn : item.namePt}
+                  </span>
+                  <div className="cert-meta">
+                    <span className="cert-inst destaque">
+                      {lang === "en" ? item.institutionEn : item.institutionPt}
+                    </span>
+                    <span className="cert-sep">·</span>
+                    <span className="cert-data">
+                      {lang === "en" ? item.periodEn : item.periodPt}
+                    </span>
+                  </div>
+                  <div className="cert-tags">
+                    {item.tags.map((tag) => (
+                      <span key={tag} className="cert-tag">
+                        {lang === "en" ? (tagTranslations[tag] ?? tag) : tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+
+            {/* Separador */}
+            <li className="cert-separator" aria-hidden>
+              <span>{lang === "en" ? "Certificates" : "Certificados"}</span>
+            </li>
+
+            {/* Certificados */}
+            {certificates.map((cert, i) => (
+              <li
+                key={cert.id}
+                className="cert-item"
+                data-animate
+                style={{ transitionDelay: `${(i + formacao.length) * 0.08}s` }}
+              >
+                <div className="cert-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    width="18"
+                    height="18"
+                    aria-hidden
+                  >
+                    <circle cx="12" cy="8" r="6" />
+                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="cert-nome">
+                    {lang === "en" ? cert.nameEn : cert.namePt}
+                  </span>
+                  <div className="cert-meta">
+                    <span className={`cert-inst${cert.highlighted ? " destaque" : ""}`}>
+                      {cert.institution}
+                    </span>
+                    <span className="cert-sep">·</span>
+                    <span className="cert-data">
+                      {lang === "en" ? cert.dateEn : cert.datePt}
+                    </span>
+                  </div>
+                  <div className="cert-tags">
+                    {cert.tags.map((tag) => (
+                      <span key={tag} className="cert-tag">
+                        {lang === "en" ? (tagTranslations[tag] ?? tag) : tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
