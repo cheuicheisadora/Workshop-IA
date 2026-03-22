@@ -12,7 +12,7 @@ interface ProjectCardProps {
   project: Project
 }
 
-function ProjectCover({ project, hovered }: { project: Project; hovered: boolean }) {
+function ProjectCover({ project }: { project: Project }) {
   const [imgFailed, setImgFailed] = useState(false)
   const { t } = useLanguage()
   const showImage = project.images[0] && !imgFailed
@@ -57,14 +57,20 @@ function ProjectCover({ project, hovered }: { project: Project; hovered: boolean
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const [hovered, setHovered] = useState(false)
+  const { lang } = useLanguage()
   const accent = project.accentColor ?? "var(--primary)"
+
+  const isEn = lang === "en"
+  const description = isEn ? (project.description_en ?? project.description) : project.description
+  const role = isEn ? (project.role_en ?? project.role) : project.role
+  const tools = isEn ? (project.tools_en ?? project.tools) : project.tools
 
   const content = (
     <Card className="overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg">
-      <ProjectCover project={project} hovered={hovered} />
+      <ProjectCover project={project} />
       <CardContent className="p-5">
         <div className="mb-2 flex flex-wrap gap-1.5">
-          {project.tools.slice(0, 3).map((tool) => (
+          {tools.slice(0, 3).map((tool) => (
             <Badge
               key={tool}
               style={{
@@ -83,9 +89,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         >
           {project.title}
         </h3>
-        <p className="text-sm text-muted-foreground line-clamp-2">{project.description}</p>
+        <p className="text-sm text-muted-foreground line-clamp-2">{description}</p>
         <p className="mt-3 text-xs font-medium" style={{ color: accent }}>
-          {project.role}
+          {role}
         </p>
       </CardContent>
       {/* Bottom accent line — exact project color */}

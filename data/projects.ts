@@ -5,6 +5,10 @@ export type Project = {
   description: string
   role: string
   tools: string[]
+  // English variants
+  description_en?: string
+  role_en?: string
+  tools_en?: string[]
   problem: string
   solution: string
   impact: string
@@ -30,8 +34,12 @@ export const projects: Project[] = [
     title: "Redesign App Itaú",
     description:
       "Redesign completo da experiência do aplicativo do Banco Itaú, com foco em usabilidade, hierarquia visual e fluidez na jornada do usuário.",
+    description_en:
+      "Complete redesign of the Itaú Bank app experience, focused on usability, visual hierarchy, and fluidity throughout the user journey.",
     role: "UX/UI · Case Study · EBAC",
+    role_en: "UX/UI · Case Study · EBAC",
     tools: ["Figma", "UX Research", "Prototipagem"],
+    tools_en: ["Figma", "UX Research", "Prototyping"],
     problem: "Jornadas complexas e hierarquia visual pouco clara dificultavam tarefas cotidianas dos usuários.",
     solution: "Redesign centrado no usuário com fluxos simplificados e sistema visual coerente.",
     impact: "Maior clareza na hierarquia e fluidez na navegação entre as principais funcionalidades.",
@@ -47,8 +55,12 @@ export const projects: Project[] = [
     title: "Glaucia Beatriz Pâtisserie",
     description:
       "Criação de identidade visual completa para uma pâtisserie artesanal — do naming ao sistema de marca, com elegância e sofisticação.",
+    description_en:
+      "Complete visual identity for an artisan pâtisserie — from naming to full brand system, built with elegance and sophistication.",
     role: "Branding · Identidade Visual · Logotipo",
+    role_en: "Branding · Visual Identity · Logo Design",
     tools: ["Illustrator", "Figma", "Branding"],
+    tools_en: ["Illustrator", "Figma", "Branding"],
     problem: "Marca sem identidade visual definida, dificultando o posicionamento premium no mercado.",
     solution: "Sistema de identidade visual completo com paleta, tipografia e manual de marca.",
     impact: "Posicionamento visual sofisticado alinhado ao público-alvo da pâtisserie.",
@@ -64,8 +76,12 @@ export const projects: Project[] = [
     title: "Feed Me App",
     description:
       "Case study de um aplicativo mobile de alimentação saudável — desde a pesquisa com usuários até a entrega dos protótipos navegáveis.",
+    description_en:
+      "Case study of a healthy eating mobile app — from user research all the way to the delivery of navigable prototypes.",
     role: "UI/UX · Mobile App · Case Study",
+    role_en: "UI/UX · Mobile App · Case Study",
     tools: ["Figma", "Prototipagem", "FigJam"],
+    tools_en: ["Figma", "Prototyping", "FigJam"],
     problem: "Usuários encontravam dificuldade em manter uma alimentação saudável por falta de guia prático.",
     solution: "App mobile com jornada gamificada, receitas personalizadas e rastreamento nutricional.",
     impact: "Protótipo validado com usuários reais, com alta taxa de satisfação nos testes.",
