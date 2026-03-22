@@ -172,7 +172,7 @@ export default function HomePage() {
               <div className="pt-2">
                 <Button
                   asChild
-                  size="sm"
+                  size="lg"
                   style={{ background: "var(--primary-deep)", color: "#fff" }}
                   className="hover:opacity-90 transition-opacity"
                 >
