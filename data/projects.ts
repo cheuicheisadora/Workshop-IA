@@ -37,7 +37,7 @@ export const projects: Project[] = [
     impact: "Maior clareza na hierarquia e fluidez na navegação entre as principais funcionalidades.",
     images: [],
     placeholderGradient: "linear-gradient(135deg, #F97316 0%, #FB923C 50%, #FDBA74 100%)",
-    accentColor: "#A8D8EA",
+    accentColor: "#F97316",
     externalUrl: "https://www.behance.net/gallery/245625317/Redesign-do-App-Itau-Projeto-UXUI-EBAC",
     featured: true,
   },
