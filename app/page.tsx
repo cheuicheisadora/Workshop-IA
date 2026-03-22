@@ -71,8 +71,8 @@ export default function HomePage() {
           </span>
 
           <h1
-            className="hero-reveal mb-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl"
-            style={{ animationDelay: "0.15s" }}
+            className="hero-reveal mb-5 font-bold text-foreground"
+            style={{ animationDelay: "0.15s", fontSize: "clamp(2.2rem, 5vw, 4rem)", letterSpacing: "-0.02em", lineHeight: 1.08 }}
           >
             {t("hero_title_1")}{" "}
             <span style={{ color: "var(--primary-deep)" }}>
@@ -86,8 +86,8 @@ export default function HomePage() {
           />
 
           <p
-            className="hero-reveal mb-10 text-base text-muted-foreground max-w-xl mx-auto leading-relaxed"
-            style={{ animationDelay: "0.4s" }}
+            className="hero-reveal mb-10 text-base text-muted-foreground max-w-xl mx-auto"
+            style={{ animationDelay: "0.4s", fontSize: "clamp(1rem, 1.8vw, 1.15rem)", lineHeight: 1.75 }}
           >
             {t("hero_subtitle")}
           </p>
@@ -102,9 +102,16 @@ export default function HomePage() {
               style={{ background: "var(--primary-deep)", color: "#fff" }}
               className="hover:opacity-90 transition-opacity"
             >
-              <Link href="#projetos">
+              <a
+                href="#projetos"
+                onClick={(e) => {
+                  e.preventDefault()
+                  history.replaceState(null, "", "#projetos")
+                  document.getElementById("projetos")?.scrollIntoView({ behavior: "smooth" })
+                }}
+              >
                 {t("hero_btn_projects")} <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
+              </a>
             </Button>
             <Button
               asChild
@@ -112,7 +119,16 @@ export default function HomePage() {
               variant="outline"
               style={{ borderColor: "var(--primary)" }}
             >
-              <a href="#contato">{t("hero_btn_contact")}</a>
+              <a
+                href="#contato"
+                onClick={(e) => {
+                  e.preventDefault()
+                  history.replaceState(null, "", "#contato")
+                  document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })
+                }}
+              >
+                {t("hero_btn_contact")}
+              </a>
             </Button>
           </div>
         </div>

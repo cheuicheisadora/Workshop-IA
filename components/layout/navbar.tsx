@@ -2,17 +2,44 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useLanguage } from "@/context/language"
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
   const { lang, setLang, t } = useLanguage()
+  const pathname = usePathname()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]")
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { threshold: 0.4 }
+    )
+    sections.forEach((s) => obs.observe(s))
+    return () => obs.disconnect()
+  }, [])
+
+  function handleAnchor(id: string, e: React.MouseEvent) {
+    e.preventDefault()
+    if (pathname === "/") {
+      history.replaceState(null, "", "#" + id)
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+    } else {
+      window.location.href = "/#" + id
+    }
+  }
 
   return (
     <header
@@ -41,18 +68,30 @@ export function Navbar() {
         {/* Right side */}
         <nav className="flex items-center gap-6">
           {/* Primary nav links */}
-          <Link
-            href="/#projetos"
-            className="nav-link text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+          <a
+            href="#projetos"
+            onClick={(e) => handleAnchor("projetos", e)}
+            className={`nav-link text-sm transition-colors duration-200${activeSection === "projetos" ? " active" : ""}`}
+            style={
+              activeSection === "projetos"
+                ? { color: "var(--primary-deep)" }
+                : { color: "var(--foreground-muted)" }
+            }
           >
             {t("nav_projects")}
-          </Link>
-          <Link
-            href="/#sobre"
-            className="nav-link text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+          </a>
+          <a
+            href="#sobre"
+            onClick={(e) => handleAnchor("sobre", e)}
+            className={`nav-link text-sm transition-colors duration-200${activeSection === "sobre" ? " active" : ""}`}
+            style={
+              activeSection === "sobre"
+                ? { color: "var(--primary-deep)" }
+                : { color: "var(--foreground-muted)" }
+            }
           >
             {t("nav_about")}
-          </Link>
+          </a>
 
           {/* Visual separator */}
           <div
@@ -121,13 +160,14 @@ export function Navbar() {
           </div>
 
           {/* CTA */}
-          <Link
-            href="/#contato"
+          <a
+            href="#contato"
+            onClick={(e) => handleAnchor("contato", e)}
             className="inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-85"
             style={{ background: "var(--primary-deep)" }}
           >
             {t("nav_contact")}
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

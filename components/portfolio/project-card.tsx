@@ -66,7 +66,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const tools = isEn ? (project.tools_en ?? project.tools) : project.tools
 
   const content = (
-    <Card className="overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg">
+    <Card
+      className="overflow-hidden"
+      style={{
+        transform: hovered ? "translateY(-8px)" : "translateY(0)",
+        boxShadow: hovered
+          ? "0 24px 48px rgba(168,216,234,0.18), 0 8px 16px rgba(0,0,0,0.06)"
+          : "0 1px 3px rgba(0,0,0,0.06)",
+        outline: hovered ? "1.5px solid #A8D8EA" : "1.5px solid transparent",
+        transition:
+          "transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease, outline-color 0.35s ease",
+      }}
+    >
       <ProjectCover project={project} />
       <CardContent className="p-5">
         <div className="mb-2 flex flex-wrap gap-1.5">

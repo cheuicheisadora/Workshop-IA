@@ -180,3 +180,29 @@
 .mesh-orb-1 { animation: float1 9s ease-in-out infinite; }
 .mesh-orb-2 { animation: float2 12s ease-in-out infinite; }
 .mesh-orb-3 { animation: float3 10s ease-in-out infinite 1s; }
+
+/* ─── Typography scale ───────────────────────────────────── */
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+h3 {
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 600;
+}
+
+/* ─── Active nav link ────────────────────────────────────── */
+.nav-link.active {
+  color: var(--primary-deep);
+}
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── Mobile ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .project-card-hover {
+    transform: none !important;
+  }
+}
