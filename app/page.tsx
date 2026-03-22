@@ -1,4 +1,4 @@
-import { db } from "@/lib/db"
+import { projects } from "@/data/projects"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { ProjectCard } from "@/components/portfolio/project-card"
@@ -39,21 +39,7 @@ const features = [
   },
 ]
 
-async function getProjects() {
-  try {
-    return await db.project.findMany({
-      where: { published: true },
-      orderBy: [{ featured: "desc" }, { order: "asc" }],
-      take: 6,
-    })
-  } catch {
-    return []
-  }
-}
-
-export default async function HomePage() {
-  const projects = await getProjects()
-
+export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
@@ -106,12 +92,9 @@ export default async function HomePage() {
       <section id="sobre" className="bg-muted/40 py-20 px-6">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-foreground">
-              Como eu trabalho
-            </h2>
+            <h2 className="text-3xl font-bold text-foreground">Como eu trabalho</h2>
             <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-              Cada projeto nasce de uma pergunta real e termina com impacto
-              mensurável.
+              Cada projeto nasce de uma pergunta real e termina com impacto mensurável.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -128,9 +111,7 @@ export default async function HomePage() {
                   >
                     <Icon className="h-5 w-5 text-foreground" />
                   </div>
-                  <h3 className="mb-2 font-semibold text-foreground">
-                    {feature.title}
-                  </h3>
+                  <h3 className="mb-2 font-semibold text-foreground">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
@@ -159,32 +140,20 @@ export default async function HomePage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border bg-muted/30 py-20 text-center">
-              <p className="text-muted-foreground">
-                Projetos em breve — fique ligado!
-              </p>
+              <p className="text-muted-foreground">Projetos em breve — fique ligado!</p>
             </div>
           )}
         </div>
       </section>
 
       {/* CTA */}
-      <section
-        className="py-20 px-6"
-        style={{ background: "var(--primary)" }}
-      >
+      <section className="py-20 px-6" style={{ background: "var(--primary)" }}>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-foreground">
-            Vamos conversar?
-          </h2>
+          <h2 className="mb-4 text-3xl font-bold text-foreground">Vamos conversar?</h2>
           <p className="mb-8 text-foreground/80">
-            Estou disponível para projetos freelance, oportunidades full-time e
-            colaborações criativas.
+            Estou disponível para projetos freelance, oportunidades full-time e colaborações criativas.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-foreground text-background hover:bg-foreground/90"
-          >
+          <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90">
             <a href="mailto:isadora@example.com">Enviar mensagem</a>
           </Button>
         </div>

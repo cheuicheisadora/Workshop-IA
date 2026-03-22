@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import type { Project } from "@prisma/client"
+import type { Project } from "@/data/projects"
 
 interface ProjectCardProps {
   project: Project
@@ -33,12 +33,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <h3 className="mb-1 text-lg font-semibold text-foreground leading-snug">
             {project.title}
           </h3>
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {project.description}
-          </p>
-          <p className="mt-3 text-xs text-muted-foreground font-medium">
-            {project.role}
-          </p>
+          <p className="text-sm text-muted-foreground line-clamp-2">{project.description}</p>
+          <p className="mt-3 text-xs text-muted-foreground font-medium">{project.role}</p>
         </CardContent>
       </Card>
     </Link>

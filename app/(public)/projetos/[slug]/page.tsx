@@ -1,25 +1,15 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { db } from "@/lib/db"
+import { projects, getProjectBySlug } from "@/data/projects"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
-export const dynamic = "force-dynamic"
-
-export async function generateStaticParams() {
-  try {
-    const projects = await db.project.findMany({
-      where: { published: true },
-      select: { slug: true },
-    })
-    return projects.map((p) => ({ slug: p.slug }))
-  } catch {
-    return []
-  }
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }))
 }
 
 interface Props {
@@ -28,10 +18,7 @@ interface Props {
 
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params
-  const project = await db.project.findUnique({
-    where: { slug, published: true },
-    include: { caseStudy: true },
-  })
+  const project = getProjectBySlug(slug)
 
   if (!project) notFound()
 
@@ -74,7 +61,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         )}
 
-        {/* Overview */}
+        {/* Overview cards */}
         <div className="mb-12 grid gap-6 sm:grid-cols-3">
           {[
             { label: "Problema", content: project.problem },
@@ -95,12 +82,8 @@ export default async function ProjectPage({ params }: Props) {
 
         {/* Description */}
         <section className="mb-12">
-          <h2 className="mb-4 text-xl font-semibold text-foreground">
-            Sobre o projeto
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            {project.description}
-          </p>
+          <h2 className="mb-4 text-xl font-semibold text-foreground">Sobre o projeto</h2>
+          <p className="text-muted-foreground leading-relaxed">{project.description}</p>
         </section>
 
         {/* Case Study */}
