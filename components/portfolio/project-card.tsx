@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import type { Project } from "@/data/projects"
 import { ArrowUpRight } from "lucide-react"
+import { useLanguage } from "@/context/language"
 
 interface ProjectCardProps {
   project: Project
@@ -13,6 +14,7 @@ interface ProjectCardProps {
 
 function ProjectCover({ project, hovered }: { project: Project; hovered: boolean }) {
   const [imgFailed, setImgFailed] = useState(false)
+  const { t } = useLanguage()
   const showImage = project.images[0] && !imgFailed
   const accent = project.accentColor ?? "var(--primary)"
 
@@ -45,7 +47,7 @@ function ProjectCover({ project, hovered }: { project: Project; hovered: boolean
           className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-white shadow-lg"
           style={{ background: accent }}
         >
-          {project.externalUrl ? "Ver no Behance" : "Ver Projeto"}
+          {project.externalUrl ? t("card_view_behance") : t("card_view_project")}
           <ArrowUpRight className="h-4 w-4" />
         </span>
       </div>

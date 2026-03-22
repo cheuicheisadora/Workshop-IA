@@ -65,7 +65,7 @@ export const projects: Project[] = [
     description:
       "Case study de um aplicativo mobile de alimentação saudável — desde a pesquisa com usuários até a entrega dos protótipos navegáveis.",
     role: "UI/UX · Mobile App · Case Study",
-    tools: ["Figma", "Maze", "FigJam"],
+    tools: ["Figma", "Prototipagem", "FigJam"],
     problem: "Usuários encontravam dificuldade em manter uma alimentação saudável por falta de guia prático.",
     solution: "App mobile com jornada gamificada, receitas personalizadas e rastreamento nutricional.",
     impact: "Protótipo validado com usuários reais, com alta taxa de satisfação nos testes.",

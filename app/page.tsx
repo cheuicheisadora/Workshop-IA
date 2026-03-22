@@ -1,3 +1,5 @@
+"use client"
+
 import { projects } from "@/data/projects"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
@@ -5,38 +7,15 @@ import { ProjectCard } from "@/components/portfolio/project-card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Layers, GitBranch, BarChart2, Users, Lightbulb, ChevronDown, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
+import { useLanguage, TranslationKey } from "@/context/language"
 
-const features = [
-  {
-    icon: Layers,
-    title: "Projetos com abordagem end-to-end",
-    description:
-      "Do discovery à entrega: pesquisa, síntese, ideação, prototipagem e validação em cada projeto.",
-  },
-  {
-    icon: GitBranch,
-    title: "Processo de Design estruturado",
-    description:
-      "Metodologia clara que une Design Thinking, UX Research e critérios de negócio em cada decisão.",
-  },
-  {
-    icon: BarChart2,
-    title: "Foco em impacto e métricas",
-    description:
-      "Decisões de design guiadas por dados reais — conversão, retenção, satisfação e acessibilidade.",
-  },
-  {
-    icon: Users,
-    title: "Colaboração multidisciplinar",
-    description:
-      "Trabalho integrado com times de produto, engenharia e negócios para alinhar visão e execução.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Pensamento estratégico + execução visual",
-    description:
-      "Visão sistêmica do produto aliada à entrega de interfaces polidas e acessíveis.",
-  },
+const featureIcons = [Layers, GitBranch, BarChart2, Users, Lightbulb]
+const featureKeys: Array<{ titleKey: TranslationKey; descKey: TranslationKey }> = [
+  { titleKey: "feature_1_title", descKey: "feature_1_desc" },
+  { titleKey: "feature_2_title", descKey: "feature_2_desc" },
+  { titleKey: "feature_3_title", descKey: "feature_3_desc" },
+  { titleKey: "feature_4_title", descKey: "feature_4_desc" },
+  { titleKey: "feature_5_title", descKey: "feature_5_desc" },
 ]
 
 const skills = [
@@ -53,6 +32,8 @@ const skills = [
 ]
 
 export default function HomePage() {
+  const { t } = useLanguage()
+
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
@@ -85,16 +66,16 @@ export default function HomePage() {
               animationDelay: "0s",
             }}
           >
-            UX/UI Designer
+            {t("hero_tag")}
           </span>
 
           <h1
             className="hero-reveal mb-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl"
             style={{ animationDelay: "0.15s" }}
           >
-            Sou uma UX/UI Designer que transforma problemas complexos em{" "}
+            {t("hero_title_1")}{" "}
             <span style={{ color: "var(--primary-deep)" }}>
-              experiências simples e intuitivas
+              {t("hero_title_accent")}
             </span>
           </h1>
 
@@ -107,9 +88,7 @@ export default function HomePage() {
             className="hero-reveal mb-10 text-base text-muted-foreground max-w-xl mx-auto leading-relaxed"
             style={{ animationDelay: "0.4s" }}
           >
-            Foco em design centrado no usuário, criando soluções digitais que
-            equilibram necessidades do negócio e experiência real das pessoas.
-            Experiência em UX, UI e Product Thinking
+            {t("hero_subtitle")}
           </p>
 
           <div
@@ -123,7 +102,7 @@ export default function HomePage() {
               className="hover:opacity-90 transition-opacity"
             >
               <Link href="#projetos">
-                Ver projetos <ArrowRight className="ml-1 h-4 w-4" />
+                {t("hero_btn_projects")} <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
             <Button
@@ -132,7 +111,7 @@ export default function HomePage() {
               variant="outline"
               style={{ borderColor: "var(--primary)" }}
             >
-              <a href="#contato">Entrar em contato</a>
+              <a href="#contato">{t("hero_btn_contact")}</a>
             </Button>
           </div>
         </div>
@@ -148,32 +127,19 @@ export default function HomePage() {
           <div className="mb-16 text-center" data-animate>
             <span className="section-accent-bar" />
             <h2 className="text-4xl font-bold text-foreground sm:text-5xl tracking-tight">
-              Sobre mim
+              {t("about_heading")}
             </h2>
           </div>
 
           <div className="grid gap-16 lg:grid-cols-[1fr_300px] items-start">
             {/* Bio */}
             <div data-animate data-delay="1" className="space-y-6 text-base leading-[1.85] text-muted-foreground">
+              <p>{t("about_p1")}</p>
+              <p>{t("about_p2")}</p>
               <p>
-                Comecei no design através da formação em UX/UI pela EBAC e, desde então, venho
-                construindo minha experiência com foco em produto digital e decisões orientadas por
-                usuário. Hoje, atuo como estagiária de UX/UI na SAP, participando do desenvolvimento
-                de soluções que exigem clareza, consistência e visão de escala.
-              </p>
-              <p>
-                Neste portfólio, apresento projetos como o Feed Me App e o redesign do app do Itaú,
-                nos quais conduzi o processo de ponta a ponta, passando por pesquisa, definição de
-                problemas, ideação e prototipação. São trabalhos que refletem minha forma de pensar:
-                prática, estruturada e sempre conectada ao impacto real no usuário.
-              </p>
-              <p>
-                Além disso, já atuei com branding de eventos, o que fortaleceu minha sensibilidade
-                para narrativa e identidade visual. Tenho domínio avançado de Figma e, recentemente,
-                passei a explorar o desenvolvimento de interfaces com{" "}
-                <strong className="font-semibold text-foreground">Claude Code</strong>. Inclusive,
-                este portfólio foi inteiramente criado por mim utilizando essa abordagem, aproximando
-                ainda mais meu trabalho do contexto técnico e da implementação.
+                {t("about_p3_before")}{" "}
+                <strong className="font-semibold text-foreground">Claude Code</strong>
+                {t("about_p3_after")}
               </p>
               <div className="pt-2">
                 <Button
@@ -182,7 +148,7 @@ export default function HomePage() {
                   style={{ background: "var(--primary-deep)", color: "#fff" }}
                   className="hover:opacity-90 transition-opacity"
                 >
-                  <a href="mailto:cheuicheisadora@gmail.com">Vamos conversar</a>
+                  <a href="mailto:cheuicheisadora@gmail.com">{t("about_btn")}</a>
                 </Button>
               </div>
             </div>
@@ -193,7 +159,7 @@ export default function HomePage() {
                 className="mb-4 text-xs font-semibold uppercase tracking-widest"
                 style={{ color: "var(--primary-deep)" }}
               >
-                Competências
+                {t("skills_heading")}
               </p>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
@@ -220,17 +186,17 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center" data-animate>
             <span className="section-accent-bar" />
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Como eu trabalho</h2>
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{t("work_heading")}</h2>
             <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-              Cada projeto nasce de uma pergunta real e termina com impacto mensurável.
+              {t("work_subtitle")}
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, i) => {
-              const Icon = feature.icon
+            {featureKeys.map((feature, i) => {
+              const Icon = featureIcons[i]
               return (
                 <div
-                  key={feature.title}
+                  key={feature.titleKey}
                   data-animate
                   data-delay={String(i + 1)}
                   className="rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
@@ -244,9 +210,9 @@ export default function HomePage() {
                   >
                     <Icon className="h-5 w-5" style={{ color: "var(--primary-deep)" }} />
                   </div>
-                  <h3 className="mb-2 font-semibold text-foreground">{feature.title}</h3>
+                  <h3 className="mb-2 font-semibold text-foreground">{t(feature.titleKey)}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    {feature.description}
+                    {t(feature.descKey)}
                   </p>
                 </div>
               )
@@ -260,9 +226,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center" data-animate>
             <span className="section-accent-bar" />
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Projetos</h2>
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{t("projects_heading")}</h2>
             <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-              Cases reais com processo, desafios e resultados.
+              {t("projects_subtitle")}
             </p>
           </div>
 
@@ -298,7 +264,7 @@ export default function HomePage() {
                     Behance
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Todos os projetos com processo completo documentado.
+                    {t("behance_cta_text")}
                   </p>
                 </div>
                 <a
@@ -308,7 +274,7 @@ export default function HomePage() {
                   className="mt-6 flex items-center gap-1 text-sm font-semibold transition-opacity hover:opacity-70"
                   style={{ color: "var(--primary-deep)" }}
                 >
-                  Ver perfil completo <ArrowUpRight className="h-4 w-4" />
+                  {t("behance_cta_link")} <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
 
@@ -330,16 +296,16 @@ export default function HomePage() {
         }}
       >
         <div className="mx-auto max-w-2xl text-center" data-animate>
-          <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">Vamos conversar?</h2>
+          <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t("cta_heading")}</h2>
           <p className="mb-8 text-foreground/80 max-w-lg mx-auto">
-            Estou disponível para projetos freelance, oportunidades full-time e colaborações criativas.
+            {t("cta_subtitle")}
           </p>
           <Button
             asChild
             size="lg"
             className="bg-foreground text-background hover:bg-foreground/90 shadow-lg"
           >
-            <a href="mailto:cheuicheisadora@gmail.com">Enviar mensagem</a>
+            <a href="mailto:cheuicheisadora@gmail.com">{t("cta_btn")}</a>
           </Button>
         </div>
       </section>
