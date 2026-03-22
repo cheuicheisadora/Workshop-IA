@@ -463,7 +463,7 @@ export default function HomePage() {
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">
-                Conduzi o ciclo completo de design em 3 produtos digitais globais: arquitetura da informação, wireframes, protótipos de alta fidelidade e handoff no Figma, reduzindo ciclos de revisão em 30%. Estruturei e mantive o design system do produto, organizando bibliotecas de componentes e padrões visuais que garantiram consistência em 100% das interfaces de 2 squads. Realizei análises heurísticas, testes de usabilidade e testes A/B, gerando melhorias que elevaram a satisfação dos usuários em 2 sprints consecutivos.
+                Conduzi o ciclo completo de design em 2 produtos digitais globais: arquitetura da informação, wireframes, protótipos de alta fidelidade e handoff no Figma, reduzindo ciclos de revisão em 30%. Estruturei e mantive o design system do produto, organizando bibliotecas de componentes e padrões visuais que garantiram consistência em 100% das interfaces de 2 squads. Realizei análises heurísticas, testes de usabilidade e testes A/B, gerando melhorias que elevaram a satisfação dos usuários em 2 sprints consecutivos.
               </p>
             </div>
 
