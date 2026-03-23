@@ -47,7 +47,7 @@ function ProjectCover({ project }: { project: Project }) {
           className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-white shadow-lg"
           style={{ background: accent }}
         >
-          {project.externalUrl ? t("card_view_behance") : t("card_view_project")}
+          {project.externalUrl && !project.behanceUrl ? t("card_view_behance") : t("card_view_project")}
           <ArrowUpRight className="h-4 w-4" />
         </span>
       </div>
@@ -124,7 +124,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </Card>
   )
 
-  if (project.externalUrl) {
+  // Project with behanceUrl: has its own internal page
+  if (project.externalUrl && !project.behanceUrl) {
     return (
       <a
         href={project.externalUrl}

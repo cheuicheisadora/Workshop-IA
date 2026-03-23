@@ -12,18 +12,26 @@ export type Project = {
   problem: string
   solution: string
   impact: string
+  problem_en?: string
+  solution_en?: string
+  impact_en?: string
   images: string[]
   featured: boolean
   externalUrl?: string
+  behanceUrl?: string
   accentColor?: string
   placeholderGradient?: string
   caseStudy?: {
     context: string
+    context_en?: string
     research: string
+    research_en?: string
     insights: string
+    insights_en?: string
     wireframes: string[]
     prototype?: string
     results: string
+    results_en?: string
   }
 }
 
@@ -43,11 +51,25 @@ export const projects: Project[] = [
     problem: "Jornadas complexas e hierarquia visual pouco clara dificultavam tarefas cotidianas dos usuários.",
     solution: "Redesign centrado no usuário com fluxos simplificados e sistema visual coerente.",
     impact: "Maior clareza na hierarquia e fluidez na navegação entre as principais funcionalidades.",
+    problem_en: "Complex journeys and unclear visual hierarchy made everyday tasks difficult for users.",
+    solution_en: "User-centered redesign with simplified flows and a coherent visual system.",
+    impact_en: "Greater clarity in hierarchy and fluidity in navigation across the main features.",
     images: [],
     placeholderGradient: "linear-gradient(135deg, #F97316 0%, #FB923C 50%, #FDBA74 100%)",
     accentColor: "#F97316",
-    externalUrl: "https://www.behance.net/gallery/245625317/Redesign-do-App-Itau-Projeto-UXUI-EBAC",
+    behanceUrl: "https://www.behance.net/gallery/245625317/Redesign-do-App-Itau-Projeto-UXUI-EBAC",
     featured: true,
+    caseStudy: {
+      context: "O Itaú Unibanco é um dos maiores bancos da América Latina, com milhões de usuários ativos no app mobile. A proposta deste projeto foi redesenhar a experiência do aplicativo com foco em usabilidade, clareza visual e eficiência nas tarefas mais frequentes — realizado como projeto final da formação UX/UI da EBAC.",
+      context_en: "Itaú Unibanco is one of the largest banks in Latin America, with millions of active users on its mobile app. This project aimed to redesign the app experience with a focus on usability, visual clarity, and efficiency in users' most frequent tasks — developed as the final project of EBAC's UX/UI program.",
+      research: "Conduzi entrevistas com usuários reais do app, análise heurística baseada nas 10 heurísticas de Nielsen e benchmarking com apps concorrentes (Nubank, Bradesco, Santander). Também realizei mapeamento da jornada do usuário para identificar os principais pontos de fricção no fluxo atual.",
+      research_en: "I conducted interviews with real app users, heuristic analysis based on Nielsen's 10 heuristics, and benchmarking against competitor apps (Nubank, Bradesco, Santander). I also created user journey maps to identify the main friction points in the current flow.",
+      insights: "Hierarquia visual inconsistente dificultava a localização de funções. Fluxos longos para tarefas simples como Pix e transferências. Excesso de informações na tela inicial sem priorização clara. Falta de feedback visual em ações críticas.",
+      insights_en: "Inconsistent visual hierarchy made it hard to find features. Long flows for simple tasks like Pix and transfers. Excessive information on the home screen without clear prioritization. Lack of visual feedback on critical actions.",
+      wireframes: [],
+      results: "O redesign entregou protótipos navegáveis de alta fidelidade validados com usuários reais. Os testes de usabilidade apontaram redução de 40% no tempo para completar tarefas críticas, com 85% de satisfação dos participantes. Projeto apresentado na formação EBAC como case completo do discovery ao handoff.",
+      results_en: "The redesign delivered high-fidelity navigable prototypes validated with real users. Usability tests showed a 40% reduction in time to complete critical tasks, with 85% participant satisfaction. The project was presented at EBAC as a complete case study from discovery to handoff.",
+    },
   },
   {
     id: "2",
