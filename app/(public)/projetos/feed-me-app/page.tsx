@@ -179,30 +179,6 @@ export default function FeedMeAppPage() {
         className="relative flex min-h-[480px] flex-col justify-end overflow-hidden px-6 pb-16 pt-32"
         style={{ background: "linear-gradient(135deg, #2d7a56 0%, #3d9467 30%, #5BAB80 55%, #89CBA8 80%, #C5E8D5 100%)" }}
       >
-        {/* decorative leaf-like shapes */}
-        {[
-          { top: "10%", left: "18%", size: 56, opacity: 0.18, rotate: 15 },
-          { top: "6%",  left: "36%", size: 40, opacity: 0.13, rotate: -10 },
-          { top: "18%", left: "54%", size: 68, opacity: 0.15, rotate: 25 },
-          { top: "4%",  left: "70%", size: 48, opacity: 0.12, rotate: -5 },
-          { top: "28%", left: "79%", size: 36, opacity: 0.17, rotate: 20 },
-          { top: "14%", left: "87%", size: 58, opacity: 0.1,  rotate: -15 },
-          { top: "33%", left: "62%", size: 34, opacity: 0.14, rotate: 10 },
-        ].map((sq, i) => (
-          <div
-            key={i}
-            aria-hidden
-            className="absolute rounded-xl border-2 border-white"
-            style={{
-              top: sq.top,
-              left: sq.left,
-              width: sq.size,
-              height: sq.size,
-              opacity: sq.opacity,
-              transform: `rotate(${sq.rotate}deg)`,
-            }}
-          />
-        ))}
 
         <div className="relative mx-auto w-full max-w-5xl">
           <Link
