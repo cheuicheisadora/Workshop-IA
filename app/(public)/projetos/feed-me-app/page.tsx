@@ -33,7 +33,7 @@ const content = {
     steps: [
       {
         icon: Search,
-        title: "Discovery",
+        title: "Descoberta",
         desc: "Pesquisa sobre hábitos culinários e análise de concorrentes como Instagram, Pinterest, TikTok e Tasty.",
       },
       {
@@ -43,7 +43,7 @@ const content = {
       },
       {
         icon: PenTool,
-        title: "Design",
+        title: "Criação",
         desc: "Sistema de componentes, arquitetura de informação das 5 telas principais e identidade visual verde.",
       },
       {
@@ -81,11 +81,11 @@ const content = {
     metrics: [
       { value: "5", label: "Telas principais: Home, Explorar, Chat, Receitas e Perfil" },
       { value: "3", label: "Features sociais: Follow, Chat e Share integrados ao app" },
-      { value: "2025", label: "Case study concluído na formação UX/UI da EBAC" },
+      { value: "2025", label: "Projeto concluído na formação UX/UI da EBAC" },
     ],
     contextTitle: "Contexto",
     contextText:
-      "O FeedMe é uma rede social de receitas — um lugar para cozinhar o que você ama e compartilhar o que você cria. O case study desenvolveu um app mobile onde qualquer pessoa pode descobrir receitas personalizadas, seguir chefs e cozinheiros caseiros, compartilhar suas próprias criações e interagir como em uma rede social. Tagline: \"Cook what you love. Share what you create.\"",
+      "O FeedMe é uma rede social de receitas — um lugar para cozinhar o que você ama e compartilhar o que você cria. O projeto desenvolveu um app mobile onde qualquer pessoa pode descobrir receitas personalizadas, seguir chefs e cozinheiros caseiros, compartilhar suas próprias criações e interagir como em uma rede social.",
     behanceCta: "Ver case completo no Behance",
   },
   en: {
