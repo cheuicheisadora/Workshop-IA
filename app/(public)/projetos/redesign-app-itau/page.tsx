@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, ArrowUpRight, Search, Lightbulb, PenTool, Layers, BarChart2, Users } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { ArrowLeft, ArrowUpRight, Search, PenTool, Layers, Users, GitBranch, LayoutDashboard, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
@@ -55,22 +56,22 @@ const content = {
     insightsSubtitle: "4 problemas críticos identificados na pesquisa.",
     insights: [
       {
-        icon: Lightbulb,
+        icon: Layers,
         title: "Hierarquia visual inconsistente",
         desc: "Dificultava a localização de funções essenciais como Pix, extrato e investimentos.",
       },
       {
-        icon: Lightbulb,
+        icon: GitBranch,
         title: "Fluxos longos para tarefas simples",
         desc: "Transferências e Pix exigiam muitas etapas desnecessárias, gerando abandono.",
       },
       {
-        icon: Lightbulb,
+        icon: LayoutDashboard,
         title: "Home sem priorização",
         desc: "Excesso de informações na tela inicial sem hierarquia clara de importância.",
       },
       {
-        icon: Lightbulb,
+        icon: Eye,
         title: "Falta de feedback visual",
         desc: "Ações críticas como pagamentos não tinham confirmação visual clara para o usuário.",
       },
@@ -131,22 +132,22 @@ const content = {
     insightsSubtitle: "4 critical problems identified in research.",
     insights: [
       {
-        icon: Lightbulb,
+        icon: Layers,
         title: "Inconsistent visual hierarchy",
         desc: "Made it hard to find essential features like Pix, statements, and investments.",
       },
       {
-        icon: Lightbulb,
+        icon: GitBranch,
         title: "Long flows for simple tasks",
         desc: "Transfers and Pix required too many unnecessary steps, causing drop-off.",
       },
       {
-        icon: Lightbulb,
+        icon: LayoutDashboard,
         title: "Home screen without prioritization",
         desc: "Excessive information on the home screen without a clear hierarchy of importance.",
       },
       {
-        icon: Lightbulb,
+        icon: Eye,
         title: "Lack of visual feedback",
         desc: "Critical actions like payments had no clear visual confirmation for the user.",
       },
@@ -167,6 +168,7 @@ const content = {
 
 export default function ItauProjectPage() {
   const { lang } = useLanguage()
+  const router = useRouter()
   const c = content[lang]
 
   return (
@@ -203,12 +205,12 @@ export default function ItauProjectPage() {
         ))}
 
         <div className="relative mx-auto w-full max-w-5xl">
-          <Link
-            href="/#projetos"
+          <button
+            onClick={() => router.back()}
             className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors"
           >
             <ArrowLeft className="h-4 w-4" /> {c.back}
-          </Link>
+          </button>
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">
             {c.tag}
           </p>
@@ -307,7 +309,9 @@ export default function ItauProjectPage() {
             <p className="mt-2 text-muted-foreground">{c.insightsSubtitle}</p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
-            {c.insights.map((insight, i) => (
+            {c.insights.map((insight, i) => {
+            const InsightIcon = insight.icon
+            return (
               <div
                 key={i}
                 className="flex gap-4 rounded-2xl border border-border bg-card p-5"
@@ -316,14 +320,15 @@ export default function ItauProjectPage() {
                   className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
                   style={{ background: `${ACCENT}18` }}
                 >
-                  <BarChart2 className="h-4 w-4" style={{ color: ACCENT }} />
+                  <InsightIcon className="h-4 w-4" style={{ color: ACCENT }} />
                 </div>
                 <div>
                   <h3 className="mb-1 font-semibold text-foreground text-sm">{insight.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{insight.desc}</p>
                 </div>
               </div>
-            ))}
+            )
+          })}
           </div>
         </section>
 
