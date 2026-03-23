@@ -1,8 +1,11 @@
 "use client"
 
 import { useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 export function ScrollAnimateProvider() {
+  const pathname = usePathname()
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,7 +44,7 @@ export function ScrollAnimateProvider() {
       observer.disconnect()
       tlObserver.disconnect()
     }
-  }, [])
+  }, [pathname])
 
   return null
 }

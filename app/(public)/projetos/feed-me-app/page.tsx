@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { ArrowLeft, ArrowUpRight, Search, PenTool, Layers, Users, Sliders, Trophy, LayoutGrid, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/layout/navbar"
@@ -168,7 +168,6 @@ const content = {
 
 export default function FeedMeAppPage() {
   const { lang } = useLanguage()
-  const router = useRouter()
   const c = content[lang]
 
   return (
@@ -206,12 +205,12 @@ export default function FeedMeAppPage() {
         ))}
 
         <div className="relative mx-auto w-full max-w-5xl">
-          <button
-            onClick={() => router.back()}
+          <Link
+            href="/#projetos"
             className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors"
           >
             <ArrowLeft className="h-4 w-4" /> {c.back}
-          </button>
+          </Link>
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">
             {c.tag}
           </p>
