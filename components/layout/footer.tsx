@@ -1,7 +1,10 @@
 "use client"
 
+import { useLanguage } from "@/context/language"
+
 export function Footer() {
-  const contactLabel = "Let's talk"
+  const { t } = useLanguage()
+  const contactLabel = t("about_btn")
 
   return (
     <footer
