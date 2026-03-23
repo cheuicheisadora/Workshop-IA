@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, ArrowUpRight, Search, PenTool, Layers, Users, Sliders, Trophy, LayoutGrid, BookOpen } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Search, PenTool, Layers, Users, Shuffle, UserX, MessageSquareOff, Accessibility } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
@@ -17,75 +17,75 @@ const content = {
     tag: "UI/UX · Mobile App · Case Study",
     title: "Feed Me App",
     subtitle:
-      "Case study de um aplicativo mobile de alimentação saudável, conduzido do discovery à entrega de protótipos navegáveis de alta fidelidade.",
+      "Rede social de receitas onde você descobre pratos personalizados, compartilha suas criações e se conecta com chefs e cozinheiros.",
     overviewTitle: "Visão geral",
     problem: "Problema",
     problemText:
-      "Usuários encontravam dificuldade em manter uma alimentação saudável por falta de guia prático.",
+      "Amantes da culinária não tinham uma plataforma para descobrir receitas ao seu gosto e se conectar socialmente com outros cozinheiros.",
     solution: "Solução",
     solutionText:
-      "App mobile com jornada gamificada, receitas personalizadas e rastreamento nutricional.",
+      "App mobile de receitas com rede social integrada — feed personalizado, perfis de chef, chat e compartilhamento de criações.",
     impact: "Impacto",
     impactText:
-      "Protótipo validado com usuários reais, com alta taxa de satisfação nos testes.",
+      "Interface acessível e amigável com navegação fluida, conectando descoberta de receitas à interação social.",
     processTitle: "O processo",
     processSubtitle: "Do discovery ao protótipo validado.",
     steps: [
       {
         icon: Search,
         title: "Discovery",
-        desc: "Pesquisa exploratória sobre hábitos alimentares, análise de concorrentes e definição do escopo do produto.",
+        desc: "Pesquisa sobre hábitos culinários e análise de concorrentes como Instagram, Pinterest, TikTok e Tasty.",
       },
       {
         icon: Users,
         title: "Pesquisa com Usuários",
-        desc: "Entrevistas, survey de validação, criação de personas e mapas de empatia com foco em barreiras alimentares.",
+        desc: "Entrevistas com cozinheiros caseiros, chefs e entusiastas da gastronomia para mapear necessidades e comportamentos.",
       },
       {
         icon: PenTool,
         title: "Design",
-        desc: "Arquitetura de informação, wireframes e sistema visual com identidade verde e linguagem acessível.",
+        desc: "Sistema de componentes, arquitetura de informação das 5 telas principais e identidade visual verde.",
       },
       {
         icon: Layers,
         title: "Protótipo & Validação",
-        desc: "Protótipos navegáveis de alta fidelidade no Figma testados com usuários reais em 3 fluxos principais.",
+        desc: "Protótipos navegáveis de alta fidelidade no Figma com fluxos de descoberta, perfil de chef e receitas.",
       },
     ],
     insightsTitle: "Principais insights",
-    insightsSubtitle: "4 barreiras identificadas na jornada dos usuários.",
+    insightsSubtitle: "4 lacunas identificadas nos apps de receitas existentes.",
     insights: [
       {
-        icon: Sliders,
-        title: "Falta de personalização",
-        desc: "Usuários não encontravam receitas adequadas ao seu perfil alimentar e restrições dietéticas.",
+        icon: Shuffle,
+        title: "Descoberta sem personalização",
+        desc: "Apps existentes não recomendavam receitas com base no gosto, histórico ou perfil do usuário.",
       },
       {
-        icon: Trophy,
-        title: "Ausência de motivação contínua",
-        desc: "Sem gamificação ou acompanhamento de progresso, o hábito saudável era rapidamente abandonado.",
+        icon: UserX,
+        title: "Cozinheiros sem voz",
+        desc: "Cozinheiros caseiros não tinham plataforma para publicar suas receitas, ganhar seguidores e ser reconhecidos.",
       },
       {
-        icon: BookOpen,
-        title: "Informações nutricionais complexas",
-        desc: "Dados como macros e calorias eram apresentados de forma técnica e desmotivavam o acompanhamento.",
+        icon: MessageSquareOff,
+        title: "Ausência de conexão social",
+        desc: "Não havia como seguir, chatear ou interagir com chefs e outros entusiastas da culinária.",
       },
       {
-        icon: LayoutGrid,
-        title: "Experiência desconectada",
-        desc: "Planejamento e execução eram etapas separadas, sem fluxo integrado entre receitas e diário alimentar.",
+        icon: Accessibility,
+        title: "Interfaces pouco acessíveis",
+        desc: "Apps de receitas existentes tinham navegação confusa e não priorizavam inclusividade e facilidade de uso.",
       },
     ],
     metricsTitle: "Resultados",
-    metricsSubtitle: "Validado com usuários reais em testes de usabilidade.",
+    metricsSubtitle: "Protótipo de alta fidelidade entregue com sistema completo.",
     metrics: [
-      { value: "87%", label: "Taxa de satisfação geral nos testes de usabilidade" },
-      { value: "3", label: "Personas validadas guiando cada decisão de design" },
-      { value: "3", label: "Fluxos principais aprovados: cadastro, receitas e rastreamento" },
+      { value: "5", label: "Telas principais: Home, Explorar, Chat, Receitas e Perfil" },
+      { value: "3", label: "Features sociais: Follow, Chat e Share integrados ao app" },
+      { value: "2025", label: "Case study concluído na formação UX/UI da EBAC" },
     ],
     contextTitle: "Contexto",
     contextText:
-      "O Feed Me App nasceu de uma necessidade real: pessoas que querem comer melhor mas não sabem por onde começar. O case study conduziu todo o processo de UX — da pesquisa exploratória à entrega de um protótipo navegável de alta fidelidade, passando por ideação, arquitetura de informação e testes com usuários.",
+      "O FeedMe é uma rede social de receitas — um lugar para cozinhar o que você ama e compartilhar o que você cria. O case study desenvolveu um app mobile onde qualquer pessoa pode descobrir receitas personalizadas, seguir chefs e cozinheiros caseiros, compartilhar suas próprias criações e interagir como em uma rede social. Tagline: \"Cook what you love. Share what you create.\"",
     behanceCta: "Ver case completo no Behance",
   },
   en: {
@@ -93,71 +93,71 @@ const content = {
     tag: "UI/UX · Mobile App · Case Study",
     title: "Feed Me App",
     subtitle:
-      "Case study of a healthy eating mobile app, led from discovery to the delivery of high-fidelity navigable prototypes.",
+      "A recipe social network where you discover personalized dishes, share your creations, and connect with chefs and home cooks.",
     overviewTitle: "Overview",
     problem: "Problem",
     problemText:
-      "Users struggled to maintain healthy eating habits due to a lack of practical guidance.",
+      "Food lovers had no platform to discover recipes tailored to their taste and connect socially with other cooks.",
     solution: "Solution",
     solutionText:
-      "Mobile app with a gamified journey, personalized recipes, and nutritional tracking.",
+      "A recipe mobile app with an integrated social network — personalized feed, chef profiles, chat, and recipe sharing.",
     impact: "Impact",
     impactText:
-      "Prototype validated with real users, achieving a high satisfaction rate in testing.",
+      "Accessible, user-friendly interface with smooth navigation, bridging recipe discovery and social interaction.",
     processTitle: "The process",
     processSubtitle: "From discovery to validated prototype.",
     steps: [
       {
         icon: Search,
         title: "Discovery",
-        desc: "Exploratory research into eating habits, competitive analysis, and product scope definition.",
+        desc: "Research into cooking habits and competitive analysis of apps like Instagram, Pinterest, TikTok, and Tasty.",
       },
       {
         icon: Users,
         title: "User Research",
-        desc: "Interviews, validation survey, persona creation, and empathy maps focused on dietary barriers.",
+        desc: "Interviews with home cooks, professional chefs, and food enthusiasts to map needs and behaviors.",
       },
       {
         icon: PenTool,
         title: "Design",
-        desc: "Information architecture, wireframes, and visual system with a green identity and accessible language.",
+        desc: "Component system, information architecture for the 5 main screens, and green visual identity.",
       },
       {
         icon: Layers,
         title: "Prototype & Validation",
-        desc: "High-fidelity navigable prototypes in Figma tested with real users across 3 main flows.",
+        desc: "High-fidelity navigable prototypes in Figma covering recipe discovery, chef profile, and social flows.",
       },
     ],
     insightsTitle: "Key insights",
-    insightsSubtitle: "4 barriers identified in the user journey.",
+    insightsSubtitle: "4 gaps identified in existing recipe apps.",
     insights: [
       {
-        icon: Sliders,
-        title: "Lack of personalization",
-        desc: "Users couldn't find recipes matching their dietary profile and restrictions.",
+        icon: Shuffle,
+        title: "Discovery without personalization",
+        desc: "Existing apps didn't recommend recipes based on the user's taste, history, or profile.",
       },
       {
-        icon: Trophy,
-        title: "No ongoing motivation",
-        desc: "Without gamification or progress tracking, healthy habits were quickly abandoned.",
+        icon: UserX,
+        title: "Home cooks without a voice",
+        desc: "Home cooks had no platform to publish their recipes, gain followers, and be recognized.",
       },
       {
-        icon: BookOpen,
-        title: "Complex nutritional information",
-        desc: "Data like macros and calories were presented in a technical way, discouraging regular tracking.",
+        icon: MessageSquareOff,
+        title: "No social connection",
+        desc: "There was no way to follow, chat, or interact with chefs and other food enthusiasts.",
       },
       {
-        icon: LayoutGrid,
-        title: "Disconnected experience",
-        desc: "Planning and execution were separate steps, with no integrated flow between recipes and a food diary.",
+        icon: Accessibility,
+        title: "Inaccessible interfaces",
+        desc: "Existing recipe apps had confusing navigation and didn't prioritize inclusivity or ease of use.",
       },
     ],
     metricsTitle: "Results",
-    metricsSubtitle: "Validated with real users in usability testing.",
+    metricsSubtitle: "High-fidelity prototype delivered with a complete design system.",
     metrics: [
-      { value: "87%", label: "Overall satisfaction rate in usability tests" },
-      { value: "3", label: "Validated personas guiding every design decision" },
-      { value: "3", label: "Core flows approved: onboarding, recipes, and tracking" },
+      { value: "5", label: "Main screens: Home, Explore, Chat, Cookbook, and Profile" },
+      { value: "3", label: "Social features: Follow, Chat, and Share integrated into the app" },
+      { value: "2025", label: "Case study completed in EBAC's UX/UI program" },
     ],
     contextTitle: "Context",
     contextText:
