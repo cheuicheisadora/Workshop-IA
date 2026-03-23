@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, ArrowUpRight, Search, PenTool, Layers, Users, GitBranch, LayoutDashboard, Eye } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Search, PenTool, Layers, Users, HeadphonesIcon, TrendingUp, Gift, LayoutGrid } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
@@ -16,75 +16,75 @@ const content = {
     tag: "UX/UI · Case Study · EBAC",
     title: "Redesign App Itaú",
     subtitle:
-      "Redesign da experiência do aplicativo do Banco Itaú, conduzido do discovery à entrega, com foco em usabilidade e hierarquia visual.",
+      "Redesenho da jornada do usuário no app Itaú, eliminando fricções e modernizando a interface para criar uma experiência mais intuitiva no mercado financeiro digital.",
     overviewTitle: "Visão geral",
     problem: "Problema",
     problemText:
-      "Jornadas complexas e hierarquia visual pouco clara dificultavam tarefas cotidianas dos usuários.",
+      "O Itaú enfrenta o desafio de evoluir suas experiências digitais. 100% dos usuários entrevistados relataram dificuldades com suporte e 67% sentiram excesso de informação na interface.",
     solution: "Solução",
     solutionText:
-      "Redesign centrado no usuário com fluxos simplificados e sistema visual coerente.",
+      "4 soluções priorizadas: Central de Atendimento integrada, Plataforma de Investimentos, hub de Benefícios e Widgets financeiros personalizáveis.",
     impact: "Impacto",
     impactText:
-      "Maior clareza na hierarquia e fluidez na navegação entre as principais funcionalidades.",
+      "Interface modernizada com redução da carga cognitiva, entregue em mobile, desktop e smartwatch.",
     processTitle: "O processo",
-    processSubtitle: "Do discovery ao handoff em 4 etapas.",
+    processSubtitle: "7 etapas do projeto Itaú + EBAC.",
     steps: [
       {
         icon: Search,
-        title: "Discovery",
-        desc: "Imersão no produto atual, benchmarking com Nubank, Bradesco e Santander, e mapeamento dos fluxos existentes.",
+        title: "Pesquisa",
+        desc: "Pesquisa de mercado e benchmark com Nubank, Banco Inter e Bradesco para mapear o cenário competitivo e identificar diferenciais de UX.",
       },
       {
         icon: Users,
         title: "Pesquisa com Usuários",
-        desc: "Entrevistas com usuários reais do app e análise heurística baseada nas 10 heurísticas de Nielsen.",
+        desc: "Entrevistas revelaram que 100% tinham dificuldades com suporte, 67% relataram excesso de informação e 50% usavam outro banco para alguns serviços.",
       },
       {
         icon: PenTool,
-        title: "Design",
-        desc: "Arquitetura da informação revisada, wireframes de baixa fidelidade e construção do sistema visual.",
+        title: "Persona & Hipóteses",
+        desc: "Formulação da persona Marina Trindade (25 anos, estagiária) e 4 hipóteses de solução para responder às principais dores identificadas.",
       },
       {
         icon: Layers,
-        title: "Protótipo & Validação",
-        desc: "Protótipos navegáveis de alta fidelidade no Figma, testados com usuários reais.",
+        title: "Prototipagem & Validação",
+        desc: "Protótipos de alta fidelidade em mobile, desktop e smartwatch, com sistema de design (Itaú Display, paleta Pantone e componentes).",
       },
     ],
     insightsTitle: "Principais insights",
-    insightsSubtitle: "4 problemas críticos identificados na pesquisa.",
+    insightsSubtitle: "O que as entrevistas com usuários revelaram.",
     insights: [
       {
-        icon: Layers,
-        title: "Hierarquia visual inconsistente",
-        desc: "Dificultava a localização de funções essenciais como Pix, extrato e investimentos.",
+        icon: LayoutGrid,
+        title: "Excesso de informações na tela",
+        desc: "67% relataram sobrecarga visual. \"Às vezes parece que tem informação demais na tela.\"",
       },
       {
-        icon: GitBranch,
-        title: "Fluxos longos para tarefas simples",
-        desc: "Transferências e Pix exigiam muitas etapas desnecessárias, gerando abandono.",
+        icon: HeadphonesIcon,
+        title: "Suporte fora do aplicativo",
+        desc: "100% tinham dificuldades com suporte. \"Quando preciso de ajuda, tenho que sair do app para resolver.\"",
       },
       {
-        icon: LayoutDashboard,
-        title: "Home sem priorização",
-        desc: "Excesso de informações na tela inicial sem hierarquia clara de importância.",
+        icon: TrendingUp,
+        title: "Falta de clareza sobre taxas e investimentos",
+        desc: "50% usavam outro banco para serviços financeiros. \"Prefiro usar o cartão de outro banco porque as taxas são mais claras.\"",
       },
       {
-        icon: Eye,
-        title: "Falta de feedback visual",
-        desc: "Ações críticas como pagamentos não tinham confirmação visual clara para o usuário.",
+        icon: Gift,
+        title: "Benefícios e vantagens invisíveis",
+        desc: "Descontos, cashback e vantagens não estavam acessíveis de forma clara e prática no app.",
       },
     ],
-    metricsTitle: "Resultados",
-    metricsSubtitle: "Validado com usuários reais em testes de usabilidade.",
+    metricsTitle: "Dados das entrevistas",
+    metricsSubtitle: "Resultados reais coletados com usuários do app Itaú.",
     metrics: [
-      { value: "40%", label: "Redução no tempo para completar tarefas críticas" },
-      { value: "85%", label: "Taxa de satisfação dos participantes nos testes" },
-      { value: "4", label: "Fluxos principais completamente reestruturados" },
+      { value: "100%", label: "Mencionaram dificuldades com suporte ou acesso" },
+      { value: "67%", label: "Relataram excesso de informação na interface" },
+      { value: "50%", label: "Utilizam outro banco para alguns serviços financeiros" },
     ],
     contextTitle: "Contexto",
     contextText:
-      "O Itaú Unibanco é um dos maiores bancos da América Latina, com milhões de usuários ativos no app mobile. A proposta deste projeto foi redesenhar a experiência do aplicativo com foco em usabilidade, clareza visual e eficiência nas tarefas mais frequentes — realizado como projeto final da formação UX/UI da EBAC.",
+      "O mercado financeiro passa por rápidas transformações impulsionadas pela digitalização e pela mudança no comportamento dos consumidores. Nesse cenário, o Itaú enfrenta o desafio de evoluir continuamente suas experiências digitais. Este projeto, desenvolvido na formação UX/UI da EBAC em parceria com o Itaú, teve como objetivo redesenhar a jornada do usuário no app — eliminando fricções e criando uma experiência mais intuitiva para fortalecer a competitividade do banco no cenário digital.",
     behanceCta: "Ver case completo no Behance",
   },
   en: {
@@ -92,75 +92,75 @@ const content = {
     tag: "UX/UI · Case Study · EBAC",
     title: "Itaú App Redesign",
     subtitle:
-      "Redesign of the Itaú Bank app experience, led from discovery to delivery, with a focus on usability and visual hierarchy.",
+      "Redesign of the Itaú app's user journey, eliminating friction and modernizing the interface to create a more intuitive experience in the digital financial landscape.",
     overviewTitle: "Overview",
     problem: "Problem",
     problemText:
-      "Complex journeys and unclear visual hierarchy made everyday tasks difficult for users.",
+      "Itaú faces the challenge of evolving its digital experiences. 100% of interviewed users reported difficulties with support and 67% felt information overload in the interface.",
     solution: "Solution",
     solutionText:
-      "User-centered redesign with simplified flows and a coherent visual system.",
+      "4 prioritized solutions: integrated Support Center, Investment Platform, Benefits hub, and customizable Financial Widgets.",
     impact: "Impact",
     impactText:
-      "Greater clarity in hierarchy and fluidity in navigation across the main features.",
+      "Modernized interface with reduced cognitive load, delivered across mobile, desktop, and smartwatch.",
     processTitle: "The process",
-    processSubtitle: "From discovery to handoff in 4 steps.",
+    processSubtitle: "7 stages of the Itaú + EBAC project.",
     steps: [
       {
         icon: Search,
-        title: "Discovery",
-        desc: "Deep dive into the current product, benchmarking against Nubank, Bradesco, and Santander, and mapping existing flows.",
+        title: "Research",
+        desc: "Market research and benchmarking against Nubank, Banco Inter, and Bradesco to map the competitive landscape and identify UX differentiators.",
       },
       {
         icon: Users,
         title: "User Research",
-        desc: "Interviews with real app users and heuristic analysis based on Nielsen's 10 heuristics.",
+        desc: "Interviews revealed that 100% had support difficulties, 67% reported information overload, and 50% used another bank for some services.",
       },
       {
         icon: PenTool,
-        title: "Design",
-        desc: "Revised information architecture, low-fidelity wireframes, and visual system construction.",
+        title: "Persona & Hypotheses",
+        desc: "Definition of persona Marina Trindade (25, intern) and 4 solution hypotheses to address the main pain points identified.",
       },
       {
         icon: Layers,
-        title: "Prototype & Validation",
-        desc: "High-fidelity navigable prototypes in Figma, tested with real users.",
+        title: "Prototyping & Validation",
+        desc: "High-fidelity prototypes for mobile, desktop, and smartwatch, with a design system (Itaú Display, Pantone palette, and components).",
       },
     ],
     insightsTitle: "Key insights",
-    insightsSubtitle: "4 critical problems identified in research.",
+    insightsSubtitle: "What user interviews revealed.",
     insights: [
       {
-        icon: Layers,
-        title: "Inconsistent visual hierarchy",
-        desc: "Made it hard to find essential features like Pix, statements, and investments.",
+        icon: LayoutGrid,
+        title: "Information overload on screen",
+        desc: "67% reported visual overload. \"Sometimes it feels like there's too much information on the screen.\"",
       },
       {
-        icon: GitBranch,
-        title: "Long flows for simple tasks",
-        desc: "Transfers and Pix required too many unnecessary steps, causing drop-off.",
+        icon: HeadphonesIcon,
+        title: "Support outside the app",
+        desc: "100% had support difficulties. \"When I need help, I have to leave the app to resolve it.\"",
       },
       {
-        icon: LayoutDashboard,
-        title: "Home screen without prioritization",
-        desc: "Excessive information on the home screen without a clear hierarchy of importance.",
+        icon: TrendingUp,
+        title: "Lack of clarity on fees and investments",
+        desc: "50% used another bank for financial services. \"I prefer using another bank's card because the fees are clearer.\"",
       },
       {
-        icon: Eye,
-        title: "Lack of visual feedback",
-        desc: "Critical actions like payments had no clear visual confirmation for the user.",
+        icon: Gift,
+        title: "Invisible benefits and perks",
+        desc: "Discounts, cashback, and perks were not clearly and practically accessible within the app.",
       },
     ],
-    metricsTitle: "Results",
-    metricsSubtitle: "Validated with real users in usability testing.",
+    metricsTitle: "Interview data",
+    metricsSubtitle: "Real results collected from Itaú app users.",
     metrics: [
-      { value: "40%", label: "Reduction in time to complete critical tasks" },
-      { value: "85%", label: "Participant satisfaction rate in testing" },
-      { value: "4", label: "Main flows completely restructured" },
+      { value: "100%", label: "Mentioned difficulties with support or access" },
+      { value: "67%", label: "Reported information overload in the interface" },
+      { value: "50%", label: "Use another bank for some financial services" },
     ],
     contextTitle: "Context",
     contextText:
-      "Itaú Unibanco is one of the largest banks in Latin America, with millions of active users on its mobile app. This project aimed to redesign the app experience with a focus on usability, visual clarity, and efficiency in users' most frequent tasks — developed as the final project of EBAC's UX/UI program.",
+      "The financial market is undergoing rapid transformations driven by digitalization and changing consumer behavior. In this context, Itaú faces the challenge of continuously evolving its digital experiences. This project, developed in EBAC's UX/UI program in partnership with Itaú, aimed to redesign the user journey in the app — eliminating friction and creating a more intuitive experience to strengthen the bank's competitiveness in the digital landscape.",
     behanceCta: "View full case study on Behance",
   },
 }
