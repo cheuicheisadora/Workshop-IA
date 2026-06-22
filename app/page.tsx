@@ -273,7 +273,7 @@ export default function HomePage() {
               {lang === "pt" ? (
                 <>
                   <p>
-                    Atuo como <strong className="font-semibold text-foreground">UX/UI Designer na SAP</strong>, criando soluções digitais com foco em clareza, consistência e escala. Formada em UX/UI pela EBAC, aplico um processo estruturado desde a pesquisa até a entrega, sempre conectando decisões de design ao impacto real no produto.
+                    Atuo como <strong className="font-semibold text-foreground">Mid-Level UX Designer na Agromai</strong>, liderando o design de interação de ponta a ponta em uma plataforma agtech. Formada em UX/UI pela EBAC, aplico um processo estruturado desde a pesquisa até a entrega, sempre conectando decisões de design ao impacto real no produto.
                   </p>
                   <p>
                     Conduzi projetos de ponta a ponta como o Feed Me App e o redesign do app do Itaú, além de projetos de branding para eventos. Essa diversidade de contextos fortaleceu minha visão sobre como design, narrativa e experiência se integram.
@@ -286,7 +286,7 @@ export default function HomePage() {
               ) : (
                 <>
                   <p>
-                    I work as a <strong className="font-semibold text-foreground">UX/UI Designer at SAP</strong>, creating digital solutions focused on clarity, consistency, and scale. Trained in UX/UI at EBAC, I apply a structured process from research to delivery, always connecting design decisions to real product impact.
+                    I work as a <strong className="font-semibold text-foreground">Mid-Level UX Designer at Agromai</strong>, leading end-to-end interaction design for an agtech platform. Trained in UX/UI at EBAC, I apply a structured process from research to delivery, always connecting design decisions to real product impact.
                   </p>
                   <p>
                     I&apos;ve led end-to-end projects like the Feed Me App and the Itaú app redesign, as well as event branding work. That range of contexts sharpened my understanding of how design, narrative, and experience fit together.
@@ -458,11 +458,25 @@ export default function HomePage() {
 
           {/* Timeline */}
           <div className="timeline" data-animate data-delay="1">
+            {/* Agromai — Mid-Level UX Designer */}
+            <div className="timeline-item">
+              <div className="timeline-header">
+                <span className="timeline-cargo">Mid-Level UX Designer</span>
+                <span className="timeline-periodo">{lang === "pt" ? "Abr 2026" : "Apr 2026"} – {t("exp_present")}</span>
+              </div>
+              <p className="timeline-empresa">Agromai</p>
+              <p className="timeline-desc">
+                {lang === "pt"
+                  ? "Lidero o design de interação de ponta a ponta em uma plataforma agtech — definindo fluxos, criando protótipos low-to-high fidelity para web e mobile. Aplico o ADS (Advanced Design System) para garantir consistência e escalabilidade, colaborando com parceiros de design systems na evolução de componentes. Conduzo pesquisas com usuários e testes de usabilidade, traduzindo insights em melhorias de design. Integro prototipação com IA ao fluxo de trabalho para acelerar iteração e gerar variações de interface para feedback rápido de stakeholders."
+                  : "Lead end-to-end interaction design for an agtech platform — defining user stories, creating user flows, and producing low-to-high fidelity prototypes for web and mobile. Apply the ADS (Advanced Design System) to ensure interface consistency and scalability, collaborating with design systems partners on component evolution and pattern standardization. Conduct user research and usability tests to ground decisions in real user needs, translating insights into actionable design improvements. Integrate AI-assisted prototyping into the design workflow to accelerate iteration and generate interface variations for rapid stakeholder feedback."}
+              </p>
+            </div>
+
             {/* SAP — UX Design Intern */}
             <div className="timeline-item">
               <div className="timeline-header">
                 <span className="timeline-cargo">UX Design Intern — Globalization Team</span>
-                <span className="timeline-periodo">{lang === "pt" ? "Ago 2025" : "Aug 2025"} – {t("exp_present")}</span>
+                <span className="timeline-periodo">{lang === "pt" ? "Ago 2025 – Abr 2026" : "Aug 2025 – Apr 2026"}</span>
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">

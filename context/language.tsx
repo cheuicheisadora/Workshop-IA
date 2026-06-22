@@ -22,7 +22,7 @@ const translations = {
     // About
     about_heading: "Sobre mim",
     about_p1:
-      "Atuo como UX/UI Designer na SAP, criando soluções digitais com foco em clareza, consistência e escala. Minha formação em UX/UI pela EBAC estruturou um processo sólido que aplico em todos os projetos, desde pesquisa com usuários até prototipação e entrega.",
+      "Atuo como Mid-Level UX Designer na Agromai, liderando o design de interação em uma plataforma agtech. Minha formação em UX/UI pela EBAC estruturou um processo sólido que aplico em todos os projetos, desde pesquisa com usuários até prototipação e entrega.",
     about_p2:
       "Tenho experiência prática conduzindo projetos de ponta a ponta, como o Feed Me App e o redesign do app do Itaú, sempre conectando decisões de design ao impacto real no usuário e nos objetivos de negócio. Também atuei com branding de eventos, o que fortaleceu minha visão sobre narrativa, identidade visual e experiência como um todo.",
     about_p3_before:
@@ -96,7 +96,7 @@ const translations = {
     // About
     about_heading: "About me",
     about_p1:
-      "I work as a UX/UI Designer at SAP, creating digital solutions focused on clarity, consistency, and scale. My UX/UI training at EBAC built a solid process I apply to every project, from user research through prototyping and delivery.",
+      "I work as a Mid-Level UX Designer at Agromai, leading end-to-end interaction design for an agtech platform. My UX/UI training at EBAC built a solid process I apply to every project, from user research through prototyping and delivery.",
     about_p2:
       "I have hands-on experience leading end-to-end projects like Feed Me App and the Itaú app redesign, always connecting design decisions to real user impact and business goals. I also worked on event branding, which deepened my understanding of narrative, visual identity, and experience as a whole.",
     about_p3_before:
