@@ -566,8 +566,8 @@ export default function HomePage() {
           <div className="cv-download" data-animate data-delay="4">
             <a
               href={lang === "pt"
-                ? "/CV_Isadora_Cheuiche_PT.pdf"
-                : "https://drive.google.com/uc?export=download&id=1t1Y6qfGDA3fF9WDCOLrszeJOfkQiiXPL"}
+                ? "https://drive.google.com/uc?export=download&id=1pLxbygCumwjNoRTiRv8s-uahhyjSXz19"
+                : "/CV_Isadora_Cheuiche_EN.pdf"}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cv"
