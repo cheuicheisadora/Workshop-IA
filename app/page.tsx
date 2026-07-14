@@ -461,70 +461,70 @@ export default function HomePage() {
             {/* Agromai — Mid-Level UX Designer */}
             <div className="timeline-item">
               <div className="timeline-header">
-                <span className="timeline-cargo">Mid-Level UX Designer</span>
+                <span className="timeline-cargo">{lang === "pt" ? "Designer UX/UI Pleno" : "Mid-Level UX Designer"}</span>
                 <span className="timeline-periodo">{lang === "pt" ? "Abr 2026" : "Apr 2026"} – {t("exp_present")}</span>
               </div>
               <p className="timeline-empresa">Agromai</p>
               <p className="timeline-desc">
                 {lang === "pt"
-                  ? "Lidero o design de interação de ponta a ponta em uma plataforma agtech — definindo fluxos, criando protótipos low-to-high fidelity para web e mobile. Aplico o ADS (Advanced Design System) para garantir consistência e escalabilidade, colaborando com parceiros de design systems na evolução de componentes. Conduzo pesquisas com usuários e testes de usabilidade, traduzindo insights em melhorias de design. Integro prototipação com IA ao fluxo de trabalho para acelerar iteração e gerar variações de interface para feedback rápido de stakeholders."
-                  : "Lead end-to-end interaction design for an agtech platform — defining user stories, creating user flows, and producing low-to-high fidelity prototypes for web and mobile. Apply the ADS (Advanced Design System) to ensure interface consistency and scalability, collaborating with design systems partners on component evolution and pattern standardization. Conduct user research and usability tests to ground decisions in real user needs, translating insights into actionable design improvements. Integrate AI-assisted prototyping into the design workflow to accelerate iteration and generate interface variations for rapid stakeholder feedback."}
+                  ? "Lidero o design de interação ponta a ponta de uma plataforma agtech — definindo histórias de usuário, criando fluxos e desenvolvendo protótipos de baixa a alta fidelidade para experiências web e mobile. Aplico o ADS (Advanced Design System) para garantir consistência e escalabilidade das interfaces, colaborando com parceiros de design system na evolução de componentes e padronização de padrões visuais. Conduzo pesquisas com usuários e testes de usabilidade para fundamentar decisões em necessidades reais, traduzindo insights em melhorias concretas de design. Integro ferramentas de prototipagem assistida por IA ao fluxo de design para acelerar iterações e gerar variações de interface para feedback rápido com stakeholders."
+                  : "Lead end-to-end interaction design for an agtech platform — defining user stories, creating user flows, and producing low-to-high fidelity prototypes for web and mobile experiences. Apply the ADS (Advanced Design System) to ensure interface consistency and scalability, collaborating with design systems partners on component evolution and pattern standardization. Conduct user research and usability tests to ground decisions in real user needs, translating insights into actionable design improvements. Integrate AI-assisted prototyping into the design workflow to accelerate iteration and generate interface variations for rapid stakeholder feedback."}
               </p>
             </div>
 
             {/* SAP — UX Design Intern */}
             <div className="timeline-item">
               <div className="timeline-header">
-                <span className="timeline-cargo">UX Design Intern — Globalization Team</span>
+                <span className="timeline-cargo">{lang === "pt" ? "Estagiária UX Design · Globalization Team" : "UX Design Intern · Globalization Team"}</span>
                 <span className="timeline-periodo">{lang === "pt" ? "Ago 2025 – Abr 2026" : "Aug 2025 – Apr 2026"}</span>
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">
                 {lang === "pt"
-                  ? "Conduzi o ciclo completo de design em 2 produtos digitais globais: arquitetura da informação, wireframes, protótipos de alta fidelidade e handoff no Figma, reduzindo ciclos de revisão em 30%. Estruturei e mantive o design system do produto, organizando bibliotecas de componentes e padrões visuais que garantiram consistência em 100% das interfaces de 2 squads. Realizei análises heurísticas, testes de usabilidade e testes A/B, gerando melhorias que elevaram a satisfação dos usuários em 2 sprints consecutivos."
-                  : "Led the complete design cycle for 2 global digital products: information architecture, wireframes, high-fidelity prototypes, and Figma handoff, reducing review cycles by 30%. Structured and maintained the product design system, organizing component libraries and visual patterns that ensured 100% consistency across interfaces for 2 squads. Conducted heuristic analyses, usability tests, and A/B tests, generating improvements that increased user satisfaction over 2 consecutive sprints."}
+                  ? "Conduzi o ciclo completo de design em 2 produtos digitais globais — arquitetura da informação, wireframes, protótipos de alta fidelidade e handoff no Figma — reduzindo ciclos de revisão em ~30%. Realizei análises heurísticas, testes de usabilidade e testes A/B, gerando melhorias orientadas por dados que elevaram a satisfação dos usuários em 2 sprints consecutivos. Colaborei com PMs e engenheiros em times globalmente distribuídos, defendendo decisões de design com evidências e acelerando 4 entregas críticas. Desenvolvi fluência em múltiplas áreas do produto para garantir consistência de jornada ponta a ponta, equilibrando a experiência ideal com restrições técnicas e realidades do sistema."
+                  : "Led the complete design cycle for 2 global digital products — information architecture, wireframes, high-fidelity prototypes, and developer handoff in Figma — reducing review cycles by ~30%. Conducted heuristic analyses, usability tests, and A/B tests, generating data-driven improvements that raised user satisfaction scores across 2 consecutive sprints. Collaborated with PMs and engineers across global teams, articulating design rationale with evidence and accelerating 4 critical deliveries. Built fluency across multiple product areas to ensure end-to-end journey consistency beyond immediate scope, balancing ideal UX with technical constraints and system realities."}
               </p>
             </div>
 
             {/* SAP — Business AI Intern */}
             <div className="timeline-item">
               <div className="timeline-header">
-                <span className="timeline-cargo">Business AI Intern — Business AI Team</span>
+                <span className="timeline-cargo">{lang === "pt" ? "Estagiária Business AI · Business AI Team" : "Business AI Intern · Business AI Team"}</span>
                 <span className="timeline-periodo">{lang === "pt" ? "Dez 2024 – Ago 2025" : "Dec 2024 – Aug 2025"}</span>
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">
                 {lang === "pt"
-                  ? "Traduzi requisitos de negócio em soluções de design para produtos com IA agente da SAP, conectando experiência do usuário a métricas estratégicas. Gerenciei o Torneo de Innovación 2025 de ponta a ponta, alinhando 5 stakeholders e entregando 100% dos marcos no prazo. Criei sistema completo de identidade visual com 20 componentes e assets, garantindo responsividade e consistência entre todos os canais do evento."
-                  : "Translated business requirements into design solutions for SAP\u2019s agentic AI products, connecting user experience to strategic metrics. Managed the Torneo de Innovación 2025 end-to-end, aligning 5 stakeholders and delivering 100% of milestones on time. Created a complete visual identity system with 20 components and assets, ensuring responsiveness and consistency across all event channels."}
+                  ? "Projetei interfaces para produtos com IA agente da SAP, aplicando princípios de IA Responsável — antecipando riscos, incorporando guardrails e tornando o raciocínio da IA explicável e confiável para o usuário final. Apliquei AI Journey Mapping para projetar experiências humano-IA ponta a ponta, mapeando padrões human-in-the-loop e definindo o que automatizar versus amplificar nos pontos críticos de decisão. Utilizei Context Engineering para elaborar e otimizar prompts, gerando outputs de IA precisos e alinhados aos fluxos de design; avaliei outputs quanto a correção, viés e conformidade com privacidade. Gerenciei o projeto Torneo de Innovación 2025 de ponta a ponta, alinhando 5+ stakeholders em times globais e entregando 100% dos marcos no prazo."
+                  : "Designed interfaces for SAP agentic AI products, applying Responsible AI principles — anticipating potential harms, embedding guardrails, and making AI reasoning explainable and trustworthy for end users. Applied AI Journey Mapping to design end-to-end human-AI experiences, mapping human-in-the-loop patterns and determining what to automate vs. augment at critical decision points. Used Context Engineering to craft and optimize prompts, generating accurate AI outputs aligned with design workflows; evaluated outputs for correctness, bias, and privacy compliance. Managed the Torneo de Innovación 2025 end-to-end, aligning 5+ stakeholders across global teams and delivering 100% of milestones on time."}
               </p>
             </div>
 
             {/* SAP — Marketing & Events Intern */}
             <div className="timeline-item">
               <div className="timeline-header">
-                <span className="timeline-cargo">Marketing &amp; Events Intern — Labs Events Team</span>
+                <span className="timeline-cargo">{lang === "pt" ? "Estagiária Marketing & Eventos · Labs Events Team" : "Marketing & Events Intern · Labs Events Team"}</span>
                 <span className="timeline-periodo">{lang === "pt" ? "Abr 2024 – Dez 2024" : "Apr 2024 – Dec 2024"}</span>
               </div>
               <p className="timeline-empresa">SAP</p>
               <p className="timeline-desc">
                 {lang === "pt"
-                  ? "Otimizei a gestão de 10 projetos simultâneos em ambiente ágil com Kanban, reduzindo bloqueios de entrega em 25%. Produzi 30 assets visuais responsivos em Figma e Adobe Suite, colaborando com times de produto, tecnologia e marketing."
-                  : "Optimized the management of 10 simultaneous projects in an agile Kanban environment, reducing delivery blockers by 25%. Produced 30 responsive visual assets in Figma and Adobe Suite, collaborating with product, technology, and marketing teams."}
+                  ? "Produzi 30+ assets visuais responsivos em Figma e Adobe Suite, colaborando com times de produto, tecnologia e marketing distribuídos globalmente. Otimizei a gestão de 10+ projetos simultâneos em ambiente ágil com Kanban, reduzindo bloqueios de entrega em ~25% e melhorando a previsibilidade dos sprints."
+                  : "Produced 30+ responsive visual assets in Figma and Adobe Suite, collaborating with product, technology, and marketing teams across the globe. Optimized the management of 10+ simultaneous projects in an agile Kanban environment, reducing delivery blockers by ~25% and improving sprint predictability."}
               </p>
             </div>
 
             {/* Dell — Product Marketing Intern */}
             <div className="timeline-item">
               <div className="timeline-header">
-                <span className="timeline-cargo">Product Marketing Intern</span>
+                <span className="timeline-cargo">{lang === "pt" ? "Estagiária de Product Marketing" : "Product Marketing Intern"}</span>
                 <span className="timeline-periodo">Jul 2023 – Mar 2024</span>
               </div>
               <p className="timeline-empresa">Dell</p>
               <p className="timeline-desc">
                 {lang === "pt"
-                  ? "Mapeei e melhorei fluxos operacionais no time de LATAM Field Marketing, reduzindo retrabalho manual em 20%. Criei peças e interfaces centradas no usuário para campanhas digitais, mantendo consistência visual e acessibilidade em 100% das entregas."
-                  : "Mapped and improved operational workflows on the LATAM Field Marketing team, reducing manual rework by 20%. Created user-centered pieces and interfaces for digital campaigns, maintaining visual consistency and accessibility across 100% of deliverables."}
+                  ? "Projetei interfaces e assets centrados no usuário para campanhas digitais de produto na América Latina, mantendo consistência visual e padrões de acessibilidade em 100% das entregas. Mapeei e melhorei fluxos operacionais no time de LATAM Field Marketing, reduzindo retrabalho manual em ~20% por meio de documentação clara e processos padronizados."
+                  : "Designed user-centered interfaces and assets for product digital campaigns across LATAM, maintaining visual consistency and accessibility standards in 100% of deliverables. Mapped and improved operational workflows for the LATAM Field Marketing team, reducing manual rework by ~20% through clear documentation and standardized processes."}
               </p>
             </div>
           </div>
