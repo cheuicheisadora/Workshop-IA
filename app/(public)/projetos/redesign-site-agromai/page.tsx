@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { useLanguage } from "@/context/language"
 
-const ACCENT = "#16a34a"
+const ACCENT = "#7c3aed"
 const SITE_URL = "https://agromai.com.br/"
 
 const content = {
@@ -99,7 +99,7 @@ export default function AgromaISiteProjectPage() {
       <Navbar />
       <section
         className="relative flex min-h-[480px] flex-col justify-end overflow-hidden px-6 pb-16 pt-32"
-        style={{ background: "linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 70%, #22c55e 100%)" }}
+        style={{ background: "linear-gradient(135deg, #2e1065 0%, #5b21b6 50%, #7c3aed 100%)" }}
       >
         {[
           { top: "12%", left: "20%", size: 64, opacity: 0.18 },
@@ -187,7 +187,7 @@ export default function AgromaISiteProjectPage() {
           </div>
         </section>
         <section className="relative overflow-hidden rounded-3xl px-8 py-12 text-center"
-          style={{ background: `linear-gradient(135deg, #14532d 0%, ${ACCENT} 100%)` }}>
+          style={{ background: `linear-gradient(135deg, #2e1065 0%, ${ACCENT} 100%)` }}>
           <div aria-hidden className="pointer-events-none absolute -top-10 -right-10 h-48 w-48 rounded-full opacity-10" style={{ background: "#fff" }} />
           <h2 className="mb-2 text-2xl font-bold text-white">{c.metricsTitle}</h2>
           <p className="mb-10 text-white/75">{c.metricsSubtitle}</p>
