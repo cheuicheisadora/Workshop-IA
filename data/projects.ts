@@ -136,3 +136,37 @@ export function getProjectBySlug(slug: string): Project | undefined {
 export function getFeaturedProjects(): Project[] {
   return projects.filter((p) => p.featured)
 }
+  {
+    id: "4",
+    slug: "redesign-site-agromai",
+    title: "Redesign Site Agromai",
+    description:
+      "Redesign completo do site institucional da Agromai — do benchmark ao handoff gerado com IA. Interface minimalista que elevou a clareza da comunicação de produto e gerou um aumento de ~10% no tráfego.",
+    description_en:
+      "Full redesign of Agromai's institutional website — from benchmark to AI-generated handoff. A minimalist interface that improved product communication clarity and drove ~10% traffic growth.",
+    role: "UX/UI Designer · Agromai",
+    role_en: "UX/UI Designer · Agromai",
+    tools: ["Figma", "Claude", "Benchmark"],
+    tools_en: ["Figma", "Claude", "Benchmarking"],
+    problem: "Site desatualizado com visual antigo que não refletia o posicionamento atual da marca nem a maturidade do produto.",
+    solution: "Interface minimalista com hierarquia visual clara e handoff gerado com IA, entregue direto para o time de desenvolvimento sem retrabalho.",
+    impact: "~10% de aumento no tráfego e zero retrabalho de handoff — todo o código gerado a partir do design no Figma.",
+    problem_en: "Outdated website with an old visual style that no longer reflected the brand's current positioning or the product's maturity.",
+    solution_en: "Minimalist interface with clear visual hierarchy and AI-generated handoff, delivered directly to the development team with no rework.",
+    impact_en: "~10% traffic increase and zero handoff rework — all code generated directly from the Figma design.",
+    images: [],
+    placeholderGradient: "linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 70%, #22c55e 100%)",
+    accentColor: "#16a34a",
+    featured: true,
+    caseStudy: {
+      context: "Como UX/UI Designer na Agromai, liderei o redesign completo do site institucional da empresa. O site estava desatualizado — com visual antigo que não refletia mais o posicionamento da marca nem a maturidade do produto que a Agromai entrega.",
+      context_en: "As UX/UI Designer at Agromai, I led the complete redesign of the company's institutional website. The site was outdated — with an old visual style that no longer reflected the brand's positioning or the maturity of Agromai's product.",
+      research: "Conduzi um benchmark de referências de sites institucionais do setor agtech para entender padrões visuais e estruturais que performavam bem. A pesquisa revelou que layouts minimalistas consistentemente apresentavam melhor clareza e hierarquia visual do que layouts mais densos de informação.",
+      research_en: "I ran a benchmark of institutional agtech websites to understand visual and structural patterns that were performing well. Research consistently showed that minimalist layouts delivered better clarity and visual hierarchy than information-dense ones.",
+      insights: "Chegando a testar duas direções: layout denso (mais informação acima da dobra) e layout minimalista. O benchmark apontou o minimalismo como o padrão de melhor performance. Decisão: priorizar clareza e hierarquia visual sobre volume de conteúdo, mesmo sacrificando densidade de informação no topo.",
+      insights_en: "Two directions were explored: a dense layout (more information above the fold) and a minimalist one. Benchmarking consistently pointed to minimalism as the better-performing pattern. Decision: prioritize clarity and visual hierarchy over content volume, even at the cost of above-the-fold density.",
+      wireframes: [],
+      results: "O novo site gerou um aumento de aproximadamente 10% no tráfego (medição informal). O handoff foi entregue diretamente ao time de desenvolvimento sem retrabalho, com o código gerado a partir do design no Figma usando o Claude.",
+      results_en: "The new website drove approximately 10% traffic growth (informal measurement). Handoff was delivered directly to the dev team with zero rework — code generated from the Figma design using Claude.",
+    },
+  },
