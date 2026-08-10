@@ -442,6 +442,11 @@ export default function HomePage() {
               <div className="md:col-span-2" data-animate data-delay="4">
                 <ProjectCard project={projects[2]} />
               </div>
+
+              {/* Card 4 — Agromai (full width) */}
+              <div className="md:col-span-3" data-animate data-delay="5">
+                <ProjectCard project={projects[3]} />
+              </div>
             </div>
           )}
         </div>
