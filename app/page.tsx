@@ -404,48 +404,14 @@ export default function HomePage() {
                 <ProjectCard project={projects[1]} />
               </div>
 
-              {/* Glass CTA block — col 1 */}
-              <div
-                data-animate
-                data-delay="3"
-                className="hidden md:flex flex-col justify-between rounded-xl p-6"
-                style={{
-                  background: "rgba(168, 216, 234, 0.08)",
-                  border: "1px solid rgba(168, 216, 234, 0.3)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                }}
-              >
-                <div>
-                  <p
-                    className="text-xs font-semibold uppercase tracking-widest mb-3"
-                    style={{ color: "var(--primary-deep)" }}
-                  >
-                    Behance
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {t("behance_cta_text")}
-                  </p>
-                </div>
-                <a
-                  href="https://www.behance.net/isadoracheuiche"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 flex items-center gap-1 text-sm font-semibold transition-opacity hover:opacity-70"
-                  style={{ color: "var(--primary-deep)" }}
-                >
-                  {t("behance_cta_link")} <ArrowUpRight className="h-4 w-4" />
-                </a>
+              {/* Card 3 — Agromai (side) */}
+              <div data-animate data-delay="3">
+                <ProjectCard project={projects[3]} />
               </div>
 
-              {/* Card 3 — spans 2 cols */}
+              {/* Card 4 — Feed Me (spans 2 cols) */}
               <div className="md:col-span-2" data-animate data-delay="4">
                 <ProjectCard project={projects[2]} />
-              </div>
-
-              {/* Card 4 — Agromai (full width) */}
-              <div className="md:col-span-3" data-animate data-delay="5">
-                <ProjectCard project={projects[3]} />
               </div>
             </div>
           )}
