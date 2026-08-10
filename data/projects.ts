@@ -136,3 +136,9 @@ export function getProjectBySlug(slug: string): Project | undefined {
 export function getFeaturedProjects(): Project[] {
   return projects.filter((p) => p.featured)
 }
+git clone -b claude/setup-github-account-SIPjj https://github.com/cheuicheisadora/Workshop-IA
+cd Workshop-IA
+git apply caminho/para/agromai-project.patch
+git add "app/(public)/projetos/redesign-site-agromai/page.tsx" data/projects.ts
+git commit -m "Add Agromai website redesign project and internal case study page"
+git push -u origin claude/setup-github-account-SIPjj
