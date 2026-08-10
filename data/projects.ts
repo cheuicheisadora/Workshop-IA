@@ -127,15 +127,6 @@ export const projects: Project[] = [
       results_en: "High-fidelity prototype delivered with 5 main screens (Home, Explore, Chat, Cookbook, Profile) and a complete component system. Social features — Follow, Chat, and Share — fully integrated. Accessible and user-friendly interface validated in the EBAC case study.",
     },
   },
-]
-
-export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug)
-}
-
-export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured)
-}
   {
     id: "4",
     slug: "redesign-site-agromai",
@@ -170,3 +161,10 @@ export function getFeaturedProjects(): Project[] {
       results_en: "The new website drove approximately 10% traffic growth (informal measurement). Handoff was delivered directly to the dev team with zero rework — code generated from the Figma design using Claude.",
     },
   },
+]
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug)
+}
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((p) => p.featured)
+}
