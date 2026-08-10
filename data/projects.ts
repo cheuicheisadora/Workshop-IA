@@ -146,8 +146,8 @@ export const projects: Project[] = [
     solution_en: "Minimalist interface with clear visual hierarchy and AI-generated handoff, delivered directly to the development team with no rework.",
     impact_en: "~10% traffic increase and zero handoff rework — all code generated directly from the Figma design.",
     images: [],
-    placeholderGradient: "linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 70%, #22c55e 100%)",
-    accentColor: "#16a34a",
+    placeholderGradient: "linear-gradient(135deg, #2e1065 0%, #5b21b6 50%, #7c3aed 100%)",
+    accentColor: "#7c3aed",
     featured: true,
     caseStudy: {
       context: "Como UX/UI Designer na Agromai, liderei o redesign completo do site institucional da empresa. O site estava desatualizado — com visual antigo que não refletia mais o posicionamento da marca nem a maturidade do produto que a Agromai entrega.",

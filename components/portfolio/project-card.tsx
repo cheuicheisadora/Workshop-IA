@@ -67,7 +67,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   const content = (
     <Card
-      className="overflow-hidden"
+      className="overflow-hidden h-full flex flex-col"
       style={{
         transform: hovered ? "translateY(-8px)" : "translateY(0)",
         boxShadow: hovered
@@ -79,7 +79,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       }}
     >
       <ProjectCover project={project} />
-      <CardContent className="p-5">
+      <CardContent className="p-5 flex flex-col flex-1">
         <div className="mb-2 flex flex-wrap gap-1.5">
           {tools.slice(0, 3).map((tool) => (
             <Badge
@@ -131,7 +131,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         href={project.externalUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group block"
+        className="group block h-full"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -143,7 +143,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/projetos/${project.slug}`}
-      className="group block"
+      className="group block h-full"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

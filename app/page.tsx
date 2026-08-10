@@ -393,24 +393,24 @@ export default function HomePage() {
           </div>
 
           {projects.length > 0 && (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 items-start">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {/* Card 1 — Featured (wide) */}
-              <div className="md:col-span-2" data-animate data-delay="1">
+              <div className="md:col-span-2 h-full" data-animate data-delay="1">
                 <ProjectCard project={projects[0]} />
               </div>
 
               {/* Card 2 — Side */}
-              <div data-animate data-delay="2">
+              <div className="h-full" data-animate data-delay="2">
                 <ProjectCard project={projects[1]} />
               </div>
 
               {/* Card 3 — Agromai (side) */}
-              <div data-animate data-delay="3">
+              <div className="h-full" data-animate data-delay="3">
                 <ProjectCard project={projects[3]} />
               </div>
 
               {/* Card 4 — Feed Me (spans 2 cols) */}
-              <div className="md:col-span-2" data-animate data-delay="4">
+              <div className="md:col-span-2 h-full" data-animate data-delay="4">
                 <ProjectCard project={projects[2]} />
               </div>
             </div>
