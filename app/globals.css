@@ -334,6 +334,65 @@
     pointer-events: none;
     user-select: none;
   }
+
+  /* ─── Manchas de gradiente ───────────────────────────────────
+     Elipse com radial-gradient tem silhueta perfeita e queda dura —
+     lê como "brilho" artificial. Aqui a forma é irregular (border-radius
+     de 8 valores) e o blur pesado dissolve a borda, que é o que aproxima
+     de uma malha de gradiente desenhada à mão.                        */
+
+  .blob {
+    position: absolute;
+    filter: blur(80px);
+    will-change: transform;
+  }
+
+  .blob-1 {
+    border-radius: 58% 42% 37% 63% / 46% 39% 61% 54%;
+  }
+  .blob-2 {
+    border-radius: 38% 62% 55% 45% / 62% 48% 52% 38%;
+  }
+  .blob-3 {
+    border-radius: 64% 36% 48% 52% / 38% 57% 43% 62%;
+  }
+  .blob-4 {
+    border-radius: 45% 55% 68% 32% / 55% 62% 38% 45%;
+  }
+
+  /* O blur é caro em tela grande; no mobile ele fica menor e algumas
+     manchas somem. */
+  @media (max-width: 768px) {
+    .blob {
+      filter: blur(56px);
+    }
+    .blob-hide-sm {
+      display: none;
+    }
+  }
+
+  /* Grão de filme: ruído dessaturado, ladrilhado em 134px como no arquivo,
+     em mix-blend overlay. Sem o feColorMatrix o feTurbulence sai colorido
+     e vira uma névoa suja em vez de grão. */
+  .grain {
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: overlay;
+    opacity: 0.55;
+    background-repeat: repeat;
+    background-size: 134px 134px;
+  }
+
+  /* Escurece as bordas e concentra o olho no centro. */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      120% 80% at 50% 38%,
+      transparent 40%,
+      rgba(4, 4, 16, 0.55) 100%
+    );
+  }
 }
 
 /* ─── Animações ──────────────────────────────────────────────

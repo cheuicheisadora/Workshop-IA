@@ -1,15 +1,16 @@
 /**
- * Camada decorativa da página: glows roxos, anéis, partículas e ruído.
+ * Camada decorativa da página: manchas de gradiente, anéis, partículas e grão.
  *
- * Os assets originais do Figma (SVGs "Element", "bola testzinho" e a textura
- * de noise) não puderam ser baixados — as URLs do MCP respondem 403 a partir
- * deste ambiente. As formas foram reconstruídas em CSS/SVG a partir das
- * posições e dimensões lidas do arquivo.
+ * Os assets originais do Figma (os vetores "Element", os círculos e a textura
+ * de noise) não puderam ser baixados: o egress do ambiente bloqueia
+ * www.figma.com ("Host not in allowlist"). Enquanto o host não é liberado, as
+ * formas são reconstruídas em CSS a partir das posições, tamanhos e rotações
+ * lidas do arquivo.
  *
  * Puramente decorativa: aria-hidden, pointer-events none, nunca cobre CTA.
  */
 
-/** Partículas: coordenadas do Figma (canvas 1920) convertidas para %. */
+/** Partículas: coordenadas do Figma (canvas 1920 × 4581) convertidas para %. */
 const PARTICLES = [
   { x: 7.8, y: 4.6, s: 7 },
   { x: 26.9, y: 5.4, s: 7 },
@@ -47,19 +48,111 @@ const PARTICLES = [
   { x: 75.9, y: 95.5, s: 7 },
 ]
 
-/** Anéis grandes (Figma: "bola testzinho", 495px). */
+/** Anéis grandes (Figma: "bola testzinho", 495 px). */
 const RINGS = [
-  { left: "-16%", top: "4%" },
-  { left: "89%", top: "14%" },
-  { left: "-16%", top: "52%" },
-  { left: "84%", top: "70%" },
-  { left: "-6%", top: "79%" },
+  { left: "-16%", top: "3%", size: 495 },
+  { left: "88%", top: "13%", size: 495 },
+  { left: "-17%", top: "51%", size: 495 },
+  { left: "83%", top: "69%", size: 495 },
+  { left: "-6%", top: "79%", size: 495 },
 ]
 
-/** Ruído gerado via feTurbulence — evita dependência de asset externo. */
-const NOISE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="134" height="134"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="134" height="134" filter="url(#n)" opacity="0.5"/></svg>`
+/**
+ * Manchas de gradiente. Cada uma é uma forma irregular borrada — a rotação
+ * e o skew vêm dos vetores "Element" do arquivo, que estão girados ~177°.
+ */
+const BLOBS = [
+  {
+    shape: "blob-1",
+    anim: "orb-a",
+    style: {
+      top: "-10%",
+      right: "-14%",
+      width: "58vw",
+      height: "46vw",
+      maxWidth: "1120px",
+      maxHeight: "880px",
+      background:
+        "linear-gradient(135deg, #A87BE0 0%, #7B4FBF 45%, #3C2270 100%)",
+      opacity: 0.42,
+      transform: "rotate(-8deg) skewX(6deg)",
+    },
+  },
+  {
+    shape: "blob-2",
+    anim: "orb-b",
+    style: {
+      top: "2%",
+      left: "-22%",
+      width: "52vw",
+      height: "44vw",
+      maxWidth: "980px",
+      maxHeight: "820px",
+      background:
+        "linear-gradient(120deg, #6E45A8 0%, #4A2A7A 55%, #1B1140 100%)",
+      opacity: 0.5,
+      transform: "rotate(12deg)",
+    },
+  },
+  {
+    shape: "blob-3",
+    anim: "orb-a",
+    style: {
+      top: "24%",
+      left: "22%",
+      width: "44vw",
+      height: "30vw",
+      maxWidth: "820px",
+      maxHeight: "560px",
+      background:
+        "linear-gradient(90deg, #8C63C9 0%, #5B3A9B 60%, transparent 100%)",
+      opacity: 0.22,
+      transform: "rotate(-4deg)",
+    },
+    hideSm: true,
+  },
+  {
+    shape: "blob-4",
+    anim: "orb-b",
+    style: {
+      top: "48%",
+      right: "-16%",
+      width: "50vw",
+      height: "36vw",
+      maxWidth: "940px",
+      maxHeight: "680px",
+      background:
+        "linear-gradient(200deg, #9670D0 0%, #4E2E86 50%, #221247 100%)",
+      opacity: 0.3,
+      transform: "rotate(16deg) skewY(-5deg)",
+    },
+    hideSm: true,
+  },
+  {
+    shape: "blob-2",
+    anim: "orb-a",
+    style: {
+      bottom: "-2%",
+      left: "-14%",
+      width: "54vw",
+      height: "40vw",
+      maxWidth: "1000px",
+      maxHeight: "760px",
+      background:
+        "linear-gradient(60deg, #A177DB 0%, #5C3699 50%, #241450 100%)",
+      opacity: 0.38,
+      transform: "rotate(-14deg)",
+    },
+  },
+]
 
-const NOISE_URL = `url("data:image/svg+xml,${encodeURIComponent(NOISE_SVG)}")`
+/**
+ * Grão de filme. feColorMatrix dessatura o feTurbulence — sem isso o ruído
+ * sai colorido e suja o fundo em vez de granular.
+ */
+const GRAIN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="134" height="134"><filter id="g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="134" height="134" filter="url(#g)"/></svg>`
+
+const GRAIN_URL = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`
 
 export function Backdrop() {
   return (
@@ -67,56 +160,16 @@ export function Backdrop() {
       aria-hidden="true"
       className="decor absolute inset-0 -z-10 overflow-hidden"
     >
-      {/* Glow principal — atrás do hero, canto superior direito */}
-      <div
-        className="orb-a absolute"
-        style={{
-          top: "-14%",
-          right: "-18%",
-          width: "1100px",
-          height: "900px",
-          background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(151,111,204,0.42) 0%, rgba(151,111,204,0.12) 45%, rgba(151,111,204,0) 72%)",
-        }}
-      />
-      {/* Glow secundário — esquerda, altura do hero */}
-      <div
-        className="orb-b absolute"
-        style={{
-          top: "6%",
-          left: "-24%",
-          width: "900px",
-          height: "800px",
-          background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(122,86,180,0.34) 0%, rgba(122,86,180,0.10) 48%, rgba(122,86,180,0) 74%)",
-        }}
-      />
-      {/* Glow do miolo — atrás da grade de projetos */}
-      <div
-        className="orb-a absolute"
-        style={{
-          top: "44%",
-          left: "52%",
-          width: "1000px",
-          height: "700px",
-          background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(151,111,204,0.24) 0%, rgba(151,111,204,0) 70%)",
-        }}
-      />
-      {/* Glow inferior — antes do footer */}
-      <div
-        className="orb-b absolute"
-        style={{
-          bottom: "2%",
-          left: "-10%",
-          width: "1000px",
-          height: "760px",
-          background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(151,111,204,0.30) 0%, rgba(151,111,204,0) 70%)",
-        }}
-      />
+      {BLOBS.map((blob, i) => (
+        <div
+          key={`blob-${i}`}
+          className={`blob ${blob.shape} ${blob.anim}${
+            blob.hideSm ? " blob-hide-sm" : ""
+          }`}
+          style={blob.style}
+        />
+      ))}
 
-      {/* Anéis */}
       {RINGS.map((ring, i) => (
         <div
           key={`ring-${i}`}
@@ -124,14 +177,13 @@ export function Backdrop() {
           style={{
             left: ring.left,
             top: ring.top,
-            width: "495px",
-            height: "495px",
-            border: "1px solid rgba(255,255,255,0.07)",
+            width: ring.size,
+            height: ring.size,
+            border: "1px solid rgba(255,255,255,0.06)",
           }}
         />
       ))}
 
-      {/* Partículas */}
       {PARTICLES.map((p, i) => (
         <div
           key={`p-${i}`}
@@ -141,17 +193,14 @@ export function Backdrop() {
             top: `${p.y}%`,
             width: `${p.s}px`,
             height: `${p.s}px`,
-            background: "rgba(255,255,255,0.55)",
-            opacity: p.s > 5 ? 0.5 : 0.35,
+            background: "rgba(255,255,255,0.6)",
+            opacity: p.s > 5 ? 0.45 : 0.3,
           }}
         />
       ))}
 
-      {/* Textura de ruído */}
-      <div
-        className="absolute inset-0 mix-blend-overlay"
-        style={{ backgroundImage: NOISE_URL, opacity: 0.32 }}
-      />
+      <div className="vignette" />
+      <div className="grain" style={{ backgroundImage: GRAIN_URL }} />
     </div>
   )
 }
