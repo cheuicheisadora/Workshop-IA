@@ -1,7 +1,12 @@
+"use client"
+
 import { ArrowUpRight } from "lucide-react"
 import { site } from "@/data/site"
+import { useLanguage } from "@/context/language"
 
 export function Contact() {
+  const { t } = useLanguage()
+
   return (
     <section id="contato" className="section anchor-target">
       <div className="container-page flex flex-col items-center gap-14 text-center">
@@ -14,7 +19,7 @@ export function Contact() {
           }}
           data-animate
         >
-          Vamos conversar?
+          {t("home_contact_heading")}
         </h2>
 
         <a
@@ -23,7 +28,7 @@ export function Contact() {
           data-animate
           data-delay="1"
         >
-          Enviar mensagem
+          {t("cta_btn")}
           <ArrowUpRight className="h-5 w-5" aria-hidden />
         </a>
       </div>

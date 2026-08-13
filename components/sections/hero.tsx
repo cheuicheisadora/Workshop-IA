@@ -1,7 +1,12 @@
+"use client"
+
 import { ArrowRight, ArrowDown } from "lucide-react"
 import { site } from "@/data/site"
+import { useLanguage } from "@/context/language"
 
 export function Hero() {
+  const { lang, t } = useLanguage()
+
   return (
     <section
       id="top"
@@ -26,14 +31,14 @@ export function Hero() {
             letterSpacing: "-0.02em",
           }}
         >
-          Oi! Eu sou a Isadora.
+          {t("home_hero_title")}
         </h1>
 
         <p
           className="hero-reveal mx-auto mt-6 max-w-2xl font-semibold text-fg"
           style={{ fontSize: "var(--text-lead)", animationDelay: "0.1s" }}
         >
-          {site.role}
+          {lang === "en" ? site.roleEn : site.role}
         </p>
 
         <div
@@ -41,11 +46,11 @@ export function Hero() {
           style={{ animationDelay: "0.2s" }}
         >
           <a href="#projetos" className="btn btn-primary btn-lg w-full sm:w-auto">
-            Ver projetos
+            {t("hero_btn_projects")}
             <ArrowRight className="h-5 w-5" aria-hidden />
           </a>
           <a href="#contato" className="btn btn-outline btn-lg w-full sm:w-auto">
-            Entrar em contato
+            {t("hero_btn_contact")}
             <ArrowDown className="h-5 w-5" aria-hidden />
           </a>
         </div>
@@ -53,7 +58,7 @@ export function Hero() {
 
       <a
         href="#projetos"
-        aria-label="Rolar para os projetos"
+        aria-label={t("home_hero_scroll")}
         className="absolute bottom-8 left-1/2 hidden h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full text-fg-subtle sm:flex"
       >
         <ArrowDown className="scroll-hint h-5 w-5" aria-hidden />

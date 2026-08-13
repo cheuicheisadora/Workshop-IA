@@ -1,7 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { projects, type Project } from "@/data/projects"
+import { useLanguage } from "@/context/language"
 
 /**
  * Grade de projetos.
@@ -21,7 +24,10 @@ const BENTO_SPAN = [
 ]
 
 function ProjectCard({ project }: { project: Project }) {
+  const { lang, t } = useLanguage()
   const cover = project.images[0]
+  const description =
+    lang === "en" ? project.description_en ?? project.description : project.description
 
   const inner = (
     <>
@@ -71,13 +77,13 @@ function ProjectCard({ project }: { project: Project }) {
           className="max-w-[52ch] text-fg-muted"
           style={{ fontSize: "var(--text-card-body)", lineHeight: 1.6 }}
         >
-          {project.description}
+          {description}
         </p>
         <span
           className="mt-1 inline-flex items-center gap-1.5 font-semibold"
           style={{ color: "#C9AEEE" }}
         >
-          Ver case
+          {t("home_projects_view_case")}
           <ArrowUpRight className="h-4 w-4" aria-hidden />
         </span>
       </div>
@@ -102,7 +108,7 @@ function ProjectCard({ project }: { project: Project }) {
         style={shellStyle}
       >
         {inner}
-        <span className="sr-only">(abre em nova aba)</span>
+        <span className="sr-only">{t("home_new_tab")}</span>
       </a>
     )
   }
@@ -115,6 +121,8 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function Projects() {
+  const { t } = useLanguage()
+
   return (
     <section id="projetos" className="section anchor-target">
       <div className="container-page">
@@ -127,10 +135,10 @@ export function Projects() {
               letterSpacing: "-0.01em",
             }}
           >
-            Projetos
+            {t("projects_heading")}
           </h2>
           <p className="mt-6 text-fg-muted" style={{ lineHeight: 1.8 }}>
-            Cases reais com processo, desafios e resultados.
+            {t("projects_subtitle")}
           </p>
         </header>
 

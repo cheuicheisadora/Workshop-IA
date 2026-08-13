@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ArrowUpRight, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { navLinks, site } from "@/data/site"
+import { useLanguage } from "@/context/language"
 
 /**
  * Marca do logotipo: vetor exportado do Figma (0:188), caixa de 30,75px.
@@ -28,7 +29,53 @@ function LogoMark() {
   )
 }
 
+/**
+ * Pílula PT/EN (Figma 0:198): caixa de 81×41 em rgba(217,217,217,.1), duas
+ * fichas de 32px, a ativa em rgba(151,111,204,.55). O arquivo mostra EN
+ * marcada; aqui quem manda é o idioma corrente, que começa em PT.
+ *
+ * A ficha tem 32px por desenho, abaixo dos 44px de alvo mínimo — o ::after
+ * estende a área de clique sem mexer no visual.
+ */
+function LanguageToggle({ className = "" }: { className?: string }) {
+  const { lang, setLang } = useLanguage()
+
+  return (
+    <div
+      role="group"
+      aria-label={lang === "en" ? "Language" : "Idioma"}
+      className={`flex w-[81px] items-center justify-center gap-[2.386px] rounded-[var(--radius-pill)] p-[4.771px] ${className}`}
+      style={{ background: "var(--surface-soft)" }}
+    >
+      {(["pt", "en"] as const).map((code) => {
+        const active = lang === code
+        return (
+          <button
+            key={code}
+            type="button"
+            onClick={() => setLang(code)}
+            aria-pressed={active}
+            className="tap-44 relative flex h-8 w-8 items-center justify-center rounded-[var(--radius-pill)] border-0 text-[14px] font-bold text-fg transition-colors duration-200"
+            style={{
+              background: active ? "var(--purple-fill)" : "transparent",
+              textShadow: "0 0 1.193px rgba(0, 0, 0, 0.15)",
+              cursor: "pointer",
+            }}
+          >
+            {code.toUpperCase()}
+            <span className="sr-only">
+              {code === "pt" ? " — Português" : " — English"}
+            </span>
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
 export function SiteHeader() {
+  const { lang, t } = useLanguage()
+  const en = lang === "en"
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -55,7 +102,7 @@ export function SiteHeader() {
         href="#conteudo"
         className="btn btn-solid sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
       >
-        Pular para o conteúdo
+        {t("home_skip")}
       </a>
 
       <header
@@ -70,7 +117,8 @@ export function SiteHeader() {
         <div className="container-page flex items-center justify-between gap-6 py-3">
           <a
             href="#top"
-            className="flex shrink-0 items-center gap-3 text-[1.25rem] font-semibold text-fg no-underline"
+            /* Logo 0:187: vetor + nome a 22px, com 15px entre eles. */
+            className="flex shrink-0 items-center gap-[15px] text-[22px] font-medium text-fg no-underline"
           >
             <LogoMark />
             {site.name}
@@ -82,7 +130,7 @@ export function SiteHeader() {
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="nav-link">
-                    {link.label}
+                    {en ? link.labelEn : link.label}
                   </a>
                 </li>
               ))}
@@ -90,22 +138,31 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden shrink-0 items-center gap-6 lg:flex">
-            <span aria-hidden className="h-7 w-px bg-[var(--border)]" />
-            <a href={site.resume} className="nav-link" download>
-              Currículo
+            {/* Traço vertical 0:194: 0,5px, 27,5px de altura. */}
+            <span
+              aria-hidden
+              className="h-[27.5px] w-[0.5px]"
+              style={{ background: "var(--ring)" }}
+            />
+            <a
+              href={en ? site.resumeEn : site.resume}
+              className="nav-link"
+              download
+            >
+              {t("home_nav_resume")}
             </a>
             <a
               href={site.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-link gap-1"
+              className="nav-link"
             >
               LinkedIn
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
-              <span className="sr-only">(abre em nova aba)</span>
+              <span className="sr-only">{t("home_new_tab")}</span>
             </a>
+            <LanguageToggle />
             <a href="#contato" className="btn btn-solid">
-              Contato
+              {t("nav_contact")}
             </a>
           </div>
 
@@ -122,7 +179,9 @@ export function SiteHeader() {
             ) : (
               <Menu className="h-5 w-5" aria-hidden />
             )}
-            <span className="sr-only">{menuOpen ? "Fechar menu" : "Abrir menu"}</span>
+            <span className="sr-only">
+              {menuOpen ? t("home_menu_close") : t("home_menu_open")}
+            </span>
           </button>
         </div>
 
@@ -141,13 +200,17 @@ export function SiteHeader() {
                     className="nav-link w-full"
                     onClick={() => setMenuOpen(false)}
                   >
-                    {link.label}
+                    {en ? link.labelEn : link.label}
                   </a>
                 </li>
               ))}
               <li>
-                <a href={site.resume} className="nav-link w-full" download>
-                  Currículo
+                <a
+                  href={en ? site.resumeEn : site.resume}
+                  className="nav-link w-full"
+                  download
+                >
+                  {t("home_nav_resume")}
                 </a>
               </li>
               <li>
@@ -155,12 +218,14 @@ export function SiteHeader() {
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="nav-link w-full gap-1"
+                  className="nav-link w-full"
                 >
                   LinkedIn
-                  <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  <span className="sr-only">(abre em nova aba)</span>
+                  <span className="sr-only">{t("home_new_tab")}</span>
                 </a>
+              </li>
+              <li className="pt-2">
+                <LanguageToggle className="w-fit" />
               </li>
               <li className="pt-2">
                 <a
@@ -168,7 +233,7 @@ export function SiteHeader() {
                   className="btn btn-solid w-full"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Contato
+                  {t("nav_contact")}
                 </a>
               </li>
             </ul>
