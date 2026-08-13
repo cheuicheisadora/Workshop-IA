@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Manrope } from "next/font/google"
 import "./globals.css"
-import { CustomCursor } from "@/components/ui/custom-cursor"
 import { ScrollAnimateProvider } from "@/components/ui/scroll-animate"
 import { LanguageProvider } from "@/context/language"
 
@@ -38,7 +37,6 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${manrope.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <LanguageProvider>
-          <CustomCursor />
           <ScrollAnimateProvider />
           {children}
         </LanguageProvider>
