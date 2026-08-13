@@ -22,7 +22,7 @@
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --radius-card: clamp(28px, 4.5vw, 72px);
+  --radius-card: clamp(24px, 3vw, 48px);
   --radius-pill: 999px;
 
   /* Espaçamento — malha de 8 */
@@ -40,11 +40,11 @@
 
   /* Tipografia */
   --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
-  --text-hero: clamp(2.5rem, 6vw, 6rem);
-  --text-section: clamp(2rem, 4vw, 4rem);
-  --text-card-title: clamp(1.5rem, 2.2vw, 2.5rem);
-  --text-card-body: clamp(1rem, 1.3vw, 1.5rem);
-  --text-lead: clamp(1.125rem, 1.4vw, 1.5rem);
+  --text-hero: clamp(2.25rem, 5.2vw, 5rem);
+  --text-section: clamp(1.75rem, 3.2vw, 3rem);
+  --text-card-title: clamp(1.25rem, 2vw, 1.75rem);
+  --text-card-body: clamp(1rem, 1.1vw, 1.0625rem);
+  --text-lead: clamp(1.0625rem, 1.2vw, 1.25rem);
   --text-item-title: 1.25rem;
   --text-body: 1rem;
   --text-meta: 0.875rem;
@@ -274,6 +274,26 @@
     font-size: 1.125rem;
     padding: 14px var(--space-4);
     min-height: 52px;
+  }
+
+  /* ─── Título com gradiente ───────────────────────────────────
+     Figma 0:172: linear-gradient(to right, #976FCC → #FFFFFF) na linha
+     inteira. O ponto mais escuro (#976FCC) mede 5,05:1 sobre o fundo,
+     acima do exigido pelo AA.                                        */
+
+  .gradient-text {
+    background-image: linear-gradient(90deg, var(--purple) 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Sem cor de fundo o texto sumiria: volta a ser sólido. */
+  @media (forced-colors: active) {
+    .gradient-text {
+      background-image: none;
+      color: CanvasText;
+    }
   }
 
   /* ─── Link de navegação ──────────────────────────────────── */

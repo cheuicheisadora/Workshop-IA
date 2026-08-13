@@ -37,21 +37,24 @@ function ProjectCard({ project }: { project: Project }) {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
+          /* Sem foto ainda: a capa carrega a cor do próprio projeto
+             (laranja Itaú, verde Feed Me, roxo Agromai, rosa Glaucia). */
           <div
             className="h-full w-full"
-            style={{ background: "var(--surface)" }}
+            style={{ background: project.placeholderGradient ?? "var(--surface)" }}
           />
         )}
       </div>
 
-      {/* Scrim: garante contraste do texto sobre a capa, seja placeholder
-          ou foto real. */}
+      {/* Scrim: garante contraste do texto sobre a capa. Precisa ser forte
+          porque os gradientes de projeto são claros (o da Glaucia começa em
+          #F9E8E8) e o texto é branco. */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(9,10,36,0) 30%, rgba(9,10,36,0.55) 62%, rgba(9,10,36,0.92) 100%)",
+            "linear-gradient(180deg, rgba(9,10,36,0.10) 22%, rgba(9,10,36,0.78) 58%, rgba(9,10,36,0.96) 100%)",
         }}
       />
 
@@ -70,8 +73,8 @@ function ProjectCard({ project }: { project: Project }) {
 
       {/* Texto */}
       <div
-        className="relative mt-auto flex flex-col gap-3"
-        style={{ padding: "clamp(24px, 5vw, 64px)" }}
+        className="relative mt-auto flex flex-col gap-2"
+        style={{ padding: "clamp(20px, 3vw, 40px)" }}
       >
         <h3
           className="font-bold leading-tight"
@@ -81,7 +84,7 @@ function ProjectCard({ project }: { project: Project }) {
         </h3>
         <p
           className="max-w-[52ch] text-fg-muted"
-          style={{ fontSize: "var(--text-card-body)", lineHeight: 1.45 }}
+          style={{ fontSize: "var(--text-card-body)", lineHeight: 1.6 }}
         >
           {project.description}
         </p>
@@ -100,7 +103,7 @@ function ProjectCard({ project }: { project: Project }) {
     "group relative flex h-full flex-col overflow-hidden no-underline text-fg transition-transform duration-500 hover:-translate-y-1"
   const shellStyle = {
     borderRadius: "var(--radius-card)",
-    minHeight: "clamp(320px, 32vw, 420px)",
+    minHeight: "clamp(260px, 24vw, 340px)",
   }
 
   // Mesma regra do card antigo: projeto sem página interna abre o link externo.

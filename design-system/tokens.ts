@@ -48,9 +48,9 @@ export const tokens: DesignTokens = {
     sm: "8px",
     md: "16px",
     lg: "24px",
-    // Figma: 90px em cards de 1514px. Reduzido proporcionalmente ao
-    // container de 1280 (90 × 1280/1514 ≈ 76) e arredondado na malha de 8.
-    card: "clamp(28px, 4.5vw, 72px)",
+    // Figma: 90px. Reduzido junto com a altura do card, senão o raio come
+    // o conteúdo num card mais baixo.
+    card: "clamp(24px, 3vw, 48px)",
     pill: "999px",
   },
 
@@ -70,11 +70,17 @@ export const tokens: DesignTokens = {
 
   typography: {
     fontSans: "var(--font-manrope), system-ui, -apple-system, sans-serif",
-    hero: "clamp(2.5rem, 6vw, 6rem)",
-    section: "clamp(2rem, 4vw, 4rem)",
-    cardTitle: "clamp(1.5rem, 2.2vw, 2.5rem)",
-    cardBody: "clamp(1rem, 1.3vw, 1.5rem)",
-    lead: "clamp(1.125rem, 1.4vw, 1.5rem)",
+    /*
+     * A escala do Figma foi medida num canvas de 1920 e ficou grande demais
+     * no container de 1280. Os tetos abaixo são reduções pedidas na revisão:
+     * hero 96→80, seção 64→48, título de card 40→28, corpo de card 24→17,
+     * lead 24→20. Os mínimos respeitam o piso de 16px para texto corrido.
+     */
+    hero: "clamp(2.25rem, 5.2vw, 5rem)",
+    section: "clamp(1.75rem, 3.2vw, 3rem)",
+    cardTitle: "clamp(1.25rem, 2vw, 1.75rem)",
+    cardBody: "clamp(1rem, 1.1vw, 1.0625rem)",
+    lead: "clamp(1.0625rem, 1.2vw, 1.25rem)",
     itemTitle: "1.25rem",
     body: "1rem",
     meta: "0.875rem",

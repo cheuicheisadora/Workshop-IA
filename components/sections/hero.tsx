@@ -19,25 +19,14 @@ export function Hero() {
     >
       <div className="container-page text-center">
         <h1
-          className="hero-reveal font-bold"
+          className="hero-reveal gradient-text font-bold"
           style={{
             fontSize: "var(--text-hero)",
             lineHeight: 0.95,
             letterSpacing: "-0.02em",
           }}
         >
-          <span
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, var(--purple) 0%, #C9AEEE 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            Oi!
-          </span>{" "}
-          Eu sou a Isadora.
+          Oi! Eu sou a Isadora.
         </h1>
 
         <p
