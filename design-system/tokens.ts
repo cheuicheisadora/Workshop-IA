@@ -37,8 +37,28 @@ export const tokens: DesignTokens = {
 
     // Superfícies
     surface: "rgba(217, 217, 217, 0.5)",
+    // Pílula PT/EN do header (Figma 0:198).
+    surfaceSoft: "rgba(217, 217, 217, 0.1)",
     headerBg: "rgba(5, 5, 5, 0.01)",
     footerBg: "#000000",
+
+    /*
+     * Fundo decorativo. Estes valores estão embutidos nos SVGs exportados do
+     * Figma (public/figma/glow-*.svg) e ficam aqui como fonte de verdade da
+     * paleta — qualquer brilho novo em CSS deve sair daqui, não de um roxo
+     * inventado.
+     *
+     * glowMagenta*: vetores "Element" 0:54, 0:55, 0:63 e 0:64.
+     * glowPurple*:  vetores "Element" 0:62 e 0:182.
+     */
+    glowMagentaFrom: "#C680E2",
+    glowMagentaTo: "#AA13B2",
+    glowPurpleFrom: "#976FCC",
+    glowPurpleTo: "#0B0C28",
+
+    // Partículas (Ellipse 2–47) e anéis ("bola testzinho").
+    particle: "rgba(217, 217, 217, 0.5)",
+    ring: "rgba(255, 255, 255, 0.5)",
 
     // Foco de teclado — não existe no Figma, exigido por acessibilidade
     focus: "#C9AEEE",
