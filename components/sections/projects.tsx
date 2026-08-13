@@ -2,119 +2,241 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowUpRight } from "lucide-react"
 import { projects, type Project } from "@/data/projects"
 import { useLanguage } from "@/context/language"
 
 /**
- * Grade de projetos.
+ * Grade de projetos — frame 8:64 do Figma (grade 8:220).
  *
- * Seção isolada e dirigida por dados: o layout vive só neste arquivo e o
- * conteúdo vem de data/projects.ts. Para trocar a grade depois, basta mexer
- * em BENTO_SPAN e no ProjectCard — nada mais na página muda.
+ * Três cards de vidro escuro: dois na primeira linha e um ocupando as duas
+ * colunas na segunda. Cada um mostra o projeto num mockup de aparelho que
+ * sangra para fora da moldura e é cortado por ela.
  *
- * BENTO_SPAN reproduz a alternância do Figma (estreito | largo, largo |
- * estreito) numa grade de 12 colunas.
+ * Medidas: o arquivo desenha a grade em 1514 × 785 — cards de 737 × 395 na
+ * linha 1 e de 1514 × 329 na linha 2, com gaps de 40 e 61. Tudo aqui é % dessas
+ * caixas, então a composição escala junto com o container em vez de depender
+ * da largura de 1514.
+ *
+ * Abaixo de lg a grade vira uma coluna e o mockup sai do posicionamento
+ * absoluto para uma faixa embaixo do texto: o arquivo não tem versão mobile, e
+ * sobrepor aparelho e texto num card estreito não se lê.
  */
-const BENTO_SPAN = [
-  "lg:col-span-5",
-  "lg:col-span-7",
-  "lg:col-span-7",
-  "lg:col-span-5",
+
+type Mockup = { src: string; l: string; t: string; w: string; ratio: string }
+
+type CardSpec = {
+  slug: string
+  span: string
+  ratio: string
+  padLeft: string
+  titleTop: string
+  bodyTop: string
+  textWidth: string
+}
+
+/** Os três cards, na ordem do arquivo. */
+const CARDS: CardSpec[] = [
+  {
+    slug: "redesign-site-agromai",
+    span: "lg:col-span-1",
+    ratio: "737 / 395",
+    padLeft: "7.73%",
+    titleTop: "23.3%",
+    bodyTop: "40.5%",
+    textWidth: "50.5%",
+  },
+  {
+    slug: "feed-me-app",
+    span: "lg:col-span-1",
+    ratio: "737 / 395",
+    padLeft: "7.73%",
+    titleTop: "23.3%",
+    bodyTop: "40.5%",
+    textWidth: "54.3%",
+  },
+  {
+    slug: "redesign-app-itau",
+    span: "lg:col-span-2",
+    ratio: "1514 / 329",
+    padLeft: "3.76%",
+    titleTop: "28%",
+    bodyTop: "48.6%",
+    textWidth: "26.9%",
+  },
 ]
 
-function ProjectCard({ project }: { project: Project }) {
-  const { lang, t } = useLanguage()
-  const cover = project.images[0]
-  const description =
-    lang === "en" ? project.description_en ?? project.description : project.description
+/**
+ * MacBook do card da Agromai (8:225): a moldura é uma imagem e a captura do
+ * site entra atrás dela, na janela da tela. As duas peças são separadas no
+ * arquivo e continuam separadas aqui.
+ */
+function MockupAgromai() {
+  return (
+    <div
+      className="pc-mockup"
+      style={
+        {
+          "--l": "51.7%",
+          "--t": "6.3%",
+          "--w": "83.4%",
+          aspectRatio: "614.43 / 364.224",
+        } as React.CSSProperties
+      }
+    >
+      <div
+        className="absolute"
+        style={{ left: "12.45%", right: "13.02%", top: "8.12%", aspectRatio: "1425 / 900" }}
+      >
+        <Image
+          src="/figma/projetos/agromai-tela.jpg"
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 60vw, 40vw"
+          className="object-cover"
+        />
+      </div>
+      <Image
+        src="/figma/projetos/macbook-air.png"
+        alt=""
+        fill
+        sizes="(max-width: 1024px) 70vw, 45vw"
+        className="object-contain"
+      />
+    </div>
+  )
+}
+
+/**
+ * Celular do FeedMe (8:233): uma imagem só, ampliada e deslocada dentro de uma
+ * caixa que corta — os mesmos 233,33% × 124,23% do arquivo.
+ */
+function MockupFeedMe() {
+  return (
+    <div
+      className="pc-mockup overflow-hidden"
+      style={
+        {
+          "--l": "68.4%",
+          "--t": "23.3%",
+          "--w": "23.88%",
+          aspectRatio: "176 / 363",
+          borderRadius: "clamp(10px, 1.7vw, 25px)",
+        } as React.CSSProperties
+      }
+    >
+      <div
+        className="absolute"
+        style={{ left: "-66.7%", top: "-5.32%", width: "233.33%", height: "124.23%" }}
+      >
+        <Image
+          src="/figma/projetos/feedme-tela.jpg"
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 40vw, 20vw"
+          className="object-cover"
+        />
+      </div>
+    </div>
+  )
+}
+
+/** Os três aparelhos do card do Itaú (8:238, 8:239 e 8:304). */
+const ITAU: Mockup[] = [
+  { src: "/figma/projetos/itau-inicio.png", l: "44.32%", t: "21.6%", w: "15.98%", ratio: "242 / 494" },
+  { src: "/figma/projetos/itau-duvidas.png", l: "60.9%", t: "25.4%", w: "15.75%", ratio: "477 / 558" },
+  { src: "/figma/projetos/itau-atendimento.png", l: "77.4%", t: "25.4%", w: "15.75%", ratio: "477 / 558" },
+]
+
+function MockupItau() {
+  return (
+    <>
+      {ITAU.map((m) => (
+        <div
+          key={m.src}
+          className="pc-mockup"
+          style={
+            { "--l": m.l, "--t": m.t, "--w": m.w, aspectRatio: m.ratio } as React.CSSProperties
+          }
+        >
+          <Image
+            src={m.src}
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 30vw, 16vw"
+            className="object-contain object-top"
+          />
+        </div>
+      ))}
+    </>
+  )
+}
+
+const MOCKUPS: Record<string, () => React.ReactElement> = {
+  "redesign-site-agromai": MockupAgromai,
+  "feed-me-app": MockupFeedMe,
+  "redesign-app-itau": MockupItau,
+}
+
+function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
+  const { lang } = useLanguage()
+  const en = lang === "en"
+  const Mockup = MOCKUPS[card.slug]
+
+  const title = en ? project.cardTitle_en ?? project.title : project.cardTitle ?? project.title
+  const description = en
+    ? project.cardDescription_en ?? project.description_en ?? project.description
+    : project.cardDescription ?? project.description
 
   const inner = (
     <>
-      {/* Capa */}
-      <div className="absolute inset-0" aria-hidden={!cover}>
-        {cover ? (
-          /* fill + sizes: dimensões resolvidas no layout, sem layout shift. */
-          <Image
-            src={cover}
-            alt=""
-            fill
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
-        ) : (
-          /* Placeholder neutro do Figma, até as capas reais chegarem. */
-          <div
-            className="h-full w-full"
-            style={{ background: "var(--surface)" }}
-          />
-        )}
-      </div>
-
-      {/* Scrim: mantém o contraste do texto branco sobre a capa, tanto no
-          placeholder quanto numa foto real. */}
       <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(9,10,36,0) 28%, rgba(9,10,36,0.62) 60%, rgba(9,10,36,0.94) 100%)",
-        }}
-      />
-
-      {/* Texto */}
-      <div
-        className="relative mt-auto flex flex-col gap-2"
-        style={{ padding: "clamp(20px, 3vw, 40px)" }}
+        className="pc-texto"
+        style={
+          {
+            "--pad-esq": card.padLeft,
+            "--titulo-topo": card.titleTop,
+            "--corpo-topo": card.bodyTop,
+            "--largura-texto": card.textWidth,
+          } as React.CSSProperties
+        }
       >
         <h3
-          className="font-bold leading-tight"
-          style={{ fontSize: "var(--text-card-title)" }}
+          className="font-bold"
+          style={{ fontSize: "var(--text-card-title)", letterSpacing: "-0.01em", lineHeight: 1.2 }}
         >
-          {project.title}
+          {title}
         </h3>
-        <p
-          className="max-w-[52ch] text-fg-muted"
-          style={{ fontSize: "var(--text-card-body)", lineHeight: 1.6 }}
-        >
-          {description}
-        </p>
-        <span
-          className="mt-1 inline-flex items-center gap-1.5 font-semibold"
-          style={{ color: "#C9AEEE" }}
-        >
-          {t("home_projects_view_case")}
-          <ArrowUpRight className="h-4 w-4" aria-hidden />
-        </span>
+        <p style={{ fontSize: "var(--text-card-body)", lineHeight: 1.5 }}>{description}</p>
+      </div>
+
+      <div className="pc-palco" aria-hidden>
+        <Mockup />
       </div>
     </>
   )
 
-  const shell =
-    "group relative flex h-full flex-col overflow-hidden no-underline text-fg transition-transform duration-500 hover:-translate-y-1"
-  const shellStyle = {
-    borderRadius: "var(--radius-card)",
-    minHeight: "clamp(260px, 24vw, 340px)",
-  }
+  const className = `project-card ${card.span}`
+  // A proporção do arquivo só vale de lg para cima; abaixo disso o card cresce
+  // com o texto. Vai como custom property para a media query decidir.
+  const style = { "--ratio": card.ratio } as React.CSSProperties
 
-  // Mesma regra do card antigo: projeto sem página interna abre o link externo.
+  // Projeto sem página interna abre o link externo, como no card antigo.
   if (project.externalUrl && !project.behanceUrl) {
     return (
       <a
         href={project.externalUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={shell}
-        style={shellStyle}
+        className={className}
+        style={style}
       >
         {inner}
-        <span className="sr-only">{t("home_new_tab")}</span>
       </a>
     )
   }
 
   return (
-    <Link href={`/projetos/${project.slug}`} className={shell} style={shellStyle}>
+    <Link href={`/projetos/${project.slug}`} className={className} style={style}>
       {inner}
     </Link>
   )
@@ -123,10 +245,15 @@ function ProjectCard({ project }: { project: Project }) {
 export function Projects() {
   const { t } = useLanguage()
 
+  const cards = CARDS.map((card) => ({
+    card,
+    project: projects.find((p) => p.slug === card.slug),
+  })).filter((x): x is { card: CardSpec; project: Project } => Boolean(x.project))
+
   return (
     <section id="projetos" className="section anchor-target">
       <div className="container-page">
-        <header className="mx-auto mb-12 max-w-3xl text-center" data-animate>
+        <header className="mx-auto mb-8 max-w-3xl text-center" data-animate>
           <h2
             className="font-bold"
             style={{
@@ -137,20 +264,22 @@ export function Projects() {
           >
             {t("projects_heading")}
           </h2>
-          <p className="mt-6 text-fg-muted" style={{ lineHeight: 1.8 }}>
+          {/* 8:219: neste frame o subtítulo subiu de 16 para 20px. */}
+          <p className="mt-7 text-fg" style={{ fontSize: "var(--text-lead)", lineHeight: 1.44 }}>
             {t("projects_subtitle")}
           </p>
         </header>
 
-        <ul className="grid list-none grid-cols-1 gap-6 p-0 lg:grid-cols-12">
-          {projects.map((project, i) => (
+        {/* Gaps do arquivo: 40px entre colunas, 61px entre linhas. */}
+        <ul className="grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 lg:grid-cols-2 lg:gap-y-[61px]">
+          {cards.map(({ card, project }, i) => (
             <li
               key={project.id}
-              className={`flex ${BENTO_SPAN[i % BENTO_SPAN.length]}`}
+              className={`flex ${card.span}`}
               data-animate
-              data-delay={String((i % 4) + 1)}
+              data-delay={String(i + 1)}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} card={card} />
             </li>
           ))}
         </ul>
