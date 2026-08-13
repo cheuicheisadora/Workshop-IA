@@ -29,8 +29,9 @@ type CardSpec = {
   span: string
   ratio: string
   padLeft: string
+  /** Distância do topo até o título e daí até o corpo, em % da largura. */
   titleTop: string
-  bodyTop: string
+  bodyGap: string
   textWidth: string
 }
 
@@ -38,29 +39,29 @@ type CardSpec = {
 const CARDS: CardSpec[] = [
   {
     slug: "redesign-site-agromai",
-    span: "lg:col-span-1",
+    span: "sm:col-span-1",
     ratio: "737 / 395",
     padLeft: "7.73%",
-    titleTop: "23.3%",
-    bodyTop: "40.5%",
+    titleTop: "12.48%",
+    bodyGap: "9.23%",
     textWidth: "50.5%",
   },
   {
     slug: "feed-me-app",
-    span: "lg:col-span-1",
+    span: "sm:col-span-1",
     ratio: "737 / 395",
     padLeft: "7.73%",
-    titleTop: "23.3%",
-    bodyTop: "40.5%",
+    titleTop: "12.48%",
+    bodyGap: "9.23%",
     textWidth: "54.3%",
   },
   {
     slug: "redesign-app-itau",
-    span: "lg:col-span-2",
+    span: "sm:col-span-2",
     ratio: "1514 / 329",
     padLeft: "3.76%",
-    titleTop: "28%",
-    bodyTop: "48.6%",
+    titleTop: "6.08%",
+    bodyGap: "4.49%",
     textWidth: "26.9%",
   },
 ]
@@ -79,6 +80,7 @@ function MockupAgromai() {
           "--l": "51.7%",
           "--t": "6.3%",
           "--w": "83.4%",
+          "--w-sm": "78%",
           aspectRatio: "614.43 / 364.224",
         } as React.CSSProperties
       }
@@ -119,6 +121,7 @@ function MockupFeedMe() {
           "--l": "68.4%",
           "--t": "23.3%",
           "--w": "23.88%",
+          "--w-sm": "40%",
           aspectRatio: "176 / 363",
           borderRadius: "clamp(10px, 1.7vw, 25px)",
         } as React.CSSProperties
@@ -155,7 +158,13 @@ function MockupItau() {
           key={m.src}
           className="pc-mockup"
           style={
-            { "--l": m.l, "--t": m.t, "--w": m.w, aspectRatio: m.ratio } as React.CSSProperties
+            {
+              "--l": m.l,
+              "--t": m.t,
+              "--w": m.w,
+              "--w-sm": "27%",
+              aspectRatio: m.ratio,
+            } as React.CSSProperties
           }
         >
           <Image
@@ -189,13 +198,18 @@ function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
 
   const inner = (
     <>
+      {/* Carrega a proporção do arquivo. Divide a célula da grade com o texto,
+          então o card fica com a altura do desenho — ou com a do texto, quando
+          ele precisa de mais espaço. */}
+      <div className="pc-espacador" aria-hidden />
+
       <div
         className="pc-texto"
         style={
           {
             "--pad-esq": card.padLeft,
             "--titulo-topo": card.titleTop,
-            "--corpo-topo": card.bodyTop,
+            "--corpo-vao": card.bodyGap,
             "--largura-texto": card.textWidth,
           } as React.CSSProperties
         }
@@ -271,7 +285,9 @@ export function Projects() {
         </header>
 
         {/* Gaps do arquivo: 40px entre colunas, 61px entre linhas. */}
-        <ul className="grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 lg:grid-cols-2 lg:gap-y-[61px]">
+        {/* Duas colunas já a partir de sm: em coluna única o card fica alto
+            demais no tablet, com o texto solto numa faixa muito larga. */}
+        <ul className="grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-2 lg:gap-y-[61px]">
           {cards.map(({ card, project }, i) => (
             <li
               key={project.id}
