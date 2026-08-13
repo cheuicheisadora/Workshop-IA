@@ -78,6 +78,22 @@ const translations = {
     cta_subtitle:
       "Estou disponível para projetos freelance, oportunidades full-time e colaborações criativas.",
     cta_btn: "Enviar mensagem",
+
+    /* ─── Home nova (redesign do Figma) ───────────────────────
+       Chaves usadas pelas seções em components/sections/.       */
+    home_skip: "Pular para o conteúdo",
+    home_menu_open: "Abrir menu",
+    home_menu_close: "Fechar menu",
+    home_new_tab: "(abre em nova aba)",
+    home_nav_resume: "Currículo",
+    home_hero_title: "Oi! Eu sou a Isadora.",
+    home_hero_scroll: "Rolar para os projetos",
+    home_projects_view_case: "Ver case",
+    home_work_cta: "Baixar currículo",
+    home_contact_heading: "Vamos conversar?",
+    home_footer_nav: "Navegação",
+    home_footer_contact: "Contato",
+    home_footer_email: "E-mail",
   },
   en: {
     // Navbar
@@ -152,6 +168,22 @@ const translations = {
     cta_subtitle:
       "I'm available for freelance projects, full-time opportunities, and creative collaborations.",
     cta_btn: "Send a message",
+
+    /* ─── Home nova (redesign do Figma) ─────────────────────── */
+    home_skip: "Skip to content",
+    home_menu_open: "Open menu",
+    home_menu_close: "Close menu",
+    home_new_tab: "(opens in a new tab)",
+    home_nav_resume: "Resume",
+    home_hero_title: "Hi! I'm Isadora.",
+    home_hero_scroll: "Scroll to projects",
+    home_projects_view_case: "View case",
+    home_work_cta: "Download resume",
+    /* "Let's chat" é a versão em inglês que já estava no arquivo (nó 0:152). */
+    home_contact_heading: "Let's chat?",
+    home_footer_nav: "Navigation",
+    home_footer_contact: "Contact",
+    home_footer_email: "Email",
   },
 } as const
 
@@ -171,11 +203,11 @@ const LanguageContext = createContext<LanguageContextType>({
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   /*
-   * O site deixou de ser bilíngue: o seletor PT/EN foi removido do header.
-   * O padrão passa a ser "pt" e a preferência salva não é mais lida — senão
-   * quem visitou o site em inglês antes continuaria vendo as páginas de case
-   * em inglês, com <html lang> divergindo do conteúdo.
-   * O provider segue de pé porque as páginas de case ainda consomem t().
+   * O site abre sempre em português — é o idioma do conteúdo e o que vai no
+   * <html lang> do servidor. A escolha do visitante não é persistida de
+   * propósito: se fosse lida na montagem, o primeiro render sairia em PT e
+   * trocaria para EN logo depois, com o lang do documento divergindo do texto
+   * no meio do caminho.
    */
   const [lang, setLangState] = useState<Lang>("pt")
 

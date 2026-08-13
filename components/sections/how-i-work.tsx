@@ -1,6 +1,9 @@
+"use client"
+
 import { Download } from "lucide-react"
 import { workPrinciples } from "@/data/work"
 import { site } from "@/data/site"
+import { useLanguage } from "@/context/language"
 
 /**
  * "Como eu trabalho".
@@ -10,6 +13,9 @@ import { site } from "@/data/site"
  * no desktop, 2 no tablet e 1 no mobile.
  */
 export function HowIWork() {
+  const { lang, t } = useLanguage()
+  const en = lang === "en"
+
   return (
     <section id="como-eu-trabalho" className="section anchor-target">
       <div className="container-page">
@@ -22,7 +28,7 @@ export function HowIWork() {
           }}
           data-animate
         >
-          Como eu trabalho
+          {t("work_heading")}
         </h2>
 
         <hr
@@ -42,18 +48,22 @@ export function HowIWork() {
                 className="font-semibold"
                 style={{ fontSize: "var(--text-item-title)", lineHeight: 1.35 }}
               >
-                {item.title}
+                {en ? item.title_en : item.title}
               </h3>
               <p className="text-fg-muted" style={{ lineHeight: 1.8 }}>
-                {item.description}
+                {en ? item.description_en : item.description}
               </p>
             </li>
           ))}
         </ul>
 
         <div className="mt-16 flex justify-center">
-          <a href={site.resume} download className="btn btn-primary btn-lg">
-            Baixar currículo
+          <a
+            href={en ? site.resumeEn : site.resume}
+            download
+            className="btn btn-primary btn-lg"
+          >
+            {t("home_work_cta")}
             <Download className="h-5 w-5" aria-hidden />
           </a>
         </div>

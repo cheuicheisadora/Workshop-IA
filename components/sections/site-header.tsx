@@ -43,7 +43,7 @@ function LanguageToggle({ className = "" }: { className?: string }) {
   return (
     <div
       role="group"
-      aria-label="Idioma"
+      aria-label={lang === "en" ? "Language" : "Idioma"}
       className={`flex w-[81px] items-center justify-center gap-[2.386px] rounded-[var(--radius-pill)] p-[4.771px] ${className}`}
       style={{ background: "var(--surface-soft)" }}
     >
@@ -74,6 +74,8 @@ function LanguageToggle({ className = "" }: { className?: string }) {
 }
 
 export function SiteHeader() {
+  const { lang, t } = useLanguage()
+  const en = lang === "en"
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -100,7 +102,7 @@ export function SiteHeader() {
         href="#conteudo"
         className="btn btn-solid sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
       >
-        Pular para o conteúdo
+        {t("home_skip")}
       </a>
 
       <header
@@ -128,7 +130,7 @@ export function SiteHeader() {
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="nav-link">
-                    {link.label}
+                    {en ? link.labelEn : link.label}
                   </a>
                 </li>
               ))}
@@ -142,8 +144,12 @@ export function SiteHeader() {
               className="h-[27.5px] w-[0.5px]"
               style={{ background: "var(--ring)" }}
             />
-            <a href={site.resume} className="nav-link" download>
-              Currículo
+            <a
+              href={en ? site.resumeEn : site.resume}
+              className="nav-link"
+              download
+            >
+              {t("home_nav_resume")}
             </a>
             <a
               href={site.linkedin}
@@ -152,11 +158,11 @@ export function SiteHeader() {
               className="nav-link"
             >
               LinkedIn
-              <span className="sr-only">(abre em nova aba)</span>
+              <span className="sr-only">{t("home_new_tab")}</span>
             </a>
             <LanguageToggle />
             <a href="#contato" className="btn btn-solid">
-              Contato
+              {t("nav_contact")}
             </a>
           </div>
 
@@ -173,7 +179,9 @@ export function SiteHeader() {
             ) : (
               <Menu className="h-5 w-5" aria-hidden />
             )}
-            <span className="sr-only">{menuOpen ? "Fechar menu" : "Abrir menu"}</span>
+            <span className="sr-only">
+              {menuOpen ? t("home_menu_close") : t("home_menu_open")}
+            </span>
           </button>
         </div>
 
@@ -192,13 +200,17 @@ export function SiteHeader() {
                     className="nav-link w-full"
                     onClick={() => setMenuOpen(false)}
                   >
-                    {link.label}
+                    {en ? link.labelEn : link.label}
                   </a>
                 </li>
               ))}
               <li>
-                <a href={site.resume} className="nav-link w-full" download>
-                  Currículo
+                <a
+                  href={en ? site.resumeEn : site.resume}
+                  className="nav-link w-full"
+                  download
+                >
+                  {t("home_nav_resume")}
                 </a>
               </li>
               <li>
@@ -209,7 +221,7 @@ export function SiteHeader() {
                   className="nav-link w-full"
                 >
                   LinkedIn
-                  <span className="sr-only">(abre em nova aba)</span>
+                  <span className="sr-only">{t("home_new_tab")}</span>
                 </a>
               </li>
               <li className="pt-2">
@@ -221,7 +233,7 @@ export function SiteHeader() {
                   className="btn btn-solid w-full"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Contato
+                  {t("nav_contact")}
                 </a>
               </li>
             </ul>

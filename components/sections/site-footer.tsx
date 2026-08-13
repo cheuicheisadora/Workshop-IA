@@ -1,4 +1,7 @@
+"use client"
+
 import { navLinks, site } from "@/data/site"
+import { useLanguage } from "@/context/language"
 
 /*
  * Glifos exportados do Figma (nós 0:141, 0:145 e 0:150 do rodapé). As caixas
@@ -68,6 +71,9 @@ const socials = [
 ]
 
 export function SiteFooter() {
+  const { lang, t } = useLanguage()
+  const en = lang === "en"
+
   return (
     <footer
       className="border-t"
@@ -79,18 +85,18 @@ export function SiteFooter() {
     >
       <div className="container-page">
         <div className="flex flex-col gap-12 sm:flex-row sm:justify-between">
-          <nav aria-label="Rodapé">
+          <nav aria-label={en ? "Footer" : "Rodapé"}>
             <h2
               className="font-normal text-fg-subtle"
               style={{ fontSize: "var(--text-meta)" }}
             >
-              Navegação
+              {t("home_footer_nav")}
             </h2>
             <ul className="mt-4 flex list-none flex-col gap-1 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="nav-link">
-                    {link.label}
+                    {en ? link.labelEn : link.label}
                   </a>
                 </li>
               ))}
@@ -102,7 +108,7 @@ export function SiteFooter() {
               className="font-normal text-fg-subtle"
               style={{ fontSize: "var(--text-meta)" }}
             >
-              Contato
+              {t("home_footer_contact")}
             </h2>
             <a
               href={`mailto:${site.email}`}
@@ -126,8 +132,8 @@ export function SiteFooter() {
                   >
                     <Icon />
                     <span className="sr-only">
-                      {label}
-                      {external ? " (abre em nova aba)" : ""}
+                      {label === "E-mail" ? t("home_footer_email") : label}
+                      {external ? ` ${t("home_new_tab")}` : ""}
                     </span>
                   </a>
                 </li>
