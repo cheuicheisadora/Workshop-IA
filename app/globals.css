@@ -50,14 +50,16 @@
 
   /* Tipografia */
   --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
-  --text-hero: clamp(2.25rem, 5.2vw, 5rem);
-  --text-section: clamp(1.75rem, 3.2vw, 3rem);
-  --text-card-title: clamp(1.25rem, 2vw, 1.75rem);
-  --text-card-body: clamp(1rem, 1.1vw, 1.0625rem);
-  --text-lead: clamp(1.0625rem, 1.2vw, 1.25rem);
-  --text-item-title: 1.25rem;
+  --text-hero: clamp(1.875rem, 0.65rem + 5.43vw, 5rem);
+  --text-section: clamp(1.5rem, 0.91rem + 2.61vw, 3rem);
+  --text-card-title: clamp(1.125rem, 0.88rem + 1.09vw, 1.75rem);
+  --text-card-body: clamp(0.9375rem, 0.89rem + 0.22vw, 1.0625rem);
+  --text-lead: clamp(1rem, 0.9rem + 0.43vw, 1.25rem);
+  --text-item-title: clamp(1.0625rem, 0.99rem + 0.33vw, 1.25rem);
+  --text-brand: clamp(1.125rem, 0.98rem + 0.65vw, 1.375rem);
+  --text-btn-lg: clamp(1rem, 0.95rem + 0.22vw, 1.125rem);
   --text-body: 1rem;
-  --text-meta: 0.875rem;
+  --text-meta: clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
 
   /* Layout */
   --container: 1280px;
@@ -304,7 +306,7 @@
   }
 
   .btn-lg {
-    font-size: 1.125rem;
+    font-size: var(--text-btn-lg);
     padding: 14px var(--space-4);
     min-height: 52px;
   }

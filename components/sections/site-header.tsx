@@ -118,7 +118,8 @@ export function SiteHeader() {
           <a
             href="#top"
             /* Logo 0:187: vetor + nome a 22px, com 15px entre eles. */
-            className="flex shrink-0 items-center gap-[15px] text-[22px] font-medium text-fg no-underline"
+            className="flex shrink-0 items-center gap-3 font-medium text-fg no-underline sm:gap-[15px]"
+            style={{ fontSize: "var(--text-brand)" }}
           >
             <LogoMark />
             {site.name}
