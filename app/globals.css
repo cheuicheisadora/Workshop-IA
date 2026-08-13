@@ -303,6 +303,107 @@
     }
   }
 
+  /* ─── Card de projeto ────────────────────────────────────────
+     Figma 8:221/8:229/8:234: vidro escuro sobre o fundo da página
+     (rgba(0,0,0,.2)), traço só no topo, raio de 32px e corte — o mockup
+     sangra para fora e a moldura o corta.                              */
+
+  .project-card {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 32px;
+    border-top: 1px solid var(--border);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--fg);
+    text-decoration: none;
+    transition: transform 0.5s ease, background-color 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    background-color: rgba(0, 0, 0, 0.32);
+  }
+
+  .pc-texto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6) var(--space-5) var(--space-4);
+  }
+
+  /* Palco do mockup: no mobile é uma faixa embaixo do texto, com o aparelho
+     encostado na base e cortado pela moldura, como no arquivo. Um ou três
+     aparelhos entram na mesma fila, centralizados. */
+  .pc-palco {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--space-3);
+    height: clamp(170px, 42vw, 250px);
+    margin-top: auto;
+    padding-inline: var(--space-4);
+  }
+
+  .pc-mockup {
+    position: relative;
+    height: 100%;
+    width: auto;
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  @media (min-width: 1024px) {
+    /* A partir daqui vale a composição do arquivo: texto e aparelhos
+       posicionados em % da caixa do card. */
+    .project-card {
+      display: block;
+      aspect-ratio: var(--ratio);
+    }
+
+    /* Overlay do tamanho do card: assim os % de `top` resolvem contra a
+       caixa do card, e não contra a altura do próprio bloco de texto. */
+    .pc-texto {
+      position: absolute;
+      inset: 0;
+      display: block;
+      padding: 0;
+      z-index: 1;
+    }
+
+    .pc-texto > h3,
+    .pc-texto > p {
+      position: absolute;
+      left: var(--pad-esq);
+      width: var(--largura-texto);
+    }
+
+    .pc-texto > h3 {
+      top: var(--titulo-topo);
+    }
+
+    .pc-texto > p {
+      top: var(--corpo-topo);
+    }
+
+    .pc-palco {
+      display: block;
+      height: auto;
+      margin-top: 0;
+      padding-inline: 0;
+    }
+
+    .pc-mockup {
+      position: absolute;
+      left: var(--l);
+      top: var(--t);
+      width: var(--w);
+      height: auto;
+    }
+  }
+
   /* ─── Link de navegação ──────────────────────────────────── */
 
   .nav-link {

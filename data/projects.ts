@@ -5,6 +5,14 @@ export type Project = {
   description: string
   role: string
   tools: string[]
+  /**
+   * Texto do card na home. O Figma (frame 8:64) escreve títulos mais curtos e
+   * descrições próprias para o card, diferentes das da página do case.
+   */
+  cardTitle?: string
+  cardTitle_en?: string
+  cardDescription?: string
+  cardDescription_en?: string
   // English variants
   description_en?: string
   role_en?: string
@@ -40,6 +48,12 @@ export const projects: Project[] = [
     id: "1",
     slug: "redesign-app-itau",
     title: "Redesign App Itaú",
+    cardTitle: "Redesign App Itaú",
+    cardTitle_en: "Itaú App Redesign",
+    cardDescription:
+      "Redesenho da jornada do usuário no app Itaú, eliminando fricções e modernizando a interface para criar uma experiência mais intuitiva no mercado financeiro digital.",
+    cardDescription_en:
+      "Redesign of the user journey in the Itaú app, removing friction and modernizing the interface to create a more intuitive experience in digital banking.",
     description:
       "Redesenho da jornada do usuário no app Itaú, com pesquisa real, persona, benchmark e 4 soluções entregues em mobile, desktop e smartwatch. Projeto da formação UX/UI da EBAC em parceria com o Itaú.",
     description_en:
@@ -96,6 +110,12 @@ export const projects: Project[] = [
     id: "3",
     slug: "feed-me-app",
     title: "Feed Me App",
+    cardTitle: "FeedMe App",
+    cardTitle_en: "FeedMe App",
+    cardDescription:
+      "Rede social de receitas onde você descobre pratos personalizados, planeja refeições, compartilha suas criações e se conecta com chefs e cozinheiros do mundo todo.",
+    cardDescription_en:
+      "A recipe social network where you discover personalized dishes, plan meals, share your creations, and connect with chefs and cooks from all over the world.",
     description:
       "Rede social de receitas onde você descobre pratos personalizados, compartilha suas criações e se conecta com chefs e cozinheiros. Case study completo do discovery ao protótipo de alta fidelidade.",
     description_en:
@@ -131,6 +151,12 @@ export const projects: Project[] = [
     id: "4",
     slug: "redesign-site-agromai",
     title: "Redesign Site Agromai",
+    cardTitle: "Site Agromai",
+    cardTitle_en: "Agromai Website",
+    cardDescription:
+      "Redesign completo do site institucional — do benchmark ao handoff gerado com IA. Interface minimalista que elevou a clareza da comunicação de produto.",
+    cardDescription_en:
+      "Full redesign of the institutional website — from benchmark to AI-generated handoff. A minimalist interface that raised the clarity of product communication.",
     description:
       "Redesign completo do site institucional da Agromai — do benchmark ao handoff gerado com IA. Interface minimalista que elevou a clareza da comunicação de produto e gerou um aumento de ~10% no tráfego.",
     description_en:
