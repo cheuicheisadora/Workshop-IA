@@ -327,6 +327,11 @@
     background-color: rgba(0, 0, 0, 0.32);
   }
 
+  /* Abaixo de lg o espaçador não entra: quem manda na altura é o conteúdo. */
+  .pc-espacador {
+    display: none;
+  }
+
   .pc-texto {
     display: flex;
     flex-direction: column;
@@ -334,63 +339,78 @@
     padding: var(--space-6) var(--space-5) var(--space-4);
   }
 
-  /* Palco do mockup: no mobile é uma faixa embaixo do texto, com o aparelho
-     encostado na base e cortado pela moldura, como no arquivo. Um ou três
-     aparelhos entram na mesma fila, centralizados. */
+  /* Palco do mockup: no mobile é uma faixa embaixo do texto. A altura sai da
+     largura do card, então os aparelhos acompanham a tela em vez de ficarem
+     presos a um valor fixo. Eles são maiores que a faixa de propósito — a
+     moldura corta a base, como no arquivo. */
   .pc-palco {
+    position: relative;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
-    gap: var(--space-3);
-    height: clamp(170px, 42vw, 250px);
-    margin-top: auto;
+    gap: 4%;
+    width: 100%;
+    aspect-ratio: 5 / 2;
+    /* Teto para o card que ocupa a linha toda não virar uma faixa enorme
+       só porque é largo. */
+    max-height: 260px;
+    margin-top: var(--space-2);
     padding-inline: var(--space-4);
   }
 
   .pc-mockup {
     position: relative;
-    height: 100%;
-    width: auto;
-    flex: 0 1 auto;
-    min-width: 0;
+    width: var(--w-sm);
+    height: auto;
+    flex: 0 0 auto;
   }
 
   @media (min-width: 1024px) {
     /* A partir daqui vale a composição do arquivo: texto e aparelhos
        posicionados em % da caixa do card. */
+    /* Espaçador e texto dividem a mesma célula: a altura do card é a maior das
+       duas. Assim a proporção do arquivo vale enquanto o texto couber, e o
+       card cresce em vez de cortar a frase quando não couber. */
     .project-card {
+      display: grid;
+      /* Coluna presa à largura do card: com trilha automática ela cresceria
+         pelo conteúdo e os % dos filhos resolveriam contra a caixa errada. */
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project-card > * {
+      grid-area: 1 / 1;
+    }
+
+    .pc-espacador {
       display: block;
+      width: 100%;
       aspect-ratio: var(--ratio);
     }
 
-    /* Overlay do tamanho do card: assim os % de `top` resolvem contra a
-       caixa do card, e não contra a altura do próprio bloco de texto. */
+    /* Os deslocamentos verticais também são % da largura: com o card na
+       proporção do arquivo dá o mesmo resultado, e o texto pode ficar no
+       fluxo — que é o que permite ele empurrar a moldura. */
     .pc-texto {
-      position: absolute;
-      inset: 0;
       display: block;
-      padding: 0;
+      padding: var(--titulo-topo) 0 var(--space-5) var(--pad-esq);
       z-index: 1;
     }
 
     .pc-texto > h3,
     .pc-texto > p {
-      position: absolute;
-      left: var(--pad-esq);
       width: var(--largura-texto);
     }
 
-    .pc-texto > h3 {
-      top: var(--titulo-topo);
-    }
-
     .pc-texto > p {
-      top: var(--corpo-topo);
+      margin-top: var(--corpo-vao);
     }
 
     .pc-palco {
       display: block;
-      height: auto;
+      width: auto;
+      aspect-ratio: auto;
+      max-height: none;
       margin-top: 0;
       padding-inline: 0;
     }
