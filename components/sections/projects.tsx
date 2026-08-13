@@ -272,7 +272,7 @@ export function Projects() {
             className="font-bold"
             style={{
               fontSize: "var(--text-section)",
-              lineHeight: 1.05,
+              lineHeight: 1.1,
               letterSpacing: "-0.01em",
             }}
           >

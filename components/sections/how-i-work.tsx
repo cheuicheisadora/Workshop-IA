@@ -36,7 +36,7 @@ export function HowIWork() {
           style={{ borderColor: "var(--hairline)" }}
         />
 
-        <ul className="mt-12 grid list-none grid-cols-1 gap-x-8 gap-y-12 p-0 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid list-none grid-cols-1 gap-x-8 gap-y-10 p-0 sm:grid-cols-2 lg:mt-12 lg:gap-y-12 lg:grid-cols-3">
           {workPrinciples.map((item, i) => (
             <li
               key={item.id}
@@ -50,7 +50,7 @@ export function HowIWork() {
               >
                 {en ? item.title_en : item.title}
               </h3>
-              <p className="text-fg-muted" style={{ lineHeight: 1.8 }}>
+              <p className="text-fg-muted" style={{ lineHeight: 1.65 }}>
                 {en ? item.description_en : item.description}
               </p>
             </li>

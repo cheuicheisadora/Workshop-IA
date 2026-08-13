@@ -35,8 +35,13 @@ export function Hero() {
         </h1>
 
         <p
-          className="hero-reveal mx-auto mt-6 max-w-2xl font-semibold text-fg"
-          style={{ fontSize: "var(--text-lead)", animationDelay: "0.1s" }}
+          className="hero-reveal mx-auto mt-5 max-w-2xl font-semibold text-fg"
+          style={{
+            fontSize: "var(--text-lead)",
+            animationDelay: "0.1s",
+            // Sem isso a última palavra fica sozinha na segunda linha.
+            textWrap: "balance",
+          }}
         >
           {lang === "en" ? site.roleEn : site.role}
         </p>

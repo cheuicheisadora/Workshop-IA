@@ -102,19 +102,33 @@ export const tokens: DesignTokens = {
   typography: {
     fontSans: "var(--font-manrope), system-ui, -apple-system, sans-serif",
     /*
-     * A escala do Figma foi medida num canvas de 1920 e ficou grande demais
-     * no container de 1280. Os tetos abaixo são reduções pedidas na revisão:
-     * hero 96→80, seção 64→48, título de card 40→28, corpo de card 24→17,
-     * lead 24→20. Os mínimos respeitam o piso de 16px para texto corrido.
+     * Escala fluida ancorada nas duas pontas: o primeiro valor é o tamanho a
+     * 360px e o teto é o tamanho a 1280px, com a interpolação passando por
+     * todas as larguras entre as duas. A versão anterior era um teto de
+     * desktop com um piso qualquer, e no telefone tudo caía no piso ao mesmo
+     * tempo — hero 36, seção 28, título de card 20, corpo 16. Tudo grande e
+     * junto, sem hierarquia.
+     *
+     * Tetos (1280) preservados; o que muda é o começo da escala:
+     * hero 36→30, seção 28→24, título de card 20→18, item 20→17,
+     * lead 17→16, corpo de card 16→15.
+     *
+     * Texto corrido (body, navegação) fica em 16px em qualquer largura. O
+     * corpo do card cai para 15px por ser texto de apoio dentro de uma
+     * moldura estreita, não leitura principal.
      */
-    hero: "clamp(2.25rem, 5.2vw, 5rem)",
-    section: "clamp(1.75rem, 3.2vw, 3rem)",
-    cardTitle: "clamp(1.25rem, 2vw, 1.75rem)",
-    cardBody: "clamp(1rem, 1.1vw, 1.0625rem)",
-    lead: "clamp(1.0625rem, 1.2vw, 1.25rem)",
-    itemTitle: "1.25rem",
+    hero: "clamp(1.875rem, 0.65rem + 5.43vw, 5rem)",
+    section: "clamp(1.5rem, 0.91rem + 2.61vw, 3rem)",
+    cardTitle: "clamp(1.125rem, 0.88rem + 1.09vw, 1.75rem)",
+    cardBody: "clamp(0.9375rem, 0.89rem + 0.22vw, 1.0625rem)",
+    lead: "clamp(1rem, 0.9rem + 0.43vw, 1.25rem)",
+    itemTitle: "clamp(1.0625rem, 0.99rem + 0.33vw, 1.25rem)",
+    /** Nome no logo: 22px no arquivo, pesado demais ao lado do menu no celular. */
+    brand: "clamp(1.125rem, 0.98rem + 0.65vw, 1.375rem)",
+    /** Rótulo dos botões grandes. */
+    btnLg: "clamp(1rem, 0.95rem + 0.22vw, 1.125rem)",
     body: "1rem",
-    meta: "0.875rem",
+    meta: "clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem)",
   },
 
   layout: {
