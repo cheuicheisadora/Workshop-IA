@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/nextjs"
 import { tokens } from "../../design-system/tokens"
 
 function ColorsGrid() {
   return (
     <div style={{ fontFamily: tokens.typography.fontSans, padding: "24px" }}>
-      <h2 style={{ marginBottom: "24px", fontSize: tokens.typography["2xl"], fontWeight: 700 }}>
+      <h2 style={{ marginBottom: "24px", fontSize: tokens.typography.itemTitle, fontWeight: 700 }}>
         Design Tokens — Cores
       </h2>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "16px" }}>

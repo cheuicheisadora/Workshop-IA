@@ -1,106 +1,91 @@
+/**
+ * Fonte única de verdade dos tokens de design.
+ * Editar aqui e rodar `npm run tokens` para regenerar o bloco
+ * TOKENS:START/END em app/globals.css. `npm run tokens:check` valida no CI.
+ *
+ * Valores extraídos do Figma (frame 0:53). Onde um valor foi ajustado em
+ * relação ao arquivo, o motivo está anotado na própria linha.
+ */
+
 export type DesignTokens = {
-  colors: {
-    primary: string
-    background: string
-    accent: string
-    foreground: string
-    foregroundMuted: string
-    card: string
-    cardAlt: string
-    border: string
-    primaryForeground: string
-    accentForeground: string
-    ring: string
-    destructive: string
-  }
-  sidebar: {
-    background: string
-    foreground: string
-    primary: string
-    primaryForeground: string
-    accent: string
-    accentForeground: string
-    border: string
-    ring: string
-  }
-  radius: {
-    sm: string
-    md: string
-    lg: string
-    xl: string
-  }
-  spacing: {
-    xs: string
-    sm: string
-    md: string
-    lg: string
-    xl: string
-    "2xl": string
-  }
-  typography: {
-    fontSans: string
-    xs: string
-    sm: string
-    base: string
-    lg: string
-    xl: string
-    "2xl": string
-    "3xl": string
-    "4xl": string
-    "5xl": string
-  }
+  colors: Record<string, string>
+  radius: Record<string, string>
+  spacing: Record<string, string>
+  typography: { fontSans: string } & Record<string, string>
+  layout: Record<string, string>
 }
 
 export const tokens: DesignTokens = {
   colors: {
-    primary: "#A7C7E7",
-    background: "#FDFCFB",
-    accent: "#F4B6C2",
-    foreground: "#2A2A2A",
-    foregroundMuted: "#6B7280",
-    card: "#FFFFFF",
-    cardAlt: "#FAFAFA",
-    border: "#E5E7EB",
-    primaryForeground: "#2A2A2A",
-    accentForeground: "#2A2A2A",
-    ring: "#A7C7E7",
-    destructive: "#EF4444",
+    // Base
+    bg: "#090A24",
+    fg: "#FFFFFF",
+    // Figma usa rgba(255,255,255,.6) para texto secundário e .4 no footer.
+    // .4 mede 3.66:1 sobre preto e reprova no AA — subimos os dois patamares.
+    fgMuted: "rgba(255, 255, 255, 0.72)",
+    fgSubtle: "rgba(255, 255, 255, 0.6)",
+
+    // Acento
+    purple: "#976FCC",
+    purpleFill: "rgba(151, 111, 204, 0.55)",
+    purpleHover: "rgba(151, 111, 204, 0.78)",
+
+    // Traços
+    border: "rgba(255, 255, 255, 0.2)",
+    borderStrong: "rgba(255, 255, 255, 0.25)",
+    hairline: "rgba(255, 255, 255, 0.15)",
+
+    // Superfícies
+    surface: "rgba(217, 217, 217, 0.5)",
+    headerBg: "rgba(5, 5, 5, 0.01)",
+    footerBg: "#000000",
+
+    // Foco de teclado — não existe no Figma, exigido por acessibilidade
+    focus: "#C9AEEE",
   },
-  sidebar: {
-    background: "#FDFCFB",
-    foreground: "#2A2A2A",
-    primary: "#A7C7E7",
-    primaryForeground: "#2A2A2A",
-    accent: "#F4B6C2",
-    accentForeground: "#2A2A2A",
-    border: "#E5E7EB",
-    ring: "#A7C7E7",
-  },
+
   radius: {
-    sm: "6px",
-    md: "8px",
-    lg: "12px",
-    xl: "16px",
-  },
-  spacing: {
-    xs: "4px",
     sm: "8px",
     md: "16px",
     lg: "24px",
-    xl: "32px",
-    "2xl": "48px",
+    // Figma: 90px em cards de 1514px. Reduzido proporcionalmente ao
+    // container de 1280 (90 × 1280/1514 ≈ 76) e arredondado na malha de 8.
+    card: "clamp(28px, 4.5vw, 72px)",
+    pill: "999px",
   },
+
+  spacing: {
+    "1": "8px",
+    "2": "16px",
+    "3": "24px",
+    "4": "32px",
+    "5": "40px",
+    "6": "48px",
+    "8": "64px",
+    "10": "80px",
+    "12": "96px",
+    "16": "128px",
+    "20": "160px",
+  },
+
   typography: {
-    fontSans: "Inter, Poppins, system-ui, sans-serif",
-    xs: "0.75rem",
-    sm: "0.875rem",
-    base: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-    "2xl": "1.5rem",
-    "3xl": "1.875rem",
-    "4xl": "2.25rem",
-    "5xl": "3rem",
+    fontSans: "var(--font-manrope), system-ui, -apple-system, sans-serif",
+    hero: "clamp(2.5rem, 6vw, 6rem)",
+    section: "clamp(2rem, 4vw, 4rem)",
+    cardTitle: "clamp(1.5rem, 2.2vw, 2.5rem)",
+    cardBody: "clamp(1rem, 1.3vw, 1.5rem)",
+    lead: "clamp(1.125rem, 1.4vw, 1.5rem)",
+    itemTitle: "1.25rem",
+    body: "1rem",
+    meta: "0.875rem",
+  },
+
+  layout: {
+    container: "1280px",
+    gutter: "24px",
+    gutterLg: "80px",
+    sectionPy: "160px",
+    headerH: "73px",
   },
 }
 

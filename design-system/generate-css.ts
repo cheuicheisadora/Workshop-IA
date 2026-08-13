@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "fs"
 import { join } from "path"
 import { tokens } from "./tokens"
-import { tokenKeyToCssVar, sidebarKeyToCssVar } from "./utils"
+import { tokenKeyToCssVar, toKebab } from "./utils"
 
 const GLOBALS_PATH = join(__dirname, "..", "app", "globals.css")
 const START_MARKER = "/* TOKENS:START */"
@@ -10,36 +10,36 @@ const END_MARKER = "/* TOKENS:END */"
 function generateRootBlock(): string {
   const lines: string[] = []
 
-  lines.push(`  /* Colors */`)
+  lines.push(`  /* Cores */`)
   for (const [key, value] of Object.entries(tokens.colors)) {
     lines.push(`  ${tokenKeyToCssVar(key)}: ${value};`)
   }
 
   lines.push(``)
-  lines.push(`  /* Sidebar */`)
-  for (const [key, value] of Object.entries(tokens.sidebar)) {
-    lines.push(`  ${sidebarKeyToCssVar(key)}: ${value};`)
-  }
-
-  lines.push(``)
-  lines.push(`  /* Radius */`)
+  lines.push(`  /* Raios */`)
   for (const [key, value] of Object.entries(tokens.radius)) {
-    lines.push(`  --radius-${key}: ${value};`)
+    lines.push(`  --radius-${toKebab(key)}: ${value};`)
   }
 
   lines.push(``)
-  lines.push(`  /* Spacing */`)
+  lines.push(`  /* Espaçamento — malha de 8 */`)
   for (const [key, value] of Object.entries(tokens.spacing)) {
-    lines.push(`  --spacing-${key}: ${value};`)
+    lines.push(`  --space-${key}: ${value};`)
   }
 
   lines.push(``)
-  lines.push(`  /* Typography */`)
+  lines.push(`  /* Tipografia */`)
   lines.push(`  --font-sans: ${tokens.typography.fontSans};`)
   for (const [key, value] of Object.entries(tokens.typography)) {
     if (key !== "fontSans") {
-      lines.push(`  --text-${key}: ${value};`)
+      lines.push(`  --text-${toKebab(key)}: ${value};`)
     }
+  }
+
+  lines.push(``)
+  lines.push(`  /* Layout */`)
+  for (const [key, value] of Object.entries(tokens.layout)) {
+    lines.push(`  ${tokenKeyToCssVar(key)}: ${value};`)
   }
 
   return `:root {\n${lines.join("\n")}\n}`
@@ -52,10 +52,7 @@ function run() {
   const isCheck = process.argv.includes("--check")
 
   if (isCheck) {
-    if (
-      !css.includes(START_MARKER) ||
-      !css.includes(END_MARKER)
-    ) {
+    if (!css.includes(START_MARKER) || !css.includes(END_MARKER)) {
       console.error("❌ globals.css is missing TOKENS markers. Run: npm run tokens")
       process.exit(1)
     }

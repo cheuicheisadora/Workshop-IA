@@ -1,19 +1,31 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useSyncExternalStore } from "react"
+
+const FINE_POINTER = "(pointer: fine)"
+
+/** Estado externo (matchMedia) lido sem setState dentro de efeito. */
+function subscribeFinePointer(onChange: () => void) {
+  const mq = window.matchMedia(FINE_POINTER)
+  mq.addEventListener("change", onChange)
+  return () => mq.removeEventListener("change", onChange)
+}
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
   const [hovering, setHovering] = useState(false)
-  const [visible, setVisible] = useState(false)
+  const visible = useSyncExternalStore(
+    subscribeFinePointer,
+    () => window.matchMedia(FINE_POINTER).matches,
+    () => false
+  )
 
   useEffect(() => {
     // Only activate on fine-pointer (mouse) devices
-    if (!window.matchMedia("(pointer: fine)").matches) return
+    if (!window.matchMedia(FINE_POINTER).matches) return
 
     document.body.style.cursor = "none"
-    setVisible(true)
 
     let mouseX = 0
     let mouseY = 0

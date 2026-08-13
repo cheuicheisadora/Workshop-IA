@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useState } from "react"
 
 type Lang = "pt" | "en"
 
@@ -170,21 +170,17 @@ const LanguageContext = createContext<LanguageContextType>({
 })
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en")
-
-  useEffect(() => {
-    const saved = localStorage.getItem("lang") as Lang | null
-    if (saved === "pt" || saved === "en") {
-      setLangState(saved)
-      document.documentElement.lang = saved === "pt" ? "pt-BR" : "en"
-    } else {
-      document.documentElement.lang = "en"
-    }
-  }, [])
+  /*
+   * O site deixou de ser bilíngue: o seletor PT/EN foi removido do header.
+   * O padrão passa a ser "pt" e a preferência salva não é mais lida — senão
+   * quem visitou o site em inglês antes continuaria vendo as páginas de case
+   * em inglês, com <html lang> divergindo do conteúdo.
+   * O provider segue de pé porque as páginas de case ainda consomem t().
+   */
+  const [lang, setLangState] = useState<Lang>("pt")
 
   const setLang = (newLang: Lang) => {
     setLangState(newLang)
-    localStorage.setItem("lang", newLang)
     document.documentElement.lang = newLang === "pt" ? "pt-BR" : "en"
   }
 

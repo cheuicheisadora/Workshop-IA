@@ -10,7 +10,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const [menuOpen, setMenuOpen] = useState(false)
-  const { lang, setLang, t } = useLanguage()
+  const { t } = useLanguage()
   const pathname = usePathname()
 
   useEffect(() => {
@@ -118,33 +118,6 @@ export function Navbar() {
               </svg>
             </a>
 
-            {/* Language toggle */}
-            <div
-              className="flex items-center rounded-full p-0.5"
-              style={{ background: "var(--muted, rgba(0,0,0,0.05))", border: "1px solid var(--border)" }}
-              role="group"
-              aria-label="Language selector"
-            >
-              <button
-                onClick={() => setLang("pt")}
-                aria-label="Português"
-                aria-pressed={lang === "pt"}
-                className="rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-all duration-200"
-                style={{ background: lang === "pt" ? "var(--primary-deep)" : "transparent", color: lang === "pt" ? "#fff" : "var(--muted-foreground)", opacity: lang === "pt" ? 1 : 0.55 }}
-              >
-                PT
-              </button>
-              <button
-                onClick={() => setLang("en")}
-                aria-label="English"
-                aria-pressed={lang === "en"}
-                className="rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-all duration-200"
-                style={{ background: lang === "en" ? "var(--primary-deep)" : "transparent", color: lang === "en" ? "#fff" : "var(--muted-foreground)", opacity: lang === "en" ? 1 : 0.55 }}
-              >
-                EN
-              </button>
-            </div>
-
             {/* CTA */}
             <a
               href="#contato"
@@ -233,37 +206,6 @@ export function Navbar() {
               <span className="text-sm font-medium">LinkedIn</span>
             </a>
 
-            {/* Language toggle */}
-            <div className="flex items-center gap-3">
-              <span className="text-sm" style={{ color: "var(--foreground-muted)" }}>
-                {lang === "pt" ? "Idioma" : "Language"}
-              </span>
-              <div
-                className="flex items-center rounded-full p-0.5"
-                style={{ background: "var(--muted, rgba(0,0,0,0.05))", border: "1px solid var(--border)" }}
-                role="group"
-                aria-label="Language selector"
-              >
-                <button
-                  onClick={() => setLang("pt")}
-                  aria-label="Português"
-                  aria-pressed={lang === "pt"}
-                  className="rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200"
-                  style={{ background: lang === "pt" ? "var(--primary-deep)" : "transparent", color: lang === "pt" ? "#fff" : "var(--muted-foreground)" }}
-                >
-                  PT
-                </button>
-                <button
-                  onClick={() => setLang("en")}
-                  aria-label="English"
-                  aria-pressed={lang === "en"}
-                  className="rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200"
-                  style={{ background: lang === "en" ? "var(--primary-deep)" : "transparent", color: lang === "en" ? "#fff" : "var(--muted-foreground)" }}
-                >
-                  EN
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       )}

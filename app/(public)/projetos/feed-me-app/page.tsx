@@ -8,7 +8,6 @@ import { Footer } from "@/components/layout/footer"
 import { useLanguage } from "@/context/language"
 
 const ACCENT = "#5BAB80"
-const ACCENT_LIGHT = "#89CBA8"
 const BEHANCE_URL = "https://www.behance.net/gallery/228083139/Feed-Me-App-UIUX-Case-Study"
 
 const content = {
