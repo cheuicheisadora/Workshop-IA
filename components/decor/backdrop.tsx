@@ -1,16 +1,117 @@
 /**
  * Camada decorativa da página: manchas de gradiente, anéis, partículas e grão.
  *
- * Os assets originais do Figma (os vetores "Element", os círculos e a textura
- * de noise) não puderam ser baixados: o egress do ambiente bloqueia
- * www.figma.com ("Host not in allowlist"). Enquanto o host não é liberado, as
- * formas são reconstruídas em CSS a partir das posições, tamanhos e rotações
- * lidas do arquivo.
+ * Tudo aqui vem dos assets exportados do Figma (frame 0:53) e versionados em
+ * `public/figma/`. Nada é redesenhado em CSS: os SVGs já trazem o gradiente e
+ * o desfoque gaussiano do arquivo, e o grão é a textura original em PNG.
+ *
+ * Coordenadas: o Figma desenha num canvas de 1920 × 4595. Cada peça é
+ * posicionada pelo centro em % do canvas, e dimensionada em vw a partir da
+ * largura intrínseca do SVG — assim a composição escala junto com a viewport
+ * em vez de quebrar fora de 1920.
  *
  * Puramente decorativa: aria-hidden, pointer-events none, nunca cobre CTA.
  */
 
-/** Partículas: coordenadas do Figma (canvas 1920 × 4581) convertidas para %. */
+/** Largura do canvas do Figma, usada para converter px → vw. */
+const CANVAS_W = 1920
+
+/** px do canvas → vw. */
+const vw = (px: number) => `${((px / CANVAS_W) * 100).toFixed(2)}vw`
+
+type Glow = {
+  /** Asset exportado (público, versionado). */
+  src: string
+  /** Largura e altura intrínsecas do SVG — definem tamanho e proporção. */
+  w: number
+  h: number
+  /** Centro da peça em % do canvas do Figma. */
+  cx: number
+  cy: number
+  /** Rotação/skew do nó no arquivo. */
+  transform: string
+  /** Animação de deriva; a rotação fica na camada de dentro. */
+  anim: "orb-a" | "orb-b"
+}
+
+/**
+ * Manchas de gradiente ("Element"). Os retângulos vêm das caixas resolvidas
+ * pelo Figma (left/right/bottom), não do x/y bruto do vetor, que é anterior à
+ * rotação.
+ */
+const GLOWS: Glow[] = [
+  {
+    // 0:62 — mancha roxa atrás do hero.
+    src: "/figma/glow-purple-wide.svg",
+    w: 2216.34,
+    h: 1157.29,
+    cx: 48.8,
+    cy: 5.5,
+    transform: "rotate(-176.39deg) skewX(8.54deg)",
+    anim: "orb-a",
+  },
+  {
+    // 0:63 — magenta alta, entre hero e projetos.
+    src: "/figma/glow-magenta-tall.svg",
+    w: 1603.02,
+    h: 1526.07,
+    cx: 53.1,
+    cy: 28.7,
+    transform: "scaleX(-1) rotate(176.39deg) skewX(8.54deg)",
+    anim: "orb-b",
+  },
+  {
+    // 0:64 — magenta menor, sobreposta à anterior.
+    src: "/figma/glow-magenta-small.svg",
+    w: 1056.73,
+    h: 928.601,
+    cx: 38,
+    cy: 33.9,
+    transform: "scaleX(-1) rotate(176.39deg) skewX(8.54deg)",
+    anim: "orb-a",
+  },
+  {
+    // 0:182 — roxa achatada, na altura de "Como eu trabalho".
+    src: "/figma/glow-purple-flat.svg",
+    w: 1383.64,
+    h: 746.835,
+    cx: 47.7,
+    cy: 48.4,
+    transform: "rotate(-177.19deg) skewX(9.13deg)",
+    anim: "orb-b",
+  },
+  {
+    // 0:54 — magenta larga à esquerda, perto do rodapé.
+    src: "/figma/glow-magenta-wide.svg",
+    w: 1602.22,
+    h: 1318.03,
+    cx: 0.76,
+    cy: 82.25,
+    transform: "scaleX(-1) rotate(177.19deg) skewX(9.13deg)",
+    anim: "orb-a",
+  },
+  {
+    // 0:55 — mesma mancha espelhada à direita.
+    src: "/figma/glow-magenta-wide.svg",
+    w: 1602.22,
+    h: 1318.03,
+    cx: 81.5,
+    cy: 90,
+    transform: "scaleX(-1) rotate(177.19deg) skewX(9.13deg)",
+    anim: "orb-b",
+  },
+]
+
+/** Anéis de 495 px ("bola testzinho" 0:110–0:114), pelo canto superior esquerdo. */
+const RINGS = [
+  { left: 89.2, top: 13.9 },
+  { left: -16.3, top: 51.9 },
+  { left: -16.5, top: 4.7 },
+  { left: 83.5, top: 69.8 },
+  { left: -5.6, top: 79.4 },
+]
+
+/** Partículas (Ellipse 2–47): coordenadas do Figma convertidas para %. */
 const PARTICLES = [
   { x: 7.8, y: 4.6, s: 7 },
   { x: 26.9, y: 5.4, s: 7 },
@@ -48,159 +149,61 @@ const PARTICLES = [
   { x: 75.9, y: 95.5, s: 7 },
 ]
 
-/** Anéis grandes (Figma: "bola testzinho", 495 px). */
-const RINGS = [
-  { left: "-16%", top: "3%", size: 495 },
-  { left: "88%", top: "13%", size: 495 },
-  { left: "-17%", top: "51%", size: 495 },
-  { left: "83%", top: "69%", size: 495 },
-  { left: "-6%", top: "79%", size: 495 },
-]
-
-/**
- * Manchas de gradiente. Cada uma é uma forma irregular borrada — a rotação
- * e o skew vêm dos vetores "Element" do arquivo, que estão girados ~177°.
- */
-const BLOBS = [
-  {
-    shape: "blob-1",
-    anim: "orb-a",
-    style: {
-      top: "-10%",
-      right: "-14%",
-      width: "58vw",
-      height: "46vw",
-      maxWidth: "1120px",
-      maxHeight: "880px",
-      background:
-        "linear-gradient(135deg, #A87BE0 0%, #7B4FBF 45%, #3C2270 100%)",
-      opacity: 0.42,
-      transform: "rotate(-8deg) skewX(6deg)",
-    },
-  },
-  {
-    shape: "blob-2",
-    anim: "orb-b",
-    style: {
-      top: "2%",
-      left: "-22%",
-      width: "52vw",
-      height: "44vw",
-      maxWidth: "980px",
-      maxHeight: "820px",
-      background:
-        "linear-gradient(120deg, #6E45A8 0%, #4A2A7A 55%, #1B1140 100%)",
-      opacity: 0.5,
-      transform: "rotate(12deg)",
-    },
-  },
-  {
-    shape: "blob-3",
-    anim: "orb-a",
-    style: {
-      top: "24%",
-      left: "22%",
-      width: "44vw",
-      height: "30vw",
-      maxWidth: "820px",
-      maxHeight: "560px",
-      background:
-        "linear-gradient(90deg, #8C63C9 0%, #5B3A9B 60%, transparent 100%)",
-      opacity: 0.22,
-      transform: "rotate(-4deg)",
-    },
-    hideSm: true,
-  },
-  {
-    shape: "blob-4",
-    anim: "orb-b",
-    style: {
-      top: "48%",
-      right: "-16%",
-      width: "50vw",
-      height: "36vw",
-      maxWidth: "940px",
-      maxHeight: "680px",
-      background:
-        "linear-gradient(200deg, #9670D0 0%, #4E2E86 50%, #221247 100%)",
-      opacity: 0.3,
-      transform: "rotate(16deg) skewY(-5deg)",
-    },
-    hideSm: true,
-  },
-  {
-    shape: "blob-2",
-    anim: "orb-a",
-    style: {
-      bottom: "-2%",
-      left: "-14%",
-      width: "54vw",
-      height: "40vw",
-      maxWidth: "1000px",
-      maxHeight: "760px",
-      background:
-        "linear-gradient(60deg, #A177DB 0%, #5C3699 50%, #241450 100%)",
-      opacity: 0.38,
-      transform: "rotate(-14deg)",
-    },
-  },
-]
-
-/**
- * Grão de filme. feColorMatrix dessatura o feTurbulence — sem isso o ruído
- * sai colorido e suja o fundo em vez de granular.
- */
-const GRAIN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="134" height="134"><filter id="g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="134" height="134" filter="url(#g)"/></svg>`
-
-const GRAIN_URL = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`
-
 export function Backdrop() {
   return (
     <div
       aria-hidden="true"
       className="decor absolute inset-0 -z-10 overflow-hidden"
     >
-      {BLOBS.map((blob, i) => (
+      {GLOWS.map((glow, i) => (
         <div
-          key={`blob-${i}`}
-          className={`blob ${blob.shape} ${blob.anim}${
-            blob.hideSm ? " blob-hide-sm" : ""
-          }`}
-          style={blob.style}
-        />
+          key={`glow-${i}`}
+          className={`glow-anchor ${glow.anim}`}
+          style={{ left: `${glow.cx}%`, top: `${glow.cy}%` }}
+        >
+          <div
+            className="glow"
+            style={{
+              width: vw(glow.w),
+              aspectRatio: `${glow.w} / ${glow.h}`,
+              backgroundImage: `url("${glow.src}")`,
+              transform: glow.transform,
+            }}
+          />
+        </div>
       ))}
 
-      {RINGS.map((ring, i) => (
-        <div
-          key={`ring-${i}`}
-          className="absolute rounded-full"
-          style={{
-            left: ring.left,
-            top: ring.top,
-            width: ring.size,
-            height: ring.size,
-            border: "1px solid rgba(255,255,255,0.06)",
-          }}
-        />
-      ))}
+      {/* Grupo "Noise - 1": no arquivo ele inteiro está a 50% de opacidade. */}
+      <div className="absolute inset-0 opacity-50">
+        {RINGS.map((ring, i) => (
+          <div
+            key={`ring-${i}`}
+            className="ring-decor"
+            style={{ left: `${ring.left}%`, top: `${ring.top}%` }}
+          />
+        ))}
 
-      {PARTICLES.map((p, i) => (
-        <div
-          key={`p-${i}`}
-          className="absolute rounded-full"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: `${p.s}px`,
-            height: `${p.s}px`,
-            background: "rgba(255,255,255,0.6)",
-            opacity: p.s > 5 ? 0.45 : 0.3,
-          }}
-        />
-      ))}
+        {PARTICLES.map((p, i) => (
+          <div
+            key={`p-${i}`}
+            className="absolute"
+            style={{
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: `${p.s}px`,
+              height: `${p.s}px`,
+              backgroundImage: `url("/figma/dot-${p.s}.svg")`,
+              backgroundSize: "100% 100%",
+            }}
+          />
+        ))}
+      </div>
 
-      <div className="vignette" />
-      <div className="grain" style={{ backgroundImage: GRAIN_URL }} />
+      {/* Grão: textura original do Figma (0:115), overlay a 64% dentro de um
+          grupo a 50% — 0,32 no total. Fica fora do grupo acima porque
+          mix-blend-mode dentro de um elemento com opacity não alcança o fundo
+          da página. */}
+      <div className="grain" />
     </div>
   )
 }

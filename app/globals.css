@@ -14,8 +14,15 @@
   --border-strong: rgba(255, 255, 255, 0.25);
   --hairline: rgba(255, 255, 255, 0.15);
   --surface: rgba(217, 217, 217, 0.5);
+  --surface-soft: rgba(217, 217, 217, 0.1);
   --header-bg: rgba(5, 5, 5, 0.01);
   --footer-bg: #000000;
+  --glow-magenta-from: #C680E2;
+  --glow-magenta-to: #AA13B2;
+  --glow-purple-from: #976FCC;
+  --glow-purple-to: #0B0C28;
+  --particle: rgba(217, 217, 217, 0.5);
+  --ring: rgba(255, 255, 255, 0.5);
   --focus: #C9AEEE;
 
   /* Raios */
@@ -336,62 +343,46 @@
   }
 
   /* ─── Manchas de gradiente ───────────────────────────────────
-     Elipse com radial-gradient tem silhueta perfeita e queda dura —
-     lê como "brilho" artificial. Aqui a forma é irregular (border-radius
-     de 8 valores) e o blur pesado dissolve a borda, que é o que aproxima
-     de uma malha de gradiente desenhada à mão.                        */
+     Os SVGs em public/figma/glow-*.svg são os vetores "Element" do arquivo:
+     já trazem o gradiente (#C680E2 → #AA13B2 e #976FCC → #0B0C28), a opacidade
+     de preenchimento e o desfoque gaussiano. Nada de blur em CSS aqui — o
+     desenho é o do Figma, não uma imitação.
 
-  .blob {
+     Duas camadas: a âncora recebe a deriva (transform animado) e a de dentro
+     guarda a rotação do arquivo, senão uma sobrescreve a outra.            */
+
+  .glow-anchor {
     position: absolute;
-    filter: blur(80px);
+    translate: -50% -50%;
     will-change: transform;
   }
 
-  .blob-1 {
-    border-radius: 58% 42% 37% 63% / 46% 39% 61% 54%;
-  }
-  .blob-2 {
-    border-radius: 38% 62% 55% 45% / 62% 48% 52% 38%;
-  }
-  .blob-3 {
-    border-radius: 64% 36% 48% 52% / 38% 57% 43% 62%;
-  }
-  .blob-4 {
-    border-radius: 45% 55% 68% 32% / 55% 62% 38% 45%;
+  .glow {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 
-  /* O blur é caro em tela grande; no mobile ele fica menor e algumas
-     manchas somem. */
-  @media (max-width: 768px) {
-    .blob {
-      filter: blur(56px);
-    }
-    .blob-hide-sm {
-      display: none;
-    }
+  /* Anéis de 495 px do arquivo — em vw para acompanharem a viewport. */
+  .ring-decor {
+    position: absolute;
+    width: clamp(220px, 25.78vw, 560px);
+    aspect-ratio: 1;
+    background-image: url("/figma/ring.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
 
-  /* Grão de filme: ruído dessaturado, ladrilhado em 134px como no arquivo,
-     em mix-blend overlay. Sem o feColorMatrix o feTurbulence sai colorido
-     e vira uma névoa suja em vez de grão. */
+  /* Grão de filme: a textura exportada do Figma (0:115), ladrilhada em 134px
+     e em mix-blend overlay como no arquivo. 0,64 dentro de um grupo a 0,5
+     dá os 0,32 finais. */
   .grain {
     position: absolute;
     inset: 0;
     mix-blend-mode: overlay;
-    opacity: 0.55;
+    opacity: 0.32;
+    background-image: url("/figma/noise.png");
     background-repeat: repeat;
     background-size: 134px 134px;
-  }
-
-  /* Escurece as bordas e concentra o olho no centro. */
-  .vignette {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      120% 80% at 50% 38%,
-      transparent 40%,
-      rgba(4, 4, 16, 0.55) 100%
-    );
   }
 }
 
