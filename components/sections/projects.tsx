@@ -37,39 +37,24 @@ function ProjectCard({ project }: { project: Project }) {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
-          /* Sem foto ainda: a capa carrega a cor do próprio projeto
-             (laranja Itaú, verde Feed Me, roxo Agromai, rosa Glaucia). */
+          /* Placeholder neutro do Figma, até as capas reais chegarem. */
           <div
             className="h-full w-full"
-            style={{ background: project.placeholderGradient ?? "var(--surface)" }}
+            style={{ background: "var(--surface)" }}
           />
         )}
       </div>
 
-      {/* Scrim: garante contraste do texto sobre a capa. Precisa ser forte
-          porque os gradientes de projeto são claros (o da Glaucia começa em
-          #F9E8E8) e o texto é branco. */}
+      {/* Scrim: mantém o contraste do texto branco sobre a capa, tanto no
+          placeholder quanto numa foto real. */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(9,10,36,0.10) 22%, rgba(9,10,36,0.78) 58%, rgba(9,10,36,0.96) 100%)",
+            "linear-gradient(180deg, rgba(9,10,36,0) 28%, rgba(9,10,36,0.62) 60%, rgba(9,10,36,0.94) 100%)",
         }}
       />
-
-      {!cover && (
-        <span
-          className="absolute right-5 top-5 rounded-full border px-3 py-1 text-xs font-medium"
-          style={{
-            borderColor: "var(--border-strong)",
-            color: "var(--fg)",
-            background: "rgba(9,10,36,0.55)",
-          }}
-        >
-          Capa pendente
-        </span>
-      )}
 
       {/* Texto */}
       <div
