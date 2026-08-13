@@ -23,6 +23,9 @@
   --glow-purple-to: #0B0C28;
   --particle: rgba(217, 217, 217, 0.5);
   --ring: rgba(255, 255, 255, 0.5);
+  --glass-edge: rgba(255, 255, 255, 0.22);
+  --glass-sheen: rgba(255, 255, 255, 0.3);
+  --glass-shade: rgba(4, 4, 16, 0.35);
   --focus: #C9AEEE;
 
   /* Raios */
@@ -249,8 +252,30 @@
     transform: translateY(0);
   }
 
+  /* ─── Vidro ──────────────────────────────────────────────────
+     O preenchimento translúcido do arquivo é só a primeira camada. O que
+     faz ler como vidro é desfocar o que está atrás (as manchas de gradiente
+     e o grão passam borrados por baixo), marcar a aresta de cima com um
+     brilho e descolar o botão do fundo com uma sombra.                    */
+
+  /* Sem a linha -webkit- escrita à mão: o build a acrescenta conforme os
+     alvos, e escrever as duas fazia ele descartar a versão sem prefixo. */
+  .btn-primary,
+  .btn-outline {
+    backdrop-filter: blur(18px) saturate(140%);
+    /* Luz caindo de cima, por cima do preenchimento translúcido. */
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.02) 46%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    box-shadow: inset 0 1px 0 var(--glass-sheen), 0 10px 30px var(--glass-shade);
+  }
+
   .btn-primary {
     background-color: var(--purple-fill);
+    border-color: var(--glass-edge);
     color: var(--fg);
   }
 
@@ -258,14 +283,15 @@
     background-color: var(--purple-hover);
   }
 
+  /* O contorno do arquivo é branco; o vidro entra por baixo dele. */
   .btn-outline {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.06);
     border-color: var(--fg);
     color: var(--fg);
   }
 
   .btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.14);
   }
 
   .btn-solid {

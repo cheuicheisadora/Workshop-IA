@@ -60,6 +60,17 @@ export const tokens: DesignTokens = {
     particle: "rgba(217, 217, 217, 0.5)",
     ring: "rgba(255, 255, 255, 0.5)",
 
+    /*
+     * Vidro. O arquivo só define o preenchimento translúcido dos botões; sem
+     * desfoque do que está atrás, borda de luz e sombra, translucidez sozinha
+     * lê como cor chapada. Estes três valores compõem o vidro:
+     * glassEdge é o traço, glassSheen o brilho da aresta de cima e
+     * glassShade a sombra que descola o botão do fundo.
+     */
+    glassEdge: "rgba(255, 255, 255, 0.22)",
+    glassSheen: "rgba(255, 255, 255, 0.3)",
+    glassShade: "rgba(4, 4, 16, 0.35)",
+
     // Foco de teclado — não existe no Figma, exigido por acessibilidade
     focus: "#C9AEEE",
   },

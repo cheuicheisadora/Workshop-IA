@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, ArrowDown } from "lucide-react"
+import { ArrowRight, ArrowDown, MessageCircle } from "lucide-react"
 import { site } from "@/data/site"
 import { useLanguage } from "@/context/language"
 
@@ -51,7 +51,7 @@ export function Hero() {
           </a>
           <a href="#contato" className="btn btn-outline btn-lg w-full sm:w-auto">
             {t("hero_btn_contact")}
-            <ArrowDown className="h-5 w-5" aria-hidden />
+            <MessageCircle className="h-5 w-5" aria-hidden />
           </a>
         </div>
       </div>
