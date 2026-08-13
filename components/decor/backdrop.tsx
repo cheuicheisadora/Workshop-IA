@@ -32,8 +32,6 @@ type Glow = {
   transform: string
   /** Animação de deriva; a rotação fica na camada de dentro. */
   anim: "orb-a" | "orb-b"
-  /** Manchas secundárias somem no mobile — blur pesado custa caro. */
-  hideSm?: boolean
 }
 
 /**
@@ -71,7 +69,6 @@ const GLOWS: Glow[] = [
     cy: 33.9,
     transform: "scaleX(-1) rotate(176.39deg) skewX(8.54deg)",
     anim: "orb-a",
-    hideSm: true,
   },
   {
     // 0:182 — roxa achatada, na altura de "Como eu trabalho".
@@ -82,7 +79,6 @@ const GLOWS: Glow[] = [
     cy: 48.4,
     transform: "rotate(-177.19deg) skewX(9.13deg)",
     anim: "orb-b",
-    hideSm: true,
   },
   {
     // 0:54 — magenta larga à esquerda, perto do rodapé.
@@ -162,7 +158,7 @@ export function Backdrop() {
       {GLOWS.map((glow, i) => (
         <div
           key={`glow-${i}`}
-          className={`glow-anchor ${glow.anim}${glow.hideSm ? " glow-hide-sm" : ""}`}
+          className={`glow-anchor ${glow.anim}`}
           style={{ left: `${glow.cx}%`, top: `${glow.cy}%` }}
         >
           <div

@@ -362,13 +362,6 @@
     background-size: 100% 100%;
   }
 
-  /* Manchas secundárias somem no mobile: são as que mais custam a compor. */
-  @media (max-width: 768px) {
-    .glow-hide-sm {
-      display: none;
-    }
-  }
-
   /* Anéis de 495 px do arquivo — em vw para acompanharem a viewport. */
   .ring-decor {
     position: absolute;
