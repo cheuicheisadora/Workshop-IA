@@ -123,8 +123,12 @@ export const tokens: DesignTokens = {
     cardBody: "clamp(0.9375rem, 0.89rem + 0.22vw, 1.0625rem)",
     lead: "clamp(1rem, 0.9rem + 0.43vw, 1.25rem)",
     itemTitle: "clamp(1.0625rem, 0.99rem + 0.33vw, 1.25rem)",
-    /** Nome no logo: 22px no arquivo, pesado demais ao lado do menu no celular. */
-    brand: "clamp(1.125rem, 0.98rem + 0.65vw, 1.375rem)",
+    /**
+     * Nome no logo. O arquivo pede 22px, medido num canvas de 1920; no
+     * container de 1280 isso compete com os títulos da página. 18px no
+     * desktop, 16 no celular.
+     */
+    brand: "clamp(1rem, 0.93rem + 0.3vw, 1.125rem)",
     /** Rótulo dos botões grandes. */
     btnLg: "clamp(1rem, 0.95rem + 0.22vw, 1.125rem)",
     body: "1rem",
