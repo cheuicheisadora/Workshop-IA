@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { ArrowRight, ArrowDown, MessageCircle } from "lucide-react"
+import { ArrowRight, ArrowDown } from "lucide-react"
 import { site } from "@/data/site"
 import { useLanguage } from "@/context/language"
 
@@ -69,9 +69,10 @@ export function Hero() {
             {t("hero_btn_projects")}
             <ArrowRight className="h-5 w-5" aria-hidden />
           </a>
+          {/* Sem ícone: o rótulo já diz o que o botão faz, e o par de botões
+              fica mais limpo com só o primário carregando símbolo. */}
           <a href="#contato" className="btn btn-outline btn-lg w-full sm:w-auto">
             {t("hero_btn_contact")}
-            <MessageCircle className="h-5 w-5" aria-hidden />
           </a>
         </div>
       </div>
