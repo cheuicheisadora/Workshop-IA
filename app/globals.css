@@ -363,8 +363,35 @@
   .pc-texto {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--space-2);
     padding: var(--space-6) var(--space-5) var(--space-4);
+  }
+
+  /* Pílula de "ver case": mesmo vidro dos botões, em escala menor. Não é
+     interativa — quem recebe o clique e o foco é o card inteiro. */
+  .pc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: var(--space-1);
+    padding: 8px 16px;
+    border: 1px solid var(--glass-edge);
+    border-radius: var(--radius-pill);
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px) saturate(140%);
+    box-shadow: inset 0 1px 0 var(--glass-sheen);
+    font-size: var(--text-meta);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .project-card:hover .pc-cta,
+  .project-card:focus-visible .pc-cta {
+    background-color: var(--purple-fill);
+    transform: translateX(2px);
   }
 
   /* Palco do mockup: no mobile é uma faixa embaixo do texto. A altura sai da
@@ -446,7 +473,8 @@
     .pc-mockup {
       position: absolute;
       left: var(--l);
-      top: var(--t);
+      top: var(--t, auto);
+      bottom: var(--b, auto);
       width: var(--w);
       height: auto;
     }
@@ -515,7 +543,6 @@
   .glow-anchor {
     position: absolute;
     translate: -50% -50%;
-    will-change: transform;
   }
 
   .glow {
@@ -535,9 +562,13 @@
 
   /* Grão de filme: a textura exportada do Figma (0:115), ladrilhada em 134px
      e em mix-blend overlay como no arquivo. 0,64 dentro de um grupo a 0,5
-     dá os 0,32 finais. */
+     dá os 0,32 finais.
+
+     Preso à viewport: o ladrilho é igual em qualquer posição da página, e
+     assim a camada com mix-blend-mode mede uma tela em vez dos ~4.600px da
+     página inteira — o custo de composição cai junto. */
   .grain {
-    position: absolute;
+    position: fixed;
     inset: 0;
     mix-blend-mode: overlay;
     opacity: 0.32;
@@ -558,26 +589,6 @@
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes drift-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(40px, -30px, 0) scale(1.08);
-  }
-}
-
-@keyframes drift-b {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-36px, 26px, 0) scale(0.92);
   }
 }
 
@@ -627,12 +638,6 @@
   transition-delay: 0.32s;
 }
 
-.orb-a {
-  animation: drift-a 14s ease-in-out infinite;
-}
-.orb-b {
-  animation: drift-b 18s ease-in-out infinite;
-}
 .scroll-hint {
   animation: scroll-hint 2.2s ease-in-out infinite;
 }

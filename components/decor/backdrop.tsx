@@ -11,6 +11,12 @@
  * em vez de quebrar fora de 1920.
  *
  * Puramente decorativa: aria-hidden, pointer-events none, nunca cobre CTA.
+ *
+ * Sem animação: as manchas são texturas de até 1660 × 1300px com desfoque
+ * gaussiano dentro, e o grão por cima usa mix-blend-mode. Qualquer uma delas
+ * em movimento obriga o navegador a recompor a pilha inteira a cada quadro —
+ * medido em 23 fps no desktop, contra 60 com tudo parado. A deriva não pagava
+ * esse preço.
  */
 
 /** Largura do canvas do Figma, usada para converter px → vw. */
@@ -30,8 +36,6 @@ type Glow = {
   cy: number
   /** Rotação/skew do nó no arquivo. */
   transform: string
-  /** Animação de deriva; a rotação fica na camada de dentro. */
-  anim: "orb-a" | "orb-b"
 }
 
 /**
@@ -48,7 +52,6 @@ const GLOWS: Glow[] = [
     cx: 48.8,
     cy: 5.5,
     transform: "rotate(-176.39deg) skewX(8.54deg)",
-    anim: "orb-a",
   },
   {
     // 0:63 — magenta alta, entre hero e projetos.
@@ -58,7 +61,6 @@ const GLOWS: Glow[] = [
     cx: 53.1,
     cy: 28.7,
     transform: "scaleX(-1) rotate(176.39deg) skewX(8.54deg)",
-    anim: "orb-b",
   },
   {
     // 0:64 — magenta menor, sobreposta à anterior.
@@ -68,7 +70,6 @@ const GLOWS: Glow[] = [
     cx: 38,
     cy: 33.9,
     transform: "scaleX(-1) rotate(176.39deg) skewX(8.54deg)",
-    anim: "orb-a",
   },
   {
     // 0:182 — roxa achatada, na altura de "Como eu trabalho".
@@ -78,7 +79,6 @@ const GLOWS: Glow[] = [
     cx: 47.7,
     cy: 48.4,
     transform: "rotate(-177.19deg) skewX(9.13deg)",
-    anim: "orb-b",
   },
   {
     // 0:54 — magenta larga à esquerda, perto do rodapé.
@@ -88,7 +88,6 @@ const GLOWS: Glow[] = [
     cx: 0.76,
     cy: 82.25,
     transform: "scaleX(-1) rotate(177.19deg) skewX(9.13deg)",
-    anim: "orb-a",
   },
   {
     // 0:55 — mesma mancha espelhada à direita.
@@ -98,7 +97,6 @@ const GLOWS: Glow[] = [
     cx: 81.5,
     cy: 90,
     transform: "scaleX(-1) rotate(177.19deg) skewX(9.13deg)",
-    anim: "orb-b",
   },
 ]
 
@@ -158,7 +156,7 @@ export function Backdrop() {
       {GLOWS.map((glow, i) => (
         <div
           key={`glow-${i}`}
-          className={`glow-anchor ${glow.anim}`}
+          className="glow-anchor"
           style={{ left: `${glow.cx}%`, top: `${glow.cy}%` }}
         >
           <div
