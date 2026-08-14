@@ -1,12 +1,9 @@
 "use client"
 
-import Link from "next/link"
-import { ArrowLeft, ArrowUpRight, Map, PenTool, Sparkles, Scale, BarChart2, AlertCircle } from "lucide-react"
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
+import { Map, PenTool, Sparkles, Scale, BarChart2, AlertCircle } from "lucide-react"
+import { CaseStudy } from "@/components/sections/case-study"
 import { useLanguage } from "@/context/language"
 
-const ACCENT = "#7c3aed"
 const SITE_URL = "https://agromai.com.br/"
 
 const content = {
@@ -91,124 +88,17 @@ const content = {
 }
 
 export default function AgromaISiteProjectPage() {
-  const { lang } = useLanguage()
+  const { lang, t } = useLanguage()
   const c = content[lang]
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <section
-        className="relative flex min-h-[480px] flex-col justify-end overflow-hidden px-6 pb-16 pt-32"
-        style={{ background: "linear-gradient(135deg, #2e1065 0%, #5b21b6 50%, #7c3aed 100%)" }}
-      >
-        {[
-          { top: "12%", left: "20%", size: 64, opacity: 0.18 },
-          { top: "8%", left: "38%", size: 44, opacity: 0.13 },
-          { top: "20%", left: "55%", size: 72, opacity: 0.15 },
-          { top: "5%", left: "72%", size: 52, opacity: 0.12 },
-          { top: "30%", left: "80%", size: 40, opacity: 0.17 },
-          { top: "15%", left: "88%", size: 60, opacity: 0.1 },
-          { top: "35%", left: "63%", size: 36, opacity: 0.14 },
-        ].map((sq, i) => (
-          <div key={i} aria-hidden className="absolute rounded-lg border-2 border-white"
-            style={{ top: sq.top, left: sq.left, width: sq.size, height: sq.size, opacity: sq.opacity }} />
-        ))}
-        <div className="relative mx-auto w-full max-w-5xl">
-          <Link href="/#projetos" className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors">
-            <ArrowLeft className="h-4 w-4" /> {c.back}
-          </Link>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">{c.tag}</p>
-          <h1 className="font-bold text-white" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>{c.title}</h1>
-          <p className="mt-4 max-w-xl text-base text-white/85 leading-relaxed">{c.subtitle}</p>
-        </div>
-      </section>
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-16 space-y-20">
-        <section>
-          <h2 className="mb-8 text-xl font-bold text-foreground">{c.overviewTitle}</h2>
-          <div className="grid gap-5 sm:grid-cols-3">
-            {[{ label: c.problem, text: c.problemText }, { label: c.solution, text: c.solutionText }, { label: c.impact, text: c.impactText }].map(({ label, text }) => (
-              <div key={label} className="rounded-2xl border border-border bg-card p-6" style={{ borderTop: `3px solid ${ACCENT}` }}>
-                <p className="mb-2 text-xs font-bold uppercase tracking-widest" style={{ color: ACCENT }}>{label}</p>
-                <p className="text-sm text-foreground leading-relaxed">{text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className="grid gap-8 md:grid-cols-[1fr_2fr] items-start">
-          <div>
-            <span className="section-accent-bar" style={{ background: ACCENT }} />
-            <h2 className="mt-3 text-2xl font-bold text-foreground">{c.contextTitle}</h2>
-          </div>
-          <p className="text-muted-foreground leading-relaxed">{c.contextText}</p>
-        </section>
-        <section>
-          <div className="mb-10 text-center">
-            <span className="section-accent-bar" style={{ background: ACCENT }} />
-            <h2 className="mt-3 text-2xl font-bold text-foreground">{c.processTitle}</h2>
-            <p className="mt-2 text-muted-foreground">{c.processSubtitle}</p>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {c.steps.map((step, i) => {
-              const Icon = step.icon
-              return (
-                <div key={i} className="rounded-2xl border border-border bg-card p-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: `${ACCENT}20` }}>
-                    <Icon className="h-5 w-5" style={{ color: ACCENT }} />
-                  </div>
-                  <p className="mb-2 text-xs font-bold uppercase tracking-widest" style={{ color: ACCENT }}>{String(i + 1).padStart(2, "0")}</p>
-                  <h3 className="mb-2 font-semibold text-foreground">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
-                </div>
-              )
-            })}
-          </div>
-        </section>
-        <section>
-          <div className="mb-10 text-center">
-            <span className="section-accent-bar" style={{ background: ACCENT }} />
-            <h2 className="mt-3 text-2xl font-bold text-foreground">{c.insightsTitle}</h2>
-            <p className="mt-2 text-muted-foreground">{c.insightsSubtitle}</p>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {c.insights.map((insight, i) => {
-              const Icon = insight.icon
-              return (
-                <div key={i} className="rounded-2xl border border-border bg-card p-6 flex gap-4">
-                  <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg" style={{ background: `${ACCENT}20` }}>
-                    <Icon className="h-4 w-4" style={{ color: ACCENT }} />
-                  </div>
-                  <div>
-                    <h3 className="mb-1 font-semibold text-foreground">{insight.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{insight.desc}</p>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </section>
-        <section className="relative overflow-hidden rounded-3xl px-8 py-12 text-center"
-          style={{ background: `linear-gradient(135deg, #2e1065 0%, ${ACCENT} 100%)` }}>
-          <div aria-hidden className="pointer-events-none absolute -top-10 -right-10 h-48 w-48 rounded-full opacity-10" style={{ background: "#fff" }} />
-          <h2 className="mb-2 text-2xl font-bold text-white">{c.metricsTitle}</h2>
-          <p className="mb-10 text-white/75">{c.metricsSubtitle}</p>
-          <div className="grid gap-8 sm:grid-cols-3">
-            {c.metrics.map((m) => (
-              <div key={m.label}>
-                <p className="text-5xl font-black text-white">{m.value}</p>
-                <p className="mt-2 text-sm text-white/80 leading-snug">{m.label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className="flex flex-col items-center gap-4 text-center pb-4">
-          <a href={SITE_URL} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ background: ACCENT }}>
-            {c.siteCta} <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </section>
-      </main>
-      <Footer />
-    </div>
+    <CaseStudy
+      c={{
+        ...c,
+        ctaLabel: c.siteCta,
+        ctaHref: SITE_URL,
+        newTabLabel: t("home_new_tab"),
+      }}
+    />
   )
 }

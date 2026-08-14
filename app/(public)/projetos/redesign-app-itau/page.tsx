@@ -1,13 +1,9 @@
 "use client"
 
-import Link from "next/link"
-import { ArrowLeft, ArrowUpRight, Search, PenTool, Layers, Users, HeadphonesIcon, TrendingUp, Gift, LayoutGrid } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
+import { Search, PenTool, Layers, Users, HeadphonesIcon, TrendingUp, Gift, LayoutGrid } from "lucide-react"
+import { CaseStudy } from "@/components/sections/case-study"
 import { useLanguage } from "@/context/language"
 
-const ACCENT = "#F97316"
 const BEHANCE_URL = "https://www.behance.net/gallery/245625317/Redesign-do-App-Itau-Projeto-UXUI-EBAC"
 
 const content = {
@@ -166,210 +162,17 @@ const content = {
 }
 
 export default function ItauProjectPage() {
-  const { lang } = useLanguage()
+  const { lang, t } = useLanguage()
   const c = content[lang]
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section
-        className="relative flex min-h-[480px] flex-col justify-end overflow-hidden px-6 pb-16 pt-32"
-        style={{ background: "linear-gradient(135deg, #ea580c 0%, #F97316 40%, #fb923c 70%, #fdba74 100%)" }}
-      >
-        {/* decorative squares */}
-        {[
-          { top: "12%", left: "20%", size: 64, opacity: 0.18 },
-          { top: "8%", left: "38%", size: 44, opacity: 0.13 },
-          { top: "20%", left: "55%", size: 72, opacity: 0.15 },
-          { top: "5%", left: "72%", size: 52, opacity: 0.12 },
-          { top: "30%", left: "80%", size: 40, opacity: 0.17 },
-          { top: "15%", left: "88%", size: 60, opacity: 0.1 },
-          { top: "35%", left: "63%", size: 36, opacity: 0.14 },
-        ].map((sq, i) => (
-          <div
-            key={i}
-            aria-hidden
-            className="absolute rounded-lg border-2 border-white"
-            style={{
-              top: sq.top,
-              left: sq.left,
-              width: sq.size,
-              height: sq.size,
-              opacity: sq.opacity,
-            }}
-          />
-        ))}
-
-        <div className="relative mx-auto w-full max-w-5xl">
-          <Link
-            href="/#projetos"
-            className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" /> {c.back}
-          </Link>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">
-            {c.tag}
-          </p>
-          <h1
-            className="font-bold text-white"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-          >
-            {c.title}
-          </h1>
-          <p className="mt-4 max-w-xl text-base text-white/85 leading-relaxed">
-            {c.subtitle}
-          </p>
-        </div>
-      </section>
-
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-16 space-y-20">
-
-        {/* ── Overview cards ──────────────────────────────────────────── */}
-        <section>
-          <h2 className="mb-8 text-xl font-bold text-foreground">{c.overviewTitle}</h2>
-          <div className="grid gap-5 sm:grid-cols-3">
-            {[
-              { label: c.problem, text: c.problemText },
-              { label: c.solution, text: c.solutionText },
-              { label: c.impact, text: c.impactText },
-            ].map(({ label, text }) => (
-              <div
-                key={label}
-                className="rounded-2xl border border-border bg-card p-6"
-                style={{ borderTop: `3px solid ${ACCENT}` }}
-              >
-                <p
-                  className="mb-2 text-xs font-bold uppercase tracking-widest"
-                  style={{ color: ACCENT }}
-                >
-                  {label}
-                </p>
-                <p className="text-sm text-foreground leading-relaxed">{text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Context ─────────────────────────────────────────────────── */}
-        <section className="rounded-2xl p-8" style={{ background: `${ACCENT}0f`, border: `1px solid ${ACCENT}30` }}>
-          <h2 className="mb-3 text-lg font-bold text-foreground">{c.contextTitle}</h2>
-          <p className="text-muted-foreground leading-relaxed">{c.contextText}</p>
-        </section>
-
-        {/* ── Process ─────────────────────────────────────────────────── */}
-        <section>
-          <div className="mb-10 text-center">
-            <span
-              className="mb-3 block h-1 w-10 rounded-full mx-auto"
-              style={{ background: ACCENT }}
-            />
-            <h2 className="text-2xl font-bold text-foreground">{c.processTitle}</h2>
-            <p className="mt-2 text-muted-foreground">{c.processSubtitle}</p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {c.steps.map((step, i) => {
-              const Icon = step.icon
-              return (
-                <div
-                  key={i}
-                  className="relative rounded-2xl border border-border bg-card p-6"
-                >
-                  <div
-                    className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl"
-                    style={{ background: `${ACCENT}18`, border: `1px solid ${ACCENT}40` }}
-                  >
-                    <Icon className="h-5 w-5" style={{ color: ACCENT }} />
-                  </div>
-                  <span
-                    className="absolute top-5 right-5 text-3xl font-black opacity-10"
-                    style={{ color: ACCENT }}
-                  >
-                    {i + 1}
-                  </span>
-                  <h3 className="mb-2 font-semibold text-foreground">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
-                </div>
-              )
-            })}
-          </div>
-        </section>
-
-        {/* ── Insights ────────────────────────────────────────────────── */}
-        <section>
-          <div className="mb-10 text-center">
-            <span
-              className="mb-3 block h-1 w-10 rounded-full mx-auto"
-              style={{ background: ACCENT }}
-            />
-            <h2 className="text-2xl font-bold text-foreground">{c.insightsTitle}</h2>
-            <p className="mt-2 text-muted-foreground">{c.insightsSubtitle}</p>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {c.insights.map((insight, i) => {
-            const InsightIcon = insight.icon
-            return (
-              <div
-                key={i}
-                className="flex gap-4 rounded-2xl border border-border bg-card p-5"
-              >
-                <div
-                  className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
-                  style={{ background: `${ACCENT}18` }}
-                >
-                  <InsightIcon className="h-4 w-4" style={{ color: ACCENT }} />
-                </div>
-                <div>
-                  <h3 className="mb-1 font-semibold text-foreground text-sm">{insight.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{insight.desc}</p>
-                </div>
-              </div>
-            )
-          })}
-          </div>
-        </section>
-
-        {/* ── Metrics ─────────────────────────────────────────────────── */}
-        <section
-          className="rounded-2xl px-8 py-12 text-center"
-          style={{ background: "linear-gradient(135deg, #ea580c 0%, #F97316 50%, #fb923c 100%)" }}
-        >
-          <h2 className="mb-2 text-2xl font-bold text-white">{c.metricsTitle}</h2>
-          <p className="mb-10 text-white/75">{c.metricsSubtitle}</p>
-          <div className="grid gap-8 sm:grid-cols-3">
-            {c.metrics.map((m) => (
-              <div key={m.value}>
-                <p
-                  className="font-black text-white"
-                  style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", lineHeight: 1, letterSpacing: "-0.03em" }}
-                >
-                  {m.value}
-                </p>
-                <p className="mt-2 text-sm text-white/80 leading-snug max-w-[160px] mx-auto">
-                  {m.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Behance CTA ─────────────────────────────────────────────── */}
-        <section className="flex flex-col items-center gap-4 text-center">
-          <Button
-            asChild
-            size="lg"
-            style={{ background: ACCENT, color: "#fff" }}
-            className="hover:opacity-90 transition-opacity"
-          >
-            <a href={BEHANCE_URL} target="_blank" rel="noopener noreferrer">
-              {c.behanceCta} <ArrowUpRight className="ml-1.5 h-4 w-4" />
-            </a>
-          </Button>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+    <CaseStudy
+      c={{
+        ...c,
+        ctaLabel: c.behanceCta,
+        ctaHref: BEHANCE_URL,
+        newTabLabel: t("home_new_tab"),
+      }}
+    />
   )
 }
