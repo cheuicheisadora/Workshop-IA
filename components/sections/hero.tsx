@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { ArrowRight, ArrowDown } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { site } from "@/data/site"
 import { useLanguage } from "@/context/language"
 
@@ -76,14 +76,6 @@ export function Hero() {
           </a>
         </div>
       </div>
-
-      <a
-        href="#projetos"
-        aria-label={t("home_hero_scroll")}
-        className="absolute bottom-8 left-1/2 hidden h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full text-fg-subtle sm:flex"
-      >
-        <ArrowDown className="scroll-hint h-5 w-5" aria-hidden />
-      </a>
     </section>
   )
 }

@@ -732,18 +732,6 @@
   }
 }
 
-@keyframes scroll-hint {
-  0%,
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    opacity: 0.35;
-    transform: translate3d(0, 7px, 0);
-  }
-}
-
 .hero-reveal {
   animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -776,16 +764,6 @@
 }
 [data-delay="4"] {
   transition-delay: 0.32s;
-}
-
-.scroll-hint {
-  animation: scroll-hint 2.2s ease-in-out infinite;
-}
-
-/* Pausa fora da viewport / aba oculta — controlado por JS. */
-.is-paused,
-.is-paused * {
-  animation-play-state: paused !important;
 }
 
 /* ─── Movimento reduzido ─────────────────────────────────────

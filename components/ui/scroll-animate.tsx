@@ -4,12 +4,16 @@ import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
 /**
- * Revelação no scroll + gestão de animações em loop.
+ * Revelação no scroll.
  *
- * - Marca [data-animate] com data-observed só depois que o JS assume, para que
- *   sem JS (ou antes da hidratação) o conteúdo continue visível.
- * - Pausa as animações decorativas fora da viewport e com a aba oculta.
- * - Não faz nada se o usuário pediu movimento reduzido.
+ * Marca [data-animate] com data-observed só depois que o JS assume, para que
+ * sem JS (ou antes da hidratação) o conteúdo continue visível. Não faz nada se
+ * o usuário pediu movimento reduzido.
+ *
+ * Havia aqui um pausador de animações em loop, para não deixar nada girando
+ * fora da viewport ou com a aba escondida. Ele observava as manchas do fundo,
+ * que pararam de animar por custarem 35 fps, e depois só a seta do hero. Sem a
+ * seta não sobrou nenhum loop na página, e o pausador saiu junto.
  */
 export function ScrollAnimateProvider() {
   const pathname = usePathname()
@@ -43,41 +47,8 @@ export function ScrollAnimateProvider() {
       revealTargets.forEach((el) => revealObserver?.observe(el))
     }
 
-    // ── Pausa de animações em loop ──────────────────────────────
-    // As manchas do fundo não animam mais (custavam 35 fps no desktop), então
-    // só sobra a seta do hero.
-    const looping = Array.from(
-      document.querySelectorAll<HTMLElement>(".scroll-hint")
-    )
-
-    const visibility = new WeakMap<HTMLElement, boolean>()
-
-    const applyPause = () => {
-      const hidden = document.hidden
-      looping.forEach((el) => {
-        const onScreen = visibility.get(el) ?? true
-        el.classList.toggle("is-paused", hidden || !onScreen)
-      })
-    }
-
-    const loopObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          visibility.set(entry.target as HTMLElement, entry.isIntersecting)
-        })
-        applyPause()
-      },
-      { threshold: 0 }
-    )
-
-    looping.forEach((el) => loopObserver.observe(el))
-    document.addEventListener("visibilitychange", applyPause)
-    applyPause()
-
     return () => {
       revealObserver?.disconnect()
-      loopObserver.disconnect()
-      document.removeEventListener("visibilitychange", applyPause)
     }
   }, [pathname])
 
