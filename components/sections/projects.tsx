@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { projects, type Project } from "@/data/projects"
 import { useLanguage } from "@/context/language"
 
@@ -31,6 +31,10 @@ type Mockup = {
   /** Distância da base do card — usada quando o corte da imagem precisa cair
    *  exatamente na borda da moldura, em qualquer altura de card. */
   b?: string
+  /** Empurrão vertical em % da altura da própria imagem, que sai da largura do
+   *  card. Serve para alinhar o topo de recortes com sobras diferentes sem
+   *  soltar a base da moldura. */
+  dy?: string
   w: string
   ratio: string
 }
@@ -46,34 +50,49 @@ type CardSpec = {
   textWidth: string
 }
 
-/** Os três cards, na ordem do arquivo. */
+/**
+ * Os três cards, na ordem do arquivo.
+ *
+ * Os recuos verticais e a largura da coluna de texto foram remedidos na
+ * revisão do arquivo, e a régua é a mesma para os dois: o card só fecha na
+ * proporção do desenho se o bloco de texto couber nela.
+ *
+ * O detalhe que muda tudo: o arquivo é desenhado em 1514 e o site renderiza
+ * em 1120, mas a tipografia não encolhe junto — o corpo do card tem 17px aqui
+ * contra os 20px do arquivo, que em escala dariam 14,6px. Texto 16% maior na
+ * mesma coluna quebra em mais linhas e estufa o card; foi o que empurrou os
+ * aparelhos para o meio da moldura, com uma faixa morta em cima. A saída é
+ * alargar a coluna de texto até a linha voltar a quebrar como no desenho —
+ * sobra espaço de sobra à esquerda dos aparelhos — e apertar os respiros
+ * verticais, que estavam bem mais largos que os do arquivo.
+ */
 const CARDS: CardSpec[] = [
   {
     slug: "redesign-site-agromai",
     span: "sm:col-span-1",
     ratio: "737 / 395",
-    padLeft: "7.73%",
-    titleTop: "12.48%",
-    bodyGap: "9.23%",
-    textWidth: "50.5%",
+    padLeft: "7.87%",
+    titleTop: "10.04%",
+    bodyGap: "2.45%",
+    textWidth: "56%",
   },
   {
     slug: "feed-me-app",
     span: "sm:col-span-1",
     ratio: "737 / 395",
-    padLeft: "7.73%",
-    titleTop: "12.48%",
-    bodyGap: "9.23%",
-    textWidth: "54.3%",
+    padLeft: "7.87%",
+    titleTop: "10.04%",
+    bodyGap: "2.45%",
+    textWidth: "62%",
   },
   {
     slug: "redesign-app-itau",
     span: "sm:col-span-2",
     ratio: "1514 / 329",
-    padLeft: "3.76%",
-    titleTop: "6.08%",
-    bodyGap: "4.49%",
-    textWidth: "26.9%",
+    padLeft: "3.83%",
+    titleTop: "2.38%",
+    bodyGap: "1.06%",
+    textWidth: "40%",
   },
 ]
 
@@ -82,10 +101,11 @@ const CARDS: CardSpec[] = [
  * site entra atrás dela, na janela da tela. As duas peças são separadas no
  * arquivo e continuam separadas aqui.
  *
- * O topo é o mesmo do celular do FeedMe (7%). No arquivo eles começavam em
- * alturas diferentes (6,3% e 23,3%) e os dois cards, lado a lado, não se
- * conversavam. Como as alturas resolvidas são quase iguais — 267 e 266px num
- * card de 540 —, alinhar o topo alinha a base também.
+ * Preso pela base, não pelo topo. No arquivo o notebook encosta exatamente na
+ * borda de baixo do card, e a moldura aqui é um pouco mais alta que a do
+ * desenho — o texto tem tipografia maior e ocupa mais linhas. Preso pelo topo,
+ * a sobra toda ia parar embaixo do aparelho e ele ficava boiando; preso pela
+ * base, a sobra vira respiro em cima, que é onde ela não incomoda.
  */
 function MockupAgromai() {
   return (
@@ -94,7 +114,7 @@ function MockupAgromai() {
       style={
         {
           "--l": "51.7%",
-          "--t": "7%",
+          "--b": "0%",
           "--w": "83.4%",
           "--w-sm": "78%",
           aspectRatio: "614.43 / 364.224",
@@ -127,6 +147,11 @@ function MockupAgromai() {
 /**
  * Celular do FeedMe (8:233): uma imagem só, ampliada e deslocada dentro de uma
  * caixa que corta — os mesmos 233,33% × 124,23% do arquivo.
+ *
+ * Largura e recuo são os do arquivo (23,9% e 68,4%). Também preso pela base,
+ * e com 6,3% da própria altura de empurrão para baixo: no arquivo o aparelho
+ * passa da borda do card e é cortado por ela — sem o empurrão ele encostaria
+ * na base sem sangrar, e a borda de cima subiria acima da do notebook ao lado.
  */
 function MockupFeedMe() {
   return (
@@ -135,7 +160,8 @@ function MockupFeedMe() {
       style={
         {
           "--l": "68.4%",
-          "--t": "7%",
+          "--b": "0%",
+          "--dy": "6.3%",
           "--w": "23.88%",
           "--w-sm": "40%",
           aspectRatio: "176 / 363",
@@ -162,17 +188,38 @@ function MockupFeedMe() {
 /**
  * Os três aparelhos do card do Itaú (8:238, 8:239 e 8:304).
  *
- * Ancorados pela base, não pelo topo. As duas últimas imagens já vêm cortadas
- * do Figma — o arquivo recorta tudo que passa da moldura do card e não há como
- * exportar a tela inteira. Preso pelo topo, o corte parava dentro do card e
- * lia como imagem quebrada; preso pela base, ele cai exatamente na borda da
- * moldura, em qualquer altura de card, e lê como aparelho sangrando para fora,
- * que é a intenção do desenho.
+ * Presos pela base, e alinhados pelo topo do aparelho — não pelo da imagem. As
+ * três exportações têm sobras diferentes: o PNG do início traz o celular
+ * inteiro, com 20px de folga na esquerda e 46 no topo em 700 × 1430; os outros
+ * dois já vêm cortados na base pela moldura do card, com 14 e 7 em 477 × 558.
+ *
+ * Os dois cortados encostam na borda de baixo (`b: 0`). O inteiro é bem mais
+ * alto: encostando na base ele começaria 149px acima dos vizinhos, então leva
+ * 40,9% da própria altura de empurrão para baixo — o tanto que põe a borda de
+ * cima dos três na mesma linha e joga o resto dele para fora do card, como no
+ * arquivo. A conta é em % da altura da imagem, que sai da largura do card, e
+ * por isso o alinhamento se mantém em qualquer altura de moldura.
+ *
+ * As larguras são a do aparelho convertida para a da imagem — daí três valores
+ * parecidos mas não iguais.
  */
 const ITAU: Mockup[] = [
-  { src: "/figma/projetos/itau-inicio.png", l: "44.32%", b: "-6%", w: "15.98%", ratio: "242 / 494" },
-  { src: "/figma/projetos/itau-duvidas.png", l: "60.9%", b: "0%", w: "15.75%", ratio: "477 / 558" },
-  { src: "/figma/projetos/itau-atendimento.png", l: "77.4%", b: "0%", w: "15.75%", ratio: "477 / 558" },
+  {
+    src: "/figma/projetos/itau-inicio.png",
+    l: "48.49%",
+    b: "0%",
+    dy: "40.9%",
+    w: "15.94%",
+    ratio: "700 / 1430",
+  },
+  { src: "/figma/projetos/itau-duvidas.png", l: "65.06%", b: "0%", w: "15.75%", ratio: "477 / 558" },
+  {
+    src: "/figma/projetos/itau-atendimento.png",
+    l: "81.64%",
+    b: "0%",
+    w: "15.68%",
+    ratio: "477 / 558",
+  },
 ]
 
 function MockupItau() {
@@ -187,6 +234,7 @@ function MockupItau() {
               "--l": m.l,
               "--t": m.t ?? "auto",
               "--b": m.b ?? "auto",
+              "--dy": m.dy ?? "0",
               "--w": m.w,
               "--w-sm": "27%",
               aspectRatio: m.ratio,
@@ -246,14 +294,19 @@ function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
         >
           {title}
         </h3>
-        <p style={{ fontSize: "var(--text-card-body)", lineHeight: 1.5 }}>{description}</p>
+        {/* 1,45 e não 1,5: o arquivo usa 1,35 e o card é um bloco curto de
+            apoio. Meio termo — a entrelinha aperta o suficiente para o card
+            fechar na proporção do desenho sem endurecer a leitura. */}
+        <p style={{ fontSize: "var(--text-card-body)", lineHeight: 1.45 }}>{description}</p>
 
         {/* Marcador de que o card é clicável. É um span, não um botão: o card
             inteiro já é o link, e um controle dentro de outro não é navegável
             por teclado nem anunciado corretamente. */}
         <span className="pc-cta">
           {t("home_projects_view_case")}
-          <ArrowUpRight className="h-4 w-4" aria-hidden />
+          <span className="pc-cta-icone" aria-hidden>
+            <ArrowRight className="h-4 w-4" />
+          </span>
         </span>
       </div>
 

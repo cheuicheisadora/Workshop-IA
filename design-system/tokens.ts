@@ -29,6 +29,9 @@ export const tokens: DesignTokens = {
     purple: "#976FCC",
     purpleFill: "rgba(151, 111, 204, 0.55)",
     purpleHover: "rgba(151, 111, 204, 0.78)",
+    /* Botão "Ver Case" dentro do card: medido em rgb(62,49,96) sobre o card,
+       o que dá 0,38 de opacidade sobre o mesmo roxo. */
+    purpleFillSoft: "rgba(151, 111, 204, 0.38)",
 
     // Traços
     border: "rgba(255, 255, 255, 0.2)",

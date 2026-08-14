@@ -10,6 +10,7 @@
   --purple: #976FCC;
   --purple-fill: rgba(151, 111, 204, 0.55);
   --purple-hover: rgba(151, 111, 204, 0.78);
+  --purple-fill-soft: rgba(151, 111, 204, 0.38);
   --border: rgba(255, 255, 255, 0.2);
   --border-strong: rgba(255, 255, 255, 0.25);
   --hairline: rgba(255, 255, 255, 0.15);
@@ -351,17 +352,19 @@
     padding: var(--space-6) var(--space-5) var(--space-4);
   }
 
-  /* Pílula de "ver case": mesmo vidro dos botões, em escala menor. Não é
+  /* Botão "Ver Case" (revisão do arquivo): pílula roxa de 122 × 44 com o
+     rótulo à esquerda e a seta num círculo branco à direita. Não é
      interativa — quem recebe o clique e o foco é o card inteiro. */
   .pc-cta {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    margin-top: var(--space-1);
-    padding: 8px 16px;
+    gap: 10px;
+    min-height: 44px;
+    margin-top: var(--space-2);
+    padding: 4px 4px 4px 18px;
     border: 1px solid var(--glass-edge);
     border-radius: var(--radius-pill);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--purple-fill-soft);
     backdrop-filter: blur(12px) saturate(140%);
     box-shadow: inset 0 1px 0 var(--glass-sheen);
     font-size: var(--text-meta);
@@ -371,10 +374,25 @@
     transition: background-color 0.25s ease, transform 0.25s ease;
   }
 
+  .pc-cta-icone {
+    display: flex;
+    height: 34px;
+    width: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-pill);
+    background-color: var(--fg);
+    color: var(--bg);
+    transition: transform 0.25s ease;
+  }
+
   .project-card:hover .pc-cta,
   .project-card:focus-visible .pc-cta {
     background-color: var(--purple-fill);
-    transform: translateX(2px);
+  }
+
+  .project-card:hover .pc-cta-icone {
+    transform: translateX(3px);
   }
 
   /* Palco do mockup: no mobile é uma faixa embaixo do texto. A altura sai da
@@ -384,7 +402,11 @@
   .pc-palco {
     position: relative;
     display: flex;
-    align-items: flex-start;
+    /* Base comum embaixo. A faixa tem a altura do aparelho mais alto, então
+       alinhar por cima deixava os recortes mais curtos boiando no meio do card,
+       com uma sobra morta abaixo deles; por baixo, todos terminam na borda da
+       moldura, que é como a linha se lê no desktop. */
+    align-items: flex-end;
     justify-content: center;
     gap: 4%;
     width: 100%;
@@ -460,6 +482,72 @@
       bottom: var(--b, auto);
       width: var(--w);
       height: auto;
+      /* Empurrão vertical em % da própria altura — e a altura sai da largura
+         do card, via aspect-ratio. É o que permite prender o aparelho na base
+         da moldura e ainda assim alinhar o topo dele com o do vizinho: os
+         recortes têm sobras e alturas diferentes, então o deslocamento precisa
+         acompanhar a largura do card, não a altura, que varia com o texto. */
+      transform: translateY(var(--dy, 0));
+    }
+  }
+
+  /* ─── Arte do hero ───────────────────────────────────────────
+   *
+   * No desktop a imagem entra como no arquivo: 2,5% de folga de cada lado,
+   * cantos arredondados, atrás do texto e à frente das manchas do fundo.
+   *
+   * No celular ela entra inteira, na proporção original e sangrando de ponta a
+   * ponta. Recortada para uma caixa em pé, o `cover` fica com a faixa central
+   * da imagem — que é justamente o vazio onde o texto entra — e o hero virava
+   * um retângulo escuro com borda, parecendo caixa vazia em vez de arte. Cabendo
+   * inteira, as cápsulas voltam a emoldurar o texto, só que menores.
+   */
+  .hero-arte {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: auto;
+    aspect-ratio: 1440 / 804;
+    translate: 0 -50%;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  /*
+   * Véu do celular. Cabendo inteira, a composição fica pequena o bastante para
+   * as cápsulas caírem atrás dos botões — e uma delas é quase branca, o que
+   * apagava o rótulo. O véu recua a arte para textura e devolve o contraste ao
+   * texto, sem tirar a imagem da tela. No desktop não existe: lá o texto cai no
+   * vazio do meio da composição e não disputa com nada.
+   */
+  .hero-arte::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(9, 10, 36, 0.3) 0%,
+      rgba(9, 10, 36, 0.76) 38%,
+      rgba(9, 10, 36, 0.76) 72%,
+      rgba(9, 10, 36, 0.3) 100%
+    );
+  }
+
+  @media (min-width: 768px) {
+    .hero-arte::after {
+      content: none;
+    }
+
+    .hero-arte {
+      left: 2.5%;
+      right: 2.5%;
+      top: calc(var(--header-h) + var(--space-3));
+      bottom: var(--space-8);
+      height: auto;
+      aspect-ratio: auto;
+      translate: none;
+      border-radius: var(--radius-lg);
     }
   }
 

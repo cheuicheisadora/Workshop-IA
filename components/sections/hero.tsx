@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { ArrowRight, ArrowDown, MessageCircle } from "lucide-react"
 import { site } from "@/data/site"
 import { useLanguage } from "@/context/language"
@@ -22,7 +23,21 @@ export function Hero() {
         paddingBottom: "calc(var(--header-h) + 8svh)",
       }}
     >
-      <div className="container-page text-center">
+      {/* Composição 3D do hero (Figma 12:57): imagem de 1825 × 895 dentro de um
+          frame de 1920 × 1096, ou seja, uma folga de 2,5% de cada lado. O miolo
+          dela é vazio de propósito — é onde o texto entra. */}
+      <div className="hero-arte" aria-hidden>
+        <Image
+          src="/figma/hero-3d.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+
+      <div className="container-page relative text-center">
         <h1
           className="hero-reveal gradient-text font-bold"
           style={{
