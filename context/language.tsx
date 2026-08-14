@@ -88,7 +88,7 @@ const translations = {
     home_nav_resume: "Currículo",
     home_hero_title: "Oi! Eu sou a Isadora.",
     home_hero_scroll: "Rolar para os projetos",
-    home_projects_view_case: "Ver case",
+    home_projects_view_case: "Ver Case",
     home_work_cta: "Baixar currículo",
     home_contact_heading: "Vamos conversar?",
     home_footer_nav: "Navegação",
