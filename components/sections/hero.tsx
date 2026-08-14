@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { site } from "@/data/site"
 import { useLanguage } from "@/context/language"
@@ -25,17 +24,12 @@ export function Hero() {
     >
       {/* Composição 3D do hero (Figma 12:57): imagem de 1825 × 895 dentro de um
           frame de 1920 × 1096, ou seja, uma folga de 2,5% de cada lado. O miolo
-          dela é vazio de propósito — é onde o texto entra. */}
-      <div className="hero-arte" aria-hidden>
-        <Image
-          src="/figma/hero-3d.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
+          dela é vazio de propósito — é onde o texto entra.
+
+          A imagem entra pelo CSS, e não por <Image>, para o celular não baixar
+          o arquivo: lá a arte não aparece, e um background declarado dentro de
+          uma media query que não casa nunca é requisitado. Ver .hero-arte. */}
+      <div className="hero-arte" aria-hidden />
 
       <div className="container-page relative text-center">
         <h1
