@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { navLinks, site } from "@/data/site"
 import { useLanguage } from "@/context/language"
@@ -120,8 +121,8 @@ export function SiteHeader() {
         }}
       >
         <div className="container-page flex items-center justify-between gap-6 py-3">
-          <a
-            href="#top"
+          <Link
+            href="/"
             /* Logo 0:187: vetor + nome, com 15px entre eles no desktop. O
                tamanho do nome vem de --text-brand. */
             className="flex shrink-0 items-center gap-3 font-medium text-fg no-underline sm:gap-[15px]"
@@ -129,16 +130,16 @@ export function SiteHeader() {
           >
             <LogoMark />
             {site.name}
-          </a>
+          </Link>
 
           {/* Navegação desktop */}
           <nav aria-label="Principal" className="hidden lg:block">
             <ul className="flex list-none items-center gap-6 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="nav-link">
+                  <Link href={link.href} className="nav-link">
                     {en ? link.labelEn : link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -168,9 +169,9 @@ export function SiteHeader() {
               <span className="sr-only">{t("home_new_tab")}</span>
             </a>
             <LanguageToggle />
-            <a href="#contato" className="btn btn-solid">
+            <Link href="/#contato" className="btn btn-solid">
               {t("nav_contact")}
-            </a>
+            </Link>
           </div>
 
           {/* Alternador mobile */}
@@ -202,13 +203,13 @@ export function SiteHeader() {
             <ul className="container-page flex list-none flex-col gap-1 py-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="nav-link w-full"
                     onClick={() => setMenuOpen(false)}
                   >
                     {en ? link.labelEn : link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
@@ -235,13 +236,13 @@ export function SiteHeader() {
                 <LanguageToggle className="w-fit" />
               </li>
               <li className="pt-2">
-                <a
-                  href="#contato"
+                <Link
+                  href="/#contato"
                   className="btn btn-solid w-full"
                   onClick={() => setMenuOpen(false)}
                 >
                   {t("nav_contact")}
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

@@ -12,11 +12,17 @@ export const site = {
   resumeEn: "/CV_Isadora_Cheuiche_EN.pdf",
 } as const
 
-/** O href é sempre a âncora em português — só o rótulo muda de idioma. */
+/**
+ * O href é sempre a âncora em português — só o rótulo muda de idioma.
+ *
+ * Caminho absoluto porque o header também aparece nas páginas de case: "#projetos"
+ * sozinho não sai do lugar fora da home. Na home o navegador trata "/#projetos"
+ * como âncora do próprio documento e rola sem recarregar.
+ */
 export const navLinks = [
-  { href: "#projetos", label: "Projetos", labelEn: "Projects" },
+  { href: "/#projetos", label: "Projetos", labelEn: "Projects" },
   {
-    href: "#como-eu-trabalho",
+    href: "/#como-eu-trabalho",
     label: "Como eu trabalho",
     labelEn: "How I work",
   },

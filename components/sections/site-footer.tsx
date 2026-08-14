@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { navLinks, site } from "@/data/site"
 import { useLanguage } from "@/context/language"
 
@@ -95,9 +96,9 @@ export function SiteFooter() {
             <ul className="mt-4 flex list-none flex-col gap-1 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="nav-link">
+                  <Link href={link.href} className="nav-link">
                     {en ? link.labelEn : link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

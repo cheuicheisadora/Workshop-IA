@@ -85,12 +85,11 @@
   }
 }
 
-/* ─── Paleta legada ──────────────────────────────────────────
-   As páginas de case (/projetos/*) ainda são o design claro antigo e
-   serão migradas para o tema escuro num próximo passo. Até lá elas ficam
-   isoladas em .legacy-theme, aplicado pelo layout de app/(public).
-   Estes valores são os do tema anterior — não fazem parte do design novo
-   e devem sair junto com a migração das páginas de case.               */
+/* ─── Paleta do sandbox de componentes ───────────────────────
+   As páginas de case migraram para o tema escuro; o wrapper .legacy-theme
+   saiu junto. O que sobra aqui alimenta components/ui/{button,card,badge},
+   que hoje só aparecem no Storybook. Sai quando esses componentes forem
+   redesenhados ou removidos.                                          */
 :root {
   --legacy-primary: #a8d8ea;
   --legacy-primary-mid: #7ec8e3;
@@ -105,23 +104,6 @@
   --legacy-accent: #f4b6c2;
 }
 
-.legacy-theme {
-  --primary: var(--legacy-primary);
-  --primary-mid: var(--legacy-primary-mid);
-  --primary-deep: var(--legacy-primary-deep);
-  --primary-glow: var(--legacy-primary-glow);
-  --background: var(--legacy-background);
-  --foreground: var(--legacy-foreground);
-  --foreground-muted: var(--legacy-foreground-muted);
-  --card: var(--legacy-card);
-  --card-alt: var(--legacy-card-alt);
-  --border: var(--legacy-border);
-  --accent: var(--legacy-accent);
-
-  background-color: var(--legacy-background);
-  color: var(--legacy-foreground);
-}
-
 @theme inline {
   --color-bg: var(--bg);
   --color-fg: var(--fg);
@@ -130,7 +112,7 @@
   --color-purple: var(--purple);
   --font-sans: var(--font-sans);
 
-  /* Utilitários consumidos pelas páginas de case até a migração. */
+  /* Utilitários consumidos pelos componentes do Storybook. */
   --color-background: var(--legacy-background);
   --color-foreground: var(--legacy-foreground);
   --color-card: var(--legacy-card);
@@ -479,6 +461,73 @@
       width: var(--w);
       height: auto;
     }
+  }
+
+  /* ─── Página de case ─────────────────────────────────────────
+     Mesmo vidro dos cards da home, sem a composição de mockups.      */
+
+  .case-card {
+    border-radius: var(--radius-lg);
+    border-top: 1px solid var(--border);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: clamp(24px, 3vw, 40px);
+  }
+
+  /* Bloco de resultados: um pouco mais fundo, para fechar a página. */
+  .case-resultados {
+    background-color: rgba(0, 0, 0, 0.32);
+  }
+
+  .case-icone {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--glass-edge);
+    background-color: var(--purple-fill);
+    color: var(--fg);
+  }
+
+  .case-rotulo,
+  .case-numero {
+    font-size: var(--text-meta);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple);
+  }
+
+  .case-numero {
+    margin-bottom: 6px;
+  }
+
+  .case-tag {
+    margin-top: var(--space-5);
+    font-size: var(--text-meta);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple);
+  }
+
+  /* Voltar: alvo de 44px sem parecer um botão. */
+  .case-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 44px;
+    color: var(--fg-muted);
+    font-size: var(--text-meta);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .case-voltar:hover {
+    color: var(--fg);
   }
 
   /* ─── Link de navegação ──────────────────────────────────── */
