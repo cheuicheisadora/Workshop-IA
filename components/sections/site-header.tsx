@@ -6,17 +6,22 @@ import { navLinks, site } from "@/data/site"
 import { useLanguage } from "@/context/language"
 
 /**
- * Marca do logotipo: vetor exportado do Figma (0:188), caixa de 30,75px.
+ * Marca do logotipo: vetor exportado do Figma (0:188).
  * É um disco cheio com o brilho vazado — um subcaminho só, preenchimento
  * nonzero. `currentColor` no lugar do branco fixo do arquivo para o logo
  * herdar a cor do link.
+ *
+ * O viewBox tem uma unidade de folga de cada lado. No arquivo o disco vai de
+ * 0 a 30,75, encostando na borda: com overflow hidden do SVG e a caixa em
+ * 30,75px (fracionária), a borda suavizada era cortada e o círculo aparecia
+ * achatado nos quatro lados.
  */
 function LogoMark() {
   return (
     <svg
-      width="30.75"
-      height="30.75"
-      viewBox="0 0 30.75 30.75"
+      width="32"
+      height="32"
+      viewBox="-1 -1 32.75 32.75"
       fill="none"
       aria-hidden="true"
       focusable="false"
@@ -117,7 +122,8 @@ export function SiteHeader() {
         <div className="container-page flex items-center justify-between gap-6 py-3">
           <a
             href="#top"
-            /* Logo 0:187: vetor + nome a 22px, com 15px entre eles. */
+            /* Logo 0:187: vetor + nome, com 15px entre eles no desktop. O
+               tamanho do nome vem de --text-brand. */
             className="flex shrink-0 items-center gap-3 font-medium text-fg no-underline sm:gap-[15px]"
             style={{ fontSize: "var(--text-brand)" }}
           >
