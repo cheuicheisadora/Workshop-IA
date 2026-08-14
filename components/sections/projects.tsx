@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
 import { projects, type Project } from "@/data/projects"
 import { useLanguage } from "@/context/language"
 
@@ -22,7 +23,17 @@ import { useLanguage } from "@/context/language"
  * sobrepor aparelho e texto num card estreito não se lê.
  */
 
-type Mockup = { src: string; l: string; t: string; w: string; ratio: string }
+type Mockup = {
+  src: string
+  l: string
+  /** Distância do topo do card. Alternativa a `b`. */
+  t?: string
+  /** Distância da base do card — usada quando o corte da imagem precisa cair
+   *  exatamente na borda da moldura, em qualquer altura de card. */
+  b?: string
+  w: string
+  ratio: string
+}
 
 type CardSpec = {
   slug: string
@@ -70,6 +81,11 @@ const CARDS: CardSpec[] = [
  * MacBook do card da Agromai (8:225): a moldura é uma imagem e a captura do
  * site entra atrás dela, na janela da tela. As duas peças são separadas no
  * arquivo e continuam separadas aqui.
+ *
+ * O topo é o mesmo do celular do FeedMe (7%). No arquivo eles começavam em
+ * alturas diferentes (6,3% e 23,3%) e os dois cards, lado a lado, não se
+ * conversavam. Como as alturas resolvidas são quase iguais — 267 e 266px num
+ * card de 540 —, alinhar o topo alinha a base também.
  */
 function MockupAgromai() {
   return (
@@ -78,7 +94,7 @@ function MockupAgromai() {
       style={
         {
           "--l": "51.7%",
-          "--t": "6.3%",
+          "--t": "7%",
           "--w": "83.4%",
           "--w-sm": "78%",
           aspectRatio: "614.43 / 364.224",
@@ -119,7 +135,7 @@ function MockupFeedMe() {
       style={
         {
           "--l": "68.4%",
-          "--t": "23.3%",
+          "--t": "7%",
           "--w": "23.88%",
           "--w-sm": "40%",
           aspectRatio: "176 / 363",
@@ -143,11 +159,20 @@ function MockupFeedMe() {
   )
 }
 
-/** Os três aparelhos do card do Itaú (8:238, 8:239 e 8:304). */
+/**
+ * Os três aparelhos do card do Itaú (8:238, 8:239 e 8:304).
+ *
+ * Ancorados pela base, não pelo topo. As duas últimas imagens já vêm cortadas
+ * do Figma — o arquivo recorta tudo que passa da moldura do card e não há como
+ * exportar a tela inteira. Preso pelo topo, o corte parava dentro do card e
+ * lia como imagem quebrada; preso pela base, ele cai exatamente na borda da
+ * moldura, em qualquer altura de card, e lê como aparelho sangrando para fora,
+ * que é a intenção do desenho.
+ */
 const ITAU: Mockup[] = [
-  { src: "/figma/projetos/itau-inicio.png", l: "44.32%", t: "21.6%", w: "15.98%", ratio: "242 / 494" },
-  { src: "/figma/projetos/itau-duvidas.png", l: "60.9%", t: "25.4%", w: "15.75%", ratio: "477 / 558" },
-  { src: "/figma/projetos/itau-atendimento.png", l: "77.4%", t: "25.4%", w: "15.75%", ratio: "477 / 558" },
+  { src: "/figma/projetos/itau-inicio.png", l: "44.32%", b: "-6%", w: "15.98%", ratio: "242 / 494" },
+  { src: "/figma/projetos/itau-duvidas.png", l: "60.9%", b: "0%", w: "15.75%", ratio: "477 / 558" },
+  { src: "/figma/projetos/itau-atendimento.png", l: "77.4%", b: "0%", w: "15.75%", ratio: "477 / 558" },
 ]
 
 function MockupItau() {
@@ -160,7 +185,8 @@ function MockupItau() {
           style={
             {
               "--l": m.l,
-              "--t": m.t,
+              "--t": m.t ?? "auto",
+              "--b": m.b ?? "auto",
               "--w": m.w,
               "--w-sm": "27%",
               aspectRatio: m.ratio,
@@ -187,7 +213,7 @@ const MOCKUPS: Record<string, () => React.ReactElement> = {
 }
 
 function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
-  const { lang } = useLanguage()
+  const { lang, t } = useLanguage()
   const en = lang === "en"
   const Mockup = MOCKUPS[card.slug]
 
@@ -221,6 +247,14 @@ function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
           {title}
         </h3>
         <p style={{ fontSize: "var(--text-card-body)", lineHeight: 1.5 }}>{description}</p>
+
+        {/* Marcador de que o card é clicável. É um span, não um botão: o card
+            inteiro já é o link, e um controle dentro de outro não é navegável
+            por teclado nem anunciado corretamente. */}
+        <span className="pc-cta">
+          {t("home_projects_view_case")}
+          <ArrowUpRight className="h-4 w-4" aria-hidden />
+        </span>
       </div>
 
       <div className="pc-palco" aria-hidden>
@@ -259,10 +293,15 @@ function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
 export function Projects() {
   const { t } = useLanguage()
 
+  // Um card só entra se existir o projeto e o mockup correspondentes: assim
+  // uma edição em CARDS sem par em MOCKUPS deixa de derrubar a página.
   const cards = CARDS.map((card) => ({
     card,
     project: projects.find((p) => p.slug === card.slug),
-  })).filter((x): x is { card: CardSpec; project: Project } => Boolean(x.project))
+  })).filter(
+    (x): x is { card: CardSpec; project: Project } =>
+      Boolean(x.project) && Boolean(MOCKUPS[x.card.slug])
+  )
 
   return (
     <section id="projetos" className="section anchor-target">

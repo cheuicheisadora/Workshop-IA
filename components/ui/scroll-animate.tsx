@@ -44,8 +44,10 @@ export function ScrollAnimateProvider() {
     }
 
     // ── Pausa de animações em loop ──────────────────────────────
+    // As manchas do fundo não animam mais (custavam 35 fps no desktop), então
+    // só sobra a seta do hero.
     const looping = Array.from(
-      document.querySelectorAll<HTMLElement>(".orb-a, .orb-b, .scroll-hint")
+      document.querySelectorAll<HTMLElement>(".scroll-hint")
     )
 
     const visibility = new WeakMap<HTMLElement, boolean>()
