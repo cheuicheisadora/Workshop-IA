@@ -87,7 +87,6 @@ const translations = {
     home_new_tab: "(abre em nova aba)",
     home_nav_resume: "Currículo",
     home_hero_title: "Oi! Eu sou a Isadora.",
-    home_hero_scroll: "Rolar para os projetos",
     home_projects_view_case: "Ver Case",
     home_work_cta: "Baixar currículo",
     home_contact_heading: "Vamos conversar?",
@@ -176,7 +175,6 @@ const translations = {
     home_new_tab: "(opens in a new tab)",
     home_nav_resume: "Resume",
     home_hero_title: "Hi! I'm Isadora.",
-    home_hero_scroll: "Scroll to projects",
     home_projects_view_case: "View case",
     home_work_cta: "Download resume",
     /* "Let's chat" é a versão em inglês que já estava no arquivo (nó 0:152). */
