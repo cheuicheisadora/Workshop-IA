@@ -493,61 +493,38 @@
 
   /* ─── Arte do hero ───────────────────────────────────────────
    *
-   * No desktop a imagem entra como no arquivo: 2,5% de folga de cada lado,
-   * cantos arredondados, atrás do texto e à frente das manchas do fundo.
+   * Só do tablet para cima, e é lá que ela faz sentido: a composição é larga,
+   * desenhada num canvas de 1920, e o miolo vazio dela é onde o texto entra.
    *
-   * No celular ela entra inteira, na proporção original e sangrando de ponta a
-   * ponta. Recortada para uma caixa em pé, o `cover` fica com a faixa central
-   * da imagem — que é justamente o vazio onde o texto entra — e o hero virava
-   * um retângulo escuro com borda, parecendo caixa vazia em vez de arte. Cabendo
-   * inteira, as cápsulas voltam a emoldurar o texto, só que menores.
-   */
+   * No celular não entra. Recortada para uma caixa em pé, o `cover` ficava só
+   * com a faixa central — o vazio — e o hero virava um retângulo escuro com
+   * borda. Cabendo inteira, ela encolhia tanto que virava uma tarja solta atrás
+   * dos botões, precisando de véu para o texto continuar legível. Nenhuma das
+   * duas se sustenta; o celular volta a ter só as manchas do fundo, como antes.
+   *
+   * A imagem é background e mora dentro da media query de propósito: assim o
+   * celular não baixa os 107KB de uma arte que não vai ver. Um <Image> com
+   * priority faria o contrário — o preload no <head> vale para toda largura,
+   * mesmo com o elemento em display:none.                                    */
   .hero-arte {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: auto;
-    aspect-ratio: 1440 / 804;
-    translate: 0 -50%;
-    z-index: -1;
-    overflow: hidden;
-  }
-
-  /*
-   * Véu do celular. Cabendo inteira, a composição fica pequena o bastante para
-   * as cápsulas caírem atrás dos botões — e uma delas é quase branca, o que
-   * apagava o rótulo. O véu recua a arte para textura e devolve o contraste ao
-   * texto, sem tirar a imagem da tela. No desktop não existe: lá o texto cai no
-   * vazio do meio da composição e não disputa com nada.
-   */
-  .hero-arte::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(9, 10, 36, 0.3) 0%,
-      rgba(9, 10, 36, 0.76) 38%,
-      rgba(9, 10, 36, 0.76) 72%,
-      rgba(9, 10, 36, 0.3) 100%
-    );
+    display: none;
   }
 
   @media (min-width: 768px) {
-    .hero-arte::after {
-      content: none;
-    }
-
     .hero-arte {
+      display: block;
+      position: absolute;
       left: 2.5%;
       right: 2.5%;
       top: calc(var(--header-h) + var(--space-3));
       bottom: var(--space-8);
-      height: auto;
-      aspect-ratio: auto;
-      translate: none;
+      z-index: -1;
+      overflow: hidden;
       border-radius: var(--radius-lg);
+      background-image: url("/figma/hero-3d.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 
