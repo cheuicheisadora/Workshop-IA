@@ -8,7 +8,7 @@ const BEHANCE_URL = "https://www.behance.net/gallery/245625317/Redesign-do-App-I
 
 const content = {
   pt: {
-    back: "Voltar aos projetos",
+    back: "Voltar",
     tag: "UX/UI · Case Study · EBAC",
     title: "Redesign App Itaú",
     subtitle:
@@ -84,7 +84,7 @@ const content = {
     behanceCta: "Ver case completo no Behance",
   },
   en: {
-    back: "Back to projects",
+    back: "Back",
     tag: "UX/UI · Case Study · EBAC",
     title: "Itaú App Redesign",
     subtitle:

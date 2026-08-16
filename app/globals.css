@@ -578,21 +578,62 @@
     color: var(--purple);
   }
 
-  /* Voltar: alvo de 44px sem parecer um botão. */
+  /*
+   * Voltar.
+   *
+   * É só a palavra, sem ícone — e palavra solta em texto corrido não se
+   * anuncia como clicável. Em repouso ela é discreta; no hover três sinais
+   * entram juntos e não deixam dúvida: o vidro dos botões aparece atrás dela,
+   * o texto vai a branco e o sublinhado cresce da esquerda para a direita,
+   * como no link de navegação do header.
+   *
+   * O recheio e a borda transparente existem desde o repouso para o vidro
+   * entrar sem empurrar nada em volta. O sublinhado é um ::after com
+   * transform, e não text-decoration, porque transform anima e não repagina.
+   */
   .case-voltar {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: var(--space-1);
+    /* 44px de alvo, contando o recheio. */
     min-height: 44px;
+    padding: 0 var(--space-2);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    background-color: transparent;
     color: var(--fg-muted);
     font-size: var(--text-meta);
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.2s ease;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease,
+      border-color 0.2s ease;
   }
 
-  .case-voltar:hover {
+  .case-voltar::after {
+    content: "";
+    position: absolute;
+    left: var(--space-2);
+    right: var(--space-2);
+    bottom: 12px;
+    height: 1.5px;
+    border-radius: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .case-voltar:hover,
+  .case-voltar:focus-visible {
+    border-color: var(--glass-edge);
+    background-color: rgba(255, 255, 255, 0.08);
     color: var(--fg);
+  }
+
+  .case-voltar:hover::after,
+  .case-voltar:focus-visible::after {
+    transform: scaleX(1);
   }
 
   /* ─── Link de navegação ──────────────────────────────────── */

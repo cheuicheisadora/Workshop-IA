@@ -8,7 +8,7 @@ const SITE_URL = "https://agromai.com.br/"
 
 const content = {
   pt: {
-    back: "Voltar aos projetos",
+    back: "Voltar",
     tag: "UX/UI Designer · Agromai · Projeto Real",
     title: "Redesign Site Agromai",
     subtitle: "Redesign completo do site institucional — do benchmark ao handoff gerado com IA. Interface minimalista que elevou a clareza da comunicação de produto.",
@@ -47,7 +47,7 @@ const content = {
     siteCta: "Ver site no ar",
   },
   en: {
-    back: "Back to projects",
+    back: "Back",
     tag: "UX/UI Designer · Agromai · Real Project",
     title: "Agromai Website Redesign",
     subtitle: "Full institutional website redesign — from benchmark to AI-generated handoff. A minimalist interface that elevated product communication clarity.",
