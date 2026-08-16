@@ -505,7 +505,14 @@
    * A imagem é background e mora dentro da media query de propósito: assim o
    * celular não baixa os 107KB de uma arte que não vai ver. Um <Image> com
    * priority faria o contrário — o preload no <head> vale para toda largura,
-   * mesmo com o elemento em display:none.                                    */
+   * mesmo com o elemento em display:none.
+   *
+   * Sangra na seção inteira, sem moldura. Antes era um retângulo arredondado
+   * com margem de 32 a 64px e um vão de 97px sob o header, e isso a fazia ler
+   * como figura colada numa moldura, não como ambiente: borda dura contra uma
+   * página que é toda feita de manchas suaves, e uma emenda visível onde ela
+   * terminava. De ponta a ponta, com a base dissolvendo no fundo, ela deixa de
+   * ser um objeto na página e passa a ser a página.                          */
   .hero-arte {
     display: none;
   }
@@ -514,17 +521,44 @@
     .hero-arte {
       display: block;
       position: absolute;
-      left: 2.5%;
-      right: 2.5%;
-      top: calc(var(--header-h) + var(--space-3));
-      bottom: var(--space-8);
+      inset: 0;
       z-index: -1;
       overflow: hidden;
-      border-radius: var(--radius-lg);
       background-image: url("/figma/hero-3d.jpg");
-      background-position: center;
+      /* 46% e não 50%: é onde o bloco de texto se centraliza na seção, e o
+         vazio do meio da composição precisa cair junto com ele. */
+      background-position: center 46%;
       background-repeat: no-repeat;
       background-size: cover;
+      /* Some antes do fim da seção, para não deixar aresta na emenda com
+         Projetos. Só a propriedade padrão: escrever a -webkit- à mão faz o
+         Lightning CSS descartar esta. */
+      mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+    }
+
+    /* Vinheta. O radial recolhe o miolo atrás do texto — a composição tem
+       cápsulas claras que passam perto do subtítulo — e a faixa de cima devolve
+       contraste ao header, que agora flutua sobre a arte em vez de sobre o
+       fundo chapado. */
+    .hero-arte::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+          120% 78% at 50% 46%,
+          rgba(9, 10, 36, 0.6) 0%,
+          rgba(9, 10, 36, 0.26) 44%,
+          rgba(9, 10, 36, 0) 72%
+        ),
+        linear-gradient(180deg, rgba(9, 10, 36, 0.58) 0%, rgba(9, 10, 36, 0) 24%);
+    }
+  }
+
+  /* Tela grande recebe a versão de 2560: acima de ~1600 o arquivo de 1920
+     começa a ser ampliado e as cápsulas perdem a aresta. */
+  @media (min-width: 1600px) {
+    .hero-arte {
+      background-image: url("/figma/hero-3d-wide.jpg");
     }
   }
 
