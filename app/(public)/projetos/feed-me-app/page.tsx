@@ -8,7 +8,7 @@ const BEHANCE_URL = "https://www.behance.net/gallery/228083139/Feed-Me-App-UIUX-
 
 const content = {
   pt: {
-    back: "Voltar aos projetos",
+    back: "Voltar",
     tag: "UI/UX · Mobile App · Projeto EBAC",
     title: "Feed Me App",
     subtitle:
@@ -84,7 +84,7 @@ const content = {
     behanceCta: "Ver projeto completo no Behance",
   },
   en: {
-    back: "Back to projects",
+    back: "Back",
     tag: "UI/UX · Mobile App · EBAC Project",
     title: "Feed Me App",
     subtitle:

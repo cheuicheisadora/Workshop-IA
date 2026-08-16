@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, ArrowUpRight, type LucideIcon } from "lucide-react"
+import { ArrowUpRight, type LucideIcon } from "lucide-react"
 import { Backdrop } from "@/components/decor/backdrop"
 import { SiteHeader } from "@/components/sections/site-header"
 import { SiteFooter } from "@/components/sections/site-footer"
@@ -158,7 +158,6 @@ export function CaseStudy({ c }: { c: CaseContent }) {
           }}
         >
           <Link href="/#projetos" className="case-voltar">
-            <ArrowLeft className="h-4 w-4" aria-hidden />
             {c.back}
           </Link>
 
@@ -274,7 +273,6 @@ export function CaseStudy({ c }: { c: CaseContent }) {
             </a>
           )}
           <Link href="/#projetos" className="case-voltar">
-            <ArrowLeft className="h-4 w-4" aria-hidden />
             {c.back}
           </Link>
         </section>
