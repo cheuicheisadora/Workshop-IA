@@ -55,17 +55,22 @@ export function Hero() {
           {lang === "en" ? site.roleEn : site.role}
         </p>
 
+        {/* Pílulas centradas, não barras de largura total. Ocupando a linha
+            inteira elas viravam os objetos mais pesados da tela — 3,5x a área
+            da manchete — e invertiam a hierarquia do hero, que é nome, ofício
+            e só então ação. Com largura de conteúdo continuam com alvo de
+            52px, que é o que importa para o toque. */}
         <div
-          className="hero-reveal mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-7"
+          className="hero-acoes hero-reveal mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-7"
           style={{ animationDelay: "0.2s" }}
         >
-          <a href="#projetos" className="btn btn-primary btn-lg w-full sm:w-auto">
+          <a href="#projetos" className="btn btn-primary btn-lg">
             {t("hero_btn_projects")}
             <ArrowRight className="h-5 w-5" aria-hidden />
           </a>
           {/* Sem ícone: o rótulo já diz o que o botão faz, e o par de botões
               fica mais limpo com só o primário carregando símbolo. */}
-          <a href="#contato" className="btn btn-outline btn-lg w-full sm:w-auto">
+          <a href="#contato" className="btn btn-outline btn-lg">
             {t("hero_btn_contact")}
           </a>
         </div>

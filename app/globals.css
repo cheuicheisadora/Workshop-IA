@@ -51,7 +51,7 @@
 
   /* Tipografia */
   --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
-  --text-hero: clamp(1.875rem, 0.65rem + 5.43vw, 5rem);
+  --text-hero: clamp(2.375rem, 1.348rem + 4.565vw, 5rem);
   --text-section: clamp(1.5rem, 0.91rem + 2.61vw, 3rem);
   --text-card-title: clamp(1.125rem, 0.88rem + 1.09vw, 1.75rem);
   --text-card-body: clamp(0.9375rem, 0.89rem + 0.22vw, 1.0625rem);
@@ -289,6 +289,17 @@
     opacity: 0.88;
   }
 
+  /* No celular as duas pílulas ficam empilhadas e centradas, e larguras
+     diferentes deixavam um degrau entre elas. Igualar arruma a pilha. Acima de
+     767 elas ficam lado a lado e cada uma volta a ter a largura do seu
+     rótulo. */
+  @media (max-width: 767px) {
+    .hero-acoes .btn {
+      min-width: 210px;
+      max-width: 100%;
+    }
+  }
+
   .btn-lg {
     font-size: var(--text-btn-lg);
     padding: 14px var(--space-4);
@@ -502,10 +513,9 @@
    * dos botões, precisando de véu para o texto continuar legível. Nenhuma das
    * duas se sustenta; o celular volta a ter só as manchas do fundo, como antes.
    *
-   * A imagem é background e mora dentro da media query de propósito: assim o
-   * celular não baixa os 107KB de uma arte que não vai ver. Um <Image> com
-   * priority faria o contrário — o preload no <head> vale para toda largura,
-   * mesmo com o elemento em display:none.
+   * A imagem é background, e não um <Image>, para cada largura baixar só o
+   * arquivo que vai usar: um <Image> com priority injeta preload no <head>
+   * para toda largura, e o celular pagaria pelo arquivo do desktop.
    *
    * Sangra na seção inteira, sem moldura. Antes era um retângulo arredondado
    * com margem de 32 a 64px e um vão de 97px sob o header, e isso a fazia ler
@@ -514,25 +524,59 @@
    * terminava. De ponta a ponta, com a base dissolvendo no fundo, ela deixa de
    * ser um objeto na página e passa a ser a página.                          */
   .hero-arte {
-    display: none;
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Some antes do fim da seção, para não deixar aresta na emenda com
+       Projetos. Só a propriedade padrão: escrever a -webkit- à mão faz o
+       Lightning CSS descartar esta. */
+    mask-image: linear-gradient(to bottom, #000 0%, #000 64%, transparent 100%);
+  }
+
+  .hero-arte::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  /*
+   * Celular: recorte próprio, feito para retrato.
+   *
+   * A composição do desktop tem as cápsulas nas bordas e o miolo vazio. Num
+   * box em pé o `cover` escala pela altura e sobra ~27% da largura — ou seja,
+   * exatamente o vazio, e a arte sumia. Este recorte é uma coluna do original
+   * de 2752 × 1536 escolhida por já ter forma em cima (a curva roxa) e embaixo
+   * (a cápsula de vidro), com a faixa vazia atravessando o meio, que é onde o
+   * texto entra.
+   *
+   * A vinheta aqui é mais fechada que a do desktop porque a cápsula de vidro
+   * é a coisa mais clara da imagem inteira e passa atrás dos botões.
+   */
+  .hero-arte {
+    background-image: url("/figma/hero-3d-mob.jpg");
+  }
+
+  .hero-arte::after {
+    background: radial-gradient(
+        104% 52% at 50% 42%,
+        rgba(9, 10, 36, 0.86) 0%,
+        rgba(9, 10, 36, 0.56) 58%,
+        rgba(9, 10, 36, 0) 100%
+      ),
+      linear-gradient(180deg, rgba(9, 10, 36, 0.62) 0%, rgba(9, 10, 36, 0) 20%);
   }
 
   @media (min-width: 768px) {
     .hero-arte {
-      display: block;
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
       background-image: url("/figma/hero-3d.jpg");
       /* 46% e não 50%: é onde o bloco de texto se centraliza na seção, e o
          vazio do meio da composição precisa cair junto com ele. */
       background-position: center 46%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      /* Some antes do fim da seção, para não deixar aresta na emenda com
-         Projetos. Só a propriedade padrão: escrever a -webkit- à mão faz o
-         Lightning CSS descartar esta. */
       mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
     }
 
@@ -541,9 +585,6 @@
        contraste ao header, que agora flutua sobre a arte em vez de sobre o
        fundo chapado. */
     .hero-arte::after {
-      content: "";
-      position: absolute;
-      inset: 0;
       background: radial-gradient(
           120% 78% at 50% 46%,
           rgba(9, 10, 36, 0.6) 0%,
