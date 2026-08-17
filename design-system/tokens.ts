@@ -120,7 +120,11 @@ export const tokens: DesignTokens = {
      * corpo do card cai para 15px por ser texto de apoio dentro de uma
      * moldura estreita, não leitura principal.
      */
-    hero: "clamp(1.875rem, 0.65rem + 5.43vw, 5rem)",
+    /* Piso a 360 de 30 para 38px. 30 era tímido para uma manchete de hero:
+       no celular ela media 1,97x o rótulo dos botões e ocupava um terço da
+       área deles, então a tela lia como dois botões com um nome em cima. O
+       teto de 80px a 1280 não muda. */
+    hero: "clamp(2.375rem, 1.348rem + 4.565vw, 5rem)",
     section: "clamp(1.5rem, 0.91rem + 2.61vw, 3rem)",
     cardTitle: "clamp(1.125rem, 0.88rem + 1.09vw, 1.75rem)",
     cardBody: "clamp(0.9375rem, 0.89rem + 0.22vw, 1.0625rem)",
