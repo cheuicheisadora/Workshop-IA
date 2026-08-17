@@ -7,29 +7,81 @@ import { navLinks, site } from "@/data/site"
 import { useLanguage } from "@/context/language"
 
 /**
- * Marca do logotipo: vetor exportado do Figma (0:188).
- * É um disco cheio com o brilho vazado — um subcaminho só, preenchimento
- * nonzero. `currentColor` no lugar do branco fixo do arquivo para o logo
- * herdar a cor do link.
+ * Marca do logotipo: duas estrelas sobrepostas (Figma 8:198).
  *
- * O viewBox tem uma unidade de folga de cada lado. No arquivo o disco vai de
- * 0 a 30,75, encostando na borda: com overflow hidden do SVG e a caixa em
- * 30,75px (fracionária), a borda suavizada era cortada e o círculo aparecia
- * achatado nos quatro lados.
+ * A de baixo, magenta, tem o gradiente C680E2 → AA13B2 do arquivo e um bloom
+ * borrado por cima, no centro. A de cima é vidro: o roxo do sistema a 65% com
+ * um traço de luz que cai de 25% a zero.
+ *
+ * Duas coisas do arquivo não vêm para cá. O backdrop-blur de 7,5px da estrela
+ * de vidro, que a 30px de altura não se percebe e em SVG só existe via
+ * foreignObject — o que o Figma exporta e nenhum navegador aplica de forma
+ * confiável dentro de <svg>. E as cores ficam fixas em vez de currentColor: a
+ * marca agora é colorida por desenho, não monocromática herdando o link.
+ *
+ * O viewBox tem ~2,5 unidades de folga em volta. É a mesma precaução do logo
+ * anterior, que encostava na borda e aparecia achatado: aqui ainda há o traço
+ * da estrela de vidro e o bloom borrado, que sangram além do contorno.
  */
 function LogoMark() {
   return (
     <svg
-      width="32"
-      height="32"
-      viewBox="-1 -1 32.75 32.75"
+      viewBox="0 0 40 34"
+      width="36"
+      height="30.6"
       fill="none"
       aria-hidden="true"
       focusable="false"
+      className="shrink-0"
     >
+      <defs>
+        <linearGradient
+          id="logo-estrela"
+          x1="3.8316"
+          y1="18.8625"
+          x2="24.6463"
+          y2="38.3647"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="var(--glow-magenta-from)" />
+          <stop offset="1" stopColor="var(--glow-magenta-to)" />
+        </linearGradient>
+        <linearGradient
+          id="logo-vidro"
+          x1="17.9125"
+          y1="3.74453"
+          x2="27.917"
+          y2="26.8825"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#fff" stopOpacity="0.25" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
+        </linearGradient>
+        <filter
+          id="logo-bloom"
+          x="1.5"
+          y="8.5"
+          width="26.6"
+          height="26.6"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feGaussianBlur stdDeviation="3.13739" />
+        </filter>
+      </defs>
+
+      <path d="M19.1697 20.3882C19.0109 20.7155 19.0235 21.1007 19.2024 21.4177L21.7445 25.7734C21.9596 26.1427 21.9386 26.6034 21.691 26.9524C21.4533 27.3074 21.0324 27.493 20.6098 27.4323L15.6144 26.773C15.4402 26.7485 15.2629 26.7659 15.0953 26.8216L14.8385 26.9152C14.7542 26.9609 14.6774 27.0211 14.6137 27.0937L11.217 30.8237C11.0475 31.0036 10.8259 31.1262 10.5821 31.1732C9.9824 31.2715 9.41322 30.8735 9.29962 30.2761L8.44358 25.3058C8.37548 24.9452 8.13662 24.6404 7.80308 24.4882L3.17184 22.4185C2.78442 22.2451 2.53292 21.8644 2.52657 21.4405C2.51678 21.0189 2.74107 20.6269 3.11002 20.4226L7.57115 18.0225C7.91592 17.855 8.15112 17.5223 8.19478 17.1414L8.71932 12.1296C8.73405 12.0169 8.76577 11.9065 8.8156 11.8046L8.87671 11.7072C8.90329 11.6417 8.93961 11.5823 8.98439 11.5284L9.07387 11.4528L9.21081 11.3278L9.6098 11.1823C9.97961 11.0894 10.371 11.1883 10.6511 11.447L14.2981 14.9168C14.5627 15.1714 14.9359 15.2792 15.2951 15.2073L20.2543 14.1738C20.6731 14.0856 21.1059 14.2392 21.3758 14.5702C21.6385 14.905 21.6834 15.3611 21.4913 15.7413L19.1697 20.3882Z" fill="url(#logo-estrela)" />
+      <g opacity="0.5" filter="url(#logo-bloom)">
+        <path d="M14.8017 17.8677C12.6328 17.8677 10.8724 19.6284 10.8724 21.797C10.8724 23.9663 12.6328 25.7263 14.8017 25.7263C16.9746 25.7263 18.731 23.9663 18.731 21.797C18.731 19.6284 16.9746 17.8677 14.8017 17.8677Z" fill="var(--glow-magenta-to)" />
+      </g>
       <path
-        d="M15.375 0C11.2973 0 7.3866 1.61986 4.50323 4.50323C1.61986 7.3866 0 11.2973 0 15.375C0 19.4527 1.61986 23.3634 4.50323 26.2468C7.3866 29.1301 11.2973 30.75 15.375 30.75C19.4527 30.75 23.3634 29.1301 26.2468 26.2468C29.1301 23.3634 30.75 19.4527 30.75 15.375C30.75 11.2973 29.1301 7.3866 26.2468 4.50323C23.3634 1.61986 19.4527 0 15.375 0ZM23.91 16.26C23.7208 16.5089 23.4586 16.6924 23.16 16.785L20.745 17.595C20.007 17.8472 19.3354 18.2625 18.78 18.81C18.2283 19.3621 17.8124 20.0348 17.565 20.775L16.74 23.19C16.629 23.4623 16.4479 23.7004 16.215 23.88C15.966 24.0604 15.6675 24.1599 15.36 24.165C15.051 24.1695 14.7495 24.0691 14.505 23.88C14.2555 23.7009 14.0671 23.4496 13.965 23.16L13.17 20.745C12.9229 20.0022 12.5052 19.3276 11.9504 18.7754C11.3955 18.2231 10.719 17.8086 9.975 17.565L7.575 16.77C7.28538 16.6679 7.03407 16.4795 6.855 16.23C6.66802 15.9844 6.56778 15.6837 6.57 15.375C6.57202 15.0624 6.67166 14.7582 6.855 14.505C7.02727 14.2619 7.27515 14.0825 7.56 13.995L9.975 13.185C10.7215 12.9322 11.4028 12.5173 11.97 11.97C12.525 11.409 12.9405 10.725 13.185 9.975L13.995 7.605C14.0849 7.3212 14.2572 7.07056 14.49 6.885C14.7292 6.68298 15.0319 6.57148 15.345 6.57C15.6426 6.56488 15.935 6.64843 16.185 6.81C16.449 6.9741 16.6498 7.22251 16.755 7.515L17.565 9.96C17.817 10.7145 18.237 11.4015 18.795 11.97C19.3587 12.5142 20.0345 12.9289 20.775 13.185L23.19 14.025C23.477 14.1165 23.7251 14.3013 23.895 14.55C24.0701 14.8008 24.1643 15.0991 24.165 15.405C24.1635 15.708 24.075 16.005 23.91 16.26Z"
-        fill="currentColor"
+        d="M27.2844 3.01326L27.3002 3.01825C27.7414 3.17919 28.0858 3.52472 28.247 3.95898L28.3045 4.15066L28.305 4.15279L29.6665 10.3995L29.6674 10.3997C29.7534 10.8053 30.0341 11.1431 30.416 11.3037L30.415 11.3035L36.3642 13.7509L36.4664 13.7968C36.9347 14.0275 37.2616 14.4722 37.3435 14.9868L37.3578 15.0982L37.358 15.1012C37.3997 15.7009 37.0899 16.2687 36.5643 16.5612L30.8132 19.7932L30.8125 19.792C30.4586 19.997 30.2278 20.3641 30.1936 20.7723L29.7619 27.1625C29.7207 27.7656 29.3305 28.2887 28.7641 28.5007L28.7634 28.4995C28.2054 28.7239 27.5701 28.6076 27.1259 28.2039L22.344 23.9523L22.3433 23.9511C22.233 23.8513 22.1058 23.7721 21.9675 23.7157L21.8257 23.667L21.5084 23.5873C21.4073 23.5782 21.305 23.585 21.2076 23.6104L21.2043 23.6115L14.9761 25.1116L14.9737 25.113C14.6355 25.1884 14.2814 25.156 13.9613 25.0187L13.9568 25.0166C13.1791 24.6568 12.8299 23.742 13.1699 22.955L13.1703 22.9531L15.8111 17.1201C15.9761 16.7396 15.9467 16.3031 15.7318 15.9492L12.3381 10.4727C12.0225 9.96293 12.0298 9.31861 12.3584 8.81736C12.68 8.31847 13.251 8.03834 13.8426 8.09177L13.8445 8.09225L20.2449 8.74797L20.2508 8.74845C20.6794 8.81032 21.1102 8.64823 21.3927 8.31946L25.5153 3.42562L25.517 3.42302L25.5179 3.42325C25.6241 3.30355 25.7487 3.19867 25.8897 3.11792L25.9046 3.1106L26.0328 3.0532C26.1163 2.99994 26.2053 2.96066 26.2984 2.93367L26.325 2.92826L26.473 2.91209L26.7009 2.87873L26.7615 2.88188L27.2844 3.01326Z"
+        fill="var(--purple)"
+        fillOpacity="0.65"
+        stroke="url(#logo-vidro)"
+        strokeWidth="0.313739"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
