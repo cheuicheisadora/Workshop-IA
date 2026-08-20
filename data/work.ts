@@ -27,10 +27,10 @@ export const workPrinciples: WorkPrinciple[] = [
     id: "criterio",
     title: "Decido com critério, não por gosto",
     description:
-      "No site da Agromai, testei uma direção mais densa e descartei. A versão limpa venceu no benchmark e trouxe cerca de 10% mais tráfego.",
+      "No site da Agromai, testei uma direção mais densa e descartei. A versão limpa venceu no benchmark e elevou a conversão em cerca de 15%.",
     title_en: "I decide on criteria, not on taste",
     description_en:
-      "On the Agromai website I tried a denser direction and dropped it. The clean version won the benchmark and brought around 10% more traffic.",
+      "On the Agromai website I tried a denser direction and dropped it. The clean version won the benchmark and lifted conversion by around 15%.",
   },
   {
     id: "ia-ferramenta",

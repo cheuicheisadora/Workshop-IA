@@ -18,7 +18,7 @@ const content = {
     solution: "Solução",
     solutionText: "Interface minimalista com hierarquia visual clara, desenhada no Figma e com handoff gerado com IA — entregue diretamente ao time de desenvolvimento.",
     impact: "Impacto",
-    impactText: "~10% de aumento no tráfego e zero retrabalho de handoff, com todo o código gerado a partir do design no Figma.",
+    impactText: "~15% de aumento na conversão e zero retrabalho de handoff, com todo o código gerado a partir do design no Figma.",
     processTitle: "O processo",
     processSubtitle: "Do benchmark ao handoff, inteiramente conduzido por uma designer.",
     steps: [
@@ -32,13 +32,13 @@ const content = {
     insights: [
       { icon: Scale, title: "Minimalismo vs. densidade", desc: "Optei pela direção minimalista mesmo sabendo que um layout mais denso permitiria comunicar mais conteúdo acima da dobra. O benchmark mostrou que clareza e hierarquia visual geram mais resultado." },
       { icon: Sparkles, title: "IA no handoff", desc: "Usar o Claude para gerar o código de implementação a partir do design eliminou o gap entre design e desenvolvimento — zero retrabalho, entrega direta." },
-      { icon: AlertCircle, title: "Analytics sem instrumentação", desc: "O aumento de ~10% no tráfego foi medido informalmente. Faria diferente: instrumentar analytics desde o início para medir o impacto com precisão." },
+      { icon: AlertCircle, title: "Analytics sem instrumentação", desc: "O aumento de ~15% na conversão foi medido informalmente. Faria diferente: instrumentar analytics desde o início para medir o impacto com precisão." },
       { icon: BarChart2, title: "Benchmark antes de descartar", desc: "A direção densa foi descartada com base no benchmark — mas rodaria testes de usabilidade formais para validar a hipótese antes de eliminar a alternativa." },
     ],
     metricsTitle: "Resultados",
     metricsSubtitle: "Impacto do redesign no site institucional.",
     metrics: [
-      { value: "~10%", label: "Aumento no tráfego do site após o lançamento do novo design" },
+      { value: "~15%", label: "Aumento na conversão do site após o lançamento do novo design" },
       { value: "0", label: "Retrabalho de handoff — código gerado direto do Figma com IA" },
       { value: "1", label: "Designer conduzindo todo o processo: benchmark, design e entrega" },
     ],
@@ -57,7 +57,7 @@ const content = {
     solution: "Solution",
     solutionText: "Minimalist interface with clear visual hierarchy, designed in Figma and with AI-generated handoff — delivered directly to the development team.",
     impact: "Impact",
-    impactText: "~10% traffic increase and zero handoff rework, with all code generated directly from the Figma design.",
+    impactText: "~15% conversion increase and zero handoff rework, with all code generated directly from the Figma design.",
     processTitle: "The process",
     processSubtitle: "From benchmark to handoff, entirely led by one designer.",
     steps: [
@@ -71,13 +71,13 @@ const content = {
     insights: [
       { icon: Scale, title: "Minimalism vs. density", desc: "I chose the minimalist direction even knowing a denser layout would communicate more content above the fold. Benchmarking showed that clarity and visual hierarchy drive better results." },
       { icon: Sparkles, title: "AI in the handoff", desc: "Using Claude to generate the implementation code from the design eliminated the gap between design and development — zero rework, direct delivery." },
-      { icon: AlertCircle, title: "Analytics without instrumentation", desc: "The ~10% traffic increase was measured informally. I'd do it differently: instrument analytics from the start to measure impact with precision." },
+      { icon: AlertCircle, title: "Analytics without instrumentation", desc: "The ~15% conversion increase was measured informally. I'd do it differently: instrument analytics from the start to measure impact with precision." },
       { icon: BarChart2, title: "Benchmark before discarding", desc: "The dense direction was discarded based on the benchmark — but I'd run formal usability tests to validate the hypothesis before eliminating the alternative." },
     ],
     metricsTitle: "Results",
     metricsSubtitle: "Redesign impact on the institutional website.",
     metrics: [
-      { value: "~10%", label: "Traffic increase after launching the new design" },
+      { value: "~15%", label: "Conversion increase after launching the new design" },
       { value: "0", label: "Handoff rework — code generated directly from Figma with AI" },
       { value: "1", label: "Designer leading the full process: benchmark, design, and delivery" },
     ],
