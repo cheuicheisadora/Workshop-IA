@@ -21,6 +21,7 @@ export const site = {
  */
 export const navLinks = [
   { href: "/#projetos", label: "Projetos", labelEn: "Projects" },
+  { href: "/#chale-atelier", label: "Growth", labelEn: "Growth" },
   {
     href: "/#como-eu-trabalho",
     label: "Como eu trabalho",

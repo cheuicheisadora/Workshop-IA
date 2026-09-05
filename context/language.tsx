@@ -93,6 +93,17 @@ const translations = {
     home_footer_nav: "Navegação",
     home_footer_contact: "Contato",
     home_footer_email: "E-mail",
+
+    /* ─── Chalé Atelier (growth e mídia) ───────────────────── */
+    chale_tag: "GROWTH & MÍDIA",
+    chale_heading: "Chalé Atelier",
+    chale_subtitle:
+      "Planejamento, execução e otimização das campanhas de Meta Ads e do conteúdo orgânico no Instagram da Chalé Atelier, marca de cerâmica da minha família.",
+    chale_campanha: "Campanha principal · Meta Ads",
+    chale_campanha_2: "Segunda campanha",
+    chale_organico: "Desempenho orgânico",
+    chale_post: "Post de melhor desempenho",
+    chale_origem: "De onde veio o tráfego",
   },
   en: {
     // Navbar
@@ -182,6 +193,17 @@ const translations = {
     home_footer_nav: "Navigation",
     home_footer_contact: "Contact",
     home_footer_email: "Email",
+
+    /* ─── Chalé Atelier (growth e mídia) ───────────────────── */
+    chale_tag: "GROWTH & MEDIA",
+    chale_heading: "Chalé Atelier",
+    chale_subtitle:
+      "Planning, running and optimizing the Meta Ads campaigns and organic content for the Instagram account of Chalé Atelier, my family's ceramics brand.",
+    chale_campanha: "Main campaign · Meta Ads",
+    chale_campanha_2: "Second campaign",
+    chale_organico: "Organic performance",
+    chale_post: "Best performing post",
+    chale_origem: "Where the traffic came from",
   },
 } as const
 

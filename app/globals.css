@@ -11,6 +11,7 @@
   --purple-fill: rgba(151, 111, 204, 0.55);
   --purple-hover: rgba(151, 111, 204, 0.78);
   --purple-fill-soft: rgba(151, 111, 204, 0.38);
+  --purple-text: #B08FD9;
   --border: rgba(255, 255, 255, 0.2);
   --border-strong: rgba(255, 255, 255, 0.25);
   --hairline: rgba(255, 255, 255, 0.15);
@@ -59,6 +60,7 @@
   --text-item-title: clamp(1.0625rem, 0.99rem + 0.33vw, 1.25rem);
   --text-brand: clamp(1rem, 0.93rem + 0.3vw, 1.125rem);
   --text-btn-lg: clamp(1rem, 0.95rem + 0.22vw, 1.125rem);
+  --text-metric: clamp(2rem, 1.413rem + 2.609vw, 3.5rem);
   --text-body: 1rem;
   --text-meta: clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
 
@@ -637,7 +639,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--purple);
+    color: var(--purple-text);
   }
 
   .case-numero {
@@ -650,7 +652,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--purple);
+    color: var(--purple-text);
   }
 
   /*
@@ -711,6 +713,100 @@
     transform: scaleX(1);
   }
 
+  /* ─── Painel de resultados (Chalé Atelier) ───────────────────
+     Relatório, não lista corrida: quem manda visualmente é o número, e o
+     rótulo entra como legenda embaixo. Reaproveita o vidro de .case-card e
+     o roxo de .case-rotulo, para o bloco pertencer ao resto do site.      */
+
+  .metrica-valor {
+    font-size: var(--text-metric);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    /* Tabular para os números alinharem coluna a coluna na grade. */
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Segundo patamar: o custo e o alcance, que contextualizam o resultado
+     sem competir com ele. */
+  .metrica-valor-menor {
+    font-size: var(--text-card-title);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .metrica-rotulo {
+    margin-top: var(--space-1);
+    font-size: var(--text-meta);
+    line-height: 1.4;
+    color: var(--fg-muted);
+  }
+
+  /* Régua entre as métricas de uma linha. Só aparece a partir de sm, onde
+     elas ficam lado a lado; empilhadas, uma linha vertical não separa nada. */
+  @media (min-width: 640px) {
+    .metrica-regua {
+      border-left: 1px solid var(--hairline);
+      padding-left: var(--space-4);
+    }
+
+    .metrica-regua:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  /* ─── Barras ─────────────────────────────────────────────────
+     Sem biblioteca de gráfico: são divs com largura em %. O dado é pequeno
+     e fixo, e uma dependência de charting aqui custaria mais em peso e em
+     manutenção do que a régua que ela desenharia.                        */
+
+  .barra-trilho {
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background-color: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .barra-preenchida {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background-image: linear-gradient(
+      90deg,
+      var(--glow-magenta-from) 0%,
+      var(--purple) 100%
+    );
+  }
+
+  /* Barra de composição: as fatias dividem um trilho só. O vão que sobra
+     fica à mostra de propósito — as três origens somam 98,9%, e fechar em
+     100 seria inventar o resto. */
+  .barra-empilhada {
+    display: flex;
+    gap: 3px;
+    height: 10px;
+  }
+
+  .barra-fatia {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background-image: linear-gradient(
+      90deg,
+      var(--glow-magenta-from) 0%,
+      var(--purple) 100%
+    );
+  }
+
+  .barra-fatia:nth-child(2) {
+    opacity: 0.66;
+  }
+
+  .barra-fatia:nth-child(3) {
+    opacity: 0.42;
+  }
+
   /* ─── Link de navegação ──────────────────────────────────── */
 
   .nav-link {
@@ -718,6 +814,10 @@
     display: inline-flex;
     align-items: center;
     min-height: 44px;
+    /* Com três itens na navegação, "Como eu trabalho" quebrava em duas linhas
+       a 1024 e desalinhava a barra inteira. Cabe numa linha — o que faltava
+       era proibir a quebra. */
+    white-space: nowrap;
     color: var(--fg);
     text-decoration: none;
     /* 15px: padrão de item de navegação no desktop. O arquivo usa 16, medido

@@ -32,6 +32,13 @@ export const tokens: DesignTokens = {
     /* Botão "Ver Case" dentro do card: medido em rgb(62,49,96) sobre o card,
        o que dá 0,38 de opacidade sobre o mesmo roxo. */
     purpleFillSoft: "rgba(151, 111, 204, 0.38)",
+    /* Roxo para texto pequeno. O #976FCC é do arquivo e funciona como
+       preenchimento e como ponta do gradiente do título, mas em rótulo de
+       13-14px ele mede 3,99:1 sobre o card quando uma mancha do fundo passa
+       atrás — abaixo dos 4,5 exigidos, e rótulo em maiúscula desse tamanho
+       não conta como texto grande. Este tom sobe para 5,7:1 sem sair do
+       mesmo matiz. */
+    purpleText: "#B08FD9",
 
     // Traços
     border: "rgba(255, 255, 255, 0.2)",
@@ -138,6 +145,13 @@ export const tokens: DesignTokens = {
     brand: "clamp(1rem, 0.93rem + 0.3vw, 1.125rem)",
     /** Rótulo dos botões grandes. */
     btnLg: "clamp(1rem, 0.95rem + 0.22vw, 1.125rem)",
+    /**
+     * Número grande do painel de resultados (Chalé Atelier). Fica entre o
+     * título de seção e o de card: 32px a 360 e 56px a 1280. Precisa ser o
+     * maior elemento do bloco — num relatório quem manda é o número, não o
+     * rótulo.
+     */
+    metric: "clamp(2rem, 1.413rem + 2.609vw, 3.5rem)",
     body: "1rem",
     meta: "clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem)",
   },
