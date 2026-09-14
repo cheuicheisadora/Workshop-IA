@@ -115,7 +115,7 @@ export function ChaleAtelier() {
             paddingBottom: "var(--space-10)",
           }}
         >
-          <Link href="/" className="case-voltar">
+          <Link href="/#projetos" className="case-voltar">
             <ArrowLeft className="h-4 w-4" aria-hidden />
             {t("chale_voltar")}
           </Link>
@@ -280,7 +280,7 @@ export function ChaleAtelier() {
           </div>
 
           <div className="mt-12 flex justify-center">
-            <Link href="/" className="case-voltar">
+            <Link href="/#projetos" className="case-voltar">
               <ArrowLeft className="h-4 w-4" aria-hidden />
               {t("chale_voltar")}
             </Link>

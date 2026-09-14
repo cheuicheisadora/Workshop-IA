@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { projects, type Project } from "@/data/projects"
+import { destaqueCard } from "@/data/chale"
 import { useLanguage } from "@/context/language"
 
 /**
@@ -48,6 +49,9 @@ type CardSpec = {
   titleTop: string
   bodyGap: string
   textWidth: string
+  /** Classe extra no palco. O card da Chalé não expõe aparelho, e a faixa
+   *  precisa de outras regras no celular. */
+  palcoClass?: string
 }
 
 /**
@@ -93,6 +97,19 @@ const CARDS: CardSpec[] = [
     titleTop: "2.38%",
     bodyGap: "1.06%",
     textWidth: "40%",
+  },
+  {
+    /* Mesma caixa larga do Itaú, mas o lado direito é um painel de números
+       em vez de aparelhos — é um case de growth, e o que ele tem para
+       mostrar é resultado, não interface. */
+    slug: "chale-atelier",
+    span: "sm:col-span-2",
+    ratio: "1514 / 329",
+    padLeft: "3.83%",
+    titleTop: "2.38%",
+    bodyGap: "1.06%",
+    textWidth: "40%",
+    palcoClass: "pc-palco-metricas",
   },
 ]
 
@@ -254,10 +271,45 @@ function MockupItau() {
   )
 }
 
+/**
+ * Painel de números do card da Chalé Atelier.
+ *
+ * Ocupa o lugar dos aparelhos nos outros cards. Os valores vêm de
+ * data/chale.ts, os mesmos que a página do case usa — o card é uma prévia
+ * dela, não uma segunda transcrição.
+ */
+function MockupChale() {
+  const { lang } = useLanguage()
+  const en = lang === "en"
+
+  return (
+    <div
+      className="pc-mockup pc-metricas"
+      style={
+        {
+          "--l": "45%",
+          "--t": "50%",
+          "--dy": "-50%",
+          "--w": "52%",
+          "--w-sm": "100%",
+        } as React.CSSProperties
+      }
+    >
+      {destaqueCard.map((m) => (
+        <div key={m.rotulo}>
+          <p className="metrica-valor gradient-text">{en ? m.valorEn : m.valor}</p>
+          <p className="metrica-rotulo">{en ? m.rotuloEn : m.rotulo}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 const MOCKUPS: Record<string, () => React.ReactElement> = {
   "redesign-site-agromai": MockupAgromai,
   "feed-me-app": MockupFeedMe,
   "redesign-app-itau": MockupItau,
+  "chale-atelier": MockupChale,
 }
 
 function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
@@ -310,7 +362,7 @@ function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
         </span>
       </div>
 
-      <div className="pc-palco" aria-hidden>
+      <div className={`pc-palco ${card.palcoClass ?? ""}`} aria-hidden>
         <Mockup />
       </div>
     </>
