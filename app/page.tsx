@@ -2,7 +2,6 @@ import { Backdrop } from "@/components/decor/backdrop"
 import { SiteHeader } from "@/components/sections/site-header"
 import { Hero } from "@/components/sections/hero"
 import { Projects } from "@/components/sections/projects"
-import { ChaleAtelier } from "@/components/sections/chale-atelier"
 import { HowIWork } from "@/components/sections/how-i-work"
 import { Contact } from "@/components/sections/contact"
 import { SiteFooter } from "@/components/sections/site-footer"
@@ -15,7 +14,6 @@ export default function HomePage() {
       <main id="conteudo" className="flex-1">
         <Hero />
         <Projects />
-        <ChaleAtelier />
         <HowIWork />
         <Contact />
       </main>

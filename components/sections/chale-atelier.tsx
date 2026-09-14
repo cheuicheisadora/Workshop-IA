@@ -1,5 +1,10 @@
 "use client"
 
+import Link from "next/link"
+import { ArrowLeft, ArrowUpRight } from "lucide-react"
+import { Backdrop } from "@/components/decor/backdrop"
+import { SiteHeader } from "@/components/sections/site-header"
+import { SiteFooter } from "@/components/sections/site-footer"
 import {
   conta,
   campanhaResultado,
@@ -9,27 +14,36 @@ import {
   interacoes,
   postDestaque,
   origemTrafego,
+  INSTAGRAM_URL,
+  LOJA_URL,
   type Metrica,
   type Fatia,
 } from "@/data/chale"
 import { useLanguage } from "@/context/language"
 
 /**
- * Painel de resultados da Chalé Atelier.
+ * Growth & Marketing — Chalé Atelier.
  *
- * É um relatório, não um case de design — o que a seção precisa provar é
- * gestão de verba e leitura de métrica, então a composição inverte a
- * hierarquia do resto do site: aqui quem tem o maior corpo é o número, e o
- * rótulo entra como legenda embaixo.
+ * Página própria, e não seção da home. O conteúdo é relatório de mídia: não é
+ * case de processo de design (por isso não fica em /projetos) nem cabe na
+ * rolagem curada da home, que é hero, projetos, método e contato.
  *
- * A ordem dos blocos é o argumento. Resultado da campanha primeiro, custo
- * logo abaixo na mesma moldura — ver "525 novos seguidores" e "R$ 226,18
- * investidos" juntos é o que mostra gestão de verba, e não só volume. Depois
- * a segunda campanha, com o custo por visita ao lado do da primeira, que é
- * onde a leitura de eficiência aparece. Só então o orgânico e o post de
+ * O esqueleto é o mesmo das páginas de case — fundo, header, rodapé, vidro dos
+ * cards e a mesma régua de espaçamento —, então a página pertence ao site em
+ * vez de parecer um anexo.
+ *
+ * A composição inverte a hierarquia tipográfica do resto do portfólio: aqui
+ * quem tem o maior corpo é o número, e o rótulo entra como legenda embaixo. O
+ * que esta página precisa provar é gestão de verba e leitura de métrica.
+ *
+ * A ordem dos blocos é o argumento. Resultado da campanha primeiro e o custo
+ * logo abaixo, na mesma moldura — ver "525 novos seguidores" junto de
+ * "R$ 226,18 investidos" é o que mostra gestão de verba, e não só volume.
+ * Depois a segunda campanha, com o custo por visita ao lado do da primeira,
+ * que é onde a eficiência fica legível. Só então o orgânico e o post de
  * destaque, que falam de conteúdo e não de mídia paga.
  *
- * Todos os valores vêm de data/chale.ts, transcritos do relatório. Nada é
+ * Os valores vêm todos de data/chale.ts, transcritos do relatório. Nada é
  * somado nem derivado aqui.
  */
 
@@ -88,136 +102,193 @@ export function ChaleAtelier() {
   const en = lang === "en"
 
   return (
-    <section id="chale-atelier" className="section anchor-target">
-      <div className="container-page">
-        <header data-animate>
-          <p className="case-rotulo">{t("chale_tag")}</p>
-          <h2
-            className="mt-3 font-bold"
+    <div className="relative flex min-h-screen flex-col">
+      <Backdrop />
+      <SiteHeader />
+
+      <main id="conteudo" className="flex-1">
+        {/* ── Abertura ───────────────────────────────────────── */}
+        <header
+          className="container-page"
+          style={{
+            paddingTop: "calc(var(--header-h) + var(--space-10))",
+            paddingBottom: "var(--space-10)",
+          }}
+        >
+          <Link href="/" className="case-voltar">
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+            {t("chale_voltar")}
+          </Link>
+
+          <p className="case-tag">{t("chale_tag")}</p>
+
+          <h1
+            className="gradient-text mt-4 font-bold"
             style={{
               fontSize: "var(--text-section)",
-              lineHeight: 1.15,
-              letterSpacing: "-0.01em",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
             }}
           >
             {t("chale_heading")}
-          </h2>
+          </h1>
+
           <p
-            className="mt-5 max-w-2xl text-fg-muted"
+            className="mt-6 max-w-2xl text-fg-muted"
             style={{ fontSize: "var(--text-lead)", lineHeight: 1.6 }}
           >
-            {t("chale_subtitle")}
+            {t("chale_contexto")}
           </p>
-          <p className="mt-4 text-fg-subtle" style={{ fontSize: "var(--text-meta)" }}>
-            {en ? conta.seguidoresEn : conta.seguidores} {en ? conta.rotuloEn : conta.rotulo}
+
+          {/* Instagram e loja. Os dois abrem em nova aba, com o aviso em
+              sr-only que o resto do site já usa nos links externos. */}
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              {t("chale_instagram")}
+              <ArrowUpRight className="h-4 w-4" aria-hidden />
+              <span className="sr-only">{t("home_new_tab")}</span>
+            </a>
+            <a
+              href={LOJA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
+            >
+              {t("chale_loja")}
+              <ArrowUpRight className="h-4 w-4" aria-hidden />
+              <span className="sr-only">{t("home_new_tab")}</span>
+            </a>
+          </div>
+
+          <p className="mt-8 text-fg-subtle" style={{ fontSize: "var(--text-meta)" }}>
+            {en ? conta.seguidoresEn : conta.seguidores}{" "}
+            {en ? conta.rotuloEn : conta.rotulo}
           </p>
         </header>
 
-        <hr className="mt-7 border-0 border-t" style={{ borderColor: "var(--hairline)" }} />
+        {/* ── Campanha principal ─────────────────────────────── */}
+        <section className="container-page pb-6" data-animate>
+          <div className="case-card case-resultados">
+            <h2 className="case-rotulo">{t("chale_campanha")}</h2>
 
-        {/* ── Campanha principal ──────────────────────────────── */}
-        <div className="case-card case-resultados mt-10" data-animate>
-          <p className="case-rotulo">{t("chale_campanha")}</p>
+            <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-x-4">
+              {campanhaResultado.map((m, i) => (
+                <Metrica key={m.rotulo} m={m} en={en} regua={i > 0} />
+              ))}
+            </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-x-4">
-            {campanhaResultado.map((m, i) => (
-              <Metrica key={m.rotulo} m={m} en={en} regua={i > 0} />
-            ))}
-          </div>
+            {/* O custo mora na mesma moldura do resultado: é a leitura junta
+                que mostra gestão de verba. */}
+            <hr
+              className="my-8 border-0 border-t"
+              style={{ borderColor: "var(--hairline)" }}
+            />
 
-          {/* O custo mora na mesma moldura do resultado: é a leitura junta
-              que mostra gestão de verba. */}
-          <hr
-            className="my-8 border-0 border-t"
-            style={{ borderColor: "var(--hairline)" }}
-          />
-
-          <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
-            {campanhaCusto.map((m, i) => (
-              <Metrica key={m.rotulo} m={m} en={en} menor regua={i > 0} />
-            ))}
-          </div>
-        </div>
-
-        {/* ── Segunda campanha ────────────────────────────────── */}
-        <div className="case-card mt-6" data-animate data-delay="1">
-          <p className="case-rotulo">{t("chale_campanha_2")}</p>
-          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-x-4">
-            {campanhaSecundaria.map((m, i) => (
-              <Metrica key={m.rotulo} m={m} en={en} menor regua={i > 0} />
-            ))}
-          </div>
-        </div>
-
-        {/* ── Orgânico + post de destaque ─────────────────────── */}
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div className="case-card" data-animate data-delay="1">
-            <p className="case-rotulo">{t("chale_organico")}</p>
-
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
-              {organico.map((m, i) => (
+            <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
+              {campanhaCusto.map((m, i) => (
                 <Metrica key={m.rotulo} m={m} en={en} menor regua={i > 0} />
               ))}
             </div>
-
-            <hr
-              className="my-8 border-0 border-t"
-              style={{ borderColor: "var(--hairline)" }}
-            />
-
-            <div className="flex items-baseline gap-3">
-              <span className="metrica-valor-menor">
-                {en ? interacoes.totalEn : interacoes.total}
-              </span>
-              <span className="metrica-rotulo" style={{ marginTop: 0 }}>
-                {en ? interacoes.rotuloEn : interacoes.rotulo}
-              </span>
-            </div>
-            <Barras fatias={interacoes.fatias} en={en} />
           </div>
+        </section>
 
-          <div className="case-card" data-animate data-delay="2">
-            <p className="case-rotulo">{t("chale_post")}</p>
-
-            <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-4">
-              {postDestaque.map((m, i) => (
-                <Metrica key={m.rotulo} m={m} en={en} menor regua={i > 0 && i !== 3} />
+        {/* ── Segunda campanha ───────────────────────────────── */}
+        <section className="container-page pb-6" data-animate>
+          <div className="case-card">
+            <h2 className="case-rotulo">{t("chale_campanha_2")}</h2>
+            <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-x-4">
+              {campanhaSecundaria.map((m, i) => (
+                <Metrica key={m.rotulo} m={m} en={en} menor regua={i > 0} />
               ))}
             </div>
+          </div>
+        </section>
 
-            <hr
-              className="my-8 border-0 border-t"
-              style={{ borderColor: "var(--hairline)" }}
-            />
+        {/* ── Orgânico + post de destaque ────────────────────── */}
+        <section className="container-page pb-24" data-animate>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="case-card">
+              <h2 className="case-rotulo">{t("chale_organico")}</h2>
 
-            <p className="metrica-rotulo" style={{ marginTop: 0 }}>
-              {t("chale_origem")}
-            </p>
-            <div className="barra-empilhada mt-4" role="presentation">
-              {origemTrafego.map((f) => (
-                <div key={f.rotulo} className="barra-fatia" style={{ width: `${f.pct}%` }} />
-              ))}
+              <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
+                {organico.map((m, i) => (
+                  <Metrica key={m.rotulo} m={m} en={en} menor regua={i > 0} />
+                ))}
+              </div>
+
+              <hr
+                className="my-8 border-0 border-t"
+                style={{ borderColor: "var(--hairline)" }}
+              />
+
+              <div className="flex items-baseline gap-3">
+                <span className="metrica-valor-menor">
+                  {en ? interacoes.totalEn : interacoes.total}
+                </span>
+                <span className="metrica-rotulo" style={{ marginTop: 0 }}>
+                  {en ? interacoes.rotuloEn : interacoes.rotulo}
+                </span>
+              </div>
+              <Barras fatias={interacoes.fatias} en={en} />
             </div>
-            <ul className="mt-4 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
-              {origemTrafego.map((f) => (
-                <li
-                  key={f.rotulo}
-                  className="flex items-baseline gap-2"
-                  style={{ fontSize: "var(--text-meta)" }}
-                >
-                  <span className="text-fg-muted">{en ? f.rotuloEn : f.rotulo}</span>
-                  <span
-                    className="font-semibold"
-                    style={{ fontVariantNumeric: "tabular-nums" }}
+
+            <div className="case-card">
+              <h2 className="case-rotulo">{t("chale_post")}</h2>
+
+              <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-4">
+                {postDestaque.map((m, i) => (
+                  <Metrica key={m.rotulo} m={m} en={en} menor regua={i > 0 && i !== 3} />
+                ))}
+              </div>
+
+              <hr
+                className="my-8 border-0 border-t"
+                style={{ borderColor: "var(--hairline)" }}
+              />
+
+              <p className="metrica-rotulo" style={{ marginTop: 0 }}>
+                {t("chale_origem")}
+              </p>
+              <div className="barra-empilhada mt-4" role="presentation">
+                {origemTrafego.map((f) => (
+                  <div key={f.rotulo} className="barra-fatia" style={{ width: `${f.pct}%` }} />
+                ))}
+              </div>
+              <ul className="mt-4 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
+                {origemTrafego.map((f) => (
+                  <li
+                    key={f.rotulo}
+                    className="flex items-baseline gap-2"
+                    style={{ fontSize: "var(--text-meta)" }}
                   >
-                    {en ? f.valorEn ?? f.valor : f.valor}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                    <span className="text-fg-muted">{en ? f.rotuloEn : f.rotulo}</span>
+                    <span
+                      className="font-semibold"
+                      style={{ fontVariantNumeric: "tabular-nums" }}
+                    >
+                      {en ? f.valorEn ?? f.valor : f.valor}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+
+          <div className="mt-12 flex justify-center">
+            <Link href="/" className="case-voltar">
+              <ArrowLeft className="h-4 w-4" aria-hidden />
+              {t("chale_voltar")}
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
   )
 }
