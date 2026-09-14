@@ -29,6 +29,10 @@ export type Fatia = {
   valorEn?: string
 }
 
+/** Perfil e loja da marca. Os dois abrem em nova aba. */
+export const INSTAGRAM_URL = "https://www.instagram.com/chaleatelier/"
+export const LOJA_URL = "https://chaleatelier.lojavirtualnuvem.com.br/"
+
 /** Contexto da conta, antes de qualquer número de campanha. */
 export const conta = {
   seguidores: "900",

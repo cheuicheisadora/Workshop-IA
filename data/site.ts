@@ -21,7 +21,10 @@ export const site = {
  */
 export const navLinks = [
   { href: "/#projetos", label: "Projetos", labelEn: "Projects" },
-  { href: "/#chale-atelier", label: "Growth", labelEn: "Growth" },
+  /* Rota, não âncora: o conteúdo saiu da home e virou página própria.
+     O rótulo fica curto porque a barra não comporta "Growth & Marketing"
+     a 1024px — o nome inteiro está no título da página. */
+  { href: "/chale-atelier", label: "Growth", labelEn: "Growth" },
   {
     href: "/#como-eu-trabalho",
     label: "Como eu trabalho",

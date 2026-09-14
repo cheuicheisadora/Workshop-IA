@@ -38,7 +38,11 @@ export const tokens: DesignTokens = {
        atrás — abaixo dos 4,5 exigidos, e rótulo em maiúscula desse tamanho
        não conta como texto grande. Este tom sobe para 5,7:1 sem sair do
        mesmo matiz. */
-    purpleText: "#B08FD9",
+    /* O #B08FD9 bastava dentro da home, mas a página da Chalé é bem mais
+       curta e concentra os brilhos do fundo: medido lá, a tag do topo caía
+       para 3,60:1 a 390px. Este tom é o mesmo do anel de foco — reaproveitar
+       mantém a paleta enxuta — e leva o pior caso a 4,99:1. */
+    purpleText: "#C9AEEE",
 
     // Traços
     border: "rgba(255, 255, 255, 0.2)",

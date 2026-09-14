@@ -95,10 +95,13 @@ const translations = {
     home_footer_email: "E-mail",
 
     /* ─── Chalé Atelier (growth e mídia) ───────────────────── */
-    chale_tag: "GROWTH & MÍDIA",
-    chale_heading: "Chalé Atelier",
-    chale_subtitle:
-      "Planejamento, execução e otimização das campanhas de Meta Ads e do conteúdo orgânico no Instagram da Chalé Atelier, marca de cerâmica da minha família.",
+    chale_voltar: "Voltar",
+    chale_tag: "GROWTH & MARKETING",
+    chale_heading: "Growth & Marketing — Chalé Atelier",
+    chale_contexto:
+      "Fui responsável por todo o marketing e design do Instagram da Chalé Atelier, loja de cerâmica da minha família: planejei o conteúdo, desenhei as peças e rodei as campanhas de Meta Ads do início ao fim.",
+    chale_instagram: "Ver o Instagram",
+    chale_loja: "Ver a loja",
     chale_campanha: "Campanha principal · Meta Ads",
     chale_campanha_2: "Segunda campanha",
     chale_organico: "Desempenho orgânico",
@@ -195,10 +198,13 @@ const translations = {
     home_footer_email: "Email",
 
     /* ─── Chalé Atelier (growth e mídia) ───────────────────── */
-    chale_tag: "GROWTH & MEDIA",
-    chale_heading: "Chalé Atelier",
-    chale_subtitle:
-      "Planning, running and optimizing the Meta Ads campaigns and organic content for the Instagram account of Chalé Atelier, my family's ceramics brand.",
+    chale_voltar: "Back",
+    chale_tag: "GROWTH & MARKETING",
+    chale_heading: "Growth & Marketing — Chalé Atelier",
+    chale_contexto:
+      "I ran marketing and design end to end for the Instagram account of Chalé Atelier, my family's ceramics shop — planning the content, designing every piece, and taking the Meta Ads campaigns from brief to results.",
+    chale_instagram: "Visit the Instagram",
+    chale_loja: "Visit the shop",
     chale_campanha: "Main campaign · Meta Ads",
     chale_campanha_2: "Second campaign",
     chale_organico: "Organic performance",
