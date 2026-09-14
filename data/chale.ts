@@ -108,3 +108,16 @@ export const origemTrafego: Fatia[] = [
   { rotulo: "Feed", rotuloEn: "Feed", pct: 22.2, valor: "22,2%", valorEn: "22.2%" },
   { rotulo: "Stories", rotuloEn: "Stories", pct: 15.8, valor: "15,8%", valorEn: "15.8%" },
 ]
+
+/**
+ * Os três números que representam o case no card da home.
+ *
+ * Não são redigitados: apontam para os mesmos objetos usados na página, então
+ * um valor corrigido lá muda no card junto. A escolha cobre os três eixos do
+ * trabalho — resultado da mídia paga, eficiência dela, e alcance orgânico.
+ */
+export const destaqueCard: Metrica[] = [
+  campanhaResultado[0], // 525 novos seguidores
+  campanhaCusto[1], //    R$ 0,11 por visita ao perfil
+  organico[0], //         92.900 visualizações
+]

@@ -713,6 +713,42 @@
     transform: scaleX(1);
   }
 
+  /* ─── Card de growth na grade ────────────────────────────────
+     O card da Chalé não tem aparelho para mostrar: no lugar do palco de
+     mockups entra um painel com três números. O palco padrão tem proporção
+     fixa e alinha pela base, porque é feito para aparelho sangrando; aqui
+     essas regras só atrapalham.                                          */
+
+  /* Só abaixo de lg: a partir daí o palco vira caixa de posicionamento e o
+     painel é absoluto dentro dela, então estas regras não valem mais. */
+  @media (max-width: 1023px) {
+    .pc-palco-metricas {
+      aspect-ratio: auto;
+      max-height: none;
+      align-items: stretch;
+      /* Alinhado com a coluna de texto do card, e com respiro embaixo: sem
+         isso os números encostavam na borda lateral e a última legenda
+         terminava colada na base da moldura. */
+      padding: 0 var(--space-5) var(--space-5);
+      margin-top: var(--space-3);
+    }
+  }
+
+  .pc-metricas {
+    display: grid;
+    /* 150px de mínimo, e não 118: com o mínimo menor cabiam duas colunas no
+       celular e o terceiro número ficava órfão numa linha só. Assim são três
+       empilhados no telefone e três lado a lado a partir do tablet. */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-3) var(--space-4);
+  }
+
+  /* Menor que o número da página do case: aqui ele é prévia, e o título do
+     card ainda precisa liderar. */
+  .pc-metricas .metrica-valor {
+    font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.5rem);
+  }
+
   /* ─── Painel de resultados (Chalé Atelier) ───────────────────
      Relatório, não lista corrida: quem manda visualmente é o número, e o
      rótulo entra como legenda embaixo. Reaproveita o vidro de .case-card e

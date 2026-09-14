@@ -45,6 +45,41 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    /*
+     * Chalé Atelier. É o único case de growth da lista: o card na home não
+     * leva mockup de aparelho, leva os números, e a página conta o resto.
+     *
+     * Os campos problem/solution/impact e caseStudy não são lidos por
+     * ninguém — as páginas de case montam o próprio conteúdo e a home só usa
+     * cardTitle e cardDescription. Ficam aqui só porque o tipo exige.
+     */
+    id: "4",
+    slug: "chale-atelier",
+    title: "Chalé Atelier",
+    cardTitle: "Chalé Atelier",
+    cardTitle_en: "Chalé Atelier",
+    cardDescription:
+      "Marketing e design do Instagram da loja de cerâmica da minha família — conteúdo, peças e campanhas de Meta Ads planejadas e rodadas do início ao fim.",
+    cardDescription_en:
+      "Marketing and design for the Instagram account of my family's ceramics shop — content, artwork and Meta Ads campaigns planned and run end to end.",
+    description:
+      "Gestão do Instagram da Chalé Atelier: planejamento de conteúdo, design das peças e campanhas de Meta Ads, com acompanhamento de custo por visita e desempenho orgânico.",
+    description_en:
+      "Running the Chalé Atelier Instagram account: content planning, artwork design and Meta Ads campaigns, tracking cost per visit and organic performance.",
+    role: "Growth & Marketing · Chalé Atelier",
+    role_en: "Growth & Marketing · Chalé Atelier",
+    tools: ["Meta Ads", "Instagram", "Design de conteúdo"],
+    tools_en: ["Meta Ads", "Instagram", "Content design"],
+    problem: "Conta pequena, sem verba de mídia e sem medição de desempenho.",
+    solution: "Conteúdo orgânico próprio e campanhas de Meta Ads planejadas, executadas e acompanhadas por custo por visita.",
+    impact: "525 novos seguidores e 2.484 visitas ao perfil por R$ 226,18, a R$ 0,11 a visita.",
+    problem_en: "A small account, no media budget and no performance tracking.",
+    solution_en: "In-house organic content plus Meta Ads campaigns planned, run and tracked by cost per visit.",
+    impact_en: "525 new followers and 2,484 profile visits for R$ 226.18, at R$ 0.11 per visit.",
+    images: [],
+    featured: true,
+  },
+  {
     id: "1",
     slug: "redesign-app-itau",
     title: "Redesign App Itaú",
