@@ -2,8 +2,9 @@
 
 export const site = {
   name: "Isadora Cheuiche",
-  role: "UX/UI Designer com foco em produtos B2B e SaaS.",
-  roleEn: "UX/UI Designer focused on B2B and SaaS products.",
+  role: "Estrategista de conteúdo com raiz em design, focada em narrativa de marca e geração de demanda para produtos B2B e SaaS.",
+  roleEn:
+    "Content strategist rooted in design, focused on brand narrative and demand generation for B2B and SaaS products.",
   email: "cheuicheisadora@gmail.com",
   linkedin: "https://www.linkedin.com/in/isadora-cheuiche",
   behance: "https://www.behance.net/isadoracheuiche",

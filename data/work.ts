@@ -1,7 +1,12 @@
 /**
  * Itens da seção "Como eu trabalho".
- * Texto transcrito literalmente do Figma (frame 0:53, nós 0:232–0:249).
+ * Texto transcrito literalmente do que a Isadora escreveu.
  * Conteúdo separado da apresentação: o componente só itera este array.
+ *
+ * Os `id` são chave de lista e âncora, não aparecem na tela. Ficaram os
+ * originais mesmo depois da virada de posicionamento para estratégia de
+ * conteúdo: renomear não mudaria nada visível e só quebraria a identidade
+ * dos itens entre renders.
  */
 
 export type WorkPrinciple = {
@@ -18,54 +23,54 @@ export const workPrinciples: WorkPrinciple[] = [
     id: "pergunta-certa",
     title: "Começo pela pergunta certa",
     description:
-      "Na SAP, um teste A/B rodava com duas opções que não atendiam o usuário. Descartei as duas, desenhei uma terceira e ela virou feature.",
-    title_en: "I start from the right question",
+      "Na SAP, minha função era pegar entregas técnicas complexas do Joule e transformar em narrativas que fizessem sentido pro mercado, não só documentar o que foi construído.",
+    title_en: "I start with the right question",
     description_en:
-      "At SAP, an A/B test was running with two options that didn't serve the user. I dropped both, designed a third one, and it shipped as a feature.",
+      "At SAP, my role was to take complex technical deliverables from Joule and turn them into narratives that made sense to the market, not just document what was built.",
   },
   {
     id: "criterio",
     title: "Decido com critério, não por gosto",
     description:
-      "No site da Agromai, testei uma direção mais densa e descartei. A versão limpa venceu no benchmark e elevou a conversão em cerca de 15%.",
-    title_en: "I decide on criteria, not on taste",
+      "No blog institucional da Agromai, testei diferentes direções de CTA e estrutura de SEO. A versão mais direta, sem jargão técnico, foi a que gerou mais engajamento de clientes.",
+    title_en: "I decide with criteria, not preference",
     description_en:
-      "On the Agromai website I tried a denser direction and dropped it. The clean version won the benchmark and lifted conversion by around 15%.",
+      "On Agromai's institutional blog, I tested different CTA directions and SEO structures. The more direct version, free of technical jargon, generated the most client engagement.",
   },
   {
     id: "ia-ferramenta",
     title: "Uso IA como ferramenta, não como atalho",
     description:
-      "Uso Figma agent para atualizar tipografia e cores da biblioteca, e Claude para criar componentes. Ganho velocidade sem terceirizar a decisão.",
-    title_en: "I use AI as a tool, not as a shortcut",
+      "Uso o Claude pra estruturar estratégia e calendário editorial, mantendo cadência e consistência entre canais. Ganho velocidade sem terceirizar a decisão de narrativa.",
+    title_en: "I use AI as a tool, not a shortcut",
     description_en:
-      "I use the Figma agent to update the library's typography and colors, and Claude to build components. I gain speed without outsourcing the decision.",
+      "I use Claude to structure content strategy and editorial calendars, keeping cadence and consistency across channels. I gain speed without outsourcing the narrative decision.",
   },
   {
     id: "handoff",
-    title: "Entrego pronto para desenvolvimento",
+    title: "Entrego pronto pra publicar",
     description:
-      "Mantenho o Design System, padronizei a spec de animações no handoff e prototipo em código. Menos retrabalho e conversa mais técnica com devs.",
-    title_en: "I hand off ready for development",
+      "Cuidei de tom de voz e diretrizes de marca num evento internacional em 4 países, incluindo alinhamento direto com agência externa. Menos retrabalho, mais consistência de marca em todos os pontos de contato.",
+    title_en: "I deliver ready to publish",
     description_en:
-      "I maintain the Design System, standardized the animation spec in the handoff, and prototype in code. Less rework and a more technical conversation with devs.",
+      "I managed tone of voice and brand guidelines for an international event across 4 countries, including direct alignment with an external agency. Less rework, more brand consistency across every touchpoint.",
   },
   {
     id: "usuario-real",
-    title: "Desenho para quem realmente vai usar",
+    title: "Escrevo para quem realmente vai usar",
     description:
-      "Produtores rurais com pouca familiaridade digital definiram contraste, alvos e densidade. Uni mapa e clima numa visualização só, e funcionou.",
-    title_en: "I design for whoever will actually use it",
+      "Produtores rurais com pouca familiaridade digital foram o público do blog institucional que criei na Agromai. Simplificar sem perder profundidade técnica foi o critério o tempo todo.",
+    title_en: "I write for who will actually read it",
     description_en:
-      "Farmers with little digital familiarity set the contrast, target sizes, and density. I merged map and weather into a single visualization, and it worked.",
+      "Rural producers with little digital familiarity were the audience for the institutional blog I created at Agromai. Simplifying without losing technical depth was the standard throughout.",
   },
   {
     id: "acessibilidade",
-    title: "Acessibilidade entra no começo, não no fim",
+    title: "Consistência de marca entra no começo, não no fim",
     description:
-      "Sou certificada em design acessível. Contraste, tamanho de alvo e hierarquia são critério desde o wireframe, não correção depois do handoff.",
-    title_en: "Accessibility comes at the start, not at the end",
+      "Criei o brand guide do zero pro Torneo de Innovación e protegi tom de voz em todos os países envolvidos. Marca não se corrige depois, se define antes.",
+    title_en: "Brand consistency comes first, not last",
     description_en:
-      "I'm certified in accessible design. Contrast, target size, and hierarchy are criteria from the wireframe on, not a fix after handoff.",
+      "I created the brand guide from scratch for Torneo de Innovación and protected tone of voice across every country involved. Brand isn't fixed after the fact, it's defined upfront.",
   },
 ]
