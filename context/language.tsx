@@ -12,8 +12,9 @@ const translations = {
     nav_about: "Sobre",
     nav_contact: "Contato",
     // Hero
-    hero_tag: "UX/UI Designer",
-    hero_title_1: "Sou uma UX/UI Designer que transforma problemas complexos em",
+    hero_tag: "Estrategista de Conteúdo",
+    hero_title_1:
+      "Sou uma estrategista de conteúdo que transforma problemas complexos em",
     hero_title_accent: "experiências simples e intuitivas",
     hero_subtitle:
       "Foco em design centrado no usuário, criando soluções digitais que equilibram necessidades do negócio e experiência real das pessoas. Experiência em UX, UI e Product Thinking",
@@ -115,8 +116,8 @@ const translations = {
     nav_about: "About",
     nav_contact: "Contact",
     // Hero
-    hero_tag: "UX/UI Designer",
-    hero_title_1: "I'm a UX/UI Designer who turns complex problems into",
+    hero_tag: "Content Strategist",
+    hero_title_1: "I'm a content strategist who turns complex problems into",
     hero_title_accent: "simple, intuitive experiences",
     hero_subtitle:
       "Focused on user-centered design, creating digital solutions that balance business needs with real human experience. Background in UX, UI, and Product Thinking",
