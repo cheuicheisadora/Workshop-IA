@@ -16,11 +16,19 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "Isadora Cheuiche | UX/UI Designer",
+  /*
+   * Título em português: esta exportação é estática e resolvida no servidor,
+   * antes do React montar. O alternador PT/EN é estado de cliente, então a aba
+   * do navegador e os crawlers leem sempre esta string, qualquer que seja o
+   * idioma escolhido na tela. O equivalente em inglês é
+   * "Isadora Cheuiche | Content Strategist", e só passa a ser servível quando
+   * houver rota por idioma (/en) com generateMetadata.
+   */
+  title: "Isadora Cheuiche | Estrategista de Conteúdo",
   description:
     "Portfólio de Isadora Cheuiche — UX/UI Designer com foco em produtos B2B e SaaS. Cases reais com processo, desafios e resultados.",
   openGraph: {
-    title: "Isadora Cheuiche | UX/UI Designer",
+    title: "Isadora Cheuiche | Estrategista de Conteúdo",
     description:
       "UX/UI Designer com foco em produtos B2B e SaaS. Cases reais com processo, desafios e resultados.",
     type: "website",
