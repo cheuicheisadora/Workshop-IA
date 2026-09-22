@@ -8,7 +8,9 @@ export const site = {
   email: "cheuicheisadora@gmail.com",
   linkedin: "https://www.linkedin.com/in/isadora-cheuiche",
   behance: "https://www.behance.net/isadoracheuiche",
-  /** PLACEHOLDER — trocar quando o PDF definitivo for entregue. */
+  /* O PT é o currículo definitivo de estratégia de conteúdo. O caminho ficou
+     o mesmo de propósito: quem já recebeu o link continua baixando a versão
+     certa. O EN ainda é a versão antiga, de UX/UI — trocar quando houver. */
   resume: "/CV_Isadora_Cheuiche_PT.pdf",
   resumeEn: "/CV_Isadora_Cheuiche_EN.pdf",
 } as const
