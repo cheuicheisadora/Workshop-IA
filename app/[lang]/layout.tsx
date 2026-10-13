@@ -55,7 +55,7 @@ export async function generateMetadata({
       : "Isadora Cheuiche | Estrategista de Conteúdo",
     description: en
       ? "Isadora Cheuiche's portfolio — content strategist with a background in B2B and SaaS product design. Brand narrative, strategic cases, and content as a demand engine."
-      : "Portfólio de Isadora Cheuiche — UX/UI Designer com foco em produtos B2B e SaaS. Cases reais com processo, desafios e resultados.",
+      : "Portfólio de Isadora Cheuiche — estrategista de conteúdo com background em design de produto B2B e SaaS. Narrativa de marca, cases estratégicos e conteúdo como motor de demanda.",
     alternates: {
       canonical: `/${en ? "en" : "pt"}`,
       languages: { "pt-BR": "/pt", en: "/en" },
@@ -66,7 +66,7 @@ export async function generateMetadata({
         : "Isadora Cheuiche | Estrategista de Conteúdo",
       description: en
         ? "Content strategist with a background in B2B and SaaS product design. Brand narrative, strategic cases, and content as a demand engine."
-        : "UX/UI Designer com foco em produtos B2B e SaaS. Cases reais com processo, desafios e resultados.",
+        : "Estrategista de conteúdo com background em design de produto B2B e SaaS. Narrativa de marca, cases estratégicos e conteúdo como motor de demanda.",
       type: "website",
       locale: en ? "en_US" : "pt_BR",
       url: `/${en ? "en" : "pt"}`,
