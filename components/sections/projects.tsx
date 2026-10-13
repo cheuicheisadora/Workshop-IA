@@ -313,7 +313,7 @@ const MOCKUPS: Record<string, () => React.ReactElement> = {
 }
 
 function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
-  const { lang, t } = useLanguage()
+  const { lang, t, href } = useLanguage()
   const en = lang === "en"
   const Mockup = MOCKUPS[card.slug]
 
@@ -389,7 +389,7 @@ function ProjectCard({ project, card }: { project: Project; card: CardSpec }) {
   }
 
   return (
-    <Link href={`/projetos/${project.slug}`} className={className} style={style}>
+    <Link href={href(`/projetos/${project.slug}`)} className={className} style={style}>
       {inner}
     </Link>
   )

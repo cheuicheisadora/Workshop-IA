@@ -72,7 +72,7 @@ const socials = [
 ]
 
 export function SiteFooter() {
-  const { lang, t } = useLanguage()
+  const { lang, t, href } = useLanguage()
   const en = lang === "en"
 
   return (
@@ -96,7 +96,7 @@ export function SiteFooter() {
             <ul className="mt-4 flex list-none flex-col gap-1 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="nav-link">
+                  <Link href={href(link.href)} className="nav-link">
                     {en ? link.labelEn : link.label}
                   </Link>
                 </li>

@@ -5,6 +5,7 @@ import { ArrowUpRight, type LucideIcon } from "lucide-react"
 import { Backdrop } from "@/components/decor/backdrop"
 import { SiteHeader } from "@/components/sections/site-header"
 import { SiteFooter } from "@/components/sections/site-footer"
+import { useLanguage } from "@/context/language"
 
 /**
  * Página de case, no mesmo desenho da home.
@@ -137,6 +138,7 @@ function IconCard({
 }
 
 export function CaseStudy({ c }: { c: CaseContent }) {
+  const { href } = useLanguage()
   const visaoGeral = [
     { label: c.problem, text: c.problemText },
     { label: c.solution, text: c.solutionText },
@@ -157,7 +159,7 @@ export function CaseStudy({ c }: { c: CaseContent }) {
             paddingBottom: "var(--space-10)",
           }}
         >
-          <Link href="/#projetos" className="case-voltar">
+          <Link href={href("/#projetos")} className="case-voltar">
             {c.back}
           </Link>
 
@@ -272,7 +274,7 @@ export function CaseStudy({ c }: { c: CaseContent }) {
               <span className="sr-only">{c.newTabLabel}</span>
             </a>
           )}
-          <Link href="/#projetos" className="case-voltar">
+          <Link href={href("/#projetos")} className="case-voltar">
             {c.back}
           </Link>
         </section>
