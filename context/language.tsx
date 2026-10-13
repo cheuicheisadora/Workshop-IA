@@ -1,8 +1,9 @@
 "use client"
 
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext } from "react"
+import { comIdioma, type Lang } from "@/lib/idioma"
 
-type Lang = "pt" | "en"
+export type { Lang }
 
 const translations = {
   pt: {
@@ -218,35 +219,41 @@ export type TranslationKey = keyof typeof translations.pt
 
 interface LanguageContextType {
   lang: Lang
-  setLang: (lang: Lang) => void
   t: (key: TranslationKey) => string
+  /** Caminho interno já prefixado com o idioma corrente. */
+  href: (caminho: string) => string
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  lang: "en",
-  setLang: () => {},
-  t: (key) => translations.en[key],
+  lang: "pt",
+  t: (key) => translations.pt[key],
+  href: (caminho) => comIdioma("pt", caminho),
 })
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  /*
-   * O site abre sempre em português — é o idioma do conteúdo e o que vai no
-   * <html lang> do servidor. A escolha do visitante não é persistida de
-   * propósito: se fosse lida na montagem, o primeiro render sairia em PT e
-   * trocaria para EN logo depois, com o lang do documento divergindo do texto
-   * no meio do caminho.
-   */
-  const [lang, setLangState] = useState<Lang>("pt")
-
-  const setLang = (newLang: Lang) => {
-    setLangState(newLang)
-    document.documentElement.lang = newLang === "pt" ? "pt-BR" : "en"
-  }
-
-  const t = (key: TranslationKey): string => translations[lang][key]
+/**
+ * O idioma não é mais estado: vem do segmento [lang] da rota.
+ *
+ * Antes era um useState que começava em "pt" e o botão trocava em memória —
+ * a URL não mudava, então não havia link para mandar a alguém, e o <head>
+ * (título, descrição) ficava preso no português. Agora /pt e /en são páginas
+ * de verdade, o primeiro render já sai no idioma certo e não há troca de texto
+ * depois da montagem.
+ *
+ * Não existe mais setLang: trocar de idioma é navegar, e quem faz isso é o
+ * par de links do header.
+ */
+export function LanguageProvider({
+  children,
+  inicial,
+}: {
+  children: React.ReactNode
+  inicial: Lang
+}) {
+  const t = (key: TranslationKey): string => translations[inicial][key]
+  const href = (caminho: string) => comIdioma(inicial, caminho)
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang: inicial, t, href }}>
       {children}
     </LanguageContext.Provider>
   )

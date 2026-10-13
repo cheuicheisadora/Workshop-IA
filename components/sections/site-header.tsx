@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { navLinks, site } from "@/data/site"
 import { useLanguage } from "@/context/language"
+import { trocaIdioma } from "@/lib/idioma"
 
 /**
  * Marca do logotipo: duas estrelas sobrepostas (Figma 8:198).
@@ -90,13 +92,20 @@ function LogoMark() {
 /**
  * Pílula PT/EN (Figma 0:198): caixa de 81×41 em rgba(217,217,217,.1), duas
  * fichas de 32px, a ativa em rgba(151,111,204,.55). O arquivo mostra EN
- * marcada; aqui quem manda é o idioma corrente, que começa em PT.
+ * marcada; aqui quem manda é o idioma da rota.
+ *
+ * São links, e não botões, porque desde que o idioma passou a viver na URL
+ * trocar de idioma virou navegação: cada ficha aponta para a mesma página no
+ * outro idioma, então dá para abrir em outra aba, copiar o endereço e voltar
+ * pelo histórico. O caminho é preservado — quem está num case continua no
+ * mesmo case.
  *
  * A ficha tem 32px por desenho, abaixo dos 44px de alvo mínimo — o ::after
  * estende a área de clique sem mexer no visual.
  */
 function LanguageToggle({ className = "" }: { className?: string }) {
-  const { lang, setLang } = useLanguage()
+  const { lang } = useLanguage()
+  const pathname = usePathname()
 
   return (
     <div
@@ -108,23 +117,22 @@ function LanguageToggle({ className = "" }: { className?: string }) {
       {(["pt", "en"] as const).map((code) => {
         const active = lang === code
         return (
-          <button
+          <Link
             key={code}
-            type="button"
-            onClick={() => setLang(code)}
-            aria-pressed={active}
-            className="tap-44 relative flex h-8 w-8 items-center justify-center rounded-[var(--radius-pill)] border-0 text-[14px] font-bold text-fg transition-colors duration-200"
+            href={trocaIdioma(pathname, code)}
+            hrefLang={code}
+            aria-current={active ? "true" : undefined}
+            className="tap-44 relative flex h-8 w-8 items-center justify-center rounded-[var(--radius-pill)] border-0 text-[14px] font-bold text-fg no-underline transition-colors duration-200"
             style={{
               background: active ? "var(--purple-fill)" : "transparent",
               textShadow: "0 0 1.193px rgba(0, 0, 0, 0.15)",
-              cursor: "pointer",
             }}
           >
             {code.toUpperCase()}
             <span className="sr-only">
               {code === "pt" ? " — Português" : " — English"}
             </span>
-          </button>
+          </Link>
         )
       })}
     </div>
@@ -132,7 +140,7 @@ function LanguageToggle({ className = "" }: { className?: string }) {
 }
 
 export function SiteHeader() {
-  const { lang, t } = useLanguage()
+  const { lang, t, href } = useLanguage()
   const en = lang === "en"
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -174,7 +182,7 @@ export function SiteHeader() {
       >
         <div className="container-page flex items-center justify-between gap-6 py-3">
           <Link
-            href="/"
+            href={href("/")}
             /* Logo 0:187: vetor + nome, com 15px entre eles no desktop. O
                tamanho do nome vem de --text-brand. */
             className="flex shrink-0 items-center gap-3 font-medium text-fg no-underline sm:gap-[15px]"
@@ -189,7 +197,7 @@ export function SiteHeader() {
             <ul className="flex list-none items-center gap-6 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="nav-link">
+                  <Link href={href(link.href)} className="nav-link">
                     {en ? link.labelEn : link.label}
                   </Link>
                 </li>
@@ -221,7 +229,7 @@ export function SiteHeader() {
               <span className="sr-only">{t("home_new_tab")}</span>
             </a>
             <LanguageToggle />
-            <Link href="/#contato" className="btn btn-solid">
+            <Link href={href("/#contato")} className="btn btn-solid">
               {t("nav_contact")}
             </Link>
           </div>
@@ -256,7 +264,7 @@ export function SiteHeader() {
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={href(link.href)}
                     className="nav-link w-full"
                     onClick={() => setMenuOpen(false)}
                   >
@@ -289,7 +297,7 @@ export function SiteHeader() {
               </li>
               <li className="pt-2">
                 <Link
-                  href="/#contato"
+                  href={href("/#contato")}
                   className="btn btn-solid w-full"
                   onClick={() => setMenuOpen(false)}
                 >
